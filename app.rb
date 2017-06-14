@@ -12,7 +12,9 @@ class YoutubeIntegration < Sinatra::Base
 	register Controllers::PullController
 	register Controllers::AdminController
 	
+	set :protection, except: [:frame_options, :json_csrf] # turns off sameorigin in X-frame
+
 	get '/' do
-		"Hello World!"		
+		File.read(File.join('public', 'index.html'))
 	end
 end

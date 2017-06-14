@@ -4,8 +4,7 @@ module Controllers
         ## the instance of Youtube into AnyChannel
 		def self.registered(app)
 			app.post '/admin_ui' do
-				# "admin_ui page"
-				erb :admin
+				File.read(File.join('public', 'admin.html'))
 			end
 		end
 	end
