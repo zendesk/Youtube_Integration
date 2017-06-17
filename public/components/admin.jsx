@@ -1,68 +1,34 @@
-var GreeterForm = React.createClass({
+var NameForm = React.createClass({
 	onFormSubmit: function (e) {
 		e.preventDefault();
+		// SUBMIT ACCOUNT INFORMATION HERE
 
-		var name = this.refs.name.value;
-
-		if (name.length > 0) {
-			this.refs.name.value = '';
-			this.props.onNewName(name);
-		}
 	},
-	render: function () {
+	render: function () {	
 		return (
-			<form onSubmit={this.onFormSubmit}>
-				<input type="text" ref="name"/>
-				<button>Set Name</button>
-			</form>
-		);
-	}
-});
-
-var GreeterMessage = React.createClass({
-	render: function () {
-		var name = this.props.name;
-		var msg = this.props.msg;
-		return (
-			<div>
-				<h1>Hello {name + '!'}</h1>
-				<p>{msg}</p>
+			<div class="wrapper">
+				<h1 class="title">Youtube Integration</h1>
+				<form onSubmit={this.onFormSubmit}>
+						<input type="text" placeholder="Account Name"/>
+						<input type="text" placeholder='Channel ID'/>
+						<p> Note: You can find your Youtube Channel ID <a href="http://www.youtube.com/account_advanced" target="_blank">here</a></p>
+						<a className="button" href="/youtube_auth">Next</a>
+				</form>
 			</div>
 		);
 	}
 });
 
-var Greeter = React.createClass({
-	getDefaultProps: function () {
-		return {
-			name: 'React',
-			msg: 'This is my default message'
-		};
-	},
-	
-	getInitialState: function () {
-		return {
-			name: this.props.name
-		};
-	},
-	handleNewName: function (name) {
-		this.setState({
-			name: name
-		});
-	},
+var Admin = React.createClass({	
 	render: function () {
-		var name = this.state.name;
-		var msg = this.props.msg;
 		return (
 			<div>
-			<GreeterMessage name={name} msg={msg}/>
-			<GreeterForm onNewName={this.handleNewName}/>
+				<NameForm />
 			</div>
 		);
 	}
 });
 
-var firstName = ''
 ReactDOM.render(
-	<Greeter name={firstName} msg="This is the admin_ui"/>, document.getElementById('admin')
+	<Admin />, document.getElementById('admin')
 );

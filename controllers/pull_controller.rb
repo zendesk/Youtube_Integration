@@ -10,7 +10,7 @@ module Controllers
 				response = {
 					"external_resources":[
 						{
-							"external_id": "1111",
+							"external_id": "1112",
 							"message": "Hey this is a comment!",
 							"created_at": "2017-06-13T14:34:09Z",
 							"author": {
