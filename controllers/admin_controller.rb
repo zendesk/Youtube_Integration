@@ -5,10 +5,10 @@ module Controllers
 		def self.registered(app)
 			app.post '/admin_ui' do
 				@return_url = params[:return_url]
-				puts params.inspect
-				# File.read(File.join('public', 'admin.html.erb'))
+				@subdomain = params[:subdomain]
+				@locale = params[:locale]
+				session[:return_url] = @return_url # stores my return_url
 				erb :'../public/admin.html'
-				#redirect '/youtube_auth'
 			end
 
 			app.get '/admin_ui' do

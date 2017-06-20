@@ -1,0 +1,7 @@
+{
+  "channel_integrations": {
+    "youtube_integration": {
+      "manifest_url": "https://0bba4895.ngrok.io/manifest"
+    }
+  }
+}
