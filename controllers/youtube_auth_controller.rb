@@ -10,28 +10,18 @@ module Controllers
 				unless session.has_key?(:credentials)
 			    	redirect to('/youtube_auth')
 			  	end
-			  	
-				metadata = {
-					"channel_name": session[:channel_name],
-					"credentials": session[:credentials]
-				}
-				state = {
-					"last_msg": session[:timestamp]
-				}
-
-				uri = URI(session[:return_url])
-				https = Net::HTTP.new(uri.host, uri.port)
-				request = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
-				request.body = {
-					'metadata': metadata,
-					'state': state,
-					'name': session[:channel_name],
-					'return_url': session[:return_url],
-					'subdomain': session[:subdomain],
-					'locale': session[:locale]
-				}.to_json
-				puts request.body
-				response = https.request(request)
+			  	@name = session[:channel_name]
+				# @metadata = {
+				# 	"channel_name": session[:channel_name],
+				# 	"credentials": session[:credentials]
+				# }.to_json
+				@metadata = ""
+				@state = ""
+				# @state = {
+				# 	"last_msg": session[:timestamp]
+				# }.to_json
+				@return_url = session[:return_url]
+				erb :'../public/auto_submit.html'
 				
 			end
 
