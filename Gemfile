@@ -10,3 +10,4 @@ gem "rspec"
 gem 'rack-test'
 gem 'rubocop', require: false
 gem 'google-api-client', '0.13.0'
+gem 'dotenv'
