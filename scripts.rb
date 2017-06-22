@@ -2,7 +2,7 @@ account = "support".to_account
 
 # Create registered integration service (app install)
 Channels::AnyChannel::RegisteredIntegrationService.destroy_all
-ris = Channels::AnyChannel::RegisteredIntegrationService.create_from_manifest_url!('https://6799e2b8.ngrok.io/manifest', account.id)
+ris = Channels::AnyChannel::RegisteredIntegrationService.create_from_manifest_url!('https://0bba4895.ngrok.io/manifest', account.id)
 
 # Create integration service instance (ui account creation)
 Channels::AnyChannel::IntegrationServiceInstance.destroy_all
