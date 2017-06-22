@@ -32,10 +32,7 @@ module Controllers
 				service = Google::Apis::YoutubeV3::YouTubeService.new
 				service.authorization = auth_client
 
-				puts auth_client.to_json
-
 				videoIds = []
-				puts params.inspect
 				puts metadata["credentials"]
 				response = service.list_searches('snippet', max_results: 50, for_mine: true, type: 'video')
 				.to_json
@@ -43,14 +40,20 @@ module Controllers
 					videoIds.push(video.fetch('id').fetch('videoId'))
 				end
 				
-				# nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-				# while nextPageToken != nil # Loops through all of my pages until there are no more pages
-				# 	response = service.list_searches('snippet', max_results: 50, for_mine: true, pageToken: nextPageToken, type: 'video').to_json
-				# 	nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-				# 	JSON.parse(response).fetch('items').each do |video|
-				# 		videoIds.push(video.fetch('id').fetch('videoId'))
-				# 	end
-				# end
+				nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
+				while !nextPageToken.nil? && !nextPageToken.empty? # Loops through all of my pages until there are no more pages
+					puts nextPageToken
+					response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
+					if JSON.parse(response).key?('nextPageToken')
+						nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
+						JSON.parse(response).fetch('items').each do |video|
+							videoIds.push(video.fetch('id').fetch('videoId'))
+						end
+					else
+						nextPageToken = ""
+					end
+				end
+				puts videoIds
 			end
 		end
 	end
