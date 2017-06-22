@@ -11,8 +11,8 @@ module Controllers
 			# session. If the session doesn't exist, redirect to /auth_error and display an error.
 			#
 			# Creates metadata, state, and name information from session cookies that was previously stored in /youtube_auth
-			# Submits a POST request via hidden inputs inside an HTML form inside /auto_submit.html.erb. The POST request includes
-			# the metadata, state, and name to store in Zendesk.
+			# Submits a POST request via hidden inputs inside an HTML form inside /auto_submit.html.erb. The POST request
+			# includes the metadata, state, and name to store in Zendesk.
 			app.get '/auth_display' do
 				if !session.has_key?(:credentials)
 			    	redirect '/auth_error'
@@ -39,7 +39,11 @@ module Controllers
 				auth_client = client_secrets.to_authorization
 				auth_client.update!(
 				  	:scope => 'https://www.googleapis.com/auth/youtube.force-ssl',
-				  	:redirect_uri => "https://0bba4895.ngrok.io/youtube_auth"
+				  	:redirect_uri => "https://0bba4895.ngrok.io/youtube_auth",
+				  	# :additional_parameters => {
+					  #   "access_type" => "offline",         # offline access
+					  #   "include_granted_scopes" => "true"  # incremental auth
+  					# }
 				)
 				if request['code'] == nil
 					session.delete(:channel_name)
@@ -55,8 +59,8 @@ module Controllers
 					redirect auth_uri
 				else
 					auth_client.code = request['code']
-					auth_client.fetch_access_token!
-					auth_client.client_secret = nil				# hide my client_secret
+					auth_client.fetch_access_token!  # THIS IS CAUSING THE ERROR.
+					auth_client.client_secret = nil
     				session[:credentials] = auth_client.to_json # set my session 
     				redirect '/oauth_done'
     			end

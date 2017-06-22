@@ -1,7 +1,7 @@
 var NameForm = React.createClass({
 	onFormSubmit: function (e) {
 		e.preventDefault();
-		
+
 		const channel_name = document.getElementById('channel_name').value;
 		const channel_id = document.getElementById('channel_id').value;
 		const return_url = document.getElementById('admin').getAttribute("return_url");
@@ -14,10 +14,15 @@ var NameForm = React.createClass({
 		} else {
 			if (channel_name.length < 1 || channel_id.length < 1) { // NOT A VALID CHANNEL NAME OR ID
 				document.getElementById('err').style.display = "block";
-			} else if (channel_name.length > 255) { // length too long
+			} else if (channel_name.includes(" ")){
+				document.getElementById('space').style.display = "block";
+			}
+			 else if (channel_name.length > 255) { // length too long
 				document.getElementById('too_long').style.display = "block";
 			} else {
 				document.getElementById('err').style.display = "none";
+				document.getElementById('too_long').style.display = "none";
+				document.getElementById('space').style.display = "none";
 				document.getElementById('too_long').style.display = "none";
 				window.open("/youtube_auth?channel_id="+ channel_id +"&channel_name="+ channel_name +"&return_url="+ return_url + "&timestamp="+ timeStamp + "&subdomainin="+ subdomain + "&locale=" + locale);
 				document.getElementById('button').innerHTML = "I have authenticated my Google account."
@@ -40,6 +45,9 @@ var NameForm = React.createClass({
 						</div>
 						<div id="too_long" style={{display:'none'}}>
 							<p style={{color:'red'}}>Account name must be less than 255 characters.</p>
+						</div>
+						<div id="space" style={{display:'none'}}>
+							<p style={{color:'red'}}>Account name cannot contain a space.</p>
 						</div>
 				</form>
 			</div>
