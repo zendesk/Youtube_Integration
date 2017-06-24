@@ -8,6 +8,7 @@ require_relative './controllers/pull_controller'
 require_relative './controllers/admin_controller'
 require_relative './controllers/channelback_controller'
 require_relative './controllers/youtube_auth_controller'
+require_relative './controllers/event_callback_controller'
 
 class YoutubeIntegration < Sinatra::Base
 	enable :sessions
@@ -18,6 +19,7 @@ class YoutubeIntegration < Sinatra::Base
 	register Controllers::AdminController
 	register Controllers::ChannelbackController
 	register Controllers::YoutubeAuthController
+	register Controllers::EventCallbackController
 	
 	set :protection, except: [:frame_options, :json_csrf] # turns off sameorigin in X-frame
 
