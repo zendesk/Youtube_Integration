@@ -57,19 +57,19 @@ module Controllers
 							commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
 								reply = PullController.create_reply(comment)
 								if reply[:created_at] > last_pull_time
-									puts 'should be here'
+									puts external_resources
 									external_resources.push(reply)	
 								end
 							end
 						end
 					end
 				end
-				puts external_resources
-				######### UNCOMMENT THIS TO GENERATE REAL TICKETS #########
-				# response = {
-				# "external_resources": external_resources,
-				# 		"state": "#{curr_time}"
-				# }.to_json
+				# puts external_resources
+				######### UNCOMMENT THIS TO GENERATE REAL TICKETS AND TO NOT ERROR OUT#########
+				response = {
+				"external_resources": external_resources,
+						"state": "#{curr_time}"
+				}.to_json
 		end
 
 		## 
@@ -83,7 +83,7 @@ module Controllers
 		# 	videoId3: [videoTitle, comments]
 		# }
 		def self.grab_all_videos_and_their_comments(service, content)
-			response = service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
+			response = service.list_searches('snippet', max_results: 1, for_mine: true, type: 'video')
 				.to_json
 			JSON.parse(response).fetch('items').each do |video|
 				videoId = video.fetch('id').fetch('videoId')
