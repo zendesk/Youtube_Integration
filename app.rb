@@ -12,15 +12,15 @@ require_relative './controllers/event_callback_controller'
 
 class YoutubeIntegration < Sinatra::Base
 	enable :sessions
-	set :session_secret, 'setme'
-	
+	set :session_secret, ENV["SESSION_SECRET"]
+
 	register Controllers::ManifestController
 	register Controllers::PullController
 	register Controllers::AdminController
 	register Controllers::ChannelbackController
 	register Controllers::YoutubeAuthController
 	register Controllers::EventCallbackController
-	
+  
 	set :protection, except: [:frame_options, :json_csrf] # turns off sameorigin in X-frame
 
 	get '/' do
