@@ -14,28 +14,19 @@ module Controllers
 				
 				message = params[:message]									# Grabs the message
 				channel_id = JSON.parse(metadata["channel_id"]) 			# Grabs the channel_id
-				recipient_id = params[:recipient_id]
-				puts "RECIPIENT_ID: #{recipient_id}"
+				parent_id = params[:parent_id]
 				
-				properties = {
-					'snippet.parentId': '123',
-					'snippet.textOriginal': message
-				}
+				snippet = Google::Apis::YoutubeV3::CommentSnippet.new(parent_id: parent_id, text_original: message)
+				comment = Google::Apis::YoutubeV3::Comment.new(snippet: snippet)
 
-				body = {
-					'snippet' => {
-						'parentId' => 'hello',
-						'textOriginal' => 'world'
-					}
-				}
-
-				resource = ChannelbackController.create_resource(properties)
-				puts "BODY: #{body}"
-				response = service.insert_comment('snippet', body)
-				# {
-				#   "external_id": "20151210123400-coolyoutubeguy",
-				#   "allow_channelback": true
-				# }.to_json
+				response = service.insert_comment('snippet', comment).to_json
+				puts response
+				external_id = JSON.parse(response).fetch('id')
+				puts "ID: #{external_id}"
+				{
+				  "external_id": external_id,
+				  "allow_channelback": true
+				}.to_json
 			end
 		end
 
