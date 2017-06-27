@@ -23,7 +23,7 @@ module Controllers
 						"credentials": session[:credentials]
 					}.to_json
 					@state = {
-						"last_msg": session[:timestamp]
+						"last_pull_time": session[:timestamp]
 					}.to_json
 					@name = session[:channel_name]
 					@return_url = session[:return_url]

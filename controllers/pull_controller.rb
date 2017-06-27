@@ -101,21 +101,21 @@ module Controllers
 			end
 
 			######## THIS WILL GO THROUGH ALL VIDEOS FROM A CHANNEL IN 1 POLL ###########
-			# while JSON.parse(response).include?('nextPageToken')
-			# 	nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-			# 	response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
-			# 	JSON.parse(response).fetch('items').each do |video|
-			# 		videoId = video.fetch('id').fetch('videoId')
-			# 		videoTitle = video.fetch('snippet').fetch('title')
-			# 		puts "=================== #{videoTitle} ================="
-			# 		comments = PullController.get_all_comments(service, videoId)
-			# 		if comments == false || comments.nil?
-			# 			next
-			# 		end
-			# 		details = [videoTitle, comments]
-			# 		content[videoId] = details
-			# 	end
-			# end
+			while JSON.parse(response).include?('nextPageToken')
+				nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
+				response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
+				JSON.parse(response).fetch('items').each do |video|
+					videoId = video.fetch('id').fetch('videoId')
+					videoTitle = video.fetch('snippet').fetch('title')
+					puts "=================== #{videoTitle} ================="
+					comments = PullController.get_all_comments(service, videoId)
+					if comments == false || comments.nil?
+						next
+					end
+					details = [videoTitle, comments]
+					content[videoId] = details
+				end
+			end
 
 			return content, video_page_token
 		end
@@ -125,13 +125,19 @@ module Controllers
 		# 
 		def self.get_all_comments(service, videoId)
 			begin
+				# response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
 				response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
 				comments = JSON.parse(response).fetch('items')
+				year_ago = Time.now.to_datetime - 365
+				count = 0
 				while JSON.parse(response).include?('nextPageToken')
+					count += 1
 					nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
 					response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
+					break if Time.parse(JSON.parse(response).fetch('items')[0].fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')).to_datetime.rfc3339 < year_ago.rfc3339 && count == 25
 					comments = comments + JSON.parse(response).fetch('items')
 				end
+				puts comments.size
 				return comments
 			rescue Exception => e # this catches the error when videos are made private thus disabling comments
 				puts e
