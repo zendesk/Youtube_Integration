@@ -27,22 +27,20 @@ module Controllers
 		def self.registered(app)
 			app.post '/pull' do
 				metadata = JSON.parse(params[:metadata])
-				last_pull_time = params[:state]
-				last_pull_time = Time.parse(last_pull_time)
-				last_pull_time = last_pull_time.to_time.iso8601 # Convert to iso8061 because YT date format is iso8601
+				state = JSON.parse(params[:state])
+				last_pull_time = state["last_pull_time"]
+				last_pull_time = Time.parse(last_pull_time).to_time.iso8601
 				curr_time = Time.now.to_datetime.rfc3339
-
+				
 				client_opts = JSON.parse(metadata["credentials"])
 				auth_client = Signet::OAuth2::Client.new(client_opts)
 				auth_client.fetch_access_token! 							# Refreshes my access token
 				service = Google::Apis::YoutubeV3::YouTubeService.new
 				service.authorization = auth_client
 
-				# puts "================================ CREDENTIALS ================================"
-				# puts metadata["credentials"]
-
 				content = {}
-				content = PullController.grab_all_videos_and_their_comments(service, content)
+				video_page_token = state.include?("video_page_token") ? state["video_page_token"] : nil
+				content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
 
 				external_resources = []
 
@@ -57,18 +55,18 @@ module Controllers
 							commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
 								reply = PullController.create_reply(comment)
 								if reply[:created_at] > last_pull_time
-									puts external_resources
 									external_resources.push(reply)	
 								end
 							end
 						end
 					end
 				end
-				# puts external_resources
-				######### UNCOMMENT THIS TO GENERATE REAL TICKETS AND TO NOT ERROR OUT#########
-				response = {
+				return response = {
 				"external_resources": external_resources,
-						"state": "#{curr_time}"
+						"state": {
+							"last_pull_time": curr_time,
+							"video_page_token": video_page_token
+						}.to_json
 				}.to_json
 		end
 
@@ -82,32 +80,36 @@ module Controllers
 		# 	videoId2: [videoTitle, comments]
 		# 	videoId3: [videoTitle, comments]
 		# }
-		def self.grab_all_videos_and_their_comments(service, content)
-			response = service.list_searches('snippet', max_results: 1, for_mine: true, type: 'video')
-				.to_json
+		#
+		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
+			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
+				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
 			JSON.parse(response).fetch('items').each do |video|
 				videoId = video.fetch('id').fetch('videoId')
 				videoTitle = video.fetch('snippet').fetch('title')
 				puts "===================#{videoTitle}================="
 				comments = PullController.get_all_comments(service, videoId)
-				if comments == false
+				if comments == false || comments == nil
 					next
 				end
 				details = [videoTitle, comments]
 				content[videoId] = details
 			end
 
-			######## UNCOMMENT THIS TO PARSE THROUGH THE REST OF MY VIDEOS ###########
+			if JSON.parse(response).include?('nextPageToken')
+				video_page_token = JSON.parse(response).fetch('nextPageToken')
+			end
 
+			######## THIS WILL GO THROUGH ALL VIDEOS FROM A CHANNEL IN 1 POLL ###########
 			# while JSON.parse(response).include?('nextPageToken')
 			# 	nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
 			# 	response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
 			# 	JSON.parse(response).fetch('items').each do |video|
 			# 		videoId = video.fetch('id').fetch('videoId')
 			# 		videoTitle = video.fetch('snippet').fetch('title')
-			# 		puts "===================#{videoTitle}================="
+			# 		puts "=================== #{videoTitle} ================="
 			# 		comments = PullController.get_all_comments(service, videoId)
-			# 		if comments == false
+			# 		if comments == false || comments.nil?
 			# 			next
 			# 		end
 			# 		details = [videoTitle, comments]
@@ -115,7 +117,7 @@ module Controllers
 			# 	end
 			# end
 
-			return content
+			return content, video_page_token
 		end
 
 		## 
@@ -130,7 +132,6 @@ module Controllers
 					response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
 					comments = comments + JSON.parse(response).fetch('items')
 				end
-				puts "++++++++++++++++++++++++++++++++ NUM_COMMENTS: #{comments.size} ++++++++++++++++++++++++++++++++++"
 				return comments
 			rescue Exception => e # this catches the error when videos are made private thus disabling comments
 				puts e
