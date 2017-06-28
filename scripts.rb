@@ -19,7 +19,7 @@ Channels::IncomingConversion.all.each { |ic| ic.run_job }
 curl -XGET -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services.json |python -m json.tool
 
 # Get integration service instances (accounts)
-curl -XGET -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093957074/integration_service_instances.json |python -m json.tool
+curl -XGET -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093956933/integration_service_instances.json |python -m json.tool
 
 # Post to the pull and convert to not have to wait 2 mins for polling
-curl -XPOST -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093957074/integration_service_instances/114093956274/pull_and_convert
+curl -XPOST -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093956933/integration_service_instances/114093956593/pull_and_convert

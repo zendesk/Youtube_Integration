@@ -61,7 +61,6 @@ module Controllers
 						end
 					end
 				end
-				puts external_resources
 				return response = {
 				"external_resources": external_resources,
 						"state": {
@@ -148,7 +147,7 @@ module Controllers
 		##
 		# This method grabs all the information of the top level comment and creates a JSON object of it
 		#
-		def self.create_top_level_comment(commentThread)
+		def self.create_top_level_comment(commentThread. videoTitle)
 			video_id = commentThread.fetch('snippet').fetch('videoId')
 			can_reply = commentThread.fetch('snippet').fetch('canReply')
 			message = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('textOriginal')
@@ -168,7 +167,13 @@ module Controllers
 						"name": "#{author_display_name}",
 						"image_url": "#{author_display_image}"
 					},
-					"allow_channelback": can_reply
+					"allow_channelback": can_reply,
+					"display_info": [{
+           			    "type": "youtube.com/integrations/youtube/display/comment/v1",
+                		"data": {
+                			videoId: video_id
+                		}
+              		}]
 				}
 			end
 		end
