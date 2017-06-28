@@ -150,6 +150,7 @@ module Controllers
 		#
 		def self.create_top_level_comment(commentThread)
 			video_id = commentThread.fetch('snippet').fetch('videoId')
+			can_reply = commentThread.fetch('snippet').fetch('canReply')
 			message = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('textOriginal')
 			author_id = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorChannelId')
 			author_display_name = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorDisplayName')
@@ -167,7 +168,7 @@ module Controllers
 						"name": "#{author_display_name}",
 						"image_url": "#{author_display_image}"
 					},
-					"allow_channelback": true
+					"allow_channelback": can_reply
 				}
 			end
 		end

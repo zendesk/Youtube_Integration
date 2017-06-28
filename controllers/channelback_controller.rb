@@ -17,7 +17,9 @@ module Controllers
 				
 				comment = ChannelbackController.create_comment(parent_id, message)
 				response = service.insert_comment('snippet', comment).to_json
-				external_id = JSON.parse(response).fetch('id')
+				comment_id = JSON.parse(response).fetch('id')
+				video_id = JSON.parse(response).fetch('snippet').fetch('videoId')
+				external_id = "#{video_id}&lc=#{comment_id}"
 				
 				{
 				  "external_id": external_id,
