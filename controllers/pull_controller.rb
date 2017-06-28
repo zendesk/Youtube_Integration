@@ -147,7 +147,7 @@ module Controllers
 		##
 		# This method grabs all the information of the top level comment and creates a JSON object of it
 		#
-		def self.create_top_level_comment(commentThread. videoTitle)
+		def self.create_top_level_comment(commentThread)
 			video_id = commentThread.fetch('snippet').fetch('videoId')
 			can_reply = commentThread.fetch('snippet').fetch('canReply')
 			message = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('textOriginal')

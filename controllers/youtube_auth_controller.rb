@@ -19,7 +19,6 @@ module Controllers
 			  	else
 					@metadata = {
 						"channel_name": session[:channel_name],
-						"channel_id": session[:channel_id],
 						"credentials": session[:credentials]
 					}.to_json
 					@state = {
@@ -47,10 +46,9 @@ module Controllers
 				)
 				if request['code'] == nil
 					session.delete(:channel_name)
-			  		session.delete(:credentials); session.delete(:return_url); session.delete(:channel_id)
+			  		session.delete(:credentials); session.delete(:return_url);
 			  		session.delete(:timestamp); session.delete(:subdomain); session.delete(:locale)
 					session[:channel_name] = params['channel_name']
-					session[:channel_id] = params['channel_id']
 					session[:return_url] = params['return_url']
 					session[:timestamp] = params['timestamp']
 					session[:locale] = params['locale']

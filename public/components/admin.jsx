@@ -3,7 +3,6 @@ var NameForm = React.createClass({
 		e.preventDefault();
 
 		const channel_name = document.getElementById('channel_name').value;
-		const channel_id = document.getElementById('channel_id').value;
 		const return_url = document.getElementById('admin').getAttribute("return_url");
 		const subdomain = document.getElementById('admin').getAttribute('subdomain');
 		const locale = document.getElementById('admin').getAttribute('locale');
@@ -12,7 +11,7 @@ var NameForm = React.createClass({
 		if (document.getElementById('button').innerHTML == "I have authenticated my Google account.") {
 			window.location.assign('/auth_display')
 		} else {
-			if (channel_name.length < 1 || channel_id.length < 1) { // NOT A VALID CHANNEL NAME OR ID
+			if (channel_name.length < 1) { // NOT A VALID CHANNEL NAME OR ID
 				document.getElementById('err').style.display = "block";
 			} else if (channel_name.includes(" ")){
 				document.getElementById('space').style.display = "block";
@@ -24,7 +23,7 @@ var NameForm = React.createClass({
 				document.getElementById('too_long').style.display = "none";
 				document.getElementById('space').style.display = "none";
 				document.getElementById('too_long').style.display = "none";
-				window.open("/youtube_auth?channel_id="+ channel_id +"&channel_name="+ channel_name +"&return_url="+ return_url + "&timestamp="+ timeStamp + "&subdomainin="+ subdomain + "&locale=" + locale);
+				window.open("/youtube_auth?channel_name="+ channel_name +"&return_url="+ return_url + "&timestamp="+ timeStamp + "&subdomainin="+ subdomain + "&locale=" + locale);
 				document.getElementById('button').innerHTML = "I have authenticated my Google account."
 			}
 		}
@@ -35,9 +34,7 @@ var NameForm = React.createClass({
 				<h1 className="title">Youtube Integration</h1>
 				<form>
 						<input type="text" placeholder="Account Name:" id="channel_name"/>
-						<br />
-						<input type="text" placeholder='Channel ID:' id="channel_id"/>
-						<p> Note: You can find your Youtube Channel ID <a href="http://www.youtube.com/account_advanced" target="_blank">here</a></p>
+						<p> <b>Note</b>: If you have previously authenticated this account before, you will need to remove authorization before proceeding by clicking <a href="https://security.google.com/settings/security/permissions" target="_blank">here</a></p>
 						<a id="button" className="button" onClick={this.onFormSubmit}>Next</a>
 						<div id="err" style={{display:'none'}}> 
 							<br />
