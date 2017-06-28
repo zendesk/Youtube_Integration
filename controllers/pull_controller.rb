@@ -61,6 +61,7 @@ module Controllers
 						end
 					end
 				end
+				puts external_resources
 				return response = {
 				"external_resources": external_resources,
 						"state": {
@@ -82,6 +83,7 @@ module Controllers
 		# }
 		#
 		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
+			puts video_page_token
 			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
 				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
 			JSON.parse(response).fetch('items').each do |video|
@@ -96,26 +98,24 @@ module Controllers
 				content[videoId] = details
 			end
 
-			if JSON.parse(response).include?('nextPageToken')
-				video_page_token = JSON.parse(response).fetch('nextPageToken')
-			end
+			video_page_token = JSON.parse(response).include?('nextPageToken') ? JSON.parse(response).fetch('nextPageToken') : nil
 
 			######## THIS WILL GO THROUGH ALL VIDEOS FROM A CHANNEL IN 1 POLL ###########
-			while JSON.parse(response).include?('nextPageToken')
-				nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-				response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
-				JSON.parse(response).fetch('items').each do |video|
-					videoId = video.fetch('id').fetch('videoId')
-					videoTitle = video.fetch('snippet').fetch('title')
-					puts "=================== #{videoTitle} ================="
-					comments = PullController.get_all_comments(service, videoId)
-					if comments == false || comments.nil?
-						next
-					end
-					details = [videoTitle, comments]
-					content[videoId] = details
-				end
-			end
+			# while JSON.parse(response).include?('nextPageToken')
+			# 	nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
+			# 	response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
+			# 	JSON.parse(response).fetch('items').each do |video|
+			# 		videoId = video.fetch('id').fetch('videoId')
+			# 		videoTitle = video.fetch('snippet').fetch('title')
+			# 		puts "=================== #{videoTitle} ================="
+			# 		comments = PullController.get_all_comments(service, videoId)
+			# 		if comments == false || comments.nil?
+			# 			next
+			# 		end
+			# 		details = [videoTitle, comments]
+			# 		content[videoId] = details
+			# 	end
+			# end
 
 			return content, video_page_token
 		end
@@ -149,6 +149,7 @@ module Controllers
 		# This method grabs all the information of the top level comment and creates a JSON object of it
 		#
 		def self.create_top_level_comment(commentThread)
+			video_id = commentThread.fetch('snippet').fetch('videoId')
 			message = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('textOriginal')
 			author_id = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorChannelId')
 			author_display_name = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorDisplayName')
@@ -158,7 +159,7 @@ module Controllers
 			publish_date = publish_date.to_datetime.rfc3339
 			comment_id = commentThread.fetch('snippet').fetch('topLevelComment').fetch('id')
 			return response = {
-					"external_id": "#{comment_id}",
+					"external_id": "#{video_id}&lc=#{comment_id}",
 					"message": "#{message}",
 					"created_at": "#{publish_date}",
 					"author": {
@@ -175,6 +176,7 @@ module Controllers
 		# Grabs all the info of a reply and puts it into a JSON object.
 		#
 		def self.create_reply(comment)
+			video_id = comment.fetch('snippet').fetch('videoId')
 			message = comment.fetch('snippet').fetch('textOriginal')
 			author_id = comment.fetch('snippet').fetch('authorChannelId')
 			author_display_name = comment.fetch('snippet').fetch('authorDisplayName')
@@ -186,7 +188,7 @@ module Controllers
 			parent_id = comment.fetch('snippet').fetch('parentId')
 
 			return response = {
-						"external_id": "#{comment_id}",
+						"external_id": "#{video_id}&lc=#{comment_id}",
 						"message": "#{message}",
 						"created_at": "#{publish_date}",
 						"parent_id": "#{parent_id}",
