@@ -19,11 +19,10 @@ module Controllers
 			  	else
 					@metadata = {
 						"channel_name": session[:channel_name],
-						"channel_id": session[:channel_id],
 						"credentials": session[:credentials]
 					}.to_json
 					@state = {
-						"last_msg": session[:timestamp]
+						"last_pull_time": session[:timestamp]
 					}.to_json
 					@name = session[:channel_name]
 					@return_url = session[:return_url]
@@ -47,10 +46,9 @@ module Controllers
 				)
 				if request['code'] == nil
 					session.delete(:channel_name)
-			  		session.delete(:credentials); session.delete(:return_url); session.delete(:channel_id)
+			  		session.delete(:credentials); session.delete(:return_url);
 			  		session.delete(:timestamp); session.delete(:subdomain); session.delete(:locale)
 					session[:channel_name] = params['channel_name']
-					session[:channel_id] = params['channel_id']
 					session[:return_url] = params['return_url']
 					session[:timestamp] = params['timestamp']
 					session[:locale] = params['locale']
@@ -59,8 +57,12 @@ module Controllers
 					redirect auth_uri
 				else
 					auth_client.code = request['code']
+					puts auth_client.to_json
+					
+
 					auth_client.fetch_access_token!  # THIS IS CAUSING THE ERROR.
-					auth_client.client_secret = nil
+					puts auth_client.to_json
+					# auth_client.client_secret = nil
     				session[:credentials] = auth_client.to_json # set my session 
     				redirect '/oauth_done'
     			end
