@@ -2,7 +2,7 @@
   "name": "youtube_integration",
   "version": "1.0.0",
   "description": "Youtube Integration",
-  "main": "public/components/app.jsx",
+  "main": "views/components/app.jsx",
   "scripts": {
     "start": "webpack-dev-server"
   },
