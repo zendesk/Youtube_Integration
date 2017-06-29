@@ -137,7 +137,7 @@ module Controllers
 					comments = comments + JSON.parse(response).fetch('items')
 				end
 				puts comments.size
-				puts comment
+				puts comments
 				return comments
 			rescue Exception => e # this catches the error when videos are made private thus disabling comments
 				puts e
