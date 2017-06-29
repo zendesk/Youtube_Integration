@@ -26,7 +26,6 @@ module Controllers
 		#
 		def self.registered(app)
 			app.post '/pull' do
-				puts 'I"M HERE'
 				metadata = JSON.parse(params[:metadata])
 				state = JSON.parse(params[:state])
 				last_pull_time = state["last_pull_time"]
@@ -138,6 +137,7 @@ module Controllers
 					comments = comments + JSON.parse(response).fetch('items')
 				end
 				puts comments.size
+				puts comment
 				return comments
 			rescue Exception => e # this catches the error when videos are made private thus disabling comments
 				puts e
