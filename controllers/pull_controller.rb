@@ -61,6 +61,7 @@ module Controllers
 						end
 					end
 				end
+				puts external_resources
 				return response = {
 				"external_resources": external_resources,
 						"state": {
@@ -137,7 +138,6 @@ module Controllers
 					comments = comments + JSON.parse(response).fetch('items')
 				end
 				puts comments.size
-				puts comments
 				return comments
 			rescue Exception => e # this catches the error when videos are made private thus disabling comments
 				puts e
