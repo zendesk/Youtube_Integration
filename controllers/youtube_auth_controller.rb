@@ -38,7 +38,7 @@ module Controllers
 				auth_client = client_secrets.to_authorization
 				auth_client.update!(
 				  	:scope => 'https://www.googleapis.com/auth/youtube.force-ssl',
-				  	:redirect_uri => "https://youtube-channels-integration.herokuapp.com//youtube_auth",
+				  	:redirect_uri => "https://youtube-channels-integration.herokuapp.com/youtube_auth",
 				  	# :additional_parameters => {
 					  #   "access_type" => "offline",         # offline access
 					  #   "include_granted_scopes" => "true"  # incremental auth
