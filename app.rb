@@ -15,6 +15,6 @@ class YoutubeIntegration < Sinatra::Base
 	set :protection, except: [:frame_options, :json_csrf] # turns off sameorigin in X-frame
 
 	get '/' do
-		File.read(File.join('public', 'index.html'))
+		File.read(File.join('public', 'index.html.erb'))
 	end
 end
