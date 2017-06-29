@@ -26,6 +26,7 @@ module Controllers
 		#
 		def self.registered(app)
 			app.post '/pull' do
+				puts 'I"M HERE'
 				metadata = JSON.parse(params[:metadata])
 				state = JSON.parse(params[:state])
 				last_pull_time = state["last_pull_time"]
