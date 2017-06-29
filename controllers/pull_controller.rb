@@ -51,7 +51,6 @@ module Controllers
 						if topLevelComment[:created_at] > last_pull_time
 							external_resources.push(topLevelComment)
 						end
-						puts 'OVER HERE'
 						if commentThread.include?('replies')
 							commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
 								reply = PullController.create_reply(comment)
@@ -62,7 +61,6 @@ module Controllers
 						end
 					end
 				end
-				puts 'IM HERE'
 				puts external_resources
 				return response = {
 				"external_resources": external_resources,
