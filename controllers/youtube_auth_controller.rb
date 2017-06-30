@@ -14,7 +14,6 @@ module Controllers
 			# Submits a POST request via hidden inputs inside an HTML form inside /auto_submit.html.erb. The POST request
 			# includes the metadata, state, and name to store in Zendesk.
 			app.get '/auth_display' do
-				puts session[:credentials]
 				if !session.has_key?(:credentials)
 			    	redirect '/auth_error'
 			  	else
