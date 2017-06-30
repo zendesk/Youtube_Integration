@@ -39,12 +39,7 @@ module Controllers
 				auth_client = client_secrets.to_authorization
 				auth_client.update!(
 				  	:scope => 'https://www.googleapis.com/auth/youtube.force-ssl',
-				  	# :redirect_uri => "https://youtube-channels-integration.herokuapp.com/youtube_auth",
 				  	:redirect_uri => ENV['AUTH_REDIRECT_URL'],
-				  	# :additional_parameters => {
-					  #   "access_type" => "offline",         # offline access
-					  #   "include_granted_scopes" => "true"  # incremental auth
-  					# }
 				)
 				if request['code'] == nil
 					session.delete(:channel_name)
@@ -62,16 +57,17 @@ module Controllers
 					puts auth_client.to_json
 					
 
-					auth_client.fetch_access_token!  # THIS IS CAUSING THE ERROR.
+					auth_client.fetch_access_token!
 					puts auth_client.to_json
 					# auth_client.client_secret = nil
-    				session[:credentials] = auth_client.to_json # set my session 
+    				session[:credentials] = auth_client.to_json
     				redirect '/oauth_done'
     			end
 			end
 
 			## 
 			# OAuth is completed. Window will be automatically be closed.
+			#
 			app.get '/oauth_done' do
 				erb :'../public/oauth_completed.html'
 			end
@@ -79,6 +75,7 @@ module Controllers
 			##
 			# There was a problem with the Google OAuth process. /auth_error.html.erb indicates to users that something
 			# went wrong
+			#
 			app.get '/auth_error' do
 				erb :'../public/auth_error.html'
 			end
