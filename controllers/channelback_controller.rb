@@ -14,15 +14,15 @@ module Controllers
 				
 				message = params[:message]
 				parent_id = params[:parent_id]
+				video_id = parent_id.partition('&lc=').first
 				parent_id = parent_id.partition('&lc=').last
 				puts "PARENT ID: #{parent_id}"
+				puts "VIDEO ID: #{video_id}"
 
-				snippet = Google::Apis::YoutubeV3::CommentSnippet.new(parent_id: parent_id, text_original: message)
-				comment = Google::Apis::YoutubeV3::Comment.new(snippet: snippet)
+				comment = ChannelbackController.create_comment(parent_id, message)
 				response = service.insert_comment('snippet', comment).to_json
 
 				comment_id = JSON.parse(response).fetch('id')
-				video_id = JSON.parse(response).fetch('snippet').fetch('videoId')
 				external_id = "#{video_id}&lc=#{comment_id}"
 				
 				{
