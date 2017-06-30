@@ -15,7 +15,7 @@ module Controllers
 				message = params[:message]
 				parent_id = params[:parent_id]
 				video_id = parent_id.partition('&lc=').first
-				parent_id = parent_id.partition('&lc=').partition('.').first
+				parent_id = parent_id.partition('&lc=').last.partition('.').first
 				puts "PARENT ID: #{parent_id}"
 				puts "VIDEO ID: #{video_id}"
 
