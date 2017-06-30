@@ -32,6 +32,7 @@ module Controllers
 				last_pull_time = state["last_pull_time"]
 				last_pull_time = Time.parse(last_pull_time).to_time.iso8601
 				curr_time = Time.now.to_datetime.rfc3339
+
 				
 				client_opts = JSON.parse(metadata["credentials"])
 				auth_client = Signet::OAuth2::Client.new(client_opts)
@@ -40,7 +41,11 @@ module Controllers
 				service.authorization = auth_client
 
 				content = {}
-				video_page_token = state.include?("video_page_token") ? state["video_page_token"] : nil
+				if state.include?('video_page_token')
+					video_page_token = state['video_page_token']
+					curr_time = last_pull_time
+				end
+				# video_page_token = state.include?("video_page_token") ? state["video_page_token"] : nil
 				content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
 
 				external_resources = []

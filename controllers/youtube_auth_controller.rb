@@ -14,6 +14,7 @@ module Controllers
 			# Submits a POST request via hidden inputs inside an HTML form inside /auto_submit.html.erb. The POST request
 			# includes the metadata, state, and name to store in Zendesk.
 			app.get '/auth_display' do
+				puts session[:credentials]
 				if !session.has_key?(:credentials)
 			    	redirect '/auth_error'
 			  	else
@@ -34,11 +35,12 @@ module Controllers
 			##
 			# /youtube_auth is where the Google OAuth is initiated. The token is saved fetched and saved into the session as a # cookie. All previous cookies relating to the metadata is deleted before the authentication process begins.
 			app.get '/youtube_auth' do
-				client_secrets = Google::APIClient::ClientSecrets.load
+				client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRET']))
 				auth_client = client_secrets.to_authorization
 				auth_client.update!(
 				  	:scope => 'https://www.googleapis.com/auth/youtube.force-ssl',
-				  	:redirect_uri => "https://youtube-channels-integration.herokuapp.com/youtube_auth",
+				  	# :redirect_uri => "https://youtube-channels-integration.herokuapp.com/youtube_auth",
+				  	:redirect_uri => ENV['AUTH_REDIRECT_URL'],
 				  	# :additional_parameters => {
 					  #   "access_type" => "offline",         # offline access
 					  #   "include_granted_scopes" => "true"  # incremental auth

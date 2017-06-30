@@ -4,7 +4,7 @@ end
 
 class YoutubeIntegration < Sinatra::Base
 	enable :sessions
-	set :session_secret, 'setme'
+	set :session_secret, ENV["SESSION_SECRET"]
 
 	register Controllers::ManifestController
 	register Controllers::PullController
