@@ -206,7 +206,7 @@ module Controllers
 						"external_id": "#{video_id}&lc=#{comment_id}",
 						"message": "#{message}",
 						"created_at": "#{publish_date}",
-						"parent_id": "#{parent_id}",
+						"parent_id": "#{video_id}&lc=#{parent_id}",
 						"author": {
 							"external_id": "#{author_id}",
 							"name": "#{author_display_name}",
