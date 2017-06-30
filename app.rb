@@ -11,6 +11,7 @@ class YoutubeIntegration < Sinatra::Base
 	register Controllers::AdminController
 	register Controllers::ChannelbackController
 	register Controllers::YoutubeAuthController
+	register Controllers::ClickthroughController
 
 	set :protection, except: [:frame_options, :json_csrf] # turns off sameorigin in X-frame
 

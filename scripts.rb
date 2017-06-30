@@ -22,4 +22,4 @@ curl -XGET -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/chann
 curl -XGET -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093957314/integration_service_instances.json |python -m json.tool
 
 # Post to the pull and convert to not have to wait 2 mins for polling
-curl -XPOST -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093956933/integration_service_instances/114093956633/pull_and_convert
+curl -XPOST -u thsu@zendesk.com:Th070296! https://z3ntim.zendesk.com/api/v2/channels/registered_integration_services/114093957314/integration_service_instances/114093956633/pull_and_convert
