@@ -16,8 +16,6 @@ module Controllers
 				parent_id = params[:parent_id]
 				video_id = parent_id.partition('&lc=').first
 				parent_id = parent_id.partition('&lc=').last
-				puts "PARENT ID: #{parent_id}"
-				puts "VIDEO ID: #{video_id}"
 
 				comment = ChannelbackController.create_comment(parent_id, message)
 				response = service.insert_comment('snippet', comment).to_json

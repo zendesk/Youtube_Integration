@@ -44,8 +44,9 @@ module Controllers
 				if state.include?('video_page_token')
 					video_page_token = state['video_page_token']
 					curr_time = last_pull_time
+				else
+					video_page_token = nil
 				end
-				# video_page_token = state.include?("video_page_token") ? state["video_page_token"] : nil
 				content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
 
 				external_resources = []
