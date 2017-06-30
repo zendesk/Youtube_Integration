@@ -1,4 +1,5 @@
 require 'date'
+require 'logger'
 require 'json'
 
 module Controllers
@@ -89,6 +90,7 @@ module Controllers
 			JSON.parse(response).fetch('items').each do |video|
 				videoId = video.fetch('id').fetch('videoId')
 				videoTitle = video.fetch('snippet').fetch('title')
+				Logger.new(STDOUT).info('string')
 				puts "===================#{videoTitle}================="
 				comments = PullController.get_all_comments(service, videoId)
 				if comments == false || comments == nil
