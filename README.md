@@ -39,3 +39,32 @@ The clickthrough endpoint receives a GET request with the external ID of the rev
 
 ##### Params
 `:external_id` - `String` Required. Provided during the /pull call.
+
+
+## Setup
+#### Setting up your developer environment
+1. Clone the repo: `git clone https://github.com/zendesk/Youtube_Integration.git`
+
+2. Run `bundle install` to install the required gems from the Gemfile
+
+3. Start your local server: `bundle exec rackup`
+
+4. Visit your Google Developer Console and add a project. Download the `client_secret.json`
+
+5. Set your environment variables inside `.env`. See `example.env` for an example.
+
+6. Add your redirect url to Google Project's list of authorized redirect urls. _Note: You may want to use ngrok to redirect a specific URL to point to your localhost_
+
+7. Update `manifest.json`
+
+* Documentation for various endpoints can be found in the corresponding controllers
+
+#### Using the app in Zendesk Console
+_Note: For this section we will be working with the `app_source` directory_
+1. Update your `manifest.json` & `requirement.json` inside the `app_source` directory.
+
+2. Run `zat package` followed by `zat validate`.
+
+3. Navigate to your Zendesk Console and click on settings. On the left sidebar, select manage and upload a private app. Select the `.zip` file from the `tmp` folder inside your `app_source` directory.
+
+4. You can now add an account by selecting `Channels Integration` on the left sidebar and selecting the Youtube Integration. 
