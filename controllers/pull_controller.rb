@@ -4,6 +4,17 @@ require 'json'
 
 module Controllers
 	module PullController
+		def self.remaining_time(start_time)
+			55 - (Time.now.to_i - start_time)
+		end
+
+		def self.execute_with_timeout(start_time, &block)
+			if PullController.remaining_time(start_time) > 50
+				yield
+			else
+				raise StandardError
+			end
+		end
 		## 
 		# This is the primary polling request received. We parse the metadata auth credentials
 		# and make a request to the Youtube API. The response is formatted and returned to AnyChannel
@@ -32,8 +43,8 @@ module Controllers
 				last_pull_time = state["last_pull_time"]
 				last_pull_time = Time.parse(last_pull_time).to_time.iso8601
 				curr_time = Time.now.to_datetime.rfc3339
+				start_time = Time.now.to_i
 
-				
 				client_opts = JSON.parse(metadata["credentials"])
 				auth_client = Signet::OAuth2::Client.new(client_opts)
 				auth_client.fetch_access_token! 							# Refreshes my access token
@@ -47,35 +58,42 @@ module Controllers
 				else
 					video_page_token = nil
 				end
-				content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
-
 				external_resources = []
-
-				## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
-				content.each do |videoId, comments|
-					comments[1].each do |commentThread|
-						topLevelComment = PullController.create_top_level_comment(commentThread)
-						if topLevelComment[:created_at] > last_pull_time
-							external_resources.push(topLevelComment)
-						end
-						if commentThread.include?('replies')
-							commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
-								reply = PullController.create_reply(comment)
-								if reply[:created_at] > last_pull_time
-									external_resources.push(reply)	
+				begin
+					loop do
+						PullController.execute_with_timeout(start_time) do
+							content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
+							## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
+							content.each do |videoId, comments|
+								comments[1].each do |commentThread|
+									topLevelComment = PullController.create_top_level_comment(commentThread)
+									if topLevelComment[:created_at] > last_pull_time
+										external_resources.push(topLevelComment)
+									end
+									if commentThread.include?('replies')
+										commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
+											reply = PullController.create_reply(comment)
+											if reply[:created_at] > last_pull_time
+												external_resources.push(reply)	
+											end
+										end
+									end
 								end
 							end
 						end
+						break if PullController.remaining_time(start_time) < 50 || video_page_token.nil?
 					end
-				end
-				puts external_resources
-				return response = {
-				"external_resources": external_resources,
+				rescue StandardError => e
+					puts "Timeout"
+				ensure
+					return {
+						"external_resources": external_resources,
 						"state": {
 							"last_pull_time": curr_time,
 							"video_page_token": video_page_token
 						}.to_json
-				}.to_json
+					}.to_json
+				end
 		end
 
 		## 
@@ -90,7 +108,7 @@ module Controllers
 		# }
 		#
 		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
-			puts video_page_token
+			puts "=====#{video_page_token}====="
 			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
 				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
 			JSON.parse(response).fetch('items').each do |video|
@@ -142,7 +160,7 @@ module Controllers
 					count += 1
 					nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
 					response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
-					break if Time.parse(JSON.parse(response).fetch('items')[0].fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')).to_datetime.rfc3339 < year_ago.rfc3339 && count == 25
+					break if Time.parse(JSON.parse(response).fetch('items')[0].fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')).to_datetime.rfc3339 < year_ago.rfc3339 && count == 15
 					comments = comments + JSON.parse(response).fetch('items')
 				end
 				puts comments.size
