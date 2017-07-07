@@ -4,21 +4,10 @@ require 'json'
 
 module Controllers
 	module PullController
-		def self.remaining_time(start_time)
-			55 - (Time.now.to_i - start_time)
-		end
-
-		def self.execute_with_timeout(start_time, &block)
-			if PullController.remaining_time(start_time) > 50
-				yield
-			else
-				raise StandardError
-			end
-		end
-		## 
+		##
 		# This is the primary polling request received. We parse the metadata auth credentials
 		# and make a request to the Youtube API. The response is formatted and returned to AnyChannel
-		# in the required format. 
+		# in the required format.
 		#
 		# EXAMPLE FORMAT:
 		# response = {
@@ -39,199 +28,16 @@ module Controllers
 		def self.registered(app)
 			app.post '/pull' do
 				metadata = JSON.parse(params[:metadata])
-				state = JSON.parse(params[:state])
-				last_pull_time = state["last_pull_time"]
-				last_pull_time = Time.parse(last_pull_time).to_time.iso8601
-				curr_time = Time.now.to_datetime.rfc3339
-				start_time = Time.now.to_i
+				state    = JSON.parse(params[:state])
 
-				client_opts = JSON.parse(metadata["credentials"])
-				auth_client = Signet::OAuth2::Client.new(client_opts)
-				auth_client.fetch_access_token! 							# Refreshes my access token
-				service = Google::Apis::YoutubeV3::YouTubeService.new
-				service.authorization = auth_client
+        comment_fetcher = CommentFetcher.new(
+          state['video_page_token'],
+          JSON.parse(metadata["credentials"]),
+          Time.parse(state['last_pull_time']).to_time.iso8601
+        )
 
-				content = {}
-				if state.include?('video_page_token')
-					video_page_token = state['video_page_token']
-					curr_time = last_pull_time
-				else
-					video_page_token = nil
-				end
-				external_resources = []
-				begin
-					loop do
-						PullController.execute_with_timeout(start_time) do
-							content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
-							## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
-							content.each do |videoId, comments|
-								comments[1].each do |commentThread|
-									topLevelComment = PullController.create_top_level_comment(commentThread)
-									if topLevelComment[:created_at] > last_pull_time
-										external_resources.push(topLevelComment)
-									end
-									if commentThread.include?('replies')
-										commentThread.fetch('replies').fetch('comments').reverse_each do |comment|
-											reply = PullController.create_reply(comment)
-											if reply[:created_at] > last_pull_time
-												external_resources.push(reply)	
-											end
-										end
-									end
-								end
-							end
-						end
-						break if PullController.remaining_time(start_time) < 50 || video_page_token.nil?
-					end
-				rescue StandardError => e
-					puts "Timeout"
-				ensure
-					return {
-						"external_resources": external_resources,
-						"state": {
-							"last_pull_time": curr_time,
-							"video_page_token": video_page_token
-						}.to_json
-					}.to_json
-				end
-		end
-
-		## 
-		# This method grabs all the videos from the authorized channel and will begin also grabbing all the comments from
-		# those videos
-		#
-		# Return format:
-		# content = {
-		# 	videoId1: [videoTitle, comments]
-		# 	videoId2: [videoTitle, comments]
-		# 	videoId3: [videoTitle, comments]
-		# }
-		#
-		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
-			puts "=====#{video_page_token}====="
-			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
-				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
-			JSON.parse(response).fetch('items').each do |video|
-				videoId = video.fetch('id').fetch('videoId')
-				videoTitle = video.fetch('snippet').fetch('title')
-				Logger.new(STDOUT).info('string')
-				puts "===================#{videoTitle}================="
-				comments = PullController.get_all_comments(service, videoId)
-				if comments == false || comments == nil
-					next
-				end
-				details = [videoTitle, comments]
-				content[videoId] = details
-			end
-
-			video_page_token = JSON.parse(response).include?('nextPageToken') ? JSON.parse(response).fetch('nextPageToken') : nil
-
-			######## THIS WILL GO THROUGH ALL VIDEOS FROM A CHANNEL IN 1 POLL ###########
-			# while JSON.parse(response).include?('nextPageToken')
-			# 	nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-			# 	response = service.list_searches('snippet', max_results: 50, for_mine: true, page_token: nextPageToken, type: 'video').to_json
-			# 	JSON.parse(response).fetch('items').each do |video|
-			# 		videoId = video.fetch('id').fetch('videoId')
-			# 		videoTitle = video.fetch('snippet').fetch('title')
-			# 		puts "=================== #{videoTitle} ================="
-			# 		comments = PullController.get_all_comments(service, videoId)
-			# 		if comments == false || comments.nil?
-			# 			next
-			# 		end
-			# 		details = [videoTitle, comments]
-			# 		content[videoId] = details
-			# 	end
-			# end
-
-			return content, video_page_token
-		end
-
-		## 
-		# This method grabs all the comments from a particular videoId.
-		# 
-		def self.get_all_comments(service, videoId)
-			begin
-				# response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
-				response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
-				comments = JSON.parse(response).fetch('items')
-				year_ago = Time.now.to_datetime - 365
-				count = 0
-				while JSON.parse(response).include?('nextPageToken')
-					count += 1
-					nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-					response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
-					break if Time.parse(JSON.parse(response).fetch('items')[0].fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')).to_datetime.rfc3339 < year_ago.rfc3339 && count == 15
-					comments = comments + JSON.parse(response).fetch('items')
-				end
-				puts comments.size
-				return comments
-			rescue Exception => e # this catches the error when videos are made private thus disabling comments
-				puts e
-			end
-		end
-
-
-		##
-		# This method grabs all the information of the top level comment and creates a JSON object of it
-		#
-		def self.create_top_level_comment(commentThread)
-			video_id = commentThread.fetch('snippet').fetch('videoId')
-			can_reply = commentThread.fetch('snippet').fetch('canReply')
-			message = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('textOriginal')
-			author_id = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorChannelId')
-			author_display_name = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorDisplayName')
-			author_display_image = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('authorProfileImageUrl')
-			publish_date = commentThread.fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')
-			publish_date = Time.parse(publish_date)
-			publish_date = publish_date.to_datetime.rfc3339
-			comment_id = commentThread.fetch('snippet').fetch('topLevelComment').fetch('id')
-			return response = {
-					"external_id": "#{video_id}&lc=#{comment_id}",
-					"message": "#{message}",
-					"created_at": "#{publish_date}",
-					"author": {
-						"external_id": "#{author_id}",
-						"name": "#{author_display_name}",
-						"image_url": "#{author_display_image}"
-					},
-					"allow_channelback": can_reply,
-					"display_info": [{
-           			    "type": "youtube.com/integrations/youtube/display/comment/v1",
-                		"data": {
-                			videoId: video_id
-                		}
-              		}]
-				}
-			end
-		end
-
-		##
-		# Grabs all the info of a reply and puts it into a JSON object.
-		#
-		def self.create_reply(comment)
-			video_id = comment.fetch('snippet').fetch('videoId')
-			message = comment.fetch('snippet').fetch('textOriginal')
-			author_id = comment.fetch('snippet').fetch('authorChannelId')
-			author_display_name = comment.fetch('snippet').fetch('authorDisplayName')
-			author_display_image = comment.fetch('snippet').fetch('authorProfileImageUrl')
-			publish_date = comment.fetch('snippet').fetch('publishedAt')
-			publish_date = Time.parse(publish_date)
-			publish_date = publish_date.to_datetime.rfc3339
-			comment_id = comment.fetch('id')
-			parent_id = comment.fetch('snippet').fetch('parentId')
-
-			return response = {
-						"external_id": "#{video_id}&lc=#{comment_id}",
-						"message": "#{message}",
-						"created_at": "#{publish_date}",
-						"parent_id": "#{video_id}&lc=#{parent_id}",
-						"author": {
-							"external_id": "#{author_id}",
-							"name": "#{author_display_name}",
-							"image_url": "#{author_display_image}"
-						},
-						"allow_channelback": true
-					}				
+        [200, {}, comment_fetcher.fetch.to_json]
+      end
 		end
 	end
 end
