@@ -1,4 +1,4 @@
-%w(controllers).each do |path|
+%w(controllers lib).each do |path|
   Dir.glob(File.join(__dir__, "#{path}/**/*")).each { |file| require file }
 end
 

@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/HsuTimothy/google-api-ruby-client.git
+  revision: 8e2c2772406534cd930144f3ea11dc4217b77e2d
+  branch: hardcode_timeout
+  specs:
+    google-api-client (0.13.0)
+      addressable (~> 2.5, >= 2.5.1)
+      googleauth (~> 0.5)
+      httpclient (>= 2.8.1, < 3.0)
+      mime-types (~> 3.0)
+      representable (~> 3.0)
+      retriable (>= 2.0, < 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,13 +24,6 @@ GEM
     dotenv (2.2.1)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
-    google-api-client (0.13.0)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (~> 0.5)
-      httpclient (>= 2.8.1, < 3.0)
-      mime-types (~> 3.0)
-      representable (~> 3.0)
-      retriable (>= 2.0, < 4.0)
     googleauth (0.5.1)
       faraday (~> 0.9)
       jwt (~> 1.4)
@@ -102,7 +108,7 @@ PLATFORMS
 DEPENDENCIES
   any_channel_json_schemas
   dotenv
-  google-api-client (= 0.13.0)
+  google-api-client!
   json
   json-schema
   rack-test

@@ -9,10 +9,10 @@ module Controllers
 		end
 
 		def self.execute_with_timeout(start_time, &block)
-			if PullController.remaining_time(start_time) > 50
+			if PullController.remaining_time(start_time) > 45
 				yield
 			else
-				raise StandardError
+				raise InternalTimeoutError
 			end
 		end
 		## 
@@ -40,6 +40,7 @@ module Controllers
 			app.post '/pull' do
 				metadata = JSON.parse(params[:metadata])
 				state = JSON.parse(params[:state])
+				puts "============#{state}============"
 				last_pull_time = state["last_pull_time"]
 				last_pull_time = Time.parse(last_pull_time).to_time.iso8601
 				curr_time = Time.now.to_datetime.rfc3339
@@ -62,7 +63,7 @@ module Controllers
 				begin
 					loop do
 						PullController.execute_with_timeout(start_time) do
-							content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token)
+							content, video_page_token = PullController.grab_all_videos_and_their_comments(service, content, video_page_token, start_time)
 							## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
 							content.each do |videoId, comments|
 								comments[1].each do |commentThread|
@@ -81,11 +82,12 @@ module Controllers
 								end
 							end
 						end
-						break if PullController.remaining_time(start_time) < 50 || video_page_token.nil?
+						break if video_page_token.nil?
 					end
-				rescue StandardError => e
+				rescue InternalTimeoutError => e
 					puts "Timeout"
 				ensure
+					puts "VIDEO PAGE TOKEN: #{video_page_token.inspect}"
 					return {
 						"external_resources": external_resources,
 						"state": {
@@ -107,16 +109,23 @@ module Controllers
 		# 	videoId3: [videoTitle, comments]
 		# }
 		#
-		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
+		def self.grab_all_videos_and_their_comments(service, content, video_page_token, start_time)
 			puts "=====#{video_page_token}====="
-			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
-				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
+			response = nil
+			PullController.execute_with_timeout(start_time) do
+				if video_page_token.nil?
+					response = service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
+				.to_json
+				else 
+					response = service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
+				end
+			end
 			JSON.parse(response).fetch('items').each do |video|
 				videoId = video.fetch('id').fetch('videoId')
 				videoTitle = video.fetch('snippet').fetch('title')
 				Logger.new(STDOUT).info('string')
 				puts "===================#{videoTitle}================="
-				comments = PullController.get_all_comments(service, videoId)
+				comments = PullController.get_all_comments(service, videoId, start_time)
 				if comments == false || comments == nil
 					next
 				end
@@ -149,23 +158,27 @@ module Controllers
 		## 
 		# This method grabs all the comments from a particular videoId.
 		# 
-		def self.get_all_comments(service, videoId)
+		def self.get_all_comments(service, videoId, start_time)
 			begin
-				# response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
-				response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
+				response = nil
+				PullController.execute_with_timeout(start_time) do
+					response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
+				end
 				comments = JSON.parse(response).fetch('items')
 				year_ago = Time.now.to_datetime - 365
 				count = 0
 				while JSON.parse(response).include?('nextPageToken')
 					count += 1
 					nextPageToken = JSON.parse(response).fetch('nextPageToken') # Gets my page token for the next page
-					response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
+					PullController.execute_with_timeout(start_time) do
+						response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
+					end
 					break if Time.parse(JSON.parse(response).fetch('items')[0].fetch('snippet').fetch('topLevelComment').fetch('snippet').fetch('publishedAt')).to_datetime.rfc3339 < year_ago.rfc3339 && count == 15
 					comments = comments + JSON.parse(response).fetch('items')
 				end
 				puts comments.size
 				return comments
-			rescue Exception => e # this catches the error when videos are made private thus disabling comments
+			rescue Google::Apis::ClientError => e # this catches the error when videos are made private thus disabling comments
 				puts e
 			end
 		end
