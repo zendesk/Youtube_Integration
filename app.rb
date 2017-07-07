@@ -1,10 +1,12 @@
-%w(controllers).each do |path|
+%w(controllers lib helpers).each do |path|
   Dir.glob(File.join(__dir__, "#{path}/**/*")).each { |file| require file }
 end
 
 class YoutubeIntegration < Sinatra::Base
 	enable :sessions
 	set :session_secret, ENV["SESSION_SECRET"]
+
+	helpers Sinatra::Helpers::InternalTimeoutHelper
 
 	register Controllers::ManifestController
 	register Controllers::PullController

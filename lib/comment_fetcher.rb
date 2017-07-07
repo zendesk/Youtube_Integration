@@ -1,40 +1,43 @@
+require_relative '../helpers/internal_timeout_helper'
+
 class CommentFetcher
-  include InternalTimeoutHelper
+  include Sinatra::Helpers::InternalTimeoutHelper
 
   def initialize(video_page_token, client_opts, last_pull_time)
-    @video_page_token = video_page_token
+    @initial_video_page_token = video_page_token
     @client_opts = client_opts
     @last_pull_time = last_pull_time
   end
 
   def fetch
-    curr_time = video_page_token ? @last_pull_time : Time.now.to_datetime.rfc3339
+    curr_time = @video_page_token ? @last_pull_time : Time.now.to_datetime.rfc3339
     start_time = Time.now.to_i
 
 		content = {}
 		external_resources = []
 
 		begin
+      video_page_token = @initial_video_page_token
 			loop do
-        content, video_page_token = grab_all_videos_and_their_comments(service, content, video_page_token)
+        content, video_page_token = grab_all_videos_and_their_comments(content, video_page_token, start_time)
 
         ## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
         content.each do |videoId, comments|
           comments[1].each do |commentThread|
             topLevelComment = create_top_level_comment(commentThread)
-
-            external_resources.push(topLevelComment) if topLevelComment['created_at'] > last_pull_time
-
+            external_resources.push(topLevelComment) if topLevelComment[:created_at] > @last_pull_time
             if commentThread['replies']
               commentThread['replies']['comments'].reverse_each do |comment|
                 reply = create_reply(comment)
-
-                external_resources.push(reply) if reply[:created_at] > last_pull_time
+                external_resources.push(reply) if reply[:created_at] > @last_pull_time
               end
             end
           end
         end
-				break if video_page_token.nil?
+				if video_page_token.nil?
+          puts 'breaking loop'
+          break
+        end
 			end
 		rescue InternalTimeoutError => e
 			puts "Timeout"
@@ -60,46 +63,46 @@ class CommentFetcher
   # 	videoId3: [videoTitle, comments]
   # }
   #
-  def self.grab_all_videos_and_their_comments(service, content, video_page_token, start_time)
+  def grab_all_videos_and_their_comments(content, video_page_token, start_time)
     puts "=====#{video_page_token}====="
     response = nil
 
     execute_with_timeout(start_time) do
       response = if video_page_token.nil?
-                   service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video').to_json
+                   client.list_searches('snippet', max_results: 5, for_mine: true, type: 'video').to_json
                  else
-                   service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
+                   client.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
                  end
     end
-
     JSON.parse(response).fetch('items').each do |video|
       videoId = video.fetch('id').fetch('videoId')
       videoTitle = video.fetch('snippet').fetch('title')
       puts "===================#{videoTitle}================="
 
-      comments = PullController.get_all_comments(service, videoId)
+      comments = get_all_comments(videoId, start_time)
 
       next unless comments
 
       details = [videoTitle, comments]
       content[videoId] = details
     end
-
     return content, JSON.parse(response)['nextPageToken']
   end
 
-  def get_all_comments(service, videoId, start_time)
+  def get_all_comments(videoId, start_time)
     response = nil
 
+    ## TODO: CHANGE TO A DO WHILE LOOP
     execute_with_timeout(start_time) do
       begin
-        response = service.list_comment_threads('snippet,replies', video_id: videoId).to_json
+        response = client.list_comment_threads('snippet,replies', video_id: videoId).to_json
       rescue Google::Apis::ClientError => e
-        puts 'Error encountered when calling service.list_comment_threads. Rescuring so we can continue to get comments'
+        puts 'Error encountered when calling client.list_comment_threads. Rescuring so we can continue to get comments'
         puts e.inspect
       end
     end
 
+    return unless response
     comments = JSON.parse(response).fetch('items')
     year_ago = Time.now.to_datetime - 365
     count = 0
@@ -110,34 +113,20 @@ class CommentFetcher
 
       execute_with_timeout(start_time) do
         begin
-          response = service.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
+          response = client.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
         rescue Google::Apis::ClientError => e
-          puts 'Error encountered when calling service.list_comment_threads. Rescuring so we can continue to get comments'
+          puts 'Error encountered when calling client.list_comment_threads. Rescuring so we can continue to get comments'
           puts e.inspect
         end
       end
 
       # This breaks if the comment was published over a year ago and the video has over 300 existing comments already
+      ## TODO: MAKE THE PUBLISHEDAT EASIER TO READ
       break if Time.parse(JSON.parse(response).fetch('items')[0]['snippet']['topLevelComment']['snippet']['publishedAt']).to_datetime.rfc3339 < year_ago.rfc3339 && count == 15
       comments += JSON.parse(response).fetch('items')
     end
 
     comments
-  end
-
-  class Comment
-    attr_reader :video_id
-    # commentThread => Hash
-    def initialize(commentThread)
-      @video_id = commentThread['snippet']['videoId']
-    end
-
-    def to_h
-      {
-        ...
-        video_id: video_id
-      }
-    end
   end
 
   # TODO: This could be a Comment class
@@ -203,7 +192,7 @@ class CommentFetcher
 
   def client
     @client ||= begin
-                  auth_client = Signet::OAuth2::Client.new(client_opts)
+                  auth_client = Signet::OAuth2::Client.new(@client_opts)
                   auth_client.fetch_access_token!
                   service = Google::Apis::YoutubeV3::YouTubeService.new
                   service.authorization = auth_client

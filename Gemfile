@@ -16,5 +16,5 @@ gem 'sinatra'
 gem 'json'
 gem 'json-schema'
 gem 'any_channel_json_schemas'
-gem 'google-api-client', '0.13.0'
+gem 'google-api-client', git: 'https://github.com/HsuTimothy/google-api-ruby-client.git', branch: 'hardcode_timeout'
 
