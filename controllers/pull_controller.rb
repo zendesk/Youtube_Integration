@@ -9,7 +9,7 @@ module Controllers
 		end
 
 		def self.execute_with_timeout(start_time, &block)
-			if PullController.remaining_time(start_time) > 50
+			if PullController.remaining_time(start_time) > 45
 				yield
 			else
 				raise StandardError
@@ -81,7 +81,7 @@ module Controllers
 								end
 							end
 						end
-						break if PullController.remaining_time(start_time) < 50 || video_page_token.nil?
+						break if PullController.remaining_time(start_time) < 45 || video_page_token.nil?
 					end
 				rescue StandardError => e
 					puts "Timeout"
@@ -109,7 +109,7 @@ module Controllers
 		#
 		def self.grab_all_videos_and_their_comments(service, content, video_page_token)
 			puts "=====#{video_page_token}====="
-			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video')
+			response = video_page_token.nil? ? service.list_searches('snippet', max_results: 5, for_mine: true, type: 'video', connect_timeout: 20)
 				.to_json : service.list_searches('snippet', max_results: 5, for_mine: true, page_token: video_page_token, type: 'video').to_json
 			JSON.parse(response).fetch('items').each do |video|
 				videoId = video.fetch('id').fetch('videoId')
