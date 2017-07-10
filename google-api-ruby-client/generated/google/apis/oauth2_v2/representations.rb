@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,38 +23,37 @@ require 'google/apis/errors'
 module Google
   module Apis
     module Oauth2V2
-      
       class Jwk
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Key
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Tokeninfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Userinfoplus
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Jwk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::Jwk::Key::Representation
-      
+
         end
-        
+
         class Key
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -65,7 +66,7 @@ module Google
           end
         end
       end
-      
+
       class Tokeninfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -80,7 +81,7 @@ module Google
           property :verified_email, as: 'verified_email'
         end
       end
-      
+
       class Userinfoplus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

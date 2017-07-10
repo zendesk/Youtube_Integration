@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,53 +23,52 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppengineV1
-      
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1Alpha
         include Google::Apis::Core::Hashable
-      
+
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # Durable messages that persist on every operation poll. @OutputOnly
         # Corresponds to the JSON property `warning`
         # @return [Array<String>]
         attr_accessor :warning
-      
+
         # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # Ephemeral message that may change every time the operation is polled. @
         # OutputOnly
         # Corresponds to the JSON property `ephemeralMessage`
         # @return [String]
         attr_accessor :ephemeral_message
-      
+
         # API method that initiated this operation. Example: google.appengine.v1alpha.
         # Versions.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -79,34 +80,34 @@ module Google
           @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
-      
+
       # Rules to match an HTTP request and dispatch that request to a service.
       class UrlDispatchRule
         include Google::Apis::Core::Hashable
-      
+
         # Domain name to match against. The wildcard "*" is supported if specified
         # before a period: "*.".Defaults to matching all domains: "*".
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
-      
+
         # Resource ID of a service in this application that should serve the matched
         # request. The service must already exist. Example: default.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
-      
+
         # Pathname within the host. Must start with a "/". A single "*" can be included
         # at the end of the path.The sum of the lengths of the domain and path may not
         # exceed 100 characters.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
@@ -114,126 +115,126 @@ module Google
           @path = args[:path] if args.key?(:path)
         end
       end
-      
+
       # Response message for Versions.ListVersions.
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The versions belonging to the requested service.
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::AppengineV1::Version>]
         attr_accessor :versions
-      
+
         # Continuation token for fetching the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @versions = args[:versions] if args.key?(:versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Uses Google Cloud Endpoints to handle requests.
       class ApiEndpointHandler
         include Google::Apis::Core::Hashable
-      
+
         # Path to the script from the application root directory.
         # Corresponds to the JSON property `scriptPath`
         # @return [String]
         attr_accessor :script_path
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @script_path = args[:script_path] if args.key?(:script_path)
         end
       end
-      
+
       # Automatic scaling is based on request rate, response latencies, and other
       # application metrics.
       class AutomaticScaling
         include Google::Apis::Core::Hashable
-      
+
         # Target scaling by request utilization. Only applicable for VM runtimes.
         # Corresponds to the JSON property `requestUtilization`
         # @return [Google::Apis::AppengineV1::RequestUtilization]
         attr_accessor :request_utilization
-      
+
         # Maximum number of idle instances that should be maintained for this version.
         # Corresponds to the JSON property `maxIdleInstances`
         # @return [Fixnum]
         attr_accessor :max_idle_instances
-      
+
         # Minimum number of idle instances that should be maintained for this version.
         # Only applicable for the default version of a service.
         # Corresponds to the JSON property `minIdleInstances`
         # @return [Fixnum]
         attr_accessor :min_idle_instances
-      
+
         # Maximum number of instances that should be started to handle requests.
         # Corresponds to the JSON property `maxTotalInstances`
         # @return [Fixnum]
         attr_accessor :max_total_instances
-      
+
         # Minimum number of instances that should be maintained for this version.
         # Corresponds to the JSON property `minTotalInstances`
         # @return [Fixnum]
         attr_accessor :min_total_instances
-      
+
         # Target scaling by network usage. Only applicable for VM runtimes.
         # Corresponds to the JSON property `networkUtilization`
         # @return [Google::Apis::AppengineV1::NetworkUtilization]
         attr_accessor :network_utilization
-      
+
         # Number of concurrent requests an automatic scaling instance can accept before
         # the scheduler spawns a new instance.Defaults to a runtime-specific value.
         # Corresponds to the JSON property `maxConcurrentRequests`
         # @return [Fixnum]
         attr_accessor :max_concurrent_requests
-      
+
         # Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/
         # autoscaler/) should wait between changes to the number of virtual machines.
         # Only applicable for VM runtimes.
         # Corresponds to the JSON property `coolDownPeriod`
         # @return [String]
         attr_accessor :cool_down_period
-      
+
         # Maximum amount of time that a request should wait in the pending queue before
         # starting a new instance to handle it.
         # Corresponds to the JSON property `maxPendingLatency`
         # @return [String]
         attr_accessor :max_pending_latency
-      
+
         # Target scaling by CPU usage.
         # Corresponds to the JSON property `cpuUtilization`
         # @return [Google::Apis::AppengineV1::CpuUtilization]
         attr_accessor :cpu_utilization
-      
+
         # Target scaling by disk usage. Only applicable for VM runtimes.
         # Corresponds to the JSON property `diskUtilization`
         # @return [Google::Apis::AppengineV1::DiskUtilization]
         attr_accessor :disk_utilization
-      
+
         # Minimum amount of time a request should wait in the pending queue before
         # starting a new instance to handle it.
         # Corresponds to the JSON property `minPendingLatency`
         # @return [String]
         attr_accessor :min_pending_latency
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @request_utilization = args[:request_utilization] if args.key?(:request_utilization)
@@ -250,133 +251,133 @@ module Google
           @min_pending_latency = args[:min_pending_latency] if args.key?(:min_pending_latency)
         end
       end
-      
+
       # The zip file information for a zip deployment.
       class ZipInfo
         include Google::Apis::Core::Hashable
-      
+
         # An estimate of the number of files in a zip for a zip deployment. If set, must
         # be greater than or equal to the actual number of files. Used for optimizing
         # performance; if not provided, deployment may be slow.
         # Corresponds to the JSON property `filesCount`
         # @return [Fixnum]
         attr_accessor :files_count
-      
+
         # URL of the zip file to deploy from. Must be a URL to a resource in Google
         # Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.
         # Corresponds to the JSON property `sourceUrl`
         # @return [String]
         attr_accessor :source_url
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @files_count = args[:files_count] if args.key?(:files_count)
           @source_url = args[:source_url] if args.key?(:source_url)
         end
       end
-      
+
       # Third-party Python runtime library that is required by the application.
       class Library
         include Google::Apis::Core::Hashable
-      
+
         # Version of the library to select, or "latest".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
-      
+
         # Name of the library. Example: "django".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The standard List next-page token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # A list of locations that matches the specified filter in the request.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::AppengineV1::Location>]
         attr_accessor :locations
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @locations = args[:locations] if args.key?(:locations)
         end
       end
-      
+
       # Docker image that is used to create a container and start a VM instance for
       # the version that you deploy. Only applicable for instances running in the App
       # Engine flexible environment.
       class ContainerInfo
         include Google::Apis::Core::Hashable
-      
+
         # URI to the hosted container image in Google Container Registry. The URI must
         # be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/
         # image:tag" or "gcr.io/my-project/image@digest"
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @image = args[:image] if args.key?(:image)
         end
       end
-      
+
       # Target scaling by request utilization. Only applicable for VM runtimes.
       class RequestUtilization
         include Google::Apis::Core::Hashable
-      
+
         # Target requests per second.
         # Corresponds to the JSON property `targetRequestCountPerSecond`
         # @return [Fixnum]
         attr_accessor :target_request_count_per_second
-      
+
         # Target number of concurrent requests.
         # Corresponds to the JSON property `targetConcurrentRequests`
         # @return [Fixnum]
         attr_accessor :target_concurrent_requests
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @target_request_count_per_second = args[:target_request_count_per_second] if args.key?(:target_request_count_per_second)
           @target_concurrent_requests = args[:target_concurrent_requests] if args.key?(:target_concurrent_requests)
         end
       end
-      
+
       # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
       # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
       # via an NGINX proxy.The fields here refer to the name and configuration id of a
@@ -384,52 +385,52 @@ module Google
       # service-management/overview).
       class EndpointsApiService
         include Google::Apis::Core::Hashable
-      
+
         # Endpoints service name which is the name of the "service" resource in the
         # Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Endpoints service configuration id as specified by the Service Management API.
         # For example "2016-09-19r1"
         # Corresponds to the JSON property `configId`
         # @return [String]
         attr_accessor :config_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @config_id = args[:config_id] if args.key?(:config_id)
         end
       end
-      
+
       # URL pattern and description of how the URL should be handled. App Engine can
       # handle URLs by executing application code or by serving static files uploaded
       # with the version, such as images, CSS, or JavaScript.
       class UrlMap
         include Google::Apis::Core::Hashable
-      
+
         # Security (HTTPS) enforcement for this URL.
         # Corresponds to the JSON property `securityLevel`
         # @return [String]
         attr_accessor :security_level
-      
+
         # Action to take when users access resources that require authentication.
         # Defaults to redirect.
         # Corresponds to the JSON property `authFailAction`
         # @return [String]
         attr_accessor :auth_fail_action
-      
+
         # Executes a script to handle the request that matches the URL pattern.
         # Corresponds to the JSON property `script`
         # @return [Google::Apis::AppengineV1::ScriptHandler]
         attr_accessor :script
-      
+
         # URL prefix. Uses regular expression syntax, which means regexp special
         # characters must be escaped, but should not contain groupings. All URLs that
         # begin with this prefix are handled by this handler, using the portion of the
@@ -437,34 +438,34 @@ module Google
         # Corresponds to the JSON property `urlRegex`
         # @return [String]
         attr_accessor :url_regex
-      
+
         # Level of login required to access this resource.
         # Corresponds to the JSON property `login`
         # @return [String]
         attr_accessor :login
-      
+
         # Uses Google Cloud Endpoints to handle requests.
         # Corresponds to the JSON property `apiEndpoint`
         # @return [Google::Apis::AppengineV1::ApiEndpointHandler]
         attr_accessor :api_endpoint
-      
+
         # Files served directly to the user for a given URL, such as images, CSS
         # stylesheets, or JavaScript source files. Static file handlers describe which
         # files in the application directory are static files, and which URLs serve them.
         # Corresponds to the JSON property `staticFiles`
         # @return [Google::Apis::AppengineV1::StaticFilesHandler]
         attr_accessor :static_files
-      
+
         # 30x code to use when performing redirects for the secure field. Defaults to
         # 302.
         # Corresponds to the JSON property `redirectHttpResponseCode`
         # @return [String]
         attr_accessor :redirect_http_response_code
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @security_level = args[:security_level] if args.key?(:security_level)
@@ -477,42 +478,42 @@ module Google
           @redirect_http_response_code = args[:redirect_http_response_code] if args.key?(:redirect_http_response_code)
         end
       end
-      
+
       # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
       # endpoints/) configuration for API handlers.
       class ApiConfigHandler
         include Google::Apis::Core::Hashable
-      
+
         # Level of login required to access this resource. Defaults to optional.
         # Corresponds to the JSON property `login`
         # @return [String]
         attr_accessor :login
-      
+
         # URL to serve the endpoint at.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
-      
+
         # Security (HTTPS) enforcement for this URL.
         # Corresponds to the JSON property `securityLevel`
         # @return [String]
         attr_accessor :security_level
-      
+
         # Action to take when users access resources that require authentication.
         # Defaults to redirect.
         # Corresponds to the JSON property `authFailAction`
         # @return [String]
         attr_accessor :auth_fail_action
-      
+
         # Path to the script from the application root directory.
         # Corresponds to the JSON property `script`
         # @return [String]
         attr_accessor :script
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @login = args[:login] if args.key?(:login)
@@ -522,12 +523,12 @@ module Google
           @script = args[:script] if args.key?(:script)
         end
       end
-      
+
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
+
         # The Status type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by gRPC
         # (https://github.com/grpc). The error model is designed to be:
@@ -565,7 +566,7 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::AppengineV1::Status]
         attr_accessor :error
-      
+
         # Service-specific metadata associated with the operation. It typically contains
         # progress information and common metadata such as create time. Some services
         # might not provide such metadata. Any method that returns a long-running
@@ -573,14 +574,14 @@ module Google
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
-      
+
         # If the value is false, it means the operation is still in progress. If true,
         # the operation is completed, and either error or response is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
-        alias_method :done?, :done
-      
+        alias done? done
+
         # The normal response of the operation in case of success. If the original
         # method returns no data on success, such as Delete, the response is google.
         # protobuf.Empty. If the original method is standard Get/Create/Update, the
@@ -591,18 +592,18 @@ module Google
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
-      
+
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the name should
         # have the format of operations/some/unique/name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
@@ -612,18 +613,18 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # Files served directly to the user for a given URL, such as images, CSS
       # stylesheets, or JavaScript source files. Static file handlers describe which
       # files in the application directory are static files, and which URLs serve them.
       class StaticFilesHandler
         include Google::Apis::Core::Hashable
-      
+
         # HTTP headers to use for all responses from these URLs.
         # Corresponds to the JSON property `httpHeaders`
         # @return [Hash<String,String>]
         attr_accessor :http_headers
-      
+
         # Whether files should also be uploaded as code data. By default, files declared
         # in static file handlers are uploaded as static data and are only served to end
         # users; they cannot be read by the application. If enabled, uploads are charged
@@ -631,43 +632,43 @@ module Google
         # Corresponds to the JSON property `applicationReadable`
         # @return [Boolean]
         attr_accessor :application_readable
-        alias_method :application_readable?, :application_readable
-      
+        alias application_readable? application_readable
+
         # Regular expression that matches the file paths for all files that should be
         # referenced by this handler.
         # Corresponds to the JSON property `uploadPathRegex`
         # @return [String]
         attr_accessor :upload_path_regex
-      
+
         # Path to the static files matched by the URL pattern, from the application root
         # directory. The path can refer to text matched in groupings in the URL pattern.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
-      
+
         # MIME type used to serve all files served by this handler.Defaults to file-
         # specific MIME types, which are derived from each file's filename extension.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
-      
+
         # Whether this handler should match the request if the file referenced by the
         # handler does not exist.
         # Corresponds to the JSON property `requireMatchingFile`
         # @return [Boolean]
         attr_accessor :require_matching_file
-        alias_method :require_matching_file?, :require_matching_file
-      
+        alias require_matching_file? require_matching_file
+
         # Time a static file served by this handler should be cached by web proxies and
         # browsers.
         # Corresponds to the JSON property `expiration`
         # @return [String]
         attr_accessor :expiration
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @http_headers = args[:http_headers] if args.key?(:http_headers)
@@ -679,35 +680,35 @@ module Google
           @expiration = args[:expiration] if args.key?(:expiration)
         end
       end
-      
+
       # Target scaling by disk usage. Only applicable for VM runtimes.
       class DiskUtilization
         include Google::Apis::Core::Hashable
-      
+
         # Target ops written per second.
         # Corresponds to the JSON property `targetWriteOpsPerSecond`
         # @return [Fixnum]
         attr_accessor :target_write_ops_per_second
-      
+
         # Target bytes written per second.
         # Corresponds to the JSON property `targetWriteBytesPerSecond`
         # @return [Fixnum]
         attr_accessor :target_write_bytes_per_second
-      
+
         # Target bytes read per second.
         # Corresponds to the JSON property `targetReadBytesPerSecond`
         # @return [Fixnum]
         attr_accessor :target_read_bytes_per_second
-      
+
         # Target ops read per seconds.
         # Corresponds to the JSON property `targetReadOpsPerSecond`
         # @return [Fixnum]
         attr_accessor :target_read_ops_per_second
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @target_write_ops_per_second = args[:target_write_ops_per_second] if args.key?(:target_write_ops_per_second)
@@ -716,94 +717,94 @@ module Google
           @target_read_ops_per_second = args[:target_read_ops_per_second] if args.key?(:target_read_ops_per_second)
         end
       end
-      
+
       # A service with basic scaling will create an instance when the application
       # receives a request. The instance will be turned down when the app becomes idle.
       # Basic scaling is ideal for work that is intermittent or driven by user
       # activity.
       class BasicScaling
         include Google::Apis::Core::Hashable
-      
+
         # Duration of time after the last request that an instance must wait before the
         # instance is shut down.
         # Corresponds to the JSON property `idleTimeout`
         # @return [String]
         attr_accessor :idle_timeout
-      
+
         # Maximum number of instances to create for this version.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @max_instances = args[:max_instances] if args.key?(:max_instances)
         end
       end
-      
+
       # Target scaling by CPU usage.
       class CpuUtilization
         include Google::Apis::Core::Hashable
-      
+
         # Period of time over which CPU utilization is calculated.
         # Corresponds to the JSON property `aggregationWindowLength`
         # @return [String]
         attr_accessor :aggregation_window_length
-      
+
         # Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
         # Corresponds to the JSON property `targetUtilization`
         # @return [Float]
         attr_accessor :target_utilization
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @aggregation_window_length = args[:aggregation_window_length] if args.key?(:aggregation_window_length)
           @target_utilization = args[:target_utilization] if args.key?(:target_utilization)
         end
       end
-      
+
       # Identity-Aware Proxy
       class IdentityAwareProxy
         include Google::Apis::Core::Hashable
-      
+
         # Whether the serving infrastructure will authenticate and authorize all
         # incoming requests.If true, the oauth2_client_id and oauth2_client_secret
         # fields must be non-empty.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
+        alias enabled? enabled
+
         # OAuth2 client secret to use for the authentication flow.For security reasons,
         # this value cannot be retrieved via the API. Instead, the SHA-256 hash of the
         # value is returned in the oauth2_client_secret_sha256 field.@InputOnly
         # Corresponds to the JSON property `oauth2ClientSecret`
         # @return [String]
         attr_accessor :oauth2_client_secret
-      
+
         # OAuth2 client ID to use for the authentication flow.
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
-      
+
         # Hex-encoded SHA-256 hash of the client secret.@OutputOnly
         # Corresponds to the JSON property `oauth2ClientSecretSha256`
         # @return [String]
         attr_accessor :oauth2_client_secret_sha256
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
@@ -812,7 +813,7 @@ module Google
           @oauth2_client_secret_sha256 = args[:oauth2_client_secret_sha256] if args.key?(:oauth2_client_secret_sha256)
         end
       end
-      
+
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). The error model is designed to be:
@@ -849,29 +850,29 @@ module Google
       # used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
-      
+
         # A list of messages that carry the error details. There will be a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
-      
+
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
-      
+
         # A developer-facing error message, which should be in English. Any user-facing
         # error message should be localized and sent in the google.rpc.Status.details
         # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
@@ -879,56 +880,56 @@ module Google
           @message = args[:message] if args.key?(:message)
         end
       end
-      
+
       # A service with manual scaling runs continuously, allowing you to perform
       # complex initialization and rely on the state of its memory over time.
       class ManualScaling
         include Google::Apis::Core::Hashable
-      
+
         # Number of instances to assign to the service at the start. This number can
         # later be altered by using the Modules API (https://cloud.google.com/appengine/
         # docs/python/modules/functions) set_num_instances() function.
         # Corresponds to the JSON property `instances`
         # @return [Fixnum]
         attr_accessor :instances
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
         end
       end
-      
+
       # Metadata for the given google.cloud.location.Location.
       class LocationMetadata
         include Google::Apis::Core::Hashable
-      
+
         # App Engine Standard Environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `standardEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :standard_environment_available
-        alias_method :standard_environment_available?, :standard_environment_available
-      
+        alias standard_environment_available? standard_environment_available
+
         # App Engine Flexible Environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `flexibleEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :flexible_environment_available
-        alias_method :flexible_environment_available?, :flexible_environment_available
-      
+        alias flexible_environment_available? flexible_environment_available
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @standard_environment_available = args[:standard_environment_available] if args.key?(:standard_environment_available)
           @flexible_environment_available = args[:flexible_environment_available] if args.key?(:flexible_environment_available)
         end
       end
-      
+
       # A Service resource is a logical component of an application that can share
       # state and communicate in a secure fashion with other services. For example, an
       # application that handles customer requests might include separate services to
@@ -937,29 +938,29 @@ module Google
       # used to implement the functionality of that service.
       class Service
         include Google::Apis::Core::Hashable
-      
+
         # Relative name of the service within the application. Example: default.@
         # OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Full path to the Service resource in the API. Example: apps/myapp/services/
         # default.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Traffic routing configuration for versions within a single service. Traffic
         # splits define how traffic directed to the service is assigned to versions.
         # Corresponds to the JSON property `split`
         # @return [Google::Apis::AppengineV1::TrafficSplit]
         attr_accessor :split
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
@@ -967,73 +968,73 @@ module Google
           @split = args[:split] if args.key?(:split)
         end
       end
-      
+
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A list of operations that matches the specified filter in the request.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::AppengineV1::Operation>]
         attr_accessor :operations
-      
+
         # The standard List next-page token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @operations = args[:operations] if args.key?(:operations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadata
         include Google::Apis::Core::Hashable
-      
+
         # Timestamp that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # modules/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # API method that initiated this operation. Example: google.appengine.v1beta4.
         # Version.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         # Timestamp that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # Type of this operation. Deprecated, use method field instead. Example: "
         # create_version".@OutputOnly
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -1044,53 +1045,53 @@ module Google
           @operation_type = args[:operation_type] if args.key?(:operation_type)
         end
       end
-      
+
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
-      
+
         # Ephemeral message that may change every time the operation is polled. @
         # OutputOnly
         # Corresponds to the JSON property `ephemeralMessage`
         # @return [String]
         attr_accessor :ephemeral_message
-      
+
         # API method that initiated this operation. Example: google.appengine.v1.
         # Versions.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # Durable messages that persist on every operation poll. @OutputOnly
         # Corresponds to the JSON property `warning`
         # @return [Array<String>]
         attr_accessor :warning
-      
+
         # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
@@ -1102,30 +1103,30 @@ module Google
           @target = args[:target] if args.key?(:target)
         end
       end
-      
+
       # Custom static error page to be served when an error occurs.
       class ErrorHandler
         include Google::Apis::Core::Hashable
-      
+
         # Error condition this handler applies to.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
         attr_accessor :error_code
-      
+
         # MIME type of file. Defaults to text/html.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
-      
+
         # Static file content to be served for this error.
         # Corresponds to the JSON property `staticFile`
         # @return [String]
         attr_accessor :static_file
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error_code = args[:error_code] if args.key?(:error_code)
@@ -1133,22 +1134,22 @@ module Google
           @static_file = args[:static_file] if args.key?(:static_file)
         end
       end
-      
+
       # Extra network settings. Only applicable for VM runtimes.
       class Network
         include Google::Apis::Core::Hashable
-      
+
         # List of ports, or port pairs, to forward from the virtual machine to the
         # application container.
         # Corresponds to the JSON property `forwardedPorts`
         # @return [Array<String>]
         attr_accessor :forwarded_ports
-      
+
         # Tag to apply to the VM instance during creation.
         # Corresponds to the JSON property `instanceTag`
         # @return [String]
         attr_accessor :instance_tag
-      
+
         # Google Cloud Platform sub-network where the virtual machines are created.
         # Specify the short name, not the resource path.If a subnetwork name is
         # specified, a network name will also be required unless it is for the default
@@ -1166,17 +1167,17 @@ module Google
         # Corresponds to the JSON property `subnetworkName`
         # @return [String]
         attr_accessor :subnetwork_name
-      
+
         # Google Cloud Platform network where the virtual machines are created. Specify
         # the short name, not the resource path.Defaults to default.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @forwarded_ports = args[:forwarded_ports] if args.key?(:forwarded_ports)
@@ -1185,30 +1186,30 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # An Application resource contains the top-level configuration of an App Engine
       # application. Next tag: 19
       class Application
         include Google::Apis::Core::Hashable
-      
+
         # Full path to the Application resource in the API. Example: apps/myapp.@
         # OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Identifier of the Application resource. This identifier is equivalent to the
         # project ID of the Google Cloud Platform project where you want to deploy your
         # application. Example: myapp.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Cookie expiration policy for this application.
         # Corresponds to the JSON property `defaultCookieExpiration`
         # @return [String]
         attr_accessor :default_cookie_expiration
-      
+
         # Location from which this application will be run. Application instances will
         # run out of data centers in the chosen location, which is also where all of the
         # application's end user content is stored.Defaults to us-central.Options are:us-
@@ -1216,58 +1217,58 @@ module Google
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
-      
+
         # Serving status of this application.
         # Corresponds to the JSON property `servingStatus`
         # @return [String]
         attr_accessor :serving_status
-      
+
         # Hostname used to reach this application, as resolved by App Engine.@OutputOnly
         # Corresponds to the JSON property `defaultHostname`
         # @return [String]
         attr_accessor :default_hostname
-      
+
         # Identity-Aware Proxy
         # Corresponds to the JSON property `iap`
         # @return [Google::Apis::AppengineV1::IdentityAwareProxy]
         attr_accessor :iap
-      
+
         # Google Apps authentication domain that controls which users can access this
         # application.Defaults to open access for any Google Account.
         # Corresponds to the JSON property `authDomain`
         # @return [String]
         attr_accessor :auth_domain
-      
+
         # Google Cloud Storage bucket that can be used for storing files associated with
         # this application. This bucket is associated with the application and can be
         # used by the gcloud deployment commands.@OutputOnly
         # Corresponds to the JSON property `codeBucket`
         # @return [String]
         attr_accessor :code_bucket
-      
+
         # Google Cloud Storage bucket that can be used by this application to store
         # content.@OutputOnly
         # Corresponds to the JSON property `defaultBucket`
         # @return [String]
         attr_accessor :default_bucket
-      
+
         # HTTP path dispatch rules for requests to the application that do not
         # explicitly target a service or version. Rules are order-dependent. Up to 20
         # dispatch rules can be supported.@OutputOnly
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1::UrlDispatchRule>]
         attr_accessor :dispatch_rules
-      
+
         # The Google Container Registry domain used for storing managed build docker
         # images for this application.
         # Corresponds to the JSON property `gcrDomain`
         # @return [String]
         attr_accessor :gcr_domain
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
@@ -1284,105 +1285,105 @@ module Google
           @gcr_domain = args[:gcr_domain] if args.key?(:gcr_domain)
         end
       end
-      
+
       # An Instance resource is the computing unit that App Engine uses to
       # automatically scale an application.
       class Instance
         include Google::Apis::Core::Hashable
-      
+
         # Virtual machine ID of this instance. Only applicable for instances in App
         # Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmId`
         # @return [String]
         attr_accessor :vm_id
-      
+
         # Average queries per second (QPS) over the last minute.@OutputOnly
         # Corresponds to the JSON property `qps`
         # @return [Float]
         attr_accessor :qps
-      
+
         # Zone where the virtual machine is located. Only applicable for instances in
         # App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmZoneName`
         # @return [String]
         attr_accessor :vm_zone_name
-      
+
         # Full path to the Instance resource in the API. Example: apps/myapp/services/
         # default/versions/v1/instances/instance-1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Average latency (ms) over the last minute.@OutputOnly
         # Corresponds to the JSON property `averageLatency`
         # @return [Fixnum]
         attr_accessor :average_latency
-      
+
         # The IP address of this instance. Only applicable for instances in App Engine
         # flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmIp`
         # @return [String]
         attr_accessor :vm_ip
-      
+
         # Total memory in use (bytes).@OutputOnly
         # Corresponds to the JSON property `memoryUsage`
         # @return [Fixnum]
         attr_accessor :memory_usage
-      
+
         # Relative name of the instance within the version. Example: instance-1.@
         # OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Number of errors since this instance was started.@OutputOnly
         # Corresponds to the JSON property `errors`
         # @return [Fixnum]
         attr_accessor :errors
-      
+
         # Availability of the instance.@OutputOnly
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
-      
+
         # Status of the virtual machine where this instance lives. Only applicable for
         # instances in App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmStatus`
         # @return [String]
         attr_accessor :vm_status
-      
+
         # Time that this instance was started.@OutputOnly
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
-      
+
         # Whether this instance is in debug mode. Only applicable for instances in App
         # Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmDebugEnabled`
         # @return [Boolean]
         attr_accessor :vm_debug_enabled
-        alias_method :vm_debug_enabled?, :vm_debug_enabled
-      
+        alias vm_debug_enabled? vm_debug_enabled
+
         # Number of requests since this instance was started.@OutputOnly
         # Corresponds to the JSON property `requests`
         # @return [Fixnum]
         attr_accessor :requests
-      
+
         # App Engine release this instance is running on.@OutputOnly
         # Corresponds to the JSON property `appEngineRelease`
         # @return [String]
         attr_accessor :app_engine_release
-      
+
         # Name of the virtual machine where this instance lives. Only applicable for
         # instances in App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmName`
         # @return [String]
         attr_accessor :vm_name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
@@ -1403,54 +1404,54 @@ module Google
           @vm_name = args[:vm_name] if args.key?(:vm_name)
         end
       end
-      
+
       # Health checking configuration for VM instances. Unhealthy instances are killed
       # and replaced with new instances.
       class LivenessCheck
         include Google::Apis::Core::Hashable
-      
+
         # Interval between health checks.
         # Corresponds to the JSON property `checkInterval`
         # @return [String]
         attr_accessor :check_interval
-      
+
         # Time before the check is considered failed.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
-      
+
         # Number of consecutive failed checks required before considering the VM
         # unhealthy.
         # Corresponds to the JSON property `failureThreshold`
         # @return [Fixnum]
         attr_accessor :failure_threshold
-      
+
         # The initial delay before starting to execute the checks.
         # Corresponds to the JSON property `initialDelay`
         # @return [String]
         attr_accessor :initial_delay
-      
+
         # The request path.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
-      
+
         # Number of consecutive successful checks required before considering the VM
         # healthy.
         # Corresponds to the JSON property `successThreshold`
         # @return [Fixnum]
         attr_accessor :success_threshold
-      
+
         # Host header to send when performing a HTTP Liveness check. Example: "myapp.
         # appspot.com"
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @check_interval = args[:check_interval] if args.key?(:check_interval)
@@ -1462,35 +1463,35 @@ module Google
           @host = args[:host] if args.key?(:host)
         end
       end
-      
+
       # Target scaling by network usage. Only applicable for VM runtimes.
       class NetworkUtilization
         include Google::Apis::Core::Hashable
-      
+
         # Target packets sent per second.
         # Corresponds to the JSON property `targetSentPacketsPerSecond`
         # @return [Fixnum]
         attr_accessor :target_sent_packets_per_second
-      
+
         # Target bytes received per second.
         # Corresponds to the JSON property `targetReceivedBytesPerSecond`
         # @return [Fixnum]
         attr_accessor :target_received_bytes_per_second
-      
+
         # Target packets received per second.
         # Corresponds to the JSON property `targetReceivedPacketsPerSecond`
         # @return [Fixnum]
         attr_accessor :target_received_packets_per_second
-      
+
         # Target bytes sent per second.
         # Corresponds to the JSON property `targetSentBytesPerSecond`
         # @return [Fixnum]
         attr_accessor :target_sent_bytes_per_second
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @target_sent_packets_per_second = args[:target_sent_packets_per_second] if args.key?(:target_sent_packets_per_second)
@@ -1499,38 +1500,38 @@ module Google
           @target_sent_bytes_per_second = args[:target_sent_bytes_per_second] if args.key?(:target_sent_bytes_per_second)
         end
       end
-      
+
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
-      
+
         # Cross-service attributes for the location. For example
         # `"cloud.googleapis.com/region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
+
         # Resource name for the location, which may vary between implementations. For
         # example: "projects/example-project/locations/us-east1"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The canonical id for this location. For example: "us-east1".
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
-      
+
         # Service-specific metadata. For example the available capacity at the given
         # location.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
@@ -1539,56 +1540,56 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
-      
+
       # Health checking configuration for VM instances. Unhealthy instances are killed
       # and replaced with new instances. Only applicable for instances in App Engine
       # flexible environment.
       class HealthCheck
         include Google::Apis::Core::Hashable
-      
+
         # Number of consecutive failed health checks required before removing traffic.
         # Corresponds to the JSON property `unhealthyThreshold`
         # @return [Fixnum]
         attr_accessor :unhealthy_threshold
-      
+
         # Whether to explicitly disable health checks for this instance.
         # Corresponds to the JSON property `disableHealthCheck`
         # @return [Boolean]
         attr_accessor :disable_health_check
-        alias_method :disable_health_check?, :disable_health_check
-      
+        alias disable_health_check? disable_health_check
+
         # Host header to send when performing an HTTP health check. Example: "myapp.
         # appspot.com"
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
-      
+
         # Number of consecutive failed health checks required before an instance is
         # restarted.
         # Corresponds to the JSON property `restartThreshold`
         # @return [Fixnum]
         attr_accessor :restart_threshold
-      
+
         # Number of consecutive successful health checks required before receiving
         # traffic.
         # Corresponds to the JSON property `healthyThreshold`
         # @return [Fixnum]
         attr_accessor :healthy_threshold
-      
+
         # Interval between health checks.
         # Corresponds to the JSON property `checkInterval`
         # @return [String]
         attr_accessor :check_interval
-      
+
         # Time before the health check is considered failed.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @unhealthy_threshold = args[:unhealthy_threshold] if args.key?(:unhealthy_threshold)
@@ -1600,47 +1601,47 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
-      
+
       # Readiness checking configuration for VM instances. Unhealthy instances are
       # removed from traffic rotation.
       class ReadinessCheck
         include Google::Apis::Core::Hashable
-      
+
         # The request path.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
-      
+
         # Host header to send when performing a HTTP Readiness check. Example: "myapp.
         # appspot.com"
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
-      
+
         # Number of consecutive successful checks required before receiving traffic.
         # Corresponds to the JSON property `successThreshold`
         # @return [Fixnum]
         attr_accessor :success_threshold
-      
+
         # Interval between health checks.
         # Corresponds to the JSON property `checkInterval`
         # @return [String]
         attr_accessor :check_interval
-      
+
         # Number of consecutive failed checks required before removing traffic.
         # Corresponds to the JSON property `failureThreshold`
         # @return [Fixnum]
         attr_accessor :failure_threshold
-      
+
         # Time before the check is considered failed.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @path = args[:path] if args.key?(:path)
@@ -1651,11 +1652,11 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
-      
+
       # Request message for Instances.DebugInstance.
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
-      
+
         # Public SSH key to add to the instance. Examples:
         # [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
         # [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]","expireOn":"
@@ -1664,52 +1665,52 @@ module Google
         # Corresponds to the JSON property `sshKey`
         # @return [String]
         attr_accessor :ssh_key
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @ssh_key = args[:ssh_key] if args.key?(:ssh_key)
         end
       end
-      
+
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1Beta5
         include Google::Apis::Core::Hashable
-      
+
         # Timestamp that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # Timestamp that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # API method name that initiated this operation. Example: google.appengine.
         # v1beta5.Version.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -1719,30 +1720,30 @@ module Google
           @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
-      
+
       # A Version resource is a specific set of source code and configuration files
       # that are deployed into a service.
       class Version
         include Google::Apis::Core::Hashable
-      
+
         # A service with manual scaling runs continuously, allowing you to perform
         # complex initialization and rely on the state of its memory over time.
         # Corresponds to the JSON property `manualScaling`
         # @return [Google::Apis::AppengineV1::ManualScaling]
         attr_accessor :manual_scaling
-      
+
         # Full path to the Version resource in the API. Example: apps/myapp/services/
         # default/versions/v1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
         # endpoints/) configuration for API handlers.
         # Corresponds to the JSON property `apiConfig`
         # @return [Google::Apis::AppengineV1::ApiConfigHandler]
         attr_accessor :api_config
-      
+
         # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
         # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
         # via an NGINX proxy.The fields here refer to the name and configuration id of a
@@ -1751,19 +1752,19 @@ module Google
         # Corresponds to the JSON property `endpointsApiService`
         # @return [Google::Apis::AppengineV1::EndpointsApiService]
         attr_accessor :endpoints_api_service
-      
+
         # Serving URL for this version. Example: "https://myversion-dot-myservice-dot-
         # myapp.appspot.com"@OutputOnly
         # Corresponds to the JSON property `versionUrl`
         # @return [String]
         attr_accessor :version_url
-      
+
         # Whether to deploy this version in a container on a virtual machine.
         # Corresponds to the JSON property `vm`
         # @return [Boolean]
         attr_accessor :vm
-        alias_method :vm?, :vm
-      
+        alias vm? vm
+
         # Instance class that is used to run this version. Valid values are:
         # AutomaticScaling: F1, F2, F4, F4_1G
         # ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for
@@ -1771,48 +1772,48 @@ module Google
         # Corresponds to the JSON property `instanceClass`
         # @return [String]
         attr_accessor :instance_class
-      
+
         # Current serving status of this version. Only the versions with a SERVING
         # status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
         # invalid value. Defaults to SERVING.
         # Corresponds to the JSON property `servingStatus`
         # @return [String]
         attr_accessor :serving_status
-      
+
         # The version of the API in the given runtime environment. Please see the app.
         # yaml reference for valid values at https://cloud.google.com/appengine/docs/
         # standard/<language>/config/appref
         # Corresponds to the JSON property `runtimeApiVersion`
         # @return [String]
         attr_accessor :runtime_api_version
-      
+
         # Code and application artifacts used to deploy a version to App Engine.
         # Corresponds to the JSON property `deployment`
         # @return [Google::Apis::AppengineV1::Deployment]
         attr_accessor :deployment
-      
+
         # Time that this version was created.@OutputOnly
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # Before an application can receive email or XMPP messages, the application must
         # be configured to enable the service.
         # Corresponds to the JSON property `inboundServices`
         # @return [Array<String>]
         attr_accessor :inbound_services
-      
+
         # Machine resources for a version.
         # Corresponds to the JSON property `resources`
         # @return [Google::Apis::AppengineV1::Resources]
         attr_accessor :resources
-      
+
         # Custom static error pages. Limited to 10KB per page.Only returned in GET
         # requests if view=FULL is set.
         # Corresponds to the JSON property `errorHandlers`
         # @return [Array<Google::Apis::AppengineV1::ErrorHandler>]
         attr_accessor :error_handlers
-      
+
         # Duration that static files should be cached by web proxies and browsers. Only
         # applicable if the corresponding StaticFilesHandler (https://cloud.google.com/
         # appengine/docs/admin-api/reference/rest/v1/apps.services.versions#
@@ -1821,19 +1822,19 @@ module Google
         # Corresponds to the JSON property `defaultExpiration`
         # @return [String]
         attr_accessor :default_expiration
-      
+
         # Configuration for third-party Python runtime libraries that are required by
         # the application.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `libraries`
         # @return [Array<Google::Apis::AppengineV1::Library>]
         attr_accessor :libraries
-      
+
         # Files that match this pattern will not be built into this version. Only
         # applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `nobuildFilesRegex`
         # @return [String]
         attr_accessor :nobuild_files_regex
-      
+
         # A service with basic scaling will create an instance when the application
         # receives a request. The instance will be turned down when the app becomes idle.
         # Basic scaling is ideal for work that is intermittent or driven by user
@@ -1841,94 +1842,94 @@ module Google
         # Corresponds to the JSON property `basicScaling`
         # @return [Google::Apis::AppengineV1::BasicScaling]
         attr_accessor :basic_scaling
-      
+
         # Desired runtime. Example: python27.
         # Corresponds to the JSON property `runtime`
         # @return [String]
         attr_accessor :runtime
-      
+
         # Email address of the user who created this version.@OutputOnly
         # Corresponds to the JSON property `createdBy`
         # @return [String]
         attr_accessor :created_by
-      
+
         # Relative name of the version within the service. Example: v1. Version names
         # can contain only lowercase letters, numbers, or hyphens. Reserved names: "
         # default", "latest", and any name with the prefix "ah-".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Environment variables available to the application.Only returned in GET
         # requests if view=FULL is set.
         # Corresponds to the JSON property `envVariables`
         # @return [Hash<String,String>]
         attr_accessor :env_variables
-      
+
         # Health checking configuration for VM instances. Unhealthy instances are killed
         # and replaced with new instances.
         # Corresponds to the JSON property `livenessCheck`
         # @return [Google::Apis::AppengineV1::LivenessCheck]
         attr_accessor :liveness_check
-      
+
         # Extra network settings. Only applicable for VM runtimes.
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::AppengineV1::Network]
         attr_accessor :network
-      
+
         # Metadata settings that are supplied to this version to enable beta runtime
         # features.
         # Corresponds to the JSON property `betaSettings`
         # @return [Hash<String,String>]
         attr_accessor :beta_settings
-      
+
         # App Engine execution environment for this version.Defaults to standard.
         # Corresponds to the JSON property `env`
         # @return [String]
         attr_accessor :env
-      
+
         # An ordered list of URL-matching patterns that should be applied to incoming
         # requests. The first matching URL handles the request and other request
         # handlers are not attempted.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `handlers`
         # @return [Array<Google::Apis::AppengineV1::UrlMap>]
         attr_accessor :handlers
-      
+
         # Automatic scaling is based on request rate, response latencies, and other
         # application metrics.
         # Corresponds to the JSON property `automaticScaling`
         # @return [Google::Apis::AppengineV1::AutomaticScaling]
         attr_accessor :automatic_scaling
-      
+
         # Total size in bytes of all the files that are included in this version and
         # curerntly hosted on the App Engine disk.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
         # @return [Fixnum]
         attr_accessor :disk_usage_bytes
-      
+
         # Health checking configuration for VM instances. Unhealthy instances are killed
         # and replaced with new instances. Only applicable for instances in App Engine
         # flexible environment.
         # Corresponds to the JSON property `healthCheck`
         # @return [Google::Apis::AppengineV1::HealthCheck]
         attr_accessor :health_check
-      
+
         # Whether multiple requests can be dispatched to this version at once.
         # Corresponds to the JSON property `threadsafe`
         # @return [Boolean]
         attr_accessor :threadsafe
-        alias_method :threadsafe?, :threadsafe
-      
+        alias threadsafe? threadsafe
+
         # Readiness checking configuration for VM instances. Unhealthy instances are
         # removed from traffic rotation.
         # Corresponds to the JSON property `readinessCheck`
         # @return [Google::Apis::AppengineV1::ReadinessCheck]
         attr_accessor :readiness_check
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
@@ -1965,64 +1966,63 @@ module Google
           @readiness_check = args[:readiness_check] if args.key?(:readiness_check)
         end
       end
-      
+
       # Request message for 'Applications.RepairApplication'.
       class RepairApplicationRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # Executes a script to handle the request that matches the URL pattern.
       class ScriptHandler
         include Google::Apis::Core::Hashable
-      
+
         # Path to the script from the application root directory.
         # Corresponds to the JSON property `scriptPath`
         # @return [String]
         attr_accessor :script_path
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @script_path = args[:script_path] if args.key?(:script_path)
         end
       end
-      
+
       # Single source file that is part of the version to be deployed. Each source
       # file that is deployed must be specified separately.
       class FileInfo
         include Google::Apis::Core::Hashable
-      
+
         # The SHA1 hash of the file, in hex.
         # Corresponds to the JSON property `sha1Sum`
         # @return [String]
         attr_accessor :sha1_sum
-      
+
         # The MIME type of the file.Defaults to the value from Google Cloud Storage.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
-      
+
         # URL source to use to fetch this file. Must be a URL to a resource in Google
         # Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.
         # Corresponds to the JSON property `sourceUrl`
         # @return [String]
         attr_accessor :source_url
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @sha1_sum = args[:sha1_sum] if args.key?(:sha1_sum)
@@ -2030,42 +2030,42 @@ module Google
           @source_url = args[:source_url] if args.key?(:source_url)
         end
       end
-      
+
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataExperimental
         include Google::Apis::Core::Hashable
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # customDomains/example.com.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # API method that initiated this operation. Example: google.appengine.
         # experimental.CustomDomains.CreateCustomDomain.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @user = args[:user] if args.key?(:user)
@@ -2075,19 +2075,19 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
         end
       end
-      
+
       # Traffic routing configuration for versions within a single service. Traffic
       # splits define how traffic directed to the service is assigned to versions.
       class TrafficSplit
         include Google::Apis::Core::Hashable
-      
+
         # Mechanism used to determine which version a request is sent to. The traffic
         # selection algorithm will be stable for either type until allocations are
         # changed.
         # Corresponds to the JSON property `shardBy`
         # @return [String]
         attr_accessor :shard_by
-      
+
         # Mapping from version IDs within the service to fractional (0.000, 1]
         # allocations of traffic for that version. Each version can be specified only
         # once, but some versions in the service may not have any traffic allocation.
@@ -2098,64 +2098,64 @@ module Google
         # Corresponds to the JSON property `allocations`
         # @return [Hash<String,Float>]
         attr_accessor :allocations
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @shard_by = args[:shard_by] if args.key?(:shard_by)
           @allocations = args[:allocations] if args.key?(:allocations)
         end
       end
-      
+
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1Beta
         include Google::Apis::Core::Hashable
-      
+
         # Durable messages that persist on every operation poll. @OutputOnly
         # Corresponds to the JSON property `warning`
         # @return [Array<String>]
         attr_accessor :warning
-      
+
         # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # Name of the resource that this operation is acting on. Example: apps/myapp/
         # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # Ephemeral message that may change every time the operation is polled. @
         # OutputOnly
         # Corresponds to the JSON property `ephemeralMessage`
         # @return [String]
         attr_accessor :ephemeral_message
-      
+
         # API method that initiated this operation. Example: google.appengine.v1beta.
         # Versions.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
-      
+
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @warning = args[:warning] if args.key?(:warning)
@@ -2167,59 +2167,59 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
         end
       end
-      
+
       # Response message for Services.ListServices.
       class ListServicesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The services belonging to the requested application.
         # Corresponds to the JSON property `services`
         # @return [Array<Google::Apis::AppengineV1::Service>]
         attr_accessor :services
-      
+
         # Continuation token for fetching the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @services = args[:services] if args.key?(:services)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Code and application artifacts used to deploy a version to App Engine.
       class Deployment
         include Google::Apis::Core::Hashable
-      
+
         # Manifest of the files stored in Google Cloud Storage that are included as part
         # of this version. All files must be readable using the credentials supplied
         # with this call.
         # Corresponds to the JSON property `files`
         # @return [Hash<String,Google::Apis::AppengineV1::FileInfo>]
         attr_accessor :files
-      
+
         # The zip file information for a zip deployment.
         # Corresponds to the JSON property `zip`
         # @return [Google::Apis::AppengineV1::ZipInfo]
         attr_accessor :zip
-      
+
         # Docker image that is used to create a container and start a VM instance for
         # the version that you deploy. Only applicable for instances running in the App
         # Engine flexible environment.
         # Corresponds to the JSON property `container`
         # @return [Google::Apis::AppengineV1::ContainerInfo]
         attr_accessor :container
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @files = args[:files] if args.key?(:files)
@@ -2227,35 +2227,35 @@ module Google
           @container = args[:container] if args.key?(:container)
         end
       end
-      
+
       # Machine resources for a version.
       class Resources
         include Google::Apis::Core::Hashable
-      
+
         # User specified volumes.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::AppengineV1::Volume>]
         attr_accessor :volumes
-      
+
         # Disk size (GB) needed.
         # Corresponds to the JSON property `diskGb`
         # @return [Float]
         attr_accessor :disk_gb
-      
+
         # Number of CPU cores needed.
         # Corresponds to the JSON property `cpu`
         # @return [Float]
         attr_accessor :cpu
-      
+
         # Memory (GB) needed.
         # Corresponds to the JSON property `memoryGb`
         # @return [Float]
         attr_accessor :memory_gb
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -2264,30 +2264,30 @@ module Google
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
         end
       end
-      
+
       # Volumes mounted within the app container. Only applicable for VM runtimes.
       class Volume
         include Google::Apis::Core::Hashable
-      
+
         # Underlying volume type, e.g. 'tmpfs'.
         # Corresponds to the JSON property `volumeType`
         # @return [String]
         attr_accessor :volume_type
-      
+
         # Volume size in gigabytes.
         # Corresponds to the JSON property `sizeGb`
         # @return [Float]
         attr_accessor :size_gb
-      
+
         # Unique name for the volume.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @volume_type = args[:volume_type] if args.key?(:volume_type)
@@ -2295,25 +2295,25 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # Response message for Instances.ListInstances.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The instances belonging to the requested version.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::AppengineV1::Instance>]
         attr_accessor :instances
-      
+
         # Continuation token for fetching the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)

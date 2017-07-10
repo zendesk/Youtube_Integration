@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,37 +23,36 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudtraceV1
-      
       class TraceSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListTracesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Trace
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Traces
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TraceSpan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -60,41 +61,41 @@ module Google
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :span_id, :numeric_string => true, as: 'spanId'
-          property :parent_span_id, :numeric_string => true, as: 'parentSpanId'
+          property :span_id, numeric_string: true, as: 'spanId'
+          property :parent_span_id, numeric_string: true, as: 'parentSpanId'
         end
       end
-      
+
       class ListTracesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :traces, as: 'traces', class: Google::Apis::CloudtraceV1::Trace, decorator: Google::Apis::CloudtraceV1::Trace::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
-      
+
       class Trace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project_id, as: 'projectId'
           collection :spans, as: 'spans', class: Google::Apis::CloudtraceV1::TraceSpan, decorator: Google::Apis::CloudtraceV1::TraceSpan::Representation
-      
+
           property :trace_id, as: 'traceId'
         end
       end
-      
+
       class Traces
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :traces, as: 'traces', class: Google::Apis::CloudtraceV1::Trace, decorator: Google::Apis::CloudtraceV1::Trace::Representation
-      
+
         end
       end
     end

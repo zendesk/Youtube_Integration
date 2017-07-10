@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,31 +23,30 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudfunctionsV1
-      
       # Metadata describing an Operation
       class OperationMetadataV1Beta2
         include Google::Apis::Core::Hashable
-      
+
         # Target of the operation - for example
         # projects/project-1/locations/region-1/functions/function-1
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
-      
+
         # The original request that started the operation.
         # Corresponds to the JSON property `request`
         # @return [Hash<String,Object>]
         attr_accessor :request
-      
+
         # Type of operation.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @target = args[:target] if args.key?(:target)

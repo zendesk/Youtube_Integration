@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,7 +62,7 @@ module Google
             end
             @close_io_on_finish = true
           else
-            fail Google::Apis::ClientError, 'Invalid upload source'
+            raise Google::Apis::ClientError, 'Invalid upload source'
           end
           if self.upload_content_type.nil? || self.upload_content_type.empty?
             self.upload_content_type = 'application/octet-stream'
@@ -165,7 +167,7 @@ module Google
             @state = :final
           elsif upload_status == STATUS_CANCELLED
             @state = :cancelled
-            fail Google::Apis::ClientError, body
+            raise Google::Apis::ClientError, body
           end
           super(status, header, body)
         end
@@ -182,9 +184,9 @@ module Google
 
           client.request(method.to_s.upcase,
                          url.to_s, query: nil,
-                         body: body,
-                         header: request_header,
-                         follow_redirect: true)
+                                   body: body,
+                                   header: request_header,
+                                   follow_redirect: true)
         rescue => e
           raise Google::Apis::ServerError, e.message
         end
@@ -204,7 +206,6 @@ module Google
 
           client.post(@upload_url, body: '', header: request_header, follow_redirect: true)
         end
-
 
         # Send the actual content
         #

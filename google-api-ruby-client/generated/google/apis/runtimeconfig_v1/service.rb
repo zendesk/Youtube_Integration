@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,7 +51,7 @@ module Google
           super('https://runtimeconfig.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -81,7 +83,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::RuntimeconfigV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1::Empty::Representation
@@ -91,7 +93,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a long-running operation. This method indicates that the client is
         # no longer interested in the operation result. It does not cancel the
         # operation. If the server doesn't support this method, it returns
@@ -116,7 +118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1::Empty
           command.params['name'] = name unless name.nil?
@@ -124,7 +126,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding allows API services to override the binding
@@ -160,7 +162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::RuntimeconfigV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?

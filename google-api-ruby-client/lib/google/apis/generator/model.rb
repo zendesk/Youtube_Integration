@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +28,7 @@ module Google
         'number' => 'Float',
         'integer' => 'Fixnum',
         'any' => 'Object'
-      }
+      }.freeze
 
       class JsonSchema
         attr_accessor :name
@@ -55,11 +57,11 @@ module Google
             return 'Fixnum' if format == 'uint64'
             return TYPE_MAP[type]
           when 'array'
-            return sprintf('Array<%s>', items.generated_type)
+            sprintf('Array<%s>', items.generated_type)
           when 'hash'
-            return sprintf('Hash<String,%s>', additional_properties.generated_type)
+            sprintf('Hash<String,%s>', additional_properties.generated_type)
           when 'object'
-            return qualified_name
+            qualified_name
           end
         end
       end
@@ -77,16 +79,16 @@ module Google
           return [] if parameters.nil?
           parameters.values.select { |param| param.location == 'query' }
         end
-        
+
         def required_parameters
           return [] if parameter_order.nil? || parameters.nil?
           parameter_order.map { |name| parameters[name] }.select { |param| param.location == 'path' || param.required }
         end
-        
+
         def optional_query_parameters
-          query_parameters.select { |param| param.required != true }
+          query_parameters.reject { |param| param.required == true }
         end
-        
+
       end
 
       class RestResource
@@ -102,10 +104,10 @@ module Google
 
       class RestDescription
         attr_accessor :force_alt_json
-        alias_method :force_alt_json?, :force_alt_json
+        alias force_alt_json? force_alt_json
 
         def version
-          ActiveSupport::Inflector.camelize(@version.gsub(/\W/, '-')).gsub(/-/, '_')
+          ActiveSupport::Inflector.camelize(@version.gsub(/\W/, '-')).tr('-', '_')
         end
 
         def name

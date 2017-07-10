@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'drive/v3/')
           @batch_path = 'batch'
         end
-        
+
         # Gets information about the user, the user's Drive, and system capabilities.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_about(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'about', options)
+          command = make_simple_command(:get, 'about', options)
           command.response_representation = Google::Apis::DriveV3::About::Representation
           command.response_class = Google::Apis::DriveV3::About
           command.query['fields'] = fields unless fields.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the starting pageToken for listing future changes.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
@@ -114,7 +116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_changes_start_page_token(supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'changes/startPageToken', options)
+          command = make_simple_command(:get, 'changes/startPageToken', options)
           command.response_representation = Google::Apis::DriveV3::StartPageToken::Representation
           command.response_class = Google::Apis::DriveV3::StartPageToken
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
@@ -124,7 +126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the changes for a user or Team Drive.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
@@ -177,7 +179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_changes(page_token, include_corpus_removals: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'changes', options)
+          command = make_simple_command(:get, 'changes', options)
           command.response_representation = Google::Apis::DriveV3::ChangeList::Representation
           command.response_class = Google::Apis::DriveV3::ChangeList
           command.query['includeCorpusRemovals'] = include_corpus_removals unless include_corpus_removals.nil?
@@ -194,7 +196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Subscribes to changes for a user.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
@@ -248,7 +250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_change(page_token, channel_object = nil, include_corpus_removals: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'changes/watch', options)
+          command = make_simple_command(:post, 'changes/watch', options)
           command.request_representation = Google::Apis::DriveV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::DriveV3::Channel::Representation
@@ -267,7 +269,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::DriveV3::Channel] channel_object
         # @param [String] fields
@@ -292,7 +294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'channels/stop', options)
+          command = make_simple_command(:post, 'channels/stop', options)
           command.request_representation = Google::Apis::DriveV3::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
@@ -300,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new comment on a file.
         # @param [String] file_id
         #   The ID of the file.
@@ -338,7 +340,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -374,7 +376,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a comment by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -405,7 +407,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_comment(file_id, comment_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/comments/{commentId}', options)
+          command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}', options)
           command.response_representation = Google::Apis::DriveV3::Comment::Representation
           command.response_class = Google::Apis::DriveV3::Comment
           command.params['fileId'] = file_id unless file_id.nil?
@@ -416,7 +418,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's comments.
         # @param [String] file_id
         #   The ID of the file.
@@ -453,7 +455,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments(file_id, include_deleted: nil, page_size: nil, page_token: nil, start_modified_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/comments', options)
+          command = make_simple_command(:get, 'files/{fileId}/comments', options)
           command.response_representation = Google::Apis::DriveV3::CommentList::Representation
           command.response_class = Google::Apis::DriveV3::CommentList
           command.params['fileId'] = file_id unless file_id.nil?
@@ -466,7 +468,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a comment with patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -507,7 +509,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a copy of a file and applies any requested updates with patch
         # semantics.
         # @param [String] file_id
@@ -547,7 +549,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_file(file_id, file_object = nil, ignore_default_visibility: nil, keep_revision_forever: nil, ocr_language: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'files/{fileId}/copy', options)
+          command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV3::File::Representation
           command.request_object = file_object
           command.response_representation = Google::Apis::DriveV3::File::Representation
@@ -562,7 +564,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new file.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] ignore_default_visibility
@@ -606,7 +608,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_file(file_object = nil, ignore_default_visibility: nil, keep_revision_forever: nil, ocr_language: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'files', options)
+            command = make_simple_command(:post, 'files', options)
           else
             command = make_upload_command(:post, 'files', options)
             command.upload_source = upload_source
@@ -626,7 +628,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes a file owned by the user without moving it to the trash.
         # If the file belongs to a Team Drive the user must be an organizer on the
         # parent. If the target is a folder, all descendants owned by the user are also
@@ -657,7 +659,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_file(file_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'files/{fileId}', options)
+          command = make_simple_command(:delete, 'files/{fileId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -665,7 +667,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes all of the user's trashed files.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -689,13 +691,13 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def empty_file_trash(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'files/trash', options)
+          command = make_simple_command(:delete, 'files/trash', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports a Google Doc to the requested MIME type and returns the exported
         # content.
         # @param [String] file_id
@@ -727,7 +729,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_file(file_id, mime_type, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'files/{fileId}/export', options)
+            command = make_simple_command(:get, 'files/{fileId}/export', options)
           else
             command = make_download_command(:get, 'files/{fileId}/export', options)
             command.download_dest = download_dest
@@ -739,7 +741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a set of file IDs which can be provided in create requests.
         # @param [Fixnum] count
         #   The number of IDs to return.
@@ -768,7 +770,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_file_ids(count: nil, space: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/generateIds', options)
+          command = make_simple_command(:get, 'files/generateIds', options)
           command.response_representation = Google::Apis::DriveV3::GeneratedIds::Representation
           command.response_class = Google::Apis::DriveV3::GeneratedIds
           command.query['count'] = count unless count.nil?
@@ -778,7 +780,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a file's metadata or content by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -812,7 +814,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_file(file_id, acknowledge_abuse: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'files/{fileId}', options)
+            command = make_simple_command(:get, 'files/{fileId}', options)
           else
             command = make_download_command(:get, 'files/{fileId}', options)
             command.download_dest = download_dest
@@ -827,7 +829,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists or searches files.
         # @param [String] corpora
         #   Comma-separated list of bodies of items (files/documents) to which the query
@@ -884,7 +886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_files(corpora: nil, corpus: nil, include_team_drive_items: nil, order_by: nil, page_size: nil, page_token: nil, q: nil, spaces: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files', options)
+          command = make_simple_command(:get, 'files', options)
           command.response_representation = Google::Apis::DriveV3::FileList::Representation
           command.response_class = Google::Apis::DriveV3::FileList
           command.query['corpora'] = corpora unless corpora.nil?
@@ -902,7 +904,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a file's metadata and/or content with patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -947,7 +949,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_file(file_id, file_object = nil, add_parents: nil, keep_revision_forever: nil, ocr_language: nil, remove_parents: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:patch, 'files/{fileId}', options)
+            command = make_simple_command(:patch, 'files/{fileId}', options)
           else
             command = make_upload_command(:patch, 'files/{fileId}', options)
             command.upload_source = upload_source
@@ -969,7 +971,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Subscribes to changes to a file
         # @param [String] file_id
         #   The ID of the file.
@@ -1004,7 +1006,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:post, 'files/{fileId}/watch', options)
+            command = make_simple_command(:post, 'files/{fileId}/watch', options)
           else
             command = make_download_command(:post, 'files/{fileId}/watch', options)
             command.download_dest = download_dest
@@ -1021,7 +1023,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a permission for a file or Team Drive.
         # @param [String] file_id
         #   The ID of the file or Team Drive.
@@ -1060,7 +1062,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_permission(file_id, permission_object = nil, email_message: nil, send_notification_email: nil, supports_team_drives: nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'files/{fileId}/permissions', options)
+          command = make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV3::Permission::Representation
           command.request_object = permission_object
           command.response_representation = Google::Apis::DriveV3::Permission::Representation
@@ -1075,7 +1077,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a permission.
         # @param [String] file_id
         #   The ID of the file or Team Drive.
@@ -1105,7 +1107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_permission(file_id, permission_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
+          command = make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
@@ -1114,7 +1116,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a permission by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -1144,7 +1146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_permission(file_id, permission_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/permissions/{permissionId}', options)
+          command = make_simple_command(:get, 'files/{fileId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::DriveV3::Permission::Representation
           command.response_class = Google::Apis::DriveV3::Permission
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1155,7 +1157,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's or Team Drive's permissions.
         # @param [String] file_id
         #   The ID of the file or Team Drive.
@@ -1190,7 +1192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_permissions(file_id, page_size: nil, page_token: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/permissions', options)
+          command = make_simple_command(:get, 'files/{fileId}/permissions', options)
           command.response_representation = Google::Apis::DriveV3::PermissionList::Representation
           command.response_class = Google::Apis::DriveV3::PermissionList
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1202,7 +1204,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a permission with patch semantics.
         # @param [String] file_id
         #   The ID of the file or Team Drive.
@@ -1239,7 +1241,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
+          command = make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV3::Permission::Representation
           command.request_object = permission_object
           command.response_representation = Google::Apis::DriveV3::Permission::Representation
@@ -1254,7 +1256,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new reply to a comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -1283,7 +1285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_reply(file_id, comment_id, reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'files/{fileId}/comments/{commentId}/replies', options)
+          command = make_simple_command(:post, 'files/{fileId}/comments/{commentId}/replies', options)
           command.request_representation = Google::Apis::DriveV3::Reply::Representation
           command.request_object = reply_object
           command.response_representation = Google::Apis::DriveV3::Reply::Representation
@@ -1295,7 +1297,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -1325,7 +1327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_reply(file_id, comment_id, reply_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
+          command = make_simple_command(:delete, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.params['replyId'] = reply_id unless reply_id.nil?
@@ -1334,7 +1336,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reply by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -1367,7 +1369,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reply(file_id, comment_id, reply_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
+          command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.response_representation = Google::Apis::DriveV3::Reply::Representation
           command.response_class = Google::Apis::DriveV3::Reply
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1379,7 +1381,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a comment's replies.
         # @param [String] file_id
         #   The ID of the file.
@@ -1415,7 +1417,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_replies(file_id, comment_id, include_deleted: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies', options)
+          command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies', options)
           command.response_representation = Google::Apis::DriveV3::ReplyList::Representation
           command.response_class = Google::Apis::DriveV3::ReplyList
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1428,7 +1430,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a reply with patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -1459,7 +1461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_reply(file_id, comment_id, reply_id, reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
+          command = make_simple_command(:patch, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.request_representation = Google::Apis::DriveV3::Reply::Representation
           command.request_object = reply_object
           command.response_representation = Google::Apis::DriveV3::Reply::Representation
@@ -1472,7 +1474,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes a revision. This method is only applicable to files with
         # binary content in Drive.
         # @param [String] file_id
@@ -1501,7 +1503,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_revision(file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'files/{fileId}/revisions/{revisionId}', options)
+          command = make_simple_command(:delete, 'files/{fileId}/revisions/{revisionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1509,7 +1511,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a revision's metadata or content by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -1543,7 +1545,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_revision(file_id, revision_id, acknowledge_abuse: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'files/{fileId}/revisions/{revisionId}', options)
+            command = make_simple_command(:get, 'files/{fileId}/revisions/{revisionId}', options)
           else
             command = make_download_command(:get, 'files/{fileId}/revisions/{revisionId}', options)
             command.download_dest = download_dest
@@ -1558,7 +1560,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's revisions.
         # @param [String] file_id
         #   The ID of the file.
@@ -1589,7 +1591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_revisions(file_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'files/{fileId}/revisions', options)
+          command = make_simple_command(:get, 'files/{fileId}/revisions', options)
           command.response_representation = Google::Apis::DriveV3::RevisionList::Representation
           command.response_class = Google::Apis::DriveV3::RevisionList
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1600,7 +1602,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a revision with patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -1629,7 +1631,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'files/{fileId}/revisions/{revisionId}', options)
+          command = make_simple_command(:patch, 'files/{fileId}/revisions/{revisionId}', options)
           command.request_representation = Google::Apis::DriveV3::Revision::Representation
           command.request_object = revision_object
           command.response_representation = Google::Apis::DriveV3::Revision::Representation
@@ -1641,7 +1643,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new Team Drive.
         # @param [String] request_id
         #   An ID, such as a random UUID, which uniquely identifies this user's request
@@ -1672,7 +1674,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_teamdrive(request_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'teamdrives', options)
+          command = make_simple_command(:post, 'teamdrives', options)
           command.request_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.request_object = team_drive_object
           command.response_representation = Google::Apis::DriveV3::TeamDrive::Representation
@@ -1683,7 +1685,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes a Team Drive for which the user is an organizer. The Team
         # Drive cannot contain any untrashed items.
         # @param [String] team_drive_id
@@ -1710,14 +1712,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'teamdrives/{teamDriveId}', options)
+          command = make_simple_command(:delete, 'teamdrives/{teamDriveId}', options)
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a Team Drive's metadata by ID.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
@@ -1743,7 +1745,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'teamdrives/{teamDriveId}', options)
+          command = make_simple_command(:get, 'teamdrives/{teamDriveId}', options)
           command.response_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.response_class = Google::Apis::DriveV3::TeamDrive
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
@@ -1752,7 +1754,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the user's Team Drives.
         # @param [Fixnum] page_size
         #   Maximum number of Team Drives to return.
@@ -1780,7 +1782,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_teamdrives(page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'teamdrives', options)
+          command = make_simple_command(:get, 'teamdrives', options)
           command.response_representation = Google::Apis::DriveV3::TeamDriveList::Representation
           command.response_class = Google::Apis::DriveV3::TeamDriveList
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1790,7 +1792,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Team Drive's metadata
         # @param [String] team_drive_id
         #   The ID of the Team Drive
@@ -1817,7 +1819,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_teamdrive(team_drive_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'teamdrives/{teamDriveId}', options)
+          command = make_simple_command(:patch, 'teamdrives/{teamDriveId}', options)
           command.request_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.request_object = team_drive_object
           command.response_representation = Google::Apis::DriveV3::TeamDrive::Representation

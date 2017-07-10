@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,10 +40,10 @@ module Samples
       edit = android_publisher.insert_edit(package_name)
       apk = android_publisher.upload_apk(package_name, edit.id, upload_source: apk_path)
       android_publisher.update_track(package_name, edit.id, :production,
-        Androidpublisher::Track.new(track: "production", version_codes: [apk.version_code]))
+                                     Androidpublisher::Track.new(track: 'production', version_codes: [apk.version_code]))
       android_publisher.commit_edit(package_name, edit.id)
 
-      say "Upload complete"
+      say 'Upload complete'
     end
   end
 end

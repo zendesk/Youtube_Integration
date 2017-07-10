@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,32 +46,32 @@ RSpec.describe Google::Apis::Core::BatchCommand do
     allow(SecureRandom).to receive(:uuid).and_return('ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f')
     allow(Digest::SHA1).to receive(:hexdigest).and_return('123abc')
 
-    response = <<EOF
---batch123
-Content-Type: application/http
-Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
+    response = <<~EOF
+      --batch123
+      Content-Type: application/http
+      Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
 
-HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
+      HTTP/1.1 200 OK
+      Content-Type: text/plain; charset=UTF-8
 
-Hello
---batch123
-Content-Type: application/http
-Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
+      Hello
+      --batch123
+      Content-Type: application/http
+      Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
 
-HTTP/1.1 500 Server Error
-Content-Type: text/plain; charset=UTF-8
+      HTTP/1.1 500 Server Error
+      Content-Type: text/plain; charset=UTF-8
 
-Error!
---batch123
-Content-Type: application/http
-Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
+      Error!
+      --batch123
+      Content-Type: application/http
+      Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
 
-HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
+      HTTP/1.1 200 OK
+      Content-Type: text/plain; charset=UTF-8
 
-world
---batch123--
+      world
+      --batch123--
 EOF
     stub_request(:post, 'https://www.googleapis.com/batch')
       .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
@@ -82,40 +84,40 @@ EOF
     command.add(post_with_io_command, &b)
     command.execute(client)
 
-    expected_body = <<EOF.gsub(/\n/, "\r\n")
---123abc
-Content-Type: application/http
-Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
-Content-Length: 58
-Content-Transfer-Encoding: binary
+    expected_body = <<~EOF.gsub(/\n/, "\r\n")
+      --123abc
+      Content-Type: application/http
+      Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
+      Content-Length: 58
+      Content-Transfer-Encoding: binary
 
-GET /zoo/animals/1? HTTP/1.1
-Host: www.googleapis.com
+      GET /zoo/animals/1? HTTP/1.1
+      Host: www.googleapis.com
 
 
---123abc
-Content-Type: application/http
-Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
-Content-Length: 96
-Content-Transfer-Encoding: binary
+      --123abc
+      Content-Type: application/http
+      Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
+      Content-Length: 96
+      Content-Transfer-Encoding: binary
 
-POST /zoo/animals/2? HTTP/1.1
-Content-Type: text/plain
-Host: www.googleapis.com
+      POST /zoo/animals/2? HTTP/1.1
+      Content-Type: text/plain
+      Host: www.googleapis.com
 
-Hello world
---123abc
-Content-Type: application/http
-Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
-Content-Length: 93
-Content-Transfer-Encoding: binary
+      Hello world
+      --123abc
+      Content-Type: application/http
+      Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
+      Content-Length: 93
+      Content-Transfer-Encoding: binary
 
-POST /zoo/animals/3? HTTP/1.1
-Content-Type: text/plain
-Host: www.googleapis.com
+      POST /zoo/animals/3? HTTP/1.1
+      Content-Type: text/plain
+      Host: www.googleapis.com
 
-Goodbye!
---123abc--
+      Goodbye!
+      --123abc--
 
 EOF
     expect(a_request(:post, 'https://www.googleapis.com/batch').with(body: expected_body)).to have_been_made
@@ -133,7 +135,7 @@ EOF
         b.to_proc.call(3, res, err)
       end
       command.execute(client)
-    end.to yield_successive_args([1, 'Hello', nil], [3, nil, an_instance_of(Google::Apis::ServerError)], [2, 'world', nil],)
+    end.to yield_successive_args([1, 'Hello', nil], [3, nil, an_instance_of(Google::Apis::ServerError)], [2, 'world', nil])
   end
 
   it 'should raise error if batch is empty' do

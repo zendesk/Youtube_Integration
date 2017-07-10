@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'gmail/v1/users/')
           @batch_path = 'batch'
         end
-        
+
         # Gets the current user's Gmail profile.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -79,7 +81,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_profile(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/profile', options)
+          command = make_simple_command(:get, '{userId}/profile', options)
           command.response_representation = Google::Apis::GmailV1::Profile::Representation
           command.response_class = Google::Apis::GmailV1::Profile
           command.params['userId'] = user_id unless user_id.nil?
@@ -88,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop receiving push notifications for the given user mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -115,14 +117,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/stop', options)
+          command = make_simple_command(:post, '{userId}/stop', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Set up or update a push notification watch on the given user mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -150,7 +152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_user(user_id, watch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/watch', options)
+          command = make_simple_command(:post, '{userId}/watch', options)
           command.request_representation = Google::Apis::GmailV1::WatchRequest::Representation
           command.request_object = watch_request_object
           command.response_representation = Google::Apis::GmailV1::WatchResponse::Representation
@@ -161,7 +163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new draft with the DRAFT label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -194,7 +196,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_draft(user_id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{userId}/drafts', options)
+            command = make_simple_command(:post, '{userId}/drafts', options)
           else
             command = make_upload_command(:post, '{userId}/drafts', options)
             command.upload_source = upload_source
@@ -210,7 +212,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Immediately and permanently deletes the specified draft. Does not simply trash
         # it.
         # @param [String] user_id
@@ -240,7 +242,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_draft(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/drafts/{id}', options)
+          command = make_simple_command(:delete, '{userId}/drafts/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -248,7 +250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified draft.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -279,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_draft(user_id, id, format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/drafts/{id}', options)
+          command = make_simple_command(:get, '{userId}/drafts/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Draft::Representation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
@@ -290,7 +292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the drafts in the user's mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -327,7 +329,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_drafts(user_id, include_spam_trash: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/drafts', options)
+          command = make_simple_command(:get, '{userId}/drafts', options)
           command.response_representation = Google::Apis::GmailV1::ListDraftsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListDraftsResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -340,7 +342,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sends the specified, existing draft to the recipients in the To, Cc, and Bcc
         # headers.
         # @param [String] user_id
@@ -374,7 +376,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_user_draft(user_id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{userId}/drafts/send', options)
+            command = make_simple_command(:post, '{userId}/drafts/send', options)
           else
             command = make_upload_command(:post, '{userId}/drafts/send', options)
             command.upload_source = upload_source
@@ -390,7 +392,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replaces a draft's content.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -425,7 +427,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_draft(user_id, id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:put, '{userId}/drafts/{id}', options)
+            command = make_simple_command(:put, '{userId}/drafts/{id}', options)
           else
             command = make_upload_command(:put, '{userId}/drafts/{id}', options)
             command.upload_source = upload_source
@@ -442,7 +444,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the history of all changes to the given mailbox. History results are
         # returned in chronological order (increasing historyId).
         # @param [String] user_id
@@ -489,7 +491,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_histories(user_id, history_types: nil, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/history', options)
+          command = make_simple_command(:get, '{userId}/history', options)
           command.response_representation = Google::Apis::GmailV1::ListHistoryResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListHistoryResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -503,7 +505,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -531,7 +533,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_label(user_id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/labels', options)
+          command = make_simple_command(:post, '{userId}/labels', options)
           command.request_representation = Google::Apis::GmailV1::Label::Representation
           command.request_object = label_object
           command.response_representation = Google::Apis::GmailV1::Label::Representation
@@ -542,7 +544,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Immediately and permanently deletes the specified label and removes it from
         # any messages and threads that it is applied to.
         # @param [String] user_id
@@ -572,7 +574,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_label(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/labels/{id}', options)
+          command = make_simple_command(:delete, '{userId}/labels/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -580,7 +582,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -609,7 +611,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_label(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/labels/{id}', options)
+          command = make_simple_command(:get, '{userId}/labels/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Label::Representation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
@@ -619,7 +621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all labels in the user's mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -646,7 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/labels', options)
+          command = make_simple_command(:get, '{userId}/labels', options)
           command.response_representation = Google::Apis::GmailV1::ListLabelsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListLabelsResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -655,7 +657,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified label. This method supports patch semantics.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -685,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_label(user_id, id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{userId}/labels/{id}', options)
+          command = make_simple_command(:patch, '{userId}/labels/{id}', options)
           command.request_representation = Google::Apis::GmailV1::Label::Representation
           command.request_object = label_object
           command.response_representation = Google::Apis::GmailV1::Label::Representation
@@ -697,7 +699,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -727,7 +729,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_label(user_id, id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/labels/{id}', options)
+          command = make_simple_command(:put, '{userId}/labels/{id}', options)
           command.request_representation = Google::Apis::GmailV1::Label::Representation
           command.request_object = label_object
           command.response_representation = Google::Apis::GmailV1::Label::Representation
@@ -739,7 +741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes many messages by message ID. Provides no guarantees that messages were
         # not already deleted or even existed at all.
         # @param [String] user_id
@@ -768,7 +770,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_messages(user_id, batch_delete_messages_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/messages/batchDelete', options)
+          command = make_simple_command(:post, '{userId}/messages/batchDelete', options)
           command.request_representation = Google::Apis::GmailV1::BatchDeleteMessagesRequest::Representation
           command.request_object = batch_delete_messages_request_object
           command.params['userId'] = user_id unless user_id.nil?
@@ -777,7 +779,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the labels on the specified messages.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -805,7 +807,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_modify_messages(user_id, batch_modify_messages_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/messages/batchModify', options)
+          command = make_simple_command(:post, '{userId}/messages/batchModify', options)
           command.request_representation = Google::Apis::GmailV1::BatchModifyMessagesRequest::Representation
           command.request_object = batch_modify_messages_request_object
           command.params['userId'] = user_id unless user_id.nil?
@@ -814,7 +816,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Immediately and permanently deletes the specified message. This operation
         # cannot be undone. Prefer messages.trash instead.
         # @param [String] user_id
@@ -844,7 +846,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_message(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/messages/{id}', options)
+          command = make_simple_command(:delete, '{userId}/messages/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -852,7 +854,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -897,7 +899,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Imports a message into only this user's mailbox, with standard email delivery
         # scanning and classification similar to receiving via SMTP. Does not send a
         # message.
@@ -943,7 +945,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_user_message(user_id, message_object = nil, deleted: nil, internal_date_source: nil, never_mark_spam: nil, process_for_calendar: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{userId}/messages/import', options)
+            command = make_simple_command(:post, '{userId}/messages/import', options)
           else
             command = make_upload_command(:post, '{userId}/messages/import', options)
             command.upload_source = upload_source
@@ -963,7 +965,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Directly inserts a message into only this user's mailbox similar to IMAP
         # APPEND, bypassing most scanning and classification. Does not send a message.
         # @param [String] user_id
@@ -1002,7 +1004,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user_message(user_id, message_object = nil, deleted: nil, internal_date_source: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{userId}/messages', options)
+            command = make_simple_command(:post, '{userId}/messages', options)
           else
             command = make_upload_command(:post, '{userId}/messages', options)
             command.upload_source = upload_source
@@ -1020,7 +1022,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the messages in the user's mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1060,7 +1062,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/messages', options)
+          command = make_simple_command(:get, '{userId}/messages', options)
           command.response_representation = Google::Apis::GmailV1::ListMessagesResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListMessagesResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -1074,7 +1076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the labels on the specified message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1104,7 +1106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_message(user_id, id, modify_message_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/messages/{id}/modify', options)
+          command = make_simple_command(:post, '{userId}/messages/{id}/modify', options)
           command.request_representation = Google::Apis::GmailV1::ModifyMessageRequest::Representation
           command.request_object = modify_message_request_object
           command.response_representation = Google::Apis::GmailV1::Message::Representation
@@ -1116,7 +1118,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sends the specified message to the recipients in the To, Cc, and Bcc headers.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1149,7 +1151,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_user_message(user_id, message_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{userId}/messages/send', options)
+            command = make_simple_command(:post, '{userId}/messages/send', options)
           else
             command = make_upload_command(:post, '{userId}/messages/send', options)
             command.upload_source = upload_source
@@ -1165,7 +1167,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves the specified message to the trash.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1194,7 +1196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def trash_user_message(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/messages/{id}/trash', options)
+          command = make_simple_command(:post, '{userId}/messages/{id}/trash', options)
           command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -1204,7 +1206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified message from the trash.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1233,7 +1235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def untrash_user_message(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/messages/{id}/untrash', options)
+          command = make_simple_command(:post, '{userId}/messages/{id}/untrash', options)
           command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -1243,7 +1245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified message attachment.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1285,7 +1287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the auto-forwarding setting for the specified account.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1312,7 +1314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_auto_forwarding(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/autoForwarding', options)
+          command = make_simple_command(:get, '{userId}/settings/autoForwarding', options)
           command.response_representation = Google::Apis::GmailV1::AutoForwarding::Representation
           command.response_class = Google::Apis::GmailV1::AutoForwarding
           command.params['userId'] = user_id unless user_id.nil?
@@ -1321,7 +1323,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets IMAP settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1348,7 +1350,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_imap(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/imap', options)
+          command = make_simple_command(:get, '{userId}/settings/imap', options)
           command.response_representation = Google::Apis::GmailV1::ImapSettings::Representation
           command.response_class = Google::Apis::GmailV1::ImapSettings
           command.params['userId'] = user_id unless user_id.nil?
@@ -1357,7 +1359,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets POP settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1384,7 +1386,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_pop(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/pop', options)
+          command = make_simple_command(:get, '{userId}/settings/pop', options)
           command.response_representation = Google::Apis::GmailV1::PopSettings::Representation
           command.response_class = Google::Apis::GmailV1::PopSettings
           command.params['userId'] = user_id unless user_id.nil?
@@ -1393,7 +1395,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets vacation responder settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1420,7 +1422,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_vacation(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/vacation', options)
+          command = make_simple_command(:get, '{userId}/settings/vacation', options)
           command.response_representation = Google::Apis::GmailV1::VacationSettings::Representation
           command.response_class = Google::Apis::GmailV1::VacationSettings
           command.params['userId'] = user_id unless user_id.nil?
@@ -1429,7 +1431,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the auto-forwarding setting for the specified account. A verified
         # forwarding address must be specified when auto-forwarding is enabled.
         # This method is only available to service account clients that have been
@@ -1460,7 +1462,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_setting_auto_forwarding(user_id, auto_forwarding_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/settings/autoForwarding', options)
+          command = make_simple_command(:put, '{userId}/settings/autoForwarding', options)
           command.request_representation = Google::Apis::GmailV1::AutoForwarding::Representation
           command.request_object = auto_forwarding_object
           command.response_representation = Google::Apis::GmailV1::AutoForwarding::Representation
@@ -1471,7 +1473,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates IMAP settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1499,7 +1501,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_setting_imap(user_id, imap_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/settings/imap', options)
+          command = make_simple_command(:put, '{userId}/settings/imap', options)
           command.request_representation = Google::Apis::GmailV1::ImapSettings::Representation
           command.request_object = imap_settings_object
           command.response_representation = Google::Apis::GmailV1::ImapSettings::Representation
@@ -1510,7 +1512,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates POP settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1538,7 +1540,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_setting_pop(user_id, pop_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/settings/pop', options)
+          command = make_simple_command(:put, '{userId}/settings/pop', options)
           command.request_representation = Google::Apis::GmailV1::PopSettings::Representation
           command.request_object = pop_settings_object
           command.response_representation = Google::Apis::GmailV1::PopSettings::Representation
@@ -1549,7 +1551,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates vacation responder settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1577,7 +1579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_setting_vacation(user_id, vacation_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/settings/vacation', options)
+          command = make_simple_command(:put, '{userId}/settings/vacation', options)
           command.request_representation = Google::Apis::GmailV1::VacationSettings::Representation
           command.request_object = vacation_settings_object
           command.response_representation = Google::Apis::GmailV1::VacationSettings::Representation
@@ -1588,7 +1590,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a filter.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1616,7 +1618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_setting_filter(user_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/filters', options)
+          command = make_simple_command(:post, '{userId}/settings/filters', options)
           command.request_representation = Google::Apis::GmailV1::Filter::Representation
           command.request_object = filter_object
           command.response_representation = Google::Apis::GmailV1::Filter::Representation
@@ -1627,7 +1629,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a filter.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1656,7 +1658,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_setting_filter(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/settings/filters/{id}', options)
+          command = make_simple_command(:delete, '{userId}/settings/filters/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1664,7 +1666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a filter.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1693,7 +1695,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_filter(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/filters/{id}', options)
+          command = make_simple_command(:get, '{userId}/settings/filters/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Filter::Representation
           command.response_class = Google::Apis::GmailV1::Filter
           command.params['userId'] = user_id unless user_id.nil?
@@ -1703,7 +1705,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the message filters of a Gmail user.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1730,7 +1732,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_setting_filters(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/filters', options)
+          command = make_simple_command(:get, '{userId}/settings/filters', options)
           command.response_representation = Google::Apis::GmailV1::ListFiltersResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListFiltersResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -1739,7 +1741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a forwarding address. If ownership verification is required, a message
         # will be sent to the recipient and the resource's verification status will be
         # set to pending; otherwise, the resource will be created with verification
@@ -1772,7 +1774,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_setting_forwarding_address(user_id, forwarding_address_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/forwardingAddresses', options)
+          command = make_simple_command(:post, '{userId}/settings/forwardingAddresses', options)
           command.request_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
           command.request_object = forwarding_address_object
           command.response_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
@@ -1783,7 +1785,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified forwarding address and revokes any verification that may
         # have been required.
         # This method is only available to service account clients that have been
@@ -1815,7 +1817,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_setting_forwarding_address(user_id, forwarding_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
+          command = make_simple_command(:delete, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['forwardingEmail'] = forwarding_email unless forwarding_email.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1823,7 +1825,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified forwarding address.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1852,7 +1854,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_forwarding_address(user_id, forwarding_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
+          command = make_simple_command(:get, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
           command.response_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
           command.response_class = Google::Apis::GmailV1::ForwardingAddress
           command.params['userId'] = user_id unless user_id.nil?
@@ -1862,7 +1864,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the forwarding addresses for the specified account.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1889,7 +1891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_setting_forwarding_addresses(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/forwardingAddresses', options)
+          command = make_simple_command(:get, '{userId}/settings/forwardingAddresses', options)
           command.response_representation = Google::Apis::GmailV1::ListForwardingAddressesResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListForwardingAddressesResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -1898,7 +1900,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will
         # attempt to connect to the SMTP service to validate the configuration before
         # creating the alias. If ownership verification is required for the alias, a
@@ -1934,7 +1936,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_setting_send_as(user_id, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/sendAs', options)
+          command = make_simple_command(:post, '{userId}/settings/sendAs', options)
           command.request_representation = Google::Apis::GmailV1::SendAs::Representation
           command.request_object = send_as_object
           command.response_representation = Google::Apis::GmailV1::SendAs::Representation
@@ -1945,7 +1947,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified send-as alias. Revokes any verification that may have
         # been required for using it.
         # This method is only available to service account clients that have been
@@ -1977,7 +1979,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command = make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1985,7 +1987,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified send-as alias. Fails with an HTTP 404 error if the
         # specified address is not a member of the collection.
         # @param [String] user_id
@@ -2015,7 +2017,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command = make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}', options)
           command.response_representation = Google::Apis::GmailV1::SendAs::Representation
           command.response_class = Google::Apis::GmailV1::SendAs
           command.params['userId'] = user_id unless user_id.nil?
@@ -2025,7 +2027,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the send-as aliases for the specified account. The result includes the
         # primary send-as address associated with the account as well as any custom "
         # from" aliases.
@@ -2054,7 +2056,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_setting_send_as(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/sendAs', options)
+          command = make_simple_command(:get, '{userId}/settings/sendAs', options)
           command.response_representation = Google::Apis::GmailV1::ListSendAsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListSendAsResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -2063,7 +2065,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
         # HTML before saving it with the alias.
         # Addresses other than the primary address for the account can only be updated
@@ -2097,7 +2099,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_setting_send_as(user_id, send_as_email, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command = make_simple_command(:patch, '{userId}/settings/sendAs/{sendAsEmail}', options)
           command.request_representation = Google::Apis::GmailV1::SendAs::Representation
           command.request_object = send_as_object
           command.response_representation = Google::Apis::GmailV1::SendAs::Representation
@@ -2109,7 +2111,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
         # HTML before saving it with the alias.
         # Addresses other than the primary address for the account can only be updated
@@ -2142,7 +2144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_setting_send_as(user_id, send_as_email, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command = make_simple_command(:put, '{userId}/settings/sendAs/{sendAsEmail}', options)
           command.request_representation = Google::Apis::GmailV1::SendAs::Representation
           command.request_object = send_as_object
           command.response_representation = Google::Apis::GmailV1::SendAs::Representation
@@ -2154,7 +2156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sends a verification email to the specified send-as alias address. The
         # verification status must be pending.
         # This method is only available to service account clients that have been
@@ -2186,7 +2188,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def verify_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/verify', options)
+          command = make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/verify', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2194,7 +2196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified S/MIME config for the specified send-as alias.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2226,7 +2228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_setting_send_a_smime_info(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
+          command = make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
           command.params['id'] = id unless id.nil?
@@ -2235,7 +2237,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified S/MIME config for the specified send-as alias.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2267,7 +2269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_setting_send_a_smime_info(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
+          command = make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
           command.response_representation = Google::Apis::GmailV1::SmimeInfo::Representation
           command.response_class = Google::Apis::GmailV1::SmimeInfo
           command.params['userId'] = user_id unless user_id.nil?
@@ -2278,7 +2280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert (upload) the given S/MIME config for the specified send-as alias. Note
         # that pkcs12 format is required for the key.
         # @param [String] user_id
@@ -2310,7 +2312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user_setting_send_a_smime_info(user_id, send_as_email, smime_info_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
+          command = make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
           command.request_representation = Google::Apis::GmailV1::SmimeInfo::Representation
           command.request_object = smime_info_object
           command.response_representation = Google::Apis::GmailV1::SmimeInfo::Representation
@@ -2322,7 +2324,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists S/MIME configs for the specified send-as alias.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2352,7 +2354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_setting_send_a_smime_infos(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
+          command = make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
           command.response_representation = Google::Apis::GmailV1::ListSmimeInfoResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListSmimeInfoResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -2362,7 +2364,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the default S/MIME config for the specified send-as alias.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2394,7 +2396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_user_setting_send_a_smime_info_default(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', options)
+          command = make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
           command.params['id'] = id unless id.nil?
@@ -2403,7 +2405,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Immediately and permanently deletes the specified thread. This operation
         # cannot be undone. Prefer threads.trash instead.
         # @param [String] user_id
@@ -2433,7 +2435,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_thread(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{userId}/threads/{id}', options)
+          command = make_simple_command(:delete, '{userId}/threads/{id}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2441,7 +2443,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified thread.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2474,7 +2476,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_thread(user_id, id, format: nil, metadata_headers: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/threads/{id}', options)
+          command = make_simple_command(:get, '{userId}/threads/{id}', options)
           command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
@@ -2486,7 +2488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the threads in the user's mailbox.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2526,7 +2528,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{userId}/threads', options)
+          command = make_simple_command(:get, '{userId}/threads', options)
           command.response_representation = Google::Apis::GmailV1::ListThreadsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListThreadsResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -2540,7 +2542,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the labels applied to the thread. This applies to all messages in the
         # thread.
         # @param [String] user_id
@@ -2571,7 +2573,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_thread(user_id, id, modify_thread_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/threads/{id}/modify', options)
+          command = make_simple_command(:post, '{userId}/threads/{id}/modify', options)
           command.request_representation = Google::Apis::GmailV1::ModifyThreadRequest::Representation
           command.request_object = modify_thread_request_object
           command.response_representation = Google::Apis::GmailV1::Thread::Representation
@@ -2583,7 +2585,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves the specified thread to the trash.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2612,7 +2614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def trash_user_thread(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/threads/{id}/trash', options)
+          command = make_simple_command(:post, '{userId}/threads/{id}/trash', options)
           command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
@@ -2622,7 +2624,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified thread from the trash.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -2651,7 +2653,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def untrash_user_thread(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{userId}/threads/{id}/untrash', options)
+          command = make_simple_command(:post, '{userId}/threads/{id}/untrash', options)
           command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?

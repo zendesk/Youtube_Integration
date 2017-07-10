@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://cloudkms.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -75,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -86,7 +88,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -108,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1::Location::Representation
           command.response_class = Google::Apis::CloudkmsV1::Location
           command.params['name'] = name unless name.nil?
@@ -116,7 +118,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -141,7 +143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_key_ring_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -149,7 +151,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns metadata for a given KeyRing.
         # @param [String] name
         #   The name of the KeyRing to get.
@@ -171,7 +173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_key_ring(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1::KeyRing::Representation
           command.response_class = Google::Apis::CloudkmsV1::KeyRing
           command.params['name'] = name unless name.nil?
@@ -179,7 +181,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -208,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_key_ring_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudkmsV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudkmsV1::TestIamPermissionsResponse::Representation
@@ -218,7 +220,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists KeyRings.
         # @param [String] parent
         #   Required. The resource name of the location associated with the
@@ -249,7 +251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_key_rings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/keyRings', options)
+          command = make_simple_command(:get, 'v1/{+parent}/keyRings', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListKeyRingsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListKeyRingsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -259,7 +261,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new KeyRing in a given Project and Location.
         # @param [String] parent
         #   Required. The resource name of the location associated with the
@@ -286,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_key_ring(parent, key_ring_object = nil, key_ring_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/keyRings', options)
+          command = make_simple_command(:post, 'v1/{+parent}/keyRings', options)
           command.request_representation = Google::Apis::CloudkmsV1::KeyRing::Representation
           command.request_object = key_ring_object
           command.response_representation = Google::Apis::CloudkmsV1::KeyRing::Representation
@@ -297,7 +299,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -322,7 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_key_ring_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudkmsV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
@@ -332,7 +334,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists CryptoKeys.
         # @param [String] parent
         #   Required. The resource name of the KeyRing to list, in the format
@@ -363,7 +365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_key_ring_crypto_keys(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/cryptoKeys', options)
+          command = make_simple_command(:get, 'v1/{+parent}/cryptoKeys', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeysResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeysResponse
           command.params['parent'] = parent unless parent.nil?
@@ -373,7 +375,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Encrypts data, so that it can only be recovered by a call to Decrypt.
         # @param [String] name
         #   Required. The resource name of the CryptoKey or CryptoKeyVersion
@@ -399,7 +401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def encrypt_crypto_key(name, encrypt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:encrypt', options)
+          command = make_simple_command(:post, 'v1/{+name}:encrypt', options)
           command.request_representation = Google::Apis::CloudkmsV1::EncryptRequest::Representation
           command.request_object = encrypt_request_object
           command.response_representation = Google::Apis::CloudkmsV1::EncryptResponse::Representation
@@ -409,7 +411,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new CryptoKey within a KeyRing.
         # CryptoKey.purpose is required.
         # @param [String] parent
@@ -437,7 +439,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_key_ring_crypto_key(parent, crypto_key_object = nil, crypto_key_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/cryptoKeys', options)
+          command = make_simple_command(:post, 'v1/{+parent}/cryptoKeys', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.request_object = crypto_key_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
@@ -448,7 +450,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -473,7 +475,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_crypto_key_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudkmsV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
@@ -483,7 +485,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the version of a CryptoKey that will be used in Encrypt
         # @param [String] name
         #   The resource name of the CryptoKey to update.
@@ -506,7 +508,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_key_ring_crypto_key_primary_version(name, update_crypto_key_primary_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:updatePrimaryVersion', options)
+          command = make_simple_command(:post, 'v1/{+name}:updatePrimaryVersion', options)
           command.request_representation = Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest::Representation
           command.request_object = update_crypto_key_primary_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
@@ -516,7 +518,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -541,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_key_ring_crypto_key_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -549,7 +551,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns metadata for a given CryptoKey, as well as its
         # primary CryptoKeyVersion.
         # @param [String] name
@@ -572,7 +574,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_key_ring_crypto_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.response_class = Google::Apis::CloudkmsV1::CryptoKey
           command.params['name'] = name unless name.nil?
@@ -580,7 +582,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a CryptoKey.
         # @param [String] name
         #   Output only. The resource name for this CryptoKey in the format
@@ -606,7 +608,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_key_ring_crypto_key(name, crypto_key_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.request_object = crypto_key_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
@@ -617,7 +619,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -646,7 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_crypto_key_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudkmsV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudkmsV1::TestIamPermissionsResponse::Representation
@@ -656,7 +658,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Decrypts data that was protected by Encrypt.
         # @param [String] name
         #   Required. The resource name of the CryptoKey to use for decryption.
@@ -680,7 +682,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def decrypt_crypto_key(name, decrypt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:decrypt', options)
+          command = make_simple_command(:post, 'v1/{+name}:decrypt', options)
           command.request_representation = Google::Apis::CloudkmsV1::DecryptRequest::Representation
           command.request_object = decrypt_request_object
           command.response_representation = Google::Apis::CloudkmsV1::DecryptResponse::Representation
@@ -690,7 +692,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a CryptoKeyVersion's metadata.
         # state may be changed between
         # ENABLED and
@@ -721,7 +723,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_key_ring_crypto_key_crypto_key_version(name, crypto_key_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
           command.request_object = crypto_key_version_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
@@ -732,7 +734,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns metadata for a given CryptoKeyVersion.
         # @param [String] name
         #   The name of the CryptoKeyVersion to get.
@@ -754,7 +756,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_key_ring_crypto_key_crypto_key_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
           command.response_class = Google::Apis::CloudkmsV1::CryptoKeyVersion
           command.params['name'] = name unless name.nil?
@@ -762,7 +764,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists CryptoKeyVersions.
         # @param [String] parent
         #   Required. The resource name of the CryptoKey to list, in the format
@@ -794,7 +796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/cryptoKeyVersions', options)
+          command = make_simple_command(:get, 'v1/{+parent}/cryptoKeyVersions', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -804,7 +806,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new CryptoKeyVersion in a CryptoKey.
         # The server will assign the next sequential id. If unset,
         # state will be set to
@@ -831,7 +833,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_key_ring_crypto_key_crypto_key_version(parent, crypto_key_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/cryptoKeyVersions', options)
+          command = make_simple_command(:post, 'v1/{+parent}/cryptoKeyVersions', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
           command.request_object = crypto_key_version_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
@@ -841,7 +843,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Schedule a CryptoKeyVersion for destruction.
         # Upon calling this method, CryptoKeyVersion.state will be set to
         # DESTROY_SCHEDULED
@@ -873,7 +875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def destroy_crypto_key_version(name, destroy_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:destroy', options)
+          command = make_simple_command(:post, 'v1/{+name}:destroy', options)
           command.request_representation = Google::Apis::CloudkmsV1::DestroyCryptoKeyVersionRequest::Representation
           command.request_object = destroy_crypto_key_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
@@ -883,7 +885,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restore a CryptoKeyVersion in the
         # DESTROY_SCHEDULED,
         # state.
@@ -911,7 +913,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def restore_crypto_key_version(name, restore_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:restore', options)
+          command = make_simple_command(:post, 'v1/{+name}:restore', options)
           command.request_representation = Google::Apis::CloudkmsV1::RestoreCryptoKeyVersionRequest::Representation
           command.request_object = restore_crypto_key_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation

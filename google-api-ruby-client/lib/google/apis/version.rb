@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,9 @@ module Google
     # Current operating system
     # @private
     OS_VERSION = begin
-      if RUBY_PLATFORM =~ /mswin|win32|mingw|bccwin|cygwin/
+      if RUBY_PLATFORM.match?(/mswin|win32|mingw|bccwin|cygwin/)
         `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '').strip
-      elsif RUBY_PLATFORM =~ /darwin/i
+      elsif RUBY_PLATFORM.match?(/darwin/i)
         "Mac OS X/#{`sw_vers -productVersion`}"
       elsif RUBY_PLATFORM == 'java'
         require 'java'

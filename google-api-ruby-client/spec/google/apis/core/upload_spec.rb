@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,7 +69,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
 
   context('with Tempfile input') do
     let(:file) do
-      temp_file = Tempfile.new("tempfile")
+      temp_file = Tempfile.new('tempfile')
       temp_file.write("Hello world\n")
       temp_file.rewind
       temp_file
@@ -110,18 +112,18 @@ RSpec.describe Google::Apis::Core::MultipartUploadCommand do
   end
 
   it 'should send content' do
-    expected_body = <<EOF.gsub(/\n/, "\r\n")
---123abc
-Content-Type: application/json
+    expected_body = <<~EOF.gsub(/\n/, "\r\n")
+      --123abc
+      Content-Type: application/json
 
-metadata
---123abc
-Content-Type: text/plain
-Content-Length: 11
-Content-Transfer-Encoding: binary
+      metadata
+      --123abc
+      Content-Type: text/plain
+      Content-Length: 11
+      Content-Transfer-Encoding: binary
 
-Hello world
---123abc--
+      Hello world
+      --123abc--
 
 EOF
     command.execute(client)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'blogger/v3/')
           @batch_path = 'batch'
         end
-        
+
         # Gets one blog and user info pair by blogId and userId.
         # @param [String] user_id
         #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
@@ -83,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_blog_user_info(user_id, blog_id, max_posts: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userId}/blogs/{blogId}', options)
+          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}', options)
           command.response_representation = Google::Apis::BloggerV3::BlogUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::BlogUserInfo
           command.params['userId'] = user_id unless user_id.nil?
@@ -94,7 +96,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one blog by ID.
         # @param [String] blog_id
         #   The ID of the blog to get.
@@ -125,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_blog(blog_id, max_posts: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}', options)
+          command = make_simple_command(:get, 'blogs/{blogId}', options)
           command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -136,7 +138,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a Blog by URL.
         # @param [String] url
         #   The URL of the blog to retrieve.
@@ -165,7 +167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_blog_by_url(url, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/byurl', options)
+          command = make_simple_command(:get, 'blogs/byurl', options)
           command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.query['url'] = url unless url.nil?
@@ -175,7 +177,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of blogs, possibly filtered.
         # @param [String] user_id
         #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
@@ -215,7 +217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_blogs_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userId}/blogs', options)
+          command = make_simple_command(:get, 'users/{userId}/blogs', options)
           command.response_representation = Google::Apis::BloggerV3::BlogList::Representation
           command.response_class = Google::Apis::BloggerV3::BlogList
           command.params['userId'] = user_id unless user_id.nil?
@@ -228,7 +230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks a comment as not spam.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -258,7 +260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def approve_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -269,7 +271,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a comment by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -308,7 +310,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one comment by ID.
         # @param [String] blog_id
         #   ID of the blog to containing the comment.
@@ -343,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_comment(blog_id, post_id, comment_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -355,7 +357,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the comments for a post, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch comments from.
@@ -397,7 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments(blog_id, post_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments', options)
           command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -414,7 +416,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the comments for a blog, across all posts, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch comments from.
@@ -451,7 +453,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/comments', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/comments', options)
           command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -466,7 +468,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks a comment as spam.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -496,7 +498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def mark_comment_as_spam(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -507,7 +509,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the content of a comment.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -548,7 +550,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve pageview stats for a Blog.
         # @param [String] blog_id
         #   The ID of the blog to get.
@@ -575,7 +577,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_page_view(blog_id, range: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/pageviews', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/pageviews', options)
           command.response_representation = Google::Apis::BloggerV3::Pageviews::Representation
           command.response_class = Google::Apis::BloggerV3::Pageviews
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -585,7 +587,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a page by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -613,7 +615,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'blogs/{blogId}/pages/{pageId}', options)
+          command = make_simple_command(:delete, 'blogs/{blogId}/pages/{pageId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -621,7 +623,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one blog page by ID.
         # @param [String] blog_id
         #   ID of the blog containing the page.
@@ -650,7 +652,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_page(blog_id, page_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/pages/{pageId}', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/pages/{pageId}', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -661,7 +663,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a page.
         # @param [String] blog_id
         #   ID of the blog to add the page to.
@@ -690,7 +692,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_page(blog_id, page_object = nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/pages', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/pages', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -702,7 +704,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the pages for a blog, optionally including non-LIVE statuses.
         # @param [String] blog_id
         #   ID of the blog to fetch Pages from.
@@ -738,7 +740,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pages(blog_id, fetch_bodies: nil, max_results: nil, page_token: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/pages', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/pages', options)
           command.response_representation = Google::Apis::BloggerV3::PageList::Representation
           command.response_class = Google::Apis::BloggerV3::PageList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -752,7 +754,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a page. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -787,7 +789,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'blogs/{blogId}/pages/{pageId}', options)
+          command = make_simple_command(:patch, 'blogs/{blogId}/pages/{pageId}', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -801,7 +803,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Publishes a draft page.
         # @param [String] blog_id
         #   The ID of the blog.
@@ -829,7 +831,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/publish', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/publish', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -839,7 +841,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revert a published or scheduled page to draft state.
         # @param [String] blog_id
         #   The ID of the blog.
@@ -867,7 +869,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def revert_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/revert', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/revert', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -877,7 +879,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a page.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -912,7 +914,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'blogs/{blogId}/pages/{pageId}', options)
+          command = make_simple_command(:put, 'blogs/{blogId}/pages/{pageId}', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -926,7 +928,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one post and user info pair, by post ID and user ID. The post user info
         # contains per-user information about the post, such as access rights, specific
         # to the user.
@@ -961,7 +963,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_post_user_info(user_id, blog_id, post_id, max_comments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts/{postId}', options)
+          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts/{postId}', options)
           command.response_representation = Google::Apis::BloggerV3::PostUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfo
           command.params['userId'] = user_id unless user_id.nil?
@@ -973,7 +975,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of post and post user info pairs, possibly filtered. The post
         # user info contains per-user information about the post, such as access rights,
         # specific to the user.
@@ -1022,7 +1024,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_post_user_info(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts', options)
+          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostUserInfosList::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfosList
           command.params['userId'] = user_id unless user_id.nil?
@@ -1041,7 +1043,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a post by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1069,7 +1071,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_post(blog_id, post_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'blogs/{blogId}/posts/{postId}', options)
+          command = make_simple_command(:delete, 'blogs/{blogId}/posts/{postId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1077,7 +1079,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a post by ID.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1116,7 +1118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_post(blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts/{postId}', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1130,7 +1132,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a Post by Path.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1163,7 +1165,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_post_by_path(blog_id, path, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts/bypath', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts/bypath', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1175,7 +1177,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a post.
         # @param [String] blog_id
         #   ID of the blog to add the post to.
@@ -1210,7 +1212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_post(blog_id, post_object = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/posts', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/posts', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1224,7 +1226,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of posts, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch posts from.
@@ -1272,7 +1274,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1291,7 +1293,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a post. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1334,7 +1336,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'blogs/{blogId}/posts/{postId}', options)
+          command = make_simple_command(:patch, 'blogs/{blogId}/posts/{postId}', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1351,7 +1353,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Publishes a draft post, optionally at the specific time of the given
         # publishDate parameter.
         # @param [String] blog_id
@@ -1385,7 +1387,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_post(blog_id, post_id, publish_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/publish', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/publish', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1396,7 +1398,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revert a published or scheduled post to draft state.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1424,7 +1426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def revert_post(blog_id, post_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/revert', options)
+          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/revert', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1434,7 +1436,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search for a post.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1467,7 +1469,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_posts(blog_id, q, fetch_bodies: nil, order_by: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'blogs/{blogId}/posts/search', options)
+          command = make_simple_command(:get, 'blogs/{blogId}/posts/search', options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1479,7 +1481,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a post.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1522,7 +1524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'blogs/{blogId}/posts/{postId}', options)
+          command = make_simple_command(:put, 'blogs/{blogId}/posts/{postId}', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1539,7 +1541,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user by ID.
         # @param [String] user_id
         #   The ID of the user to get.
@@ -1565,7 +1567,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userId}', options)
+          command = make_simple_command(:get, 'users/{userId}', options)
           command.response_representation = Google::Apis::BloggerV3::User::Representation
           command.response_class = Google::Apis::BloggerV3::User
           command.params['userId'] = user_id unless user_id.nil?

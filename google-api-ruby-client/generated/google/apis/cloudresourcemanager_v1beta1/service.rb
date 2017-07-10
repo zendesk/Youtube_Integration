@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://cloudresourcemanager.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested.
@@ -71,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsResponse::Representation
@@ -81,7 +83,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks the Project identified by the specified
         # `project_id` (for example, `my-project-123`) for deletion.
         # This method will only affect the Project if the following criteria are met:
@@ -122,7 +124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project(project_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/projects/{projectId}', options)
+          command = make_simple_command(:delete, 'v1beta1/projects/{projectId}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Empty::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -130,7 +132,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Projects that are visible to the user and satisfy the
         # specified filter. This method returns Projects in an unspecified order.
         # New Projects do not necessarily appear at the end of the list.
@@ -179,7 +181,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_projects(filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/projects', options)
+          command = make_simple_command(:get, 'v1beta1/projects', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::ListProjectsResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::ListProjectsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -189,7 +191,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Project resource.
         # Initially, the Project resource is owned by its creator exclusively.
         # The creator can later grant permission to others to read or update the
@@ -217,7 +219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project(project_object = nil, use_legacy_stack: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects', options)
+          command = make_simple_command(:post, 'v1beta1/projects', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
@@ -227,7 +229,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the IAM access control policy for the specified Project. Replaces
         # any existing policy.
         # The following constraints apply when using `setIamPolicy()`:
@@ -278,7 +280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
@@ -288,7 +290,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the IAM access control policy for the specified Project.
         # Permission is denied if the policy or the resource does not exist.
         # @param [String] resource
@@ -313,7 +315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
@@ -323,7 +325,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores the Project identified by the specified
         # `project_id` (for example, `my-project-123`).
         # You can only use this method for a Project that has a lifecycle state of
@@ -352,7 +354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_project(project_id, undelete_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:undelete', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{projectId}:undelete', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::UndeleteProjectRequest::Representation
           command.request_object = undelete_project_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Empty::Representation
@@ -362,7 +364,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the Project identified by the specified
         # `project_id` (for example, `my-project-123`).
         # The caller must have read permissions for this Project.
@@ -387,7 +389,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(project_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/projects/{projectId}', options)
+          command = make_simple_command(:get, 'v1beta1/projects/{projectId}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::Project
           command.params['projectId'] = project_id unless project_id.nil?
@@ -395,7 +397,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of ancestors in the resource hierarchy for the Project
         # identified by the specified `project_id` (for example, `my-project-123`).
         # The caller must have read permissions for this Project.
@@ -421,7 +423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_ancestry(project_id, get_ancestry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:getAncestry', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{projectId}:getAncestry', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::GetAncestryRequest::Representation
           command.request_object = get_ancestry_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::GetAncestryResponse::Representation
@@ -431,7 +433,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the attributes of the Project identified by the specified
         # `project_id` (for example, `my-project-123`).
         # The caller must have modify permissions for this Project.
@@ -457,7 +459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project(project_id, project_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/projects/{projectId}', options)
+          command = make_simple_command(:put, 'v1beta1/projects/{projectId}', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
@@ -467,7 +469,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Organization resources that are visible to the user and satisfy
         # the specified filter. This method returns Organizations in an unspecified
         # order. New Organizations do not necessarily appear at the end of the list.
@@ -507,7 +509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organizations(page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/organizations', options)
+          command = make_simple_command(:get, 'v1beta1/organizations', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::ListOrganizationsResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::ListOrganizationsResponse
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -517,7 +519,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on an Organization resource. Replaces any
         # existing policy. The `resource` field should be the organization's resource
         # name, e.g. "organizations/123".
@@ -543,7 +545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_organization_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
@@ -553,7 +555,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for an Organization resource. May be empty
         # if no such policy or resource exists. The `resource` field should be the
         # organization's resource name, e.g. "organizations/123".
@@ -579,7 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
@@ -589,7 +591,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches an Organization resource identified by the specified resource name.
         # @param [String] name
         #   The resource name of the Organization to fetch, e.g. "organizations/1234".
@@ -614,7 +616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization(name, organization_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::Organization
           command.params['name'] = name unless name.nil?
@@ -623,7 +625,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an Organization resource identified by the specified resource name.
         # @param [String] name
         #   Output Only. The resource name of the organization. This is the
@@ -648,7 +650,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization(name, organization_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
           command.request_object = organization_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
@@ -658,7 +660,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified Organization.
         # The `resource` field should be the organization's resource name,
         # e.g. "organizations/123".
@@ -684,7 +686,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_organization_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsResponse::Representation

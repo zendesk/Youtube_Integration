@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,9 +33,9 @@ module Google
         def self.process_value(val)
           case val
           when Hash
-            Hash[val.map {|k, v| [k.to_sym, Hashable.process_value(v)] }]
+            Hash[val.map { |k, v| [k.to_sym, Hashable.process_value(v)] }]
           when Array
-            val.map{ |v| Hashable.process_value(v) }
+            val.map { |v| Hashable.process_value(v) }
           else
             val.respond_to?(:to_h) ? val.to_h : val
           end

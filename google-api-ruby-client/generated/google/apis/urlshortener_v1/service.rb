@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'urlshortener/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Expands a short URL or gets creation time and analytics.
         # @param [String] short_url
         #   The short URL, including the protocol.
@@ -80,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_url(short_url, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'url', options)
+          command = make_simple_command(:get, 'url', options)
           command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.response_class = Google::Apis::UrlshortenerV1::Url
           command.query['projection'] = projection unless projection.nil?
@@ -90,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new short URL.
         # @param [Google::Apis::UrlshortenerV1::Url] url_object
         # @param [String] fields
@@ -115,7 +117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_url(url_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'url', options)
+          command = make_simple_command(:post, 'url', options)
           command.request_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.request_object = url_object
           command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
@@ -125,7 +127,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of URLs shortened by a user.
         # @param [String] projection
         #   Additional information to return.
@@ -153,7 +155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_urls(projection: nil, start_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'url/history', options)
+          command = make_simple_command(:get, 'url/history', options)
           command.response_representation = Google::Apis::UrlshortenerV1::UrlHistory::Representation
           command.response_class = Google::Apis::UrlshortenerV1::UrlHistory
           command.query['projection'] = projection unless projection.nil?

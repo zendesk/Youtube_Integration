@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,54 +23,53 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudresourcemanagerV1
-      
       # The request sent to the GetEffectiveOrgPolicy method.
       class GetEffectiveOrgPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # The name of the `Constraint` to compute the effective `Policy`.
         # Corresponds to the JSON property `constraint`
         # @return [String]
         attr_accessor :constraint
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @constraint = args[:constraint] if args.key?(:constraint)
         end
       end
-      
+
       # The request sent to the ListOrgPolicies method.
       class ListOrgPoliciesRequest
         include Google::Apis::Core::Hashable
-      
+
         # Page token used to retrieve the next page. This is currently unsupported
         # and will be ignored. The server may at any point start using this field.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
-      
+
         # Size of the pages to be returned. This is currently unsupported and will
         # be ignored. The server may at any point start using this field to limit
         # page size.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
-      
+
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -118,44 +119,44 @@ module Google
       # bar@gmail.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
-      
+
         # The configuration for logging of each type of permission.
         # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditLogConfig>]
         attr_accessor :audit_log_configs
-      
+
         # Specifies a service that will be enabled for audit logging.
         # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
         # `allServices` is a special value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
           @service = args[:service] if args.key?(:service)
         end
       end
-      
+
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
+
         # If the value is `false`, it means the operation is still in progress.
         # If true, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
-        alias_method :done?, :done
-      
+        alias done? done
+
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
         # `google.protobuf.Empty`.  If the original method is standard
@@ -167,14 +168,14 @@ module Google
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
-      
+
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
         # `name` should have the format of `operations/some/unique/name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by
         # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -217,7 +218,7 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::CloudresourcemanagerV1::Status]
         attr_accessor :error
-      
+
         # Service-specific metadata associated with the operation.  It typically
         # contains progress information and common metadata such as create time.
         # Some services might not provide such metadata.  Any method that returns a
@@ -225,11 +226,11 @@ module Google
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @done = args[:done] if args.key?(:done)
@@ -239,33 +240,33 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
-      
+
       # The response message for Liens.ListLiens.
       class ListLiensResponse
         include Google::Apis::Core::Hashable
-      
+
         # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # A list of Liens.
         # Corresponds to the JSON property `liens`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
         attr_accessor :liens
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @liens = args[:liens] if args.key?(:liens)
         end
       end
-      
+
       # A `Constraint` describes a way in which a resource's configuration can be
       # restricted. For example, it controls which cloud services can be activated
       # across an organization, or whether a Compute Engine instance can have
@@ -281,31 +282,31 @@ module Google
       # `Policy` being defined or inherited for the resource in question.
       class Constraint
         include Google::Apis::Core::Hashable
-      
+
         # Version of the `Constraint`. Default version is 0;
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
-      
+
         # A `Constraint` that allows or disallows a list of string values, which are
         # configured by an Organization's policy administrator with a `Policy`.
         # Corresponds to the JSON property `listConstraint`
         # @return [Google::Apis::CloudresourcemanagerV1::ListConstraint]
         attr_accessor :list_constraint
-      
+
         # The human readable name.
         # Mutable.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
-      
+
         # Detailed description of what this `Constraint` controls as well as how and
         # where it is enforced.
         # Mutable.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # A `Constraint` that is either enforced or not.
         # For example a constraint `constraints/compute.disableSerialPortAccess`.
         # If it is enforced on a VM instance, serial port connections will not be
@@ -313,22 +314,22 @@ module Google
         # Corresponds to the JSON property `booleanConstraint`
         # @return [Google::Apis::CloudresourcemanagerV1::BooleanConstraint]
         attr_accessor :boolean_constraint
-      
+
         # The evaluation behavior of this constraint in the absense of 'Policy'.
         # Corresponds to the JSON property `constraintDefault`
         # @return [String]
         attr_accessor :constraint_default
-      
+
         # Immutable value, required to globally be unique. For example,
         # `constraints/serviceuser.services`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
@@ -340,7 +341,7 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -382,29 +383,29 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
-      
+
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
-      
+
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
-      
+
         # A developer-facing error message, which should be in English. Any
         # user-facing error message should be localized and sent in the
         # google.rpc.Status.details field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
@@ -412,11 +413,11 @@ module Google
           @message = args[:message] if args.key?(:message)
         end
       end
-      
+
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
-      
+
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -434,44 +435,44 @@ module Google
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
-      
+
         # Role that is assigned to `members`.
         # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         # Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
       end
-      
+
       # The request sent to the GetOrgPolicy method.
       class GetOrgPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # Name of the `Constraint` to get the `Policy`.
         # Corresponds to the JSON property `constraint`
         # @return [String]
         attr_accessor :constraint
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @constraint = args[:constraint] if args.key?(:constraint)
         end
       end
-      
+
       # Ignores policies set above this resource and restores the
       # `constraint_default` enforcement behavior of the specific `Constraint` at
       # this resource.
@@ -485,86 +486,84 @@ module Google
       # projects to have all services activated.
       class RestoreDefault
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # The request sent to the ClearOrgPolicy method.
       class ClearOrgPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # The current version, for concurrency control. Not sending an `etag`
         # will cause the `Policy` to be cleared blindly.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
-      
+
         # Name of the `Constraint` of the `Policy` to clear.
         # Corresponds to the JSON property `constraint`
         # @return [String]
         attr_accessor :constraint
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
           @constraint = args[:constraint] if args.key?(:constraint)
         end
       end
-      
+
       # The request sent to the UndeleteProject
       # method.
       class UndeleteProjectRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # A status object which is used as the `metadata` field for the Operation
       # returned by CreateProject. It provides insight for when significant phases of
       # Project creation have completed.
       class ProjectCreationStatus
         include Google::Apis::Core::Hashable
-      
+
         # True if the project creation process is complete.
         # Corresponds to the JSON property `ready`
         # @return [Boolean]
         attr_accessor :ready
-        alias_method :ready?, :ready
-      
+        alias ready? ready
+
         # Creation time of the project creation workflow.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # True if the project can be retrieved using GetProject. No other operations
         # on the project are guaranteed to work until the project creation is
         # complete.
         # Corresponds to the JSON property `gettable`
         # @return [Boolean]
         attr_accessor :gettable
-        alias_method :gettable?, :gettable
-      
+        alias gettable? gettable
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @ready = args[:ready] if args.key?(:ready)
@@ -572,78 +571,76 @@ module Google
           @gettable = args[:gettable] if args.key?(:gettable)
         end
       end
-      
+
       # A `Constraint` that is either enforced or not.
       # For example a constraint `constraints/compute.disableSerialPortAccess`.
       # If it is enforced on a VM instance, serial port connections will not be
       # opened to that instance.
       class BooleanConstraint
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # Response message for `TestIamPermissions` method.
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A subset of `TestPermissionsRequest.permissions` that the caller is
         # allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
-      
+
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # The entity that owns an Organization. The lifetime of the Organization and
       # all of its descendants are bound to the `OrganizationOwner`. If the
       # `OrganizationOwner` is deleted, the Organization and all its descendants will
       # be deleted.
       class OrganizationOwner
         include Google::Apis::Core::Hashable
-      
+
         # The Google for Work customer id used in the Directory API.
         # Corresponds to the JSON property `directoryCustomerId`
         # @return [String]
         attr_accessor :directory_customer_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
         end
       end
-      
+
       # A page of the response received from the
       # ListProjects
       # method.
@@ -652,13 +649,13 @@ module Google
       # retrieve the next request page.
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The list of Projects that matched the list filter. This list can
         # be paginated.
         # Corresponds to the JSON property `projects`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
         attr_accessor :projects
-      
+
         # Pagination token.
         # If the result set is too large to fit in a single response, this token
         # is returned. It encodes the position of the current result cursor.
@@ -670,31 +667,31 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @projects = args[:projects] if args.key?(:projects)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # A Project is a high-level Google Cloud Platform entity.  It is a
       # container for ACLs, APIs, App Engine Apps, VMs, and other
       # Google Cloud Platform resources.
       class Project
         include Google::Apis::Core::Hashable
-      
+
         # The number uniquely identifying the project.
         # Example: <code>415104041262</code>
         # Read-only.
         # Corresponds to the JSON property `projectNumber`
         # @return [Fixnum]
         attr_accessor :project_number
-      
+
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
         # interact with through one of our API's. Some examples are an App Engine app,
@@ -702,13 +699,13 @@ module Google
         # Corresponds to the JSON property `parent`
         # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
         attr_accessor :parent
-      
+
         # Creation time.
         # Read-only.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # The labels associated with this Project.
         # Label keys must be between 1 and 63 characters long and must conform
         # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
@@ -722,7 +719,7 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
+
         # The user-assigned display name of the Project.
         # It must be 4 to 30 characters.
         # Allowed characters are: lowercase and uppercase letters, numbers,
@@ -732,7 +729,7 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The unique, user-assigned ID of the Project.
         # It must be 6 to 30 lowercase letters, digits, or hyphens.
         # It must start with a letter.
@@ -742,17 +739,17 @@ module Google
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # The Project lifecycle state.
         # Read-only.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @project_number = args[:project_number] if args.key?(:project_number)
@@ -764,11 +761,11 @@ module Google
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
         end
       end
-      
+
       # The response returned from the `SearchOrganizations` method.
       class SearchOrganizationsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A pagination token to be used to retrieve the next page of results. If the
         # result is too large to fit within the page size specified in the request,
         # this field will be set with a token that can be used to fetch the next page
@@ -777,81 +774,81 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # The list of Organizations that matched the search query, possibly
         # paginated.
         # Corresponds to the JSON property `organizations`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Organization>]
         attr_accessor :organizations
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @organizations = args[:organizations] if args.key?(:organizations)
         end
       end
-      
+
       # The response returned from the ListOrgPolicies method. It will be empty
       # if no `Policies` are set on the resource.
       class ListOrgPoliciesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The `Policies` that are set on the resource. It will be empty if no
         # `Policies` are set.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::OrgPolicy>]
         attr_accessor :policies
-      
+
         # Page token used to retrieve the next page. This is currently not used, but
         # the server may at any point start supplying a valid token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @policies = args[:policies] if args.key?(:policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # A classification of the Folder Operation error.
       class FolderOperationError
         include Google::Apis::Core::Hashable
-      
+
         # The type of operation error experienced.
         # Corresponds to the JSON property `errorMessageId`
         # @return [String]
         attr_accessor :error_message_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
         end
       end
-      
+
       # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
       # for configurations of Cloud Platform resources.
       class OrgPolicy
         include Google::Apis::Core::Hashable
-      
+
         # Version of the `Policy`. Default version is 0;
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
-      
+
         # Ignores policies set above this resource and restores the
         # `constraint_default` enforcement behavior of the specific `Constraint` at
         # this resource.
@@ -866,7 +863,7 @@ module Google
         # Corresponds to the JSON property `restoreDefault`
         # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
         attr_accessor :restore_default
-      
+
         # Used in `policy_type` to specify how `list_policy` behaves at this
         # resource.
         # A `ListPolicy` can define specific values that are allowed or denied by
@@ -879,7 +876,7 @@ module Google
         # Corresponds to the JSON property `listPolicy`
         # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
         attr_accessor :list_policy
-      
+
         # An opaque tag indicating the current version of the `Policy`, used for
         # concurrency control.
         # When the `Policy` is returned from either a `GetPolicy` or a
@@ -896,20 +893,20 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
-      
+
         # The name of the `Constraint` the `Policy` is configuring, for example,
         # `constraints/serviceuser.services`.
         # Immutable after creation.
         # Corresponds to the JSON property `constraint`
         # @return [String]
         attr_accessor :constraint
-      
+
         # Used in `policy_type` to specify how `boolean_policy` will behave at this
         # resource.
         # Corresponds to the JSON property `booleanPolicy`
         # @return [Google::Apis::CloudresourcemanagerV1::BooleanPolicy]
         attr_accessor :boolean_policy
-      
+
         # The time stamp the `Policy` was previously updated. This is set by the
         # server, not specified by the caller, and represents the last time a call to
         # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
@@ -917,11 +914,11 @@ module Google
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
@@ -933,12 +930,12 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
-      
+
       # Used in `policy_type` to specify how `boolean_policy` will behave at this
       # resource.
       class BooleanPolicy
         include Google::Apis::Core::Hashable
-      
+
         # If `true`, then the `Policy` is enforced. If `false`, then any
         # configuration is acceptable.
         # Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess`
@@ -980,35 +977,35 @@ module Google
         # Corresponds to the JSON property `enforced`
         # @return [Boolean]
         attr_accessor :enforced
-        alias_method :enforced?, :enforced
-      
+        alias enforced? enforced
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @enforced = args[:enforced] if args.key?(:enforced)
         end
       end
-      
+
       # A Lien represents an encumbrance on the actions that can be performed on a
       # resource.
       class Lien
         include Google::Apis::Core::Hashable
-      
+
         # A reference to the resource this Lien is attached to. The server will
         # validate the parent against those for which Liens are supported.
         # Example: `projects/1234`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
-      
+
         # The creation time of this Lien.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # A stable, user-visible/meaningful string identifying the origin of the
         # Lien, intended to be inspected programmatically. Maximum length of 200
         # characters.
@@ -1016,20 +1013,20 @@ module Google
         # Corresponds to the JSON property `origin`
         # @return [String]
         attr_accessor :origin
-      
+
         # A system-generated unique identifier for this Lien.
         # Example: `liens/1234abcd`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Concise user-visible strings indicating why an action cannot be performed
         # on a resource. Maximum lenth of 200 characters.
         # Example: 'Holds production API key'
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
-      
+
         # The types of operations which should be blocked as a result of this Lien.
         # Each value should correspond to an IAM permission. The server will
         # validate the permissions against those for which Liens are supported.
@@ -1038,11 +1035,11 @@ module Google
         # Corresponds to the JSON property `restrictions`
         # @return [Array<String>]
         attr_accessor :restrictions
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @parent = args[:parent] if args.key?(:parent)
@@ -1053,11 +1050,11 @@ module Google
           @restrictions = args[:restrictions] if args.key?(:restrictions)
         end
       end
-      
+
       # Identifying information for a single ancestor of a project.
       class Ancestor
         include Google::Apis::Core::Hashable
-      
+
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
         # interact with through one of our API's. Some examples are an App Engine app,
@@ -1065,62 +1062,62 @@ module Google
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
         attr_accessor :resource_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
-      
+
       # A `Constraint` that allows or disallows a list of string values, which are
       # configured by an Organization's policy administrator with a `Policy`.
       class ListConstraint
         include Google::Apis::Core::Hashable
-      
+
         # Optional. The Google Cloud Console will try to default to a configuration
         # that matches the value specified in this `Constraint`.
         # Corresponds to the JSON property `suggestedValue`
         # @return [String]
         attr_accessor :suggested_value
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
         end
       end
-      
+
       # The request sent to the SetOrgPolicyRequest method.
       class SetOrgPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
         # for configurations of Cloud Platform resources.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudresourcemanagerV1::OrgPolicy]
         attr_accessor :policy
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
         end
       end
-      
+
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # Defines an Identity and Access Management (IAM) policy. It is used to
         # specify access control policies for Cloud Platform resources.
         # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
@@ -1150,7 +1147,7 @@ module Google
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudresourcemanagerV1::Policy]
         attr_accessor :policy
-      
+
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
         # the fields in the mask will be modified. If no mask is provided, the
         # following default mask is used:
@@ -1159,18 +1156,18 @@ module Google
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
-      
+
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -1180,27 +1177,26 @@ module Google
       # The JSON representation for `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # The root node in the resource hierarchy to which a particular entity's
       # (e.g., company) resources belong.
       class Organization
         include Google::Apis::Core::Hashable
-      
+
         # Timestamp when the Organization was created. Assigned by the server.
         # @OutputOnly
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
-      
+
         # The entity that owns an Organization. The lifetime of the Organization and
         # all of its descendants are bound to the `OrganizationOwner`. If the
         # `OrganizationOwner` is deleted, the Organization and all its descendants will
@@ -1208,20 +1204,20 @@ module Google
         # Corresponds to the JSON property `owner`
         # @return [Google::Apis::CloudresourcemanagerV1::OrganizationOwner]
         attr_accessor :owner
-      
+
         # The organization's current lifecycle state. Assigned by the server.
         # @OutputOnly
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
-      
+
         # Output Only. The resource name of the organization. This is the
         # organization's relative path in the API. Its format is
         # "organizations/[organization_id]". For example, "organizations/1234".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # A friendly string to be used to refer to the Organization in the UI.
         # Assigned by the server, set to the primary domain of the G Suite
         # customer that owns the organization.
@@ -1229,11 +1225,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
@@ -1243,35 +1239,35 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
-      
+
       # The response returned from the ListAvailableOrgPolicyConstraints method.
       # Returns all `Constraints` that could be set at this level of the hierarchy
       # (contrast with the response from `ListPolicies`, which returns all policies
       # which are set).
       class ListAvailableOrgPolicyConstraintsResponse
         include Google::Apis::Core::Hashable
-      
+
         # Page token used to retrieve the next page. This is currently not used.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # The collection of constraints that are settable on the request resource.
         # Corresponds to the JSON property `constraints`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Constraint>]
         attr_accessor :constraints
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @constraints = args[:constraints] if args.key?(:constraints)
         end
       end
-      
+
       # Used in `policy_type` to specify how `list_policy` behaves at this
       # resource.
       # A `ListPolicy` can define specific values that are allowed or denied by
@@ -1283,19 +1279,19 @@ module Google
       # `DENY`, `allowed_values` and `denied_values` must be unset.
       class ListPolicy
         include Google::Apis::Core::Hashable
-      
+
         # The policy all_values state.
         # Corresponds to the JSON property `allValues`
         # @return [String]
         attr_accessor :all_values
-      
+
         # List of values allowed  at this resource. Can only be set if no values
         # are set for `denied_values` and `all_values` is set to
         # `ALL_VALUES_UNSPECIFIED`.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<String>]
         attr_accessor :allowed_values
-      
+
         # Optional. The Google Cloud Console will try to default to a configuration
         # that matches the value specified in this `Policy`. If `suggested_value`
         # is not set, it will inherit the value specified higher in the hierarchy,
@@ -1303,7 +1299,7 @@ module Google
         # Corresponds to the JSON property `suggestedValue`
         # @return [String]
         attr_accessor :suggested_value
-      
+
         # Determines the inheritance behavior for this `Policy`.
         # By default, a `ListPolicy` set at a resource supercedes any `Policy` set
         # anywhere up the resource hierarchy. However, if `inherit_from_parent` is
@@ -1378,19 +1374,19 @@ module Google
         # Corresponds to the JSON property `inheritFromParent`
         # @return [Boolean]
         attr_accessor :inherit_from_parent
-        alias_method :inherit_from_parent?, :inherit_from_parent
-      
+        alias inherit_from_parent? inherit_from_parent
+
         # List of values denied at this resource. Can only be set if no values are
         # set for `allowed_values` and `all_values` is set to
         # `ALL_VALUES_UNSPECIFIED`.
         # Corresponds to the JSON property `deniedValues`
         # @return [Array<String>]
         attr_accessor :denied_values
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @all_values = args[:all_values] if args.key?(:all_values)
@@ -1400,28 +1396,28 @@ module Google
           @denied_values = args[:denied_values] if args.key?(:denied_values)
         end
       end
-      
+
       # Response from the GetAncestry method.
       class GetAncestryResponse
         include Google::Apis::Core::Hashable
-      
+
         # Ancestors are ordered from bottom to top of the resource hierarchy. The
         # first ancestor is the project itself, followed by the project's parent,
         # etc.
         # Corresponds to the JSON property `ancestor`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
         attr_accessor :ancestor
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @ancestor = args[:ancestor] if args.key?(:ancestor)
         end
       end
-      
+
       # Provides the configuration for logging a type of permissions.
       # Example:
       # `
@@ -1441,34 +1437,34 @@ module Google
       # foo@gmail.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
-      
+
         # Specifies the identities that do not cause logging for this type of
         # permission.
         # Follows the same format of Binding.members.
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
-      
+
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
         attr_accessor :log_type
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
-      
+
       # The request sent to the `SearchOrganizations` method.
       class SearchOrganizationsRequest
         include Google::Apis::Core::Hashable
-      
+
         # An optional query string used to filter the Organizations to return in
         # the response. Filter rules are case-insensitive.
         # Organizations may be filtered by `owner.directoryCustomerId` or by
@@ -1482,24 +1478,24 @@ module Google
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
-      
+
         # A pagination token returned from a previous call to `SearchOrganizations`
         # that indicates from where listing should continue.
         # This field is optional.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
-      
+
         # The maximum number of Organizations to return in the response.
         # This field is optional.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
@@ -1507,26 +1503,25 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
-      
+
       # The request sent to the
       # GetAncestry
       # method.
       class GetAncestryRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
-      
+
         # The set of permissions to check for the `resource`. Permissions with
         # wildcards (such as '*' or 'storage.*') are not allowed. For more
         # information see
@@ -1534,47 +1529,47 @@ module Google
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
-      
+
       # Metadata describing a long running folder operation
       class FolderOperation
         include Google::Apis::Core::Hashable
-      
+
         # The type of this operation.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
-      
+
         # The display name of the folder.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
-      
+
         # The resource name of the folder's parent.
         # Only applicable when the operation_type is MOVE.
         # Corresponds to the JSON property `sourceParent`
         # @return [String]
         attr_accessor :source_parent
-      
+
         # The resource name of the folder or organization we are either creating
         # the folder under or moving the folder to.
         # Corresponds to the JSON property `destinationParent`
         # @return [String]
         attr_accessor :destination_parent
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
@@ -1583,7 +1578,7 @@ module Google
           @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
         end
       end
-      
+
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
@@ -1612,7 +1607,7 @@ module Google
       # [IAM developer's guide](https://cloud.google.com/iam).
       class Policy
         include Google::Apis::Core::Hashable
-      
+
         # `etag` is used for optimistic concurrency control as a way to help
         # prevent simultaneous updates of a policy from overwriting each other.
         # It is strongly suggested that systems make use of the `etag` in the
@@ -1626,27 +1621,27 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
-      
+
         # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
-      
+
         # Specifies cloud audit logging configuration for this policy.
         # Corresponds to the JSON property `auditConfigs`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditConfig>]
         attr_accessor :audit_configs
-      
+
         # Associates a list of `members` to a `role`.
         # `bindings` with no members will result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Binding>]
         attr_accessor :bindings
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
@@ -1655,59 +1650,59 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
         end
       end
-      
+
       # The request sent to the [ListAvailableOrgPolicyConstraints]
       # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
       class ListAvailableOrgPolicyConstraintsRequest
         include Google::Apis::Core::Hashable
-      
+
         # Page token used to retrieve the next page. This is currently unsupported
         # and will be ignored. The server may at any point start using this field.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
-      
+
         # Size of the pages to be returned. This is currently unsupported and will
         # be ignored. The server may at any point start using this field to limit
         # page size.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
-      
+
       # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
       # interact with through one of our API's. Some examples are an App Engine app,
       # a Compute Engine instance, a Cloud SQL database, and so on.
       class ResourceId
         include Google::Apis::Core::Hashable
-      
+
         # Required field representing the resource type this id is for.
         # At present, the valid types are: "organization"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
+
         # Required field for the type-specific id. This should correspond to the id
         # used in the type-specific API's.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)

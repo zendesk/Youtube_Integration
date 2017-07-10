@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,9 +37,7 @@ module Samples
       adsense.authorization = user_credentials_for(Adsense::AUTH_ADSENSE)
 
       result = adsense.list_accounts(max_results: options[:max_results])
-      if result.items
-        result.items.each { |account| puts "#{account.id} #{account.kind} #{account.name} #{account.premium} #{account.timezone}" }
-      end
+      result.items&.each { |account| puts "#{account.id} #{account.kind} #{account.name} #{account.premium} #{account.timezone}" }
     end
 
     desc(
@@ -53,9 +53,7 @@ module Samples
         account_id,
         max_results: options[:max_results]
       )
-      if result.items
-        result.items.each { |ad_client| puts ad_client.id }
-      end
+      result.items&.each { |ad_client| puts ad_client.id }
     end
 
     desc(
@@ -73,10 +71,8 @@ module Samples
         max_results: options[:max_results],
         include_inactive: options[:include_inactive]
       )
-      if result.items
-        result.items.each do |ad_unit|
-          puts "#{ad_unit.id} #{ad_unit.name} #{ad_unit.status} #{ad_unit.code}"
-        end
+      result.items&.each do |ad_unit|
+        puts "#{ad_unit.id} #{ad_unit.name} #{ad_unit.status} #{ad_unit.code}"
       end
     end
 

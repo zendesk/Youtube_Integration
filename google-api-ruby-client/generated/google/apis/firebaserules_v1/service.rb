@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://firebaserules.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Test `Source` for syntactic and semantic correctness. Issues present, if
         # any, will be returned to the caller with a description, severity, and
         # source location.
@@ -91,7 +93,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_ruleset(name, test_ruleset_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:test', options)
+          command = make_simple_command(:post, 'v1/{+name}:test', options)
           command.request_representation = Google::Apis::FirebaserulesV1::TestRulesetRequest::Representation
           command.request_object = test_ruleset_request_object
           command.response_representation = Google::Apis::FirebaserulesV1::TestRulesetResponse::Representation
@@ -101,7 +103,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a `Ruleset` by resource name.
         # If the `Ruleset` is referenced by a `Release` the operation will fail.
         # @param [String] name
@@ -125,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
@@ -133,7 +135,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a `Ruleset` by name including the full `Source` contents.
         # @param [String] name
         #   Resource name for the ruleset to get.
@@ -156,7 +158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Ruleset
           command.params['name'] = name unless name.nil?
@@ -164,7 +166,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List `Ruleset` metadata only and optionally filter the results by `Ruleset`
         # name.
         # The full `Source` contents of a `Ruleset` may be retrieved with
@@ -203,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_rulesets(name, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/rulesets', options)
+          command = make_simple_command(:get, 'v1/{+name}/rulesets', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListRulesetsResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListRulesetsResponse
           command.params['name'] = name unless name.nil?
@@ -214,7 +216,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a `Ruleset` from `Source`.
         # The `Ruleset` is given a unique generated name which is returned to the
         # caller. `Source` containing syntactic or semantics errors will result in an
@@ -242,7 +244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_ruleset(name, ruleset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}/rulesets', options)
+          command = make_simple_command(:post, 'v1/{+name}/rulesets', options)
           command.request_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
           command.request_object = ruleset_object
           command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
@@ -252,7 +254,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a `Release`.
         # Only updates to the `ruleset_name` and `test_suite_name` fields will be
         # honored. `Release` rename is not supported. To create a `Release` use the
@@ -296,7 +298,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.request_object = release_object
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
@@ -306,7 +308,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a `Release`.
         # Release names should reflect the developer's deployment practices. For
         # example, the release name may include the environment name, application
@@ -347,7 +349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}/releases', options)
+          command = make_simple_command(:post, 'v1/{+name}/releases', options)
           command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.request_object = release_object
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
@@ -357,7 +359,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a `Release` by resource name.
         # @param [String] name
         #   Resource name for the `Release` to delete.
@@ -380,7 +382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
@@ -388,7 +390,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a `Release` by name.
         # @param [String] name
         #   Resource name of the `Release`.
@@ -411,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Release
           command.params['name'] = name unless name.nil?
@@ -419,7 +421,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the `Release` values for a project. This list may optionally be
         # filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any
         # combination thereof.
@@ -472,7 +474,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_releases(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/releases', options)
+          command = make_simple_command(:get, 'v1/{+name}/releases', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListReleasesResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListReleasesResponse
           command.params['name'] = name unless name.nil?

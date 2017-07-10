@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://speech.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/operations/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1beta1/operations/{+name}:cancel', options)
           command.response_representation = Google::Apis::SpeechV1beta1::Empty::Representation
           command.response_class = Google::Apis::SpeechV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a long-running operation. This method indicates that the client is
         # no longer interested in the operation result. It does not cancel the
         # operation. If the server doesn't support this method, it returns
@@ -110,7 +112,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/operations/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/operations/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1beta1::Empty::Representation
           command.response_class = Google::Apis::SpeechV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -118,7 +120,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding allows API services to override the binding
@@ -154,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/operations', options)
+          command = make_simple_command(:get, 'v1beta1/operations', options)
           command.response_representation = Google::Apis::SpeechV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpeechV1beta1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -165,7 +167,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -189,7 +191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/operations/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/operations/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1beta1::Operation::Representation
           command.response_class = Google::Apis::SpeechV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -197,7 +199,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Performs synchronous speech recognition: receive results after all audio
         # has been sent and processed.
         # @param [Google::Apis::SpeechV1beta1::SyncRecognizeRequest] sync_recognize_request_object
@@ -219,7 +221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sync_recognize_speech(sync_recognize_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/speech:syncrecognize', options)
+          command = make_simple_command(:post, 'v1beta1/speech:syncrecognize', options)
           command.request_representation = Google::Apis::SpeechV1beta1::SyncRecognizeRequest::Representation
           command.request_object = sync_recognize_request_object
           command.response_representation = Google::Apis::SpeechV1beta1::SyncRecognizeResponse::Representation
@@ -228,7 +230,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Performs asynchronous speech recognition: receive results via the
         # [google.longrunning.Operations]
         # (/speech/reference/rest/v1beta1/operations#Operation)
@@ -254,7 +256,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def async_recognize_speech(async_recognize_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/speech:asyncrecognize', options)
+          command = make_simple_command(:post, 'v1beta1/speech:asyncrecognize', options)
           command.request_representation = Google::Apis::SpeechV1beta1::AsyncRecognizeRequest::Representation
           command.request_object = async_recognize_request_object
           command.response_representation = Google::Apis::SpeechV1beta1::Operation::Representation

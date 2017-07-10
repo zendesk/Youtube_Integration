@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'apps/reseller/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Get a customer account.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -90,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Order a new customer's account.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
@@ -121,7 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_customer(customer_object = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers', options)
+          command = make_simple_command(:post, 'customers', options)
           command.request_representation = Google::Apis::ResellerV1::Customer::Representation
           command.request_object = customer_object
           command.response_representation = Google::Apis::ResellerV1::Customer::Representation
@@ -132,7 +134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a customer account's settings. This method supports patch semantics.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -162,7 +164,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_customer(customer_id, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customers/{customerId}', options)
+          command = make_simple_command(:patch, 'customers/{customerId}', options)
           command.request_representation = Google::Apis::ResellerV1::Customer::Representation
           command.request_object = customer_object
           command.response_representation = Google::Apis::ResellerV1::Customer::Representation
@@ -173,7 +175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a customer account's settings.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -203,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_customer(customer_id, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customers/{customerId}', options)
+          command = make_simple_command(:put, 'customers/{customerId}', options)
           command.request_representation = Google::Apis::ResellerV1::Customer::Representation
           command.request_object = customer_object
           command.response_representation = Google::Apis::ResellerV1::Customer::Representation
@@ -214,7 +216,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all the details of the watch corresponding to the reseller.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -238,7 +240,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getwatchdetails_resellernotify(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'resellernotify/getwatchdetails', options)
+          command = make_simple_command(:get, 'resellernotify/getwatchdetails', options)
           command.response_representation = Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse::Representation
           command.response_class = Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -246,7 +248,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Registers a Reseller for receiving notifications.
         # @param [String] service_account_email_address
         #   The service account which will own the created Cloud-PubSub topic.
@@ -272,7 +274,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def register_resellernotify(service_account_email_address: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'resellernotify/register', options)
+          command = make_simple_command(:post, 'resellernotify/register', options)
           command.response_representation = Google::Apis::ResellerV1::ResellernotifyResource::Representation
           command.response_class = Google::Apis::ResellerV1::ResellernotifyResource
           command.query['serviceAccountEmailAddress'] = service_account_email_address unless service_account_email_address.nil?
@@ -281,7 +283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Unregisters a Reseller for receiving notifications.
         # @param [String] service_account_email_address
         #   The service account which owns the Cloud-PubSub topic.
@@ -307,7 +309,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unregister_resellernotify(service_account_email_address: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'resellernotify/unregister', options)
+          command = make_simple_command(:post, 'resellernotify/unregister', options)
           command.response_representation = Google::Apis::ResellerV1::ResellernotifyResource::Representation
           command.response_class = Google::Apis::ResellerV1::ResellernotifyResource
           command.query['serviceAccountEmailAddress'] = service_account_email_address unless service_account_email_address.nil?
@@ -316,7 +318,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Activates a subscription previously suspended by the reseller
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -351,7 +353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def activate_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/activate', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/activate', options)
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -361,7 +363,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a subscription plan. Use this method to update a plan for a 30-day
         # trial or a flexible plan subscription to an annual commitment plan with
         # monthly or yearly payments.
@@ -399,7 +401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def change_subscription_plan(customer_id, subscription_id, change_plan_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changePlan', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changePlan', options)
           command.request_representation = Google::Apis::ResellerV1::ChangePlanRequest::Representation
           command.request_object = change_plan_request_object
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
@@ -411,7 +413,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a user license's renewal settings. This is applicable for accounts with
         # annual commitment plans only.
         # @param [String] customer_id
@@ -448,7 +450,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def change_subscription_renewal_settings(customer_id, subscription_id, renewal_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings', options)
           command.request_representation = Google::Apis::ResellerV1::RenewalSettings::Representation
           command.request_object = renewal_settings_object
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
@@ -460,7 +462,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a subscription's user license settings.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -496,7 +498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def change_subscription_seats(customer_id, subscription_id, seats_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changeSeats', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/changeSeats', options)
           command.request_representation = Google::Apis::ResellerV1::Seats::Representation
           command.request_object = seats_object
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
@@ -508,7 +510,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancel, suspend or transfer a subscription to direct.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -546,7 +548,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subscription(customer_id, subscription_id, deletion_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customers/{customerId}/subscriptions/{subscriptionId}', options)
+          command = make_simple_command(:delete, 'customers/{customerId}/subscriptions/{subscriptionId}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.query['deletionType'] = deletion_type unless deletion_type.nil?
@@ -555,7 +557,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a specific subscription.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -590,7 +592,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customers/{customerId}/subscriptions/{subscriptionId}', options)
+          command = make_simple_command(:get, 'customers/{customerId}/subscriptions/{subscriptionId}', options)
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -600,7 +602,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create or transfer a subscription.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -636,7 +638,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_subscription(customer_id, subscription_object = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions', options)
           command.request_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
@@ -648,7 +650,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List of subscriptions managed by the reseller. The list can be all
         # subscriptions, all of a customer's subscriptions, or all of a customer's
         # transferable subscriptions.
@@ -699,7 +701,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(customer_auth_token: nil, customer_id: nil, customer_name_prefix: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'subscriptions', options)
+          command = make_simple_command(:get, 'subscriptions', options)
           command.response_representation = Google::Apis::ResellerV1::Subscriptions::Representation
           command.response_class = Google::Apis::ResellerV1::Subscriptions
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
@@ -712,7 +714,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Immediately move a 30-day free trial subscription to a paid service
         # subscription.
         # @param [String] customer_id
@@ -748,7 +750,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_subscription_paid_service(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/startPaidService', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/startPaidService', options)
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -758,7 +760,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Suspends an active subscription.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -793,7 +795,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def suspend_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/suspend', options)
+          command = make_simple_command(:post, 'customers/{customerId}/subscriptions/{subscriptionId}/suspend', options)
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?

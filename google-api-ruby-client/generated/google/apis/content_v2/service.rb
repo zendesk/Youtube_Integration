@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'content/v2/')
           @batch_path = 'batch'
         end
-        
+
         # Returns information about the authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_authinfo(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/authinfo', options)
+          command = make_simple_command(:get, 'accounts/authinfo', options)
           command.response_representation = Google::Apis::ContentV2::AccountsAuthInfoResponse::Representation
           command.response_class = Google::Apis::ContentV2::AccountsAuthInfoResponse
           command.query['fields'] = fields unless fields.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Claims the website of a Merchant Center sub-account. This method can only be
         # called for multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -117,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def claimwebsite_account(merchant_id, account_id, overwrite: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/accounts/{accountId}/claimwebsite', options)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/claimwebsite', options)
           command.response_representation = Google::Apis::ContentV2::AccountsClaimWebsiteResponse::Representation
           command.response_class = Google::Apis::ContentV2::AccountsClaimWebsiteResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -128,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)
         # accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountsRequest] batch_accounts_request_object
@@ -156,7 +158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_account(batch_accounts_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'accounts/batch', options)
+          command = make_simple_command(:post, 'accounts/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchAccountsRequest::Representation
           command.request_object = batch_accounts_request_object
           command.response_representation = Google::Apis::ContentV2::BatchAccountsResponse::Representation
@@ -167,7 +169,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Merchant Center sub-account. This method can only be called for
         # multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -198,7 +200,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account(merchant_id, account_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:delete, '{merchantId}/accounts/{accountId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['dryRun'] = dry_run unless dry_run.nil?
@@ -207,7 +209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a Merchant Center account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
         # itself or sub-accounts if the managing account is a multi-client account.
@@ -237,7 +239,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accounts/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::Account::Representation
           command.response_class = Google::Apis::ContentV2::Account
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -247,7 +249,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Merchant Center sub-account. This method can only be called for
         # multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -277,7 +279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_account(merchant_id, account_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/accounts', options)
+          command = make_simple_command(:post, '{merchantId}/accounts', options)
           command.request_representation = Google::Apis::ContentV2::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2::Account::Representation
@@ -289,7 +291,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the sub-accounts in your Merchant Center account. This method can only
         # be called for multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -320,7 +322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accounts', options)
+          command = make_simple_command(:get, '{merchantId}/accounts', options)
           command.response_representation = Google::Apis::ContentV2::ListAccountsResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListAccountsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -331,7 +333,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Merchant Center account. This method can only be called for accounts
         # to which the managing account has access: either the managing account itself
         # or sub-accounts if the managing account is a multi-client account. This method
@@ -365,7 +367,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account(merchant_id, account_id, account_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:patch, '{merchantId}/accounts/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2::Account::Representation
@@ -378,7 +380,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Merchant Center account. This method can only be called for accounts
         # to which the managing account has access: either the managing account itself
         # or sub-accounts if the managing account is a multi-client account.
@@ -411,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account(merchant_id, account_id, account_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/accounts/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2::Account::Representation
@@ -424,8 +426,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchAccountStatusesRequest] batch_account_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -449,7 +451,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_account_status(batch_account_statuses_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'accountstatuses/batch', options)
+          command = make_simple_command(:post, 'accountstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchAccountStatusesRequest::Representation
           command.request_object = batch_account_statuses_request_object
           command.response_representation = Google::Apis::ContentV2::BatchAccountStatusesResponse::Representation
@@ -459,7 +461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the status of a Merchant Center account. This method can only be
         # called for accounts to which the managing account has access: either the
         # managing account itself or sub-accounts if the managing account is a multi-
@@ -490,7 +492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_status(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accountstatuses/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accountstatuses/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::AccountStatus::Representation
           command.response_class = Google::Apis::ContentV2::AccountStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -500,7 +502,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the sub-accounts in your Merchant Center account. This
         # method can only be called for multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -532,7 +534,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_statuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accountstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/accountstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListAccountStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListAccountStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -543,7 +545,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves and updates tax settings of multiple accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountTaxRequest] batch_account_tax_request_object
         # @param [Boolean] dry_run
@@ -570,7 +572,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_account_tax(batch_account_tax_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'accounttax/batch', options)
+          command = make_simple_command(:post, 'accounttax/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchAccountTaxRequest::Representation
           command.request_object = batch_account_tax_request_object
           command.response_representation = Google::Apis::ContentV2::BatchAccountTaxResponse::Representation
@@ -581,7 +583,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
         # itself or sub-accounts if the managing account is a multi-client account.
@@ -611,7 +613,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_tax(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accounttax/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accounttax/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.response_class = Google::Apis::ContentV2::AccountTax
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -621,7 +623,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the tax settings of the sub-accounts in your Merchant Center account.
         # This method can only be called for multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -652,7 +654,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_taxes(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/accounttax', options)
+          command = make_simple_command(:get, '{merchantId}/accounttax', options)
           command.response_representation = Google::Apis::ContentV2::ListAccountTaxResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListAccountTaxResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -663,7 +665,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
         # itself or sub-accounts if the managing account is a multi-client account. This
@@ -697,7 +699,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account_tax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{merchantId}/accounttax/{accountId}', options)
+          command = make_simple_command(:patch, '{merchantId}/accounttax/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.request_object = account_tax_object
           command.response_representation = Google::Apis::ContentV2::AccountTax::Representation
@@ -710,7 +712,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
         # itself or sub-accounts if the managing account is a multi-client account.
@@ -743,7 +745,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account_tax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{merchantId}/accounttax/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/accounttax/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.request_object = account_tax_object
           command.response_representation = Google::Apis::ContentV2::AccountTax::Representation
@@ -756,8 +758,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchDatafeedsRequest] batch_datafeeds_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -783,7 +785,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_datafeed(batch_datafeeds_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'datafeeds/batch', options)
+          command = make_simple_command(:post, 'datafeeds/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchDatafeedsRequest::Representation
           command.request_object = batch_datafeeds_request_object
           command.response_representation = Google::Apis::ContentV2::BatchDatafeedsResponse::Representation
@@ -794,7 +796,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a datafeed configuration from your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -823,7 +825,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_datafeed(merchant_id, datafeed_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:delete, '{merchantId}/datafeeds/{datafeedId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
           command.query['dryRun'] = dry_run unless dry_run.nil?
@@ -832,7 +834,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a datafeed configuration from your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -859,7 +861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_datafeed(merchant_id, datafeed_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:get, '{merchantId}/datafeeds/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2::Datafeed::Representation
           command.response_class = Google::Apis::ContentV2::Datafeed
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -869,7 +871,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Registers a datafeed configuration with your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -898,7 +900,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_datafeed(merchant_id, datafeed_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/datafeeds', options)
+          command = make_simple_command(:post, '{merchantId}/datafeeds', options)
           command.request_representation = Google::Apis::ContentV2::Datafeed::Representation
           command.request_object = datafeed_object
           command.response_representation = Google::Apis::ContentV2::Datafeed::Representation
@@ -910,7 +912,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the datafeeds in your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -941,7 +943,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datafeeds(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/datafeeds', options)
+          command = make_simple_command(:get, '{merchantId}/datafeeds', options)
           command.response_representation = Google::Apis::ContentV2::ListDatafeedsResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListDatafeedsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -952,7 +954,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a datafeed configuration of your Merchant Center account. This method
         # can only be called for non-multi-client accounts. This method supports patch
         # semantics.
@@ -983,7 +985,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_datafeed(merchant_id, datafeed_id, datafeed_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:patch, '{merchantId}/datafeeds/{datafeedId}', options)
           command.request_representation = Google::Apis::ContentV2::Datafeed::Representation
           command.request_object = datafeed_object
           command.response_representation = Google::Apis::ContentV2::Datafeed::Representation
@@ -996,7 +998,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a datafeed configuration of your Merchant Center account. This method
         # can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1026,7 +1028,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_datafeed(merchant_id, datafeed_id, datafeed_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:put, '{merchantId}/datafeeds/{datafeedId}', options)
           command.request_representation = Google::Apis::ContentV2::Datafeed::Representation
           command.request_object = datafeed_object
           command.response_representation = Google::Apis::ContentV2::Datafeed::Representation
@@ -1039,8 +1041,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchDatafeedStatusesRequest] batch_datafeed_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1064,7 +1066,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_datafeed_status(batch_datafeed_statuses_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'datafeedstatuses/batch', options)
+          command = make_simple_command(:post, 'datafeedstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchDatafeedStatusesRequest::Representation
           command.request_object = batch_datafeed_statuses_request_object
           command.response_representation = Google::Apis::ContentV2::BatchDatafeedStatusesResponse::Representation
@@ -1074,7 +1076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the status of a datafeed from your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1101,7 +1103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_datafeed_status(merchant_id, datafeed_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/datafeedstatuses/{datafeedId}', options)
+          command = make_simple_command(:get, '{merchantId}/datafeedstatuses/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2::DatafeedStatus::Representation
           command.response_class = Google::Apis::ContentV2::DatafeedStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1111,7 +1113,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the datafeeds in your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1142,7 +1144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datafeed_statuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/datafeedstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/datafeedstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListDatafeedStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListDatafeedStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1153,7 +1155,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates price and availability for multiple products or stores in a single
         # request. This operation does not update the expiration date of the products.
         # This method can only be called for non-multi-client accounts.
@@ -1182,7 +1184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_inventory(batch_inventory_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'inventory/batch', options)
+          command = make_simple_command(:post, 'inventory/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchInventoryRequest::Representation
           command.request_object = batch_inventory_request_object
           command.response_representation = Google::Apis::ContentV2::BatchInventoryResponse::Representation
@@ -1193,7 +1195,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates price and availability of a product in your Merchant Center account.
         # This operation does not update the expiration date of the product. This method
         # can only be called for non-multi-client accounts.
@@ -1229,7 +1231,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_inventory(merchant_id, store_code, product_id, set_inventory_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/inventory/{storeCode}/products/{productId}', options)
+          command = make_simple_command(:post, '{merchantId}/inventory/{storeCode}/products/{productId}', options)
           command.request_representation = Google::Apis::ContentV2::SetInventoryRequest::Representation
           command.request_object = set_inventory_request_object
           command.response_representation = Google::Apis::ContentV2::SetInventoryResponse::Representation
@@ -1243,7 +1245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks an order as acknowledged. This method can only be called for non-multi-
         # client accounts.
         # @param [Fixnum] merchant_id
@@ -1273,7 +1275,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def acknowledge_order(merchant_id, order_id, orders_acknowledge_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/acknowledge', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/acknowledge', options)
           command.request_representation = Google::Apis::ContentV2::OrdersAcknowledgeRequest::Representation
           command.request_object = orders_acknowledge_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersAcknowledgeResponse::Representation
@@ -1285,7 +1287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Moves a test order from state "inProgress" to state "
         # pendingShipment". This method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1314,7 +1316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def advance_test_order(merchant_id, order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/testorders/{orderId}/advance', options)
+          command = make_simple_command(:post, '{merchantId}/testorders/{orderId}/advance', options)
           command.response_representation = Google::Apis::ContentV2::OrdersAdvanceTestOrderResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersAdvanceTestOrderResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1324,7 +1326,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels all line items in an order, making a full refund. This method can only
         # be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1354,7 +1356,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_order(merchant_id, order_id, orders_cancel_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/cancel', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/cancel', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCancelRequest::Representation
           command.request_object = orders_cancel_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersCancelResponse::Representation
@@ -1366,7 +1368,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a line item, making a full refund. This method can only be called for
         # non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1396,7 +1398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_order_line_item(merchant_id, order_id, orders_cancel_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/cancelLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/cancelLineItem', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCancelLineItemRequest::Representation
           command.request_object = orders_cancel_line_item_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersCancelLineItemResponse::Representation
@@ -1408,7 +1410,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Creates a test order. This method can only be called for non-
         # multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1436,7 +1438,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_test_order(merchant_id, orders_create_test_order_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/testorders', options)
+          command = make_simple_command(:post, '{merchantId}/testorders', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCreateTestOrderRequest::Representation
           command.request_object = orders_create_test_order_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersCreateTestOrderResponse::Representation
@@ -1447,7 +1449,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves or modifies multiple orders in a single request. This method can
         # only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::OrdersCustomBatchRequest] orders_custom_batch_request_object
@@ -1473,7 +1475,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custom_order_batch(orders_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'orders/batch', options)
+          command = make_simple_command(:post, 'orders/batch', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCustomBatchRequest::Representation
           command.request_object = orders_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersCustomBatchResponse::Representation
@@ -1483,7 +1485,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an order from your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1512,7 +1514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order(merchant_id, order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/orders/{orderId}', options)
+          command = make_simple_command(:get, '{merchantId}/orders/{orderId}', options)
           command.response_representation = Google::Apis::ContentV2::Order::Representation
           command.response_class = Google::Apis::ContentV2::Order
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1522,7 +1524,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an order using merchant order id. This method can only be called for
         # non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1551,7 +1553,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order_by_merchant_order_id(merchant_id, merchant_order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/ordersbymerchantid/{merchantOrderId}', options)
+          command = make_simple_command(:get, '{merchantId}/ordersbymerchantid/{merchantOrderId}', options)
           command.response_representation = Google::Apis::ContentV2::OrdersGetByMerchantOrderIdResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersGetByMerchantOrderIdResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1561,7 +1563,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Retrieves an order template that can be used to quickly create a
         # new order in sandbox. This method can only be called for non-multi-client
         # accounts.
@@ -1591,7 +1593,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_test_order_template(merchant_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/testordertemplates/{templateName}', options)
+          command = make_simple_command(:get, '{merchantId}/testordertemplates/{templateName}', options)
           command.response_representation = Google::Apis::ContentV2::OrdersGetTestOrderTemplateResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersGetTestOrderTemplateResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1601,7 +1603,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the orders in your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1659,7 +1661,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orders(merchant_id, acknowledged: nil, max_results: nil, order_by: nil, page_token: nil, placed_date_end: nil, placed_date_start: nil, statuses: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/orders', options)
+          command = make_simple_command(:get, '{merchantId}/orders', options)
           command.response_representation = Google::Apis::ContentV2::OrdersListResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1675,7 +1677,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Refund a portion of the order, up to the full amount paid. This method can
         # only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1705,7 +1707,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def refund_order(merchant_id, order_id, orders_refund_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/refund', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/refund', options)
           command.request_representation = Google::Apis::ContentV2::OrdersRefundRequest::Representation
           command.request_object = orders_refund_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersRefundResponse::Representation
@@ -1717,7 +1719,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a line item. This method can only be called for non-multi-client
         # accounts.
         # @param [Fixnum] merchant_id
@@ -1747,7 +1749,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def return_order_line_item(merchant_id, order_id, orders_return_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/returnLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/returnLineItem', options)
           command.request_representation = Google::Apis::ContentV2::OrdersReturnLineItemRequest::Representation
           command.request_object = orders_return_line_item_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersReturnLineItemResponse::Representation
@@ -1759,7 +1761,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks line item(s) as shipped. This method can only be called for non-multi-
         # client accounts.
         # @param [Fixnum] merchant_id
@@ -1789,7 +1791,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def shiplineitems_order(merchant_id, order_id, orders_ship_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/shipLineItems', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/shipLineItems', options)
           command.request_representation = Google::Apis::ContentV2::OrdersShipLineItemsRequest::Representation
           command.request_object = orders_ship_line_items_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersShipLineItemsResponse::Representation
@@ -1801,7 +1803,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the merchant order ID for a given order. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1831,7 +1833,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_merchant_order_id(merchant_id, order_id, orders_update_merchant_order_id_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/updateMerchantOrderId', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/updateMerchantOrderId', options)
           command.request_representation = Google::Apis::ContentV2::OrdersUpdateMerchantOrderIdRequest::Representation
           command.request_object = orders_update_merchant_order_id_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersUpdateMerchantOrderIdResponse::Representation
@@ -1843,7 +1845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a shipment's status, carrier, and/or tracking ID. This method can only
         # be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1873,7 +1875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_order_shipment(merchant_id, order_id, orders_update_shipment_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/updateShipment', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/updateShipment', options)
           command.request_representation = Google::Apis::ContentV2::OrdersUpdateShipmentRequest::Representation
           command.request_object = orders_update_shipment_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersUpdateShipmentResponse::Representation
@@ -1885,7 +1887,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves, inserts, and deletes multiple products in a single request. This
         # method can only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
@@ -1913,7 +1915,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_product(batch_products_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'products/batch', options)
+          command = make_simple_command(:post, 'products/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchProductsRequest::Representation
           command.request_object = batch_products_request_object
           command.response_representation = Google::Apis::ContentV2::BatchProductsResponse::Representation
@@ -1924,7 +1926,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a product from your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1955,7 +1957,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_product(merchant_id, product_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{merchantId}/products/{productId}', options)
+          command = make_simple_command(:delete, '{merchantId}/products/{productId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
           command.query['dryRun'] = dry_run unless dry_run.nil?
@@ -1964,7 +1966,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a product from your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -1993,7 +1995,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_product(merchant_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/products/{productId}', options)
+          command = make_simple_command(:get, '{merchantId}/products/{productId}', options)
           command.response_representation = Google::Apis::ContentV2::Product::Representation
           command.response_class = Google::Apis::ContentV2::Product
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2003,7 +2005,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a product to your Merchant Center account. If an item with the same
         # channel, contentLanguage, offerId, and targetCountry already exists, this
         # method updates that entry. This method can only be called for non-multi-client
@@ -2035,7 +2037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_product(merchant_id, product_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{merchantId}/products', options)
+          command = make_simple_command(:post, '{merchantId}/products', options)
           command.request_representation = Google::Apis::ContentV2::Product::Representation
           command.request_object = product_object
           command.response_representation = Google::Apis::ContentV2::Product::Representation
@@ -2047,7 +2049,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the products in your Merchant Center account. This method can only be
         # called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -2081,7 +2083,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_products(merchant_id, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/products', options)
+          command = make_simple_command(:get, '{merchantId}/products', options)
           command.response_representation = Google::Apis::ContentV2::ListProductsResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListProductsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2093,7 +2095,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the statuses of multiple products in a single request. This method can
         # only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchProductStatusesRequest] batch_product_statuses_request_object
@@ -2122,7 +2124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_product_status(batch_product_statuses_request_object = nil, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'productstatuses/batch', options)
+          command = make_simple_command(:post, 'productstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchProductStatusesRequest::Representation
           command.request_object = batch_product_statuses_request_object
           command.response_representation = Google::Apis::ContentV2::BatchProductStatusesResponse::Representation
@@ -2133,7 +2135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the status of a product from your Merchant Center account. This method
         # can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -2165,7 +2167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_product_status(merchant_id, product_id, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
+          command = make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
           command.response_representation = Google::Apis::ContentV2::ProductStatus::Representation
           command.response_class = Google::Apis::ContentV2::ProductStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2176,7 +2178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the products in your Merchant Center account. This
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -2214,7 +2216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_product_statuses(merchant_id, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/productstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/productstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListProductStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListProductStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2227,7 +2229,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves and updates the shipping settings of multiple accounts in a single
         # request.
         # @param [Google::Apis::ContentV2::ShippingsettingsCustomBatchRequest] shippingsettings_custom_batch_request_object
@@ -2255,7 +2257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_shippingsetting(shippingsettings_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'shippingsettings/batch', options)
+          command = make_simple_command(:post, 'shippingsettings/batch', options)
           command.request_representation = Google::Apis::ContentV2::ShippingsettingsCustomBatchRequest::Representation
           command.request_object = shippingsettings_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2::ShippingsettingsCustomBatchResponse::Representation
@@ -2266,7 +2268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
         # account itself or sub-accounts if the managing account is a multi-client
@@ -2297,7 +2299,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_shippingsetting(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/shippingsettings/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/shippingsettings/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::ShippingSettings::Representation
           command.response_class = Google::Apis::ContentV2::ShippingSettings
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2307,7 +2309,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves supported carriers and carrier services for an account.
         # @param [Fixnum] merchant_id
         #   The ID of the account for which to retrieve the supported carriers.
@@ -2333,7 +2335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getsupportedcarriers_shippingsetting(merchant_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/supportedCarriers', options)
+          command = make_simple_command(:get, '{merchantId}/supportedCarriers', options)
           command.response_representation = Google::Apis::ContentV2::ShippingsettingsGetSupportedCarriersResponse::Representation
           command.response_class = Google::Apis::ContentV2::ShippingsettingsGetSupportedCarriersResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2342,7 +2344,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the shipping settings of the sub-accounts in your Merchant Center
         # account. This method can only be called for multi-client accounts.
         # @param [Fixnum] merchant_id
@@ -2374,7 +2376,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_shippingsettings(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{merchantId}/shippingsettings', options)
+          command = make_simple_command(:get, '{merchantId}/shippingsettings', options)
           command.response_representation = Google::Apis::ContentV2::ShippingsettingsListResponse::Representation
           command.response_class = Google::Apis::ContentV2::ShippingsettingsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2385,7 +2387,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
         # account itself or sub-accounts if the managing account is a multi-client
@@ -2419,7 +2421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_shippingsetting(merchant_id, account_id, shipping_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{merchantId}/shippingsettings/{accountId}', options)
+          command = make_simple_command(:patch, '{merchantId}/shippingsettings/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::ShippingSettings::Representation
           command.request_object = shipping_settings_object
           command.response_representation = Google::Apis::ContentV2::ShippingSettings::Representation
@@ -2432,7 +2434,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
         # account itself or sub-accounts if the managing account is a multi-client
@@ -2466,7 +2468,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_shippingsetting(merchant_id, account_id, shipping_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{merchantId}/shippingsettings/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/shippingsettings/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::ShippingSettings::Representation
           command.request_object = shipping_settings_object
           command.response_representation = Google::Apis::ContentV2::ShippingSettings::Representation

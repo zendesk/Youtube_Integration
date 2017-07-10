@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'discovery/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieve the description of a particular version of an api.
         # @param [String] api
         #   The name of the API.
@@ -81,7 +83,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_rest_api(api, version, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'apis/{api}/{version}/rest', options)
+          command = make_simple_command(:get, 'apis/{api}/{version}/rest', options)
           command.response_representation = Google::Apis::DiscoveryV1::RestDescription::Representation
           command.response_class = Google::Apis::DiscoveryV1::RestDescription
           command.params['api'] = api unless api.nil?
@@ -91,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the list of APIs supported at this endpoint.
         # @param [String] name
         #   Only include APIs with the given name.
@@ -119,7 +121,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_apis(name: nil, preferred: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'apis', options)
+          command = make_simple_command(:get, 'apis', options)
           command.response_representation = Google::Apis::DiscoveryV1::DirectoryList::Representation
           command.response_class = Google::Apis::DiscoveryV1::DirectoryList
           command.query['name'] = name unless name.nil?

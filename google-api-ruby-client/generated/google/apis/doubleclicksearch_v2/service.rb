@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieves a list of conversions from a DoubleClick Search engine account.
         # @param [Fixnum] agency_id
         #   Numeric ID of the agency.
@@ -99,7 +101,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_conversion(agency_id, advertiser_id, engine_account_id, end_date, row_count, start_date, start_row, ad_group_id: nil, ad_id: nil, campaign_id: nil, criterion_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', options)
+          command = make_simple_command(:get, 'agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', options)
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.params['agencyId'] = agency_id unless agency_id.nil?
@@ -118,7 +120,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a batch of new conversions into DoubleClick Search.
         # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
@@ -143,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'conversion', options)
+          command = make_simple_command(:post, 'conversion', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
@@ -153,7 +155,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
         # @param [Fixnum] advertiser_id
@@ -193,7 +195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_conversion(advertiser_id, agency_id, end_date, engine_account_id, row_count, start_date, start_row, conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'conversion', options)
+          command = make_simple_command(:patch, 'conversion', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
@@ -210,7 +212,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a batch of conversions in DoubleClick Search.
         # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
@@ -235,7 +237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'conversion', options)
+          command = make_simple_command(:put, 'conversion', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
@@ -245,7 +247,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the availabilities of a batch of floodlight activities in DoubleClick
         # Search.
         # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request_object
@@ -271,7 +273,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_conversion_availability(update_availability_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'conversion/updateAvailability', options)
+          command = make_simple_command(:post, 'conversion/updateAvailability', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest::Representation
           command.request_object = update_availability_request_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponse::Representation
@@ -281,7 +283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates and returns a report immediately.
         # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
@@ -306,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_report(report_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'reports/generate', options)
+          command = make_simple_command(:post, 'reports/generate', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequest::Representation
           command.request_object = report_request_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
@@ -316,7 +318,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Polls for the status of a report request.
         # @param [String] report_id
         #   ID of the report request being polled.
@@ -342,7 +344,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_report(report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'reports/{reportId}', options)
+          command = make_simple_command(:get, 'reports/{reportId}', options)
           command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.params['reportId'] = report_id unless report_id.nil?
@@ -351,7 +353,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Downloads a report file encoded in UTF-8.
         # @param [String] report_id
         #   ID of the report.
@@ -382,7 +384,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_report_file(report_id, report_fragment, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'reports/{reportId}/files/{reportFragment}', options)
+            command = make_simple_command(:get, 'reports/{reportId}/files/{reportFragment}', options)
           else
             command = make_download_command(:get, 'reports/{reportId}/files/{reportFragment}', options)
             command.download_dest = download_dest
@@ -394,7 +396,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a report request into the reporting system.
         # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
@@ -419,7 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def request_report(report_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'reports', options)
+          command = make_simple_command(:post, 'reports', options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequest::Representation
           command.request_object = report_request_object
           command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
@@ -429,7 +431,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the list of saved columns for a specified advertiser.
         # @param [Fixnum] agency_id
         #   DS ID of the agency.
@@ -457,7 +459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_saved_columns(agency_id, advertiser_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'agency/{agencyId}/advertiser/{advertiserId}/savedcolumns', options)
+          command = make_simple_command(:get, 'agency/{agencyId}/advertiser/{advertiserId}/savedcolumns', options)
           command.response_representation = Google::Apis::DoubleclicksearchV2::SavedColumnList::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::SavedColumnList
           command.params['agencyId'] = agency_id unless agency_id.nil?

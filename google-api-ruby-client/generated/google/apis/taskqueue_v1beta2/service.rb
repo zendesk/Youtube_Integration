@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'taskqueue/v1beta2/projects/')
           @batch_path = 'batch'
         end
-        
+
         # Get detailed information about a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -82,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_taskqueue(project, taskqueue, get_stats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}', options)
+          command = make_simple_command(:get, '{project}/taskqueues/{taskqueue}', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::TaskQueue::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::TaskQueue
           command.params['project'] = project unless project.nil?
@@ -93,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -123,7 +125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_task(project, taskqueue, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
+          command = make_simple_command(:delete, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
           command.params['task'] = task unless task.nil?
@@ -132,7 +134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a particular task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -162,7 +164,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_task(project, taskqueue, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
+          command = make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
@@ -173,7 +175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new task in a TaskQueue
         # @param [String] project
         #   The project under which the queue lies
@@ -202,7 +204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_task(project, taskqueue, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks', options)
+          command = make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
@@ -214,7 +216,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lease 1 or more tasks from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -252,7 +254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lease_task(project, taskqueue, num_tasks, lease_secs, group_by_tag: nil, tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/lease', options)
+          command = make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/lease', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks
           command.params['project'] = project unless project.nil?
@@ -266,7 +268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List Tasks in a TaskQueue
         # @param [String] project
         #   The project under which the queue lies.
@@ -294,7 +296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tasks(project, taskqueue, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks', options)
+          command = make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks2::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks2
           command.params['project'] = project unless project.nil?
@@ -304,7 +306,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update tasks that are leased out of a TaskQueue. This method supports patch
         # semantics.
         # @param [String] project
@@ -336,7 +338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
+          command = make_simple_command(:patch, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
@@ -350,7 +352,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update tasks that are leased out of a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -381,7 +383,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
+          command = make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation

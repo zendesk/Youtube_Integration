@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://mybusiness.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Lists all of the accounts for the authenticated user. This includes all
         # accounts that the user owns, as well as any accounts for which the user
         # has management rights.
@@ -76,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/accounts', options)
+          command = make_simple_command(:get, 'v3/accounts', options)
           command.response_representation = Google::Apis::MybusinessV3::ListAccountsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListAccountsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified account. Returns `NOT_FOUND` if the
         # account does not exist or if the caller does not have access rights to it.
         # @param [String] name
@@ -108,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Account::Representation
           command.response_class = Google::Apis::MybusinessV3::Account
           command.params['name'] = name unless name.nil?
@@ -116,7 +118,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified business account. Personal accounts cannot be
         # updated using this method.
         # Note: At this time the only editable field for an account is
@@ -148,7 +150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account(name, account_object = nil, language_code: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v3/{+name}', options)
+          command = make_simple_command(:put, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MybusinessV3::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::MybusinessV3::Account::Representation
@@ -160,7 +162,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the admins for the specified account.
         # @param [String] name
         #   The name of the account from which to retrieve a list of admins.
@@ -182,7 +184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_admins(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/admins', options)
+          command = make_simple_command(:get, 'v3/{+name}/admins', options)
           command.response_representation = Google::Apis::MybusinessV3::ListAccountAdminsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListAccountAdminsResponse
           command.params['name'] = name unless name.nil?
@@ -190,7 +192,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Invites the specified user to become an administrator on the specified
         # account. The invitee must accept the invitation in order to be granted
         # access to the account.
@@ -218,7 +220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_admin(name, admin_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/admins', options)
+          command = make_simple_command(:post, 'v3/{+name}/admins', options)
           command.request_representation = Google::Apis::MybusinessV3::Admin::Representation
           command.request_object = admin_object
           command.response_representation = Google::Apis::MybusinessV3::Admin::Representation
@@ -228,7 +230,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified admin from the specified account.
         # @param [String] name
         #   The resource name of the admin to remove from the account.
@@ -250,7 +252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_admin(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
           command.response_class = Google::Apis::MybusinessV3::Empty
           command.params['name'] = name unless name.nil?
@@ -258,7 +260,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the locations for the specified account.
         # @param [String] name
         #   The name of the account to fetch locations from.
@@ -296,7 +298,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_locations(name, page_size: nil, page_token: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/locations', options)
+          command = make_simple_command(:get, 'v3/{+name}/locations', options)
           command.response_representation = Google::Apis::MybusinessV3::ListLocationsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -307,7 +309,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified location. Returns `NOT_FOUND` if the
         # location does not exist.
         # @param [String] name
@@ -330,7 +332,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Location::Representation
           command.response_class = Google::Apis::MybusinessV3::Location
           command.params['name'] = name unless name.nil?
@@ -338,7 +340,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets all of the specified locations in the given account.
         # @param [String] name
         #   The name of the account from which to fetch locations.
@@ -361,7 +363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_locations(name, batch_get_locations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/locations:batchGet', options)
+          command = make_simple_command(:post, 'v3/{+name}/locations:batchGet', options)
           command.request_representation = Google::Apis::MybusinessV3::BatchGetLocationsRequest::Representation
           command.request_object = batch_get_locations_request_object
           command.response_representation = Google::Apis::MybusinessV3::BatchGetLocationsResponse::Representation
@@ -371,7 +373,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the Google updated version of the specified location.
         # Returns `NOT_FOUND` if the location does not exist.
         # @param [String] name
@@ -394,7 +396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_google_updated_account_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}:googleUpdated', options)
+          command = make_simple_command(:get, 'v3/{+name}:googleUpdated', options)
           command.response_representation = Google::Apis::MybusinessV3::GoogleUpdatedLocation::Representation
           command.response_class = Google::Apis::MybusinessV3::GoogleUpdatedLocation
           command.params['name'] = name unless name.nil?
@@ -402,7 +404,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new location owned by the
         # specified account, and returns it.
         # @param [String] name
@@ -434,7 +436,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_location(name, location_object = nil, language_code: nil, validate_only: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/locations', options)
+          command = make_simple_command(:post, 'v3/{+name}/locations', options)
           command.request_representation = Google::Apis::MybusinessV3::Location::Representation
           command.request_object = location_object
           command.response_representation = Google::Apis::MybusinessV3::Location::Representation
@@ -447,7 +449,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified location.
         # Photos are only allowed on a location that has a Google+ page.
         # Returns `NOT_FOUND` if the location does not exist.
@@ -481,7 +483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account_location(name, location_object = nil, language_code: nil, field_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MybusinessV3::Location::Representation
           command.request_object = location_object
           command.response_representation = Google::Apis::MybusinessV3::Location::Representation
@@ -494,7 +496,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a location. Note: If this location has an associated Google+ page, as
         # indicated by a `plus_page_id` in the LocationKey, it cannot be deleted using
         # the API, it
@@ -521,7 +523,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
           command.response_class = Google::Apis::MybusinessV3::Empty
           command.params['name'] = name unless name.nil?
@@ -529,7 +531,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Finds all of the possible locations that are a match to the specified
         # location. This operation is only valid if the location is unverified.
         # @param [String] name
@@ -553,7 +555,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_account_location_matches(name, find_matching_locations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:findMatches', options)
+          command = make_simple_command(:post, 'v3/{+name}:findMatches', options)
           command.request_representation = Google::Apis::MybusinessV3::FindMatchingLocationsRequest::Representation
           command.request_object = find_matching_locations_request_object
           command.response_representation = Google::Apis::MybusinessV3::FindMatchingLocationsResponse::Representation
@@ -563,7 +565,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Associates a location to a place ID. Any previous association is
         # overwritten. This operation is only valid if the location is unverified.
         # The association must be valid, i.e. appear in the list of
@@ -589,7 +591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def associate_location(name, associate_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:associate', options)
+          command = make_simple_command(:post, 'v3/{+name}:associate', options)
           command.request_representation = Google::Apis::MybusinessV3::AssociateLocationRequest::Representation
           command.request_object = associate_location_request_object
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
@@ -599,7 +601,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears an assocation between a location and its place ID. This
         # operation is only valid if the location is unverified.
         # @param [String] name
@@ -623,7 +625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_account_location_association(name, clear_location_association_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:clearAssociation', options)
+          command = make_simple_command(:post, 'v3/{+name}:clearAssociation', options)
           command.request_representation = Google::Apis::MybusinessV3::ClearLocationAssociationRequest::Representation
           command.request_object = clear_location_association_request_object
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
@@ -633,7 +635,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Transfer a location from one account to another. The current account that
         # the location is associated with and the destination account must have the
         # same ultimate owner. Returns the Location with its new resource name.
@@ -658,7 +660,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def transfer_location(name, transfer_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:transfer', options)
+          command = make_simple_command(:post, 'v3/{+name}:transfer', options)
           command.request_representation = Google::Apis::MybusinessV3::TransferLocationRequest::Representation
           command.request_object = transfer_location_request_object
           command.response_representation = Google::Apis::MybusinessV3::Location::Representation
@@ -668,7 +670,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all of the admins for the specified location.
         # @param [String] name
         #   The name of the location to list admins of.
@@ -690,7 +692,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_location_admins(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/admins', options)
+          command = make_simple_command(:get, 'v3/{+name}/admins', options)
           command.response_representation = Google::Apis::MybusinessV3::ListLocationAdminsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListLocationAdminsResponse
           command.params['name'] = name unless name.nil?
@@ -698,7 +700,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Invites the specified user to become an administrator on the specified
         # location. The invitee must accept the invitation in order to be granted
         # access to the location.
@@ -726,7 +728,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_location_admin(name, admin_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/admins', options)
+          command = make_simple_command(:post, 'v3/{+name}/admins', options)
           command.request_representation = Google::Apis::MybusinessV3::Admin::Representation
           command.request_object = admin_object
           command.response_representation = Google::Apis::MybusinessV3::Admin::Representation
@@ -736,7 +738,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified admin as a manager of the specified location.
         # @param [String] name
         #   The resource name of the admin to remove from the location.
@@ -758,7 +760,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_location_admin(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
           command.response_class = Google::Apis::MybusinessV3::Empty
           command.params['name'] = name unless name.nil?
@@ -766,7 +768,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the paginated list of reviews for the specified location.
         # This operation is only valid if the specified location is verified.
         # @param [String] name
@@ -798,7 +800,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reviews(name, page_size: nil, page_token: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/reviews', options)
+          command = make_simple_command(:get, 'v3/{+name}/reviews', options)
           command.response_representation = Google::Apis::MybusinessV3::ListReviewsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListReviewsResponse
           command.params['name'] = name unless name.nil?
@@ -809,7 +811,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified review.
         # This operation is only valid if the specified location is verified.
         # Returns `NOT_FOUND` if the review does not exist, or has been deleted.
@@ -833,7 +835,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_review(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Review::Representation
           command.response_class = Google::Apis::MybusinessV3::Review
           command.params['name'] = name unless name.nil?
@@ -841,7 +843,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the reply to the specified review.
         # A reply is created if one does not exist.
         # This operation is only valid if the specified location is verified.
@@ -866,7 +868,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reply_to_review(name, review_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/reply', options)
+          command = make_simple_command(:post, 'v3/{+name}/reply', options)
           command.request_representation = Google::Apis::MybusinessV3::ReviewReply::Representation
           command.request_object = review_reply_object
           command.response_representation = Google::Apis::MybusinessV3::ReviewReply::Representation
@@ -876,7 +878,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the response to the specified review.
         # This operation is only valid if the specified location is verified.
         # @param [String] name
@@ -899,7 +901,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_reply(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}/reply', options)
+          command = make_simple_command(:delete, 'v3/{+name}/reply', options)
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
           command.response_class = Google::Apis::MybusinessV3::Empty
           command.params['name'] = name unless name.nil?
@@ -907,7 +909,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the list of available attributes that would be available for a
         # location with the given primary category and country.
         # @param [String] name
@@ -937,7 +939,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_attributes(name: nil, category_id: nil, country: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/attributes', options)
+          command = make_simple_command(:get, 'v3/attributes', options)
           command.response_representation = Google::Apis::MybusinessV3::ListLocationAttributeMetadataResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListLocationAttributeMetadataResponse
           command.query['name'] = name unless name.nil?

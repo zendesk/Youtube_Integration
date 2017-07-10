@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'appstate/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Clears (sets to empty) the data for the passed key if and only if the passed
         # version matches the currently stored version. This method results in a
         # conflict error on version mismatch.
@@ -83,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_state(state_key, current_data_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'states/{stateKey}/clear', options)
+          command = make_simple_command(:post, 'states/{stateKey}/clear', options)
           command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation
           command.response_class = Google::Apis::AppstateV1::WriteResult
           command.params['stateKey'] = state_key unless state_key.nil?
@@ -93,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a key and the data associated with it. The key is removed and no
         # longer counts against the key quota. Note that since this method is not safe
         # in the face of concurrent modifications, it should only be used for
@@ -123,14 +125,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_state(state_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'states/{stateKey}', options)
+          command = make_simple_command(:delete, 'states/{stateKey}', options)
           command.params['stateKey'] = state_key unless state_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the data corresponding to the passed key. If the key does not exist
         # on the server, an HTTP 404 will be returned.
         # @param [Fixnum] state_key
@@ -157,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_state(state_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'states/{stateKey}', options)
+          command = make_simple_command(:get, 'states/{stateKey}', options)
           command.response_representation = Google::Apis::AppstateV1::GetResponse::Representation
           command.response_class = Google::Apis::AppstateV1::GetResponse
           command.params['stateKey'] = state_key unless state_key.nil?
@@ -166,7 +168,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the states keys, and optionally the state data.
         # @param [Boolean] include_data
         #   Whether to include the full data in addition to the version number
@@ -192,7 +194,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_states(include_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'states', options)
+          command = make_simple_command(:get, 'states', options)
           command.response_representation = Google::Apis::AppstateV1::ListResponse::Representation
           command.response_class = Google::Apis::AppstateV1::ListResponse
           command.query['includeData'] = include_data unless include_data.nil?
@@ -201,7 +203,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data associated with the input key if and only if the passed
         # version matches the currently stored version. This method is safe in the face
         # of concurrent writes. Maximum per-key size is 128KB.
@@ -235,7 +237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_state(state_key, update_request_object = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'states/{stateKey}', options)
+          command = make_simple_command(:put, 'states/{stateKey}', options)
           command.request_representation = Google::Apis::AppstateV1::UpdateRequest::Representation
           command.request_object = update_request_object
           command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation

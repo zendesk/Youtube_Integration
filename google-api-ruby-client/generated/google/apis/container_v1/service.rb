@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://container.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Returns configuration info about the Container Engine service.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -73,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_zone_serverconfig(project_id, zone, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/serverconfig', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/serverconfig', options)
           command.response_representation = Google::Apis::ContainerV1::ServerConfig::Representation
           command.response_class = Google::Apis::ContainerV1::ServerConfig
           command.params['projectId'] = project_id unless project_id.nil?
@@ -82,7 +84,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Start master IP rotation.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -112,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_cluster_ip_rotation(project_id, zone, cluster_id, start_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::StartIpRotationRequest::Representation
           command.request_object = start_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -124,7 +126,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Used to set master auth materials. Currently supports :-
         # Changing the admin password of a specific cluster.
         # This can be either via password generation or explicitly set the password.
@@ -156,7 +158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_master_auth(project_id, zone, cluster_id, set_master_auth_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', options)
           command.request_representation = Google::Apis::ContainerV1::SetMasterAuthRequest::Representation
           command.request_object = set_master_auth_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -168,7 +170,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the cluster, including the Kubernetes endpoint and all worker
         # nodes.
         # Firewalls and routes that were configured during cluster creation
@@ -203,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_cluster(project_id, zone, cluster_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -213,7 +215,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all clusters owned by a project in either the specified zone or all
         # zones.
         # @param [String] project_id
@@ -241,7 +243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_clusters(project_id, zone, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
           command.response_representation = Google::Apis::ContainerV1::ListClustersResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -250,7 +252,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a cluster, consisting of the specified number and type of Google
         # Compute Engine instances.
         # By default, the cluster is created in the project's
@@ -287,7 +289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_cluster(project_id, zone, create_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
           command.request_representation = Google::Apis::ContainerV1::CreateClusterRequest::Representation
           command.request_object = create_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -298,7 +300,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets labels on a cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -328,7 +330,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resource_project_zone_cluster_labels(project_id, zone, cluster_id, set_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', options)
           command.request_representation = Google::Apis::ContainerV1::SetLabelsRequest::Representation
           command.request_object = set_labels_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -340,7 +342,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Completes master IP rotation.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -370,7 +372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def complete_cluster_ip_rotation(project_id, zone, cluster_id, complete_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::CompleteIpRotationRequest::Representation
           command.request_object = complete_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -382,7 +384,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the details of a specific cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -411,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_cluster(project_id, zone, cluster_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.response_representation = Google::Apis::ContainerV1::Cluster::Representation
           command.response_class = Google::Apis::ContainerV1::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -421,7 +423,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enables or disables the ABAC authorization mechanism on a cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -451,7 +453,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def legacy_project_zone_cluster_abac(project_id, zone, cluster_id, set_legacy_abac_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', options)
           command.request_representation = Google::Apis::ContainerV1::SetLegacyAbacRequest::Representation
           command.request_object = set_legacy_abac_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -463,7 +465,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the settings of a specific cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -493,7 +495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_cluster(project_id, zone, cluster_id, update_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:put, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateClusterRequest::Representation
           command.request_object = update_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -505,7 +507,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a node pool from a cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -536,7 +538,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_zone_cluster_node_pool(project_id, zone, cluster_id, node_pool_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -547,7 +549,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the NodeManagement options for a node pool.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -579,7 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_zone_cluster_node_pool_management(project_id, zone, cluster_id, node_pool_id, set_node_pool_management_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolManagementRequest::Representation
           command.request_object = set_node_pool_management_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -592,7 +594,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the size of a specific node pool.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -624,7 +626,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_zone_cluster_node_pool_size(project_id, zone, cluster_id, node_pool_id, set_node_pool_size_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolSizeRequest::Representation
           command.request_object = set_node_pool_size_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -637,7 +639,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the node pools for a cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -666,7 +668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_zone_cluster_node_pools(project_id, zone, cluster_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
           command.response_representation = Google::Apis::ContainerV1::ListNodePoolsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListNodePoolsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -676,7 +678,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Roll back the previously Aborted or Failed NodePool upgrade.
         # This will be an no-op if the last upgrade successfully completed.
         # @param [String] project_id
@@ -709,7 +711,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_node_pool_upgrade(project_id, zone, cluster_id, node_pool_id, rollback_node_pool_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', options)
           command.request_representation = Google::Apis::ContainerV1::RollbackNodePoolUpgradeRequest::Representation
           command.request_object = rollback_node_pool_upgrade_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -722,7 +724,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a node pool for a cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -752,7 +754,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_node_pool(project_id, zone, cluster_id, create_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
           command.request_representation = Google::Apis::ContainerV1::CreateNodePoolRequest::Representation
           command.request_object = create_node_pool_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -764,7 +766,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the node pool requested.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -795,7 +797,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_zone_cluster_node_pool(project_id, zone, cluster_id, node_pool_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
           command.response_representation = Google::Apis::ContainerV1::NodePool::Representation
           command.response_class = Google::Apis::ContainerV1::NodePool
           command.params['projectId'] = project_id unless project_id.nil?
@@ -806,7 +808,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels the specified operation.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -835,7 +837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(project_id, zone, operation_id, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', options)
           command.request_representation = Google::Apis::ContainerV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::ContainerV1::Empty::Representation
@@ -847,7 +849,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all operations in a project in a specific zone or all zones.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -873,7 +875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project_id, zone, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ContainerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListOperationsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -882,7 +884,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified operation.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
@@ -911,7 +913,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project_id, zone, operation_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'resourceviews/v1beta2/projects/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -83,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -94,7 +96,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -130,7 +132,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/operations', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationList::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::OperationList
           command.params['project'] = project unless project.nil?
@@ -143,7 +145,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add resources to the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -174,7 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_zone_view_resources(project, zone, resource_view, add_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/addResources', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/addResources', options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::AddResourcesRequest::Representation
           command.request_object = add_resources_request_object
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
@@ -187,7 +189,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -217,7 +219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_view(project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/resourceViews/{resourceView}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/resourceViews/{resourceView}', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -228,7 +230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the information of a zonal resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -258,7 +260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_view(project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/resourceViews/{resourceView}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/resourceViews/{resourceView}', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::ResourceView
           command.params['project'] = project unless project.nil?
@@ -269,7 +271,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the service information of a resource view or a resource.
         # @param [String] project
         #   The project name of the resource view.
@@ -302,7 +304,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_view_service(project, zone, resource_view, resource_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/getService', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/getService', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::GetServiceResponse::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::GetServiceResponse
           command.params['project'] = project unless project.nil?
@@ -314,7 +316,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -343,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_zone_view(project, zone, resource_view_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/resourceViews', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/resourceViews', options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
           command.request_object = resource_view_object
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
@@ -355,7 +357,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List resource views.
         # @param [String] project
         #   The project name of the resource view.
@@ -389,7 +391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_views(project, zone, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/resourceViews', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/resourceViews', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsList::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::ZoneViewsList
           command.params['project'] = project unless project.nil?
@@ -401,7 +403,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the resources of the resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -446,7 +448,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_view_resources(project, zone, resource_view, format: nil, list_state: nil, max_results: nil, page_token: nil, service_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/resourceViews/{resourceView}/resources', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/resourceViews/{resourceView}/resources', options)
           command.response_representation = Google::Apis::ResourceviewsV1beta2::ListResourcesResponse::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::ListResourcesResponse
           command.params['project'] = project unless project.nil?
@@ -462,7 +464,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove resources from the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -493,7 +495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_zone_view_resources(project, zone, resource_view, remove_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/removeResources', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/removeResources', options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::RemoveResourcesRequest::Representation
           command.request_object = remove_resources_request_object
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
@@ -506,7 +508,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the service information of a resource view or a resource.
         # @param [String] project
         #   The project name of the resource view.
@@ -537,7 +539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_zone_view_service(project, zone, resource_view, set_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/setService', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/resourceViews/{resourceView}/setService', options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::SetServiceRequest::Representation
           command.request_object = set_service_request_object
           command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation

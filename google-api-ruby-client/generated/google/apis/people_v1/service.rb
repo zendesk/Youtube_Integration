@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://people.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Provides information about a list of specific people by specifying a list
         # of requested resource names. Use `people/me` to indicate the authenticated
         # user.
@@ -107,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_people(resource_names: nil, person_fields: nil, request_mask_include_field: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/people:batchGet', options)
+          command = make_simple_command(:get, 'v1/people:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::GetPeopleResponse::Representation
           command.response_class = Google::Apis::PeopleV1::GetPeopleResponse
           command.query['resourceNames'] = resource_names unless resource_names.nil?
@@ -117,7 +119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides information about a person by specifying a resource name. Use
         # `people/me` to indicate the authenticated user.
         # @param [String] resource_name
@@ -178,7 +180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_person(resource_name, person_fields: nil, request_mask_include_field: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resourceName}', options)
+          command = make_simple_command(:get, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
           command.params['resourceName'] = resource_name unless resource_name.nil?
@@ -188,7 +190,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides a list of the authenticated user's contacts merged with any
         # linked profiles.
         # @param [String] resource_name
@@ -259,7 +261,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_person_connections(resource_name, sort_order: nil, request_sync_token: nil, page_token: nil, page_size: nil, request_mask_include_field: nil, sync_token: nil, person_fields: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resourceName}/connections', options)
+          command = make_simple_command(:get, 'v1/{+resourceName}/connections', options)
           command.response_representation = Google::Apis::PeopleV1::ListConnectionsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListConnectionsResponse
           command.params['resourceName'] = resource_name unless resource_name.nil?

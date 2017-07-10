@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,31 +23,30 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbillingV1
-      
       class ProjectBillingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListProjectBillingInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListBillingAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BillingAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ProjectBillingInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -55,25 +56,25 @@ module Google
           property :billing_account_name, as: 'billingAccountName'
         end
       end
-      
+
       class ListProjectBillingInfoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :project_billing_info, as: 'projectBillingInfo', class: Google::Apis::CloudbillingV1::ProjectBillingInfo, decorator: Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
-      
+
         end
       end
-      
+
       class ListBillingAccountsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :billing_accounts, as: 'billingAccounts', class: Google::Apis::CloudbillingV1::BillingAccount, decorator: Google::Apis::CloudbillingV1::BillingAccount::Representation
-      
+
         end
       end
-      
+
       class BillingAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

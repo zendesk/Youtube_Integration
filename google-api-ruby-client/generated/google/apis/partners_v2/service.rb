@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://partners.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Gets Partners Status of the logged in user's agency.
         # Should only be called if the logged in user is the admin of the agency.
         # @param [Array<String>, String] request_metadata_experiment_ids
@@ -86,7 +88,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_partnersstatus(request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/partnersstatus', options)
+          command = make_simple_command(:get, 'v2/partnersstatus', options)
           command.response_representation = Google::Apis::PartnersV2::GetPartnersStatusResponse::Representation
           command.response_class = Google::Apis::PartnersV2::GetPartnersStatusResponse
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
@@ -100,7 +102,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified lead.
         # @param [Google::Apis::PartnersV2::Lead] lead_object
         # @param [String] request_metadata_user_overrides_user_id
@@ -143,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_leads(lead_object = nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, update_mask: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/leads', options)
+          command = make_simple_command(:patch, 'v2/leads', options)
           command.request_representation = Google::Apis::PartnersV2::Lead::Representation
           command.request_object = lead_object
           command.response_representation = Google::Apis::PartnersV2::Lead::Representation
@@ -160,7 +162,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update company.
         # Should only be called within the context of an authorized logged in user.
         # @param [Google::Apis::PartnersV2::Company] company_object
@@ -220,7 +222,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a user.
         # @param [String] user_id
         #   Identifier of the user. Can be set to <code>me</code> to mean the currently
@@ -263,7 +265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user(user_id, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, user_view: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/users/{userId}', options)
+          command = make_simple_command(:get, 'v2/users/{userId}', options)
           command.response_representation = Google::Apis::PartnersV2::User::Representation
           command.response_class = Google::Apis::PartnersV2::User
           command.params['userId'] = user_id unless user_id.nil?
@@ -279,7 +281,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a user's profile. A user can only update their own profile and
         # should only be called within the context of a logged in user.
         # @param [Google::Apis::PartnersV2::UserProfile] user_profile_object
@@ -319,7 +321,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_profile(user_profile_object = nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/users/profile', options)
+          command = make_simple_command(:patch, 'v2/users/profile', options)
           command.request_representation = Google::Apis::PartnersV2::UserProfile::Representation
           command.request_object = user_profile_object
           command.response_representation = Google::Apis::PartnersV2::UserProfile::Representation
@@ -335,7 +337,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a user's company relation. Affiliates the user to a company.
         # @param [String] user_id
         #   The ID of the user. Can be set to <code>me</code> to mean
@@ -377,7 +379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_company_relation(user_id, company_relation_object = nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/users/{userId}/companyRelation', options)
+          command = make_simple_command(:put, 'v2/users/{userId}/companyRelation', options)
           command.request_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
           command.request_object = company_relation_object
           command.response_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
@@ -394,7 +396,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a user's company relation. Unaffiliaites the user from a company.
         # @param [String] user_id
         #   The ID of the user. Can be set to <code>me</code> to mean
@@ -435,7 +437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_company_relation(user_id, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/users/{userId}/companyRelation', options)
+          command = make_simple_command(:delete, 'v2/users/{userId}/companyRelation', options)
           command.response_representation = Google::Apis::PartnersV2::Empty::Representation
           command.response_class = Google::Apis::PartnersV2::Empty
           command.params['userId'] = user_id unless user_id.nil?
@@ -450,7 +452,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a company.
         # @param [String] company_id
         #   The ID of the company to retrieve.
@@ -505,7 +507,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_company(company_id, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, currency_code: nil, order_by: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, view: nil, request_metadata_locale: nil, address: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/companies/{companyId}', options)
+          command = make_simple_command(:get, 'v2/companies/{companyId}', options)
           command.response_representation = Google::Apis::PartnersV2::GetCompanyResponse::Representation
           command.response_class = Google::Apis::PartnersV2::GetCompanyResponse
           command.params['companyId'] = company_id unless company_id.nil?
@@ -524,7 +526,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists companies.
         # @param [Fixnum] min_monthly_budget_nanos
         #   Number of nano (10^-9) units of the amount.
@@ -627,7 +629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_companies(min_monthly_budget_nanos: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, company_name: nil, page_token: nil, industries: nil, website_url: nil, gps_motivations: nil, language_codes: nil, page_size: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, order_by: nil, specializations: nil, max_monthly_budget_currency_code: nil, min_monthly_budget_currency_code: nil, request_metadata_user_overrides_user_id: nil, view: nil, request_metadata_locale: nil, address: nil, min_monthly_budget_units: nil, max_monthly_budget_nanos: nil, services: nil, max_monthly_budget_units: nil, request_metadata_traffic_source_traffic_source_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/companies', options)
+          command = make_simple_command(:get, 'v2/companies', options)
           command.response_representation = Google::Apis::PartnersV2::ListCompaniesResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListCompaniesResponse
           command.query['minMonthlyBudget.nanos'] = min_monthly_budget_nanos unless min_monthly_budget_nanos.nil?
@@ -659,7 +661,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an advertiser lead for the given company ID.
         # @param [String] company_id
         #   The ID of the company to contact.
@@ -682,7 +684,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_lead(company_id, create_lead_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/companies/{companyId}/leads', options)
+          command = make_simple_command(:post, 'v2/companies/{companyId}/leads', options)
           command.request_representation = Google::Apis::PartnersV2::CreateLeadRequest::Representation
           command.request_object = create_lead_request_object
           command.response_representation = Google::Apis::PartnersV2::CreateLeadResponse::Representation
@@ -692,7 +694,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Logs a user event.
         # @param [Google::Apis::PartnersV2::LogUserEventRequest] log_user_event_request_object
         # @param [String] fields
@@ -713,7 +715,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def log_user_event(log_user_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/userEvents:log', options)
+          command = make_simple_command(:post, 'v2/userEvents:log', options)
           command.request_representation = Google::Apis::PartnersV2::LogUserEventRequest::Representation
           command.request_object = log_user_event_request_object
           command.response_representation = Google::Apis::PartnersV2::LogUserEventResponse::Representation
@@ -722,7 +724,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Logs a generic message from the client, such as
         # `Failed to render component`, `Profile page is running slow`,
         # `More than 500 users have accessed this result.`, etc.
@@ -745,7 +747,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def log_client_message_message(log_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/clientMessages:log', options)
+          command = make_simple_command(:post, 'v2/clientMessages:log', options)
           command.request_representation = Google::Apis::PartnersV2::LogMessageRequest::Representation
           command.request_object = log_message_request_object
           command.response_representation = Google::Apis::PartnersV2::LogMessageResponse::Representation
@@ -754,7 +756,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an Exam Token for a Partner's user to take an exam in the Exams System
         # @param [String] exam_type
         #   The exam type we are requesting a token for.
@@ -794,7 +796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_exam_token(exam_type, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/exams/{examType}/token', options)
+          command = make_simple_command(:get, 'v2/exams/{examType}/token', options)
           command.response_representation = Google::Apis::PartnersV2::ExamToken::Representation
           command.response_class = Google::Apis::PartnersV2::ExamToken
           command.params['examType'] = exam_type unless exam_type.nil?
@@ -809,7 +811,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists advertiser leads for a user's associated company.
         # Should only be called within the context of an authorized logged in user.
         # @param [String] request_metadata_partners_session_id
@@ -859,7 +861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_leads(request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/leads', options)
+          command = make_simple_command(:get, 'v2/leads', options)
           command.response_representation = Google::Apis::PartnersV2::ListLeadsResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListLeadsResponse
           command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
@@ -876,7 +878,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the Offers available for the current user
         # @param [String] request_metadata_user_overrides_user_id
         #   Logged-in user ID to impersonate instead of the user's ID.
@@ -914,7 +916,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_offers(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/offers', options)
+          command = make_simple_command(:get, 'v2/offers', options)
           command.response_representation = Google::Apis::PartnersV2::ListOffersResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListOffersResponse
           command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
@@ -928,7 +930,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the Historical Offers for the current user (or user's entire company)
         # @param [Array<String>, String] request_metadata_experiment_ids
         #   Experiment IDs the current request belongs to.
@@ -978,7 +980,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_offer_histories(request_metadata_experiment_ids: nil, entire_company: nil, request_metadata_traffic_source_traffic_sub_id: nil, order_by: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/offers/history', options)
+          command = make_simple_command(:get, 'v2/offers/history', options)
           command.response_representation = Google::Apis::PartnersV2::ListOffersHistoryResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListOffersHistoryResponse
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
@@ -996,7 +998,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists states for current user.
         # @param [String] request_metadata_user_overrides_user_id
         #   Logged-in user ID to impersonate instead of the user's ID.
@@ -1034,7 +1036,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_states(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/userStates', options)
+          command = make_simple_command(:get, 'v2/userStates', options)
           command.response_representation = Google::Apis::PartnersV2::ListUserStatesResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListUserStatesResponse
           command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
@@ -1048,7 +1050,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists analytics data for a user's associated company.
         # Should only be called within the context of an authorized logged in user.
         # @param [Fixnum] page_size
@@ -1103,7 +1105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_analytics(page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/analytics', options)
+          command = make_simple_command(:get, 'v2/analytics', options)
           command.response_representation = Google::Apis::PartnersV2::ListAnalyticsResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListAnalyticsResponse
           command.query['pageSize'] = page_size unless page_size.nil?

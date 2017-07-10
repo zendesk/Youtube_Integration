@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +30,7 @@ module Samples
     desc 'schedule', 'Create an event'
     method_option :summary, type: :string, required: true
     method_option :start, type: :string, required: true
-    method_option :end , type: :string, required: true
+    method_option :end, type: :string, required: true
     method_option :attendees, type: :array
     def schedule
       calendar = Calendar::CalendarService.new
@@ -51,7 +53,7 @@ module Samples
 
     desc 'list', 'List upcoming events'
     method_option :limit, type: :numeric
-    def list()
+    def list
       calendar = Calendar::CalendarService.new
       calendar.authorization = user_credentials_for(Calendar::AUTH_CALENDAR)
 
@@ -72,11 +74,7 @@ module Samples
           say "#{time}, #{event.summary}"
         end
         limit -= result.items.length
-        if result.next_page_token
-          page_token = result.next_page_token
-        else
-          page_token = nil
-        end
+        page_token = (result.next_page_token if result.next_page_token)
       end while !page_token.nil? && limit > 0
     end
   end

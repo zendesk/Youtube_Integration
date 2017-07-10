@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,98 +23,97 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FirebasedynamiclinksV1
-      
       class Suffix
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class GooglePlayAnalytics
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DynamicLinkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ITunesConnectAnalytics
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class SocialMetaTagInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DynamicLinkWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DynamicLinkStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class AndroidInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class NavigationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class IosInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class AnalyticsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class CreateShortDynamicLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DynamicLinkEventStat
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class CreateShortDynamicLinkResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Suffix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :option, as: 'option'
         end
       end
-      
+
       class GooglePlayAnalytics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -124,25 +125,25 @@ module Google
           property :utm_term, as: 'utmTerm'
         end
       end
-      
+
       class DynamicLinkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_info, as: 'androidInfo', class: Google::Apis::FirebasedynamiclinksV1::AndroidInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AndroidInfo::Representation
-      
+
           property :navigation_info, as: 'navigationInfo', class: Google::Apis::FirebasedynamiclinksV1::NavigationInfo, decorator: Google::Apis::FirebasedynamiclinksV1::NavigationInfo::Representation
-      
+
           property :analytics_info, as: 'analyticsInfo', class: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo::Representation
-      
+
           property :dynamic_link_domain, as: 'dynamicLinkDomain'
           property :link, as: 'link'
           property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
-      
+
           property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
-      
+
         end
       end
-      
+
       class ITunesConnectAnalytics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -152,7 +153,7 @@ module Google
           property :pt, as: 'pt'
         end
       end
-      
+
       class SocialMetaTagInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -161,7 +162,7 @@ module Google
           property :social_description, as: 'socialDescription'
         end
       end
-      
+
       class DynamicLinkWarning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -169,15 +170,15 @@ module Google
           property :warning_message, as: 'warningMessage'
         end
       end
-      
+
       class DynamicLinkStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :link_event_stats, as: 'linkEventStats', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkEventStat, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkEventStat::Representation
-      
+
         end
       end
-      
+
       class AndroidInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -187,14 +188,14 @@ module Google
           property :android_fallback_link, as: 'androidFallbackLink'
         end
       end
-      
+
       class NavigationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_forced_redirect, as: 'enableForcedRedirect'
         end
       end
-      
+
       class IosInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -206,44 +207,44 @@ module Google
           property :ios_bundle_id, as: 'iosBundleId'
         end
       end
-      
+
       class AnalyticsInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :itunes_connect_analytics, as: 'itunesConnectAnalytics', class: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics, decorator: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics::Representation
-      
+
           property :google_play_analytics, as: 'googlePlayAnalytics', class: Google::Apis::FirebasedynamiclinksV1::GooglePlayAnalytics, decorator: Google::Apis::FirebasedynamiclinksV1::GooglePlayAnalytics::Representation
-      
+
         end
       end
-      
+
       class CreateShortDynamicLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :long_dynamic_link, as: 'longDynamicLink'
           property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
-      
+
           property :dynamic_link_info, as: 'dynamicLinkInfo', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo::Representation
-      
+
         end
       end
-      
+
       class DynamicLinkEventStat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
+          property :count, numeric_string: true, as: 'count'
           property :event, as: 'event'
           property :platform, as: 'platform'
         end
       end
-      
+
       class CreateShortDynamicLinkResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :short_link, as: 'shortLink'
           property :preview_link, as: 'previewLink'
           collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
-      
+
         end
       end
     end

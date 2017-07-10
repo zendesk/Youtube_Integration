@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,134 +23,132 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbuildV1
-      
       # Request to cancel an ongoing build.
       class CancelBuildRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # Response including listed builds.
       class ListBuildsResponse
         include Google::Apis::Core::Hashable
-      
+
         # Token to receive the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # Builds will be sorted by create_time, descending.
         # Corresponds to the JSON property `builds`
         # @return [Array<Google::Apis::CloudbuildV1::Build>]
         attr_accessor :builds
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @builds = args[:builds] if args.key?(:builds)
         end
       end
-      
+
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A list of operations that matches the specified filter in the request.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::CloudbuildV1::Operation>]
         attr_accessor :operations
-      
+
         # The standard List next-page token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @operations = args[:operations] if args.key?(:operations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Source describes the location of the source in a supported storage
       # service.
       class Source
         include Google::Apis::Core::Hashable
-      
+
         # StorageSource describes the location of the source in an archive file in
         # Google Cloud Storage.
         # Corresponds to the JSON property `storageSource`
         # @return [Google::Apis::CloudbuildV1::StorageSource]
         attr_accessor :storage_source
-      
+
         # RepoSource describes the location of the source in a Google Cloud Source
         # Repository.
         # Corresponds to the JSON property `repoSource`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
         attr_accessor :repo_source
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
         end
       end
-      
+
       # Optional arguments to enable specific features of builds.
       class BuildOptions
         include Google::Apis::Core::Hashable
-      
+
         # Requested hash for SourceProvenance.
         # Corresponds to the JSON property `sourceProvenanceHash`
         # @return [Array<String>]
         attr_accessor :source_provenance_hash
-      
+
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
         attr_accessor :requested_verify_option
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
         end
       end
-      
+
       # StorageSource describes the location of the source in an archive file in
       # Google Cloud Storage.
       class StorageSource
         include Google::Apis::Core::Hashable
-      
+
         # Google Cloud Storage generation for the object. If the generation is
         # omitted, the latest generation will be used.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
-      
+
         # Google Cloud Storage bucket containing source (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
@@ -156,18 +156,18 @@ module Google
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
-      
+
         # Google Cloud Storage object containing source.
         # This object must be a gzipped archive file (.tar.gz) containing source to
         # build.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @generation = args[:generation] if args.key?(:generation)
@@ -175,36 +175,36 @@ module Google
           @object = args[:object] if args.key?(:object)
         end
       end
-      
+
       # Results describes the artifacts created by the build pipeline.
       class Results
         include Google::Apis::Core::Hashable
-      
+
         # Images that were built as a part of the build.
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::CloudbuildV1::BuiltImage>]
         attr_accessor :images
-      
+
         # List of build step digests, in order corresponding to build step indices.
         # Corresponds to the JSON property `buildStepImages`
         # @return [Array<String>]
         attr_accessor :build_step_images
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @images = args[:images] if args.key?(:images)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
         end
       end
-      
+
       # Metadata for build operations.
       class BuildOperationMetadata
         include Google::Apis::Core::Hashable
-      
+
         # A build resource in the Container Builder API.
         # At a high level, a Build describes where to find source code, how to build
         # it (for example, the builder image to run on the source), and what tag to
@@ -221,34 +221,34 @@ module Google
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @build = args[:build] if args.key?(:build)
         end
       end
-      
+
       # Provenance of the source. Ways to find the original source, or verify that
       # some source was used for this build.
       class SourceProvenance
         include Google::Apis::Core::Hashable
-      
+
         # RepoSource describes the location of the source in a Google Cloud Source
         # Repository.
         # Corresponds to the JSON property `resolvedRepoSource`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
         attr_accessor :resolved_repo_source
-      
+
         # StorageSource describes the location of the source in an archive file in
         # Google Cloud Storage.
         # Corresponds to the JSON property `resolvedStorageSource`
         # @return [Google::Apis::CloudbuildV1::StorageSource]
         attr_accessor :resolved_storage_source
-      
+
         # Hash(es) of the build source, which can be used to verify that the original
         # source integrity was maintained in the build. Note that FileHashes will
         # only be populated if BuildOptions has requested a SourceProvenanceHash.
@@ -260,11 +260,11 @@ module Google
         # Corresponds to the JSON property `fileHashes`
         # @return [Hash<String,Google::Apis::CloudbuildV1::FileHashes>]
         attr_accessor :file_hashes
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
@@ -272,33 +272,32 @@ module Google
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
         end
       end
-      
+
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
+
         # If the value is `false`, it means the operation is still in progress.
         # If true, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
-        alias_method :done?, :done
-      
+        alias done? done
+
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
         # `google.protobuf.Empty`.  If the original method is standard
@@ -310,14 +309,14 @@ module Google
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
-      
+
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
         # `name` should have the format of `operations/some/unique/name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by
         # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -360,7 +359,7 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::CloudbuildV1::Status]
         attr_accessor :error
-      
+
         # Service-specific metadata associated with the operation.  It typically
         # contains progress information and common metadata such as create time.
         # Some services might not provide such metadata.  Any method that returns a
@@ -368,11 +367,11 @@ module Google
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @done = args[:done] if args.key?(:done)
@@ -382,68 +381,68 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
-      
+
       # Response containing existing BuildTriggers.
       class ListBuildTriggersResponse
         include Google::Apis::Core::Hashable
-      
+
         # BuildTriggers for the project, sorted by create_time descending.
         # Corresponds to the JSON property `triggers`
         # @return [Array<Google::Apis::CloudbuildV1::BuildTrigger>]
         attr_accessor :triggers
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @triggers = args[:triggers] if args.key?(:triggers)
         end
       end
-      
+
       # BuiltImage describes an image built by the pipeline.
       class BuiltImage
         include Google::Apis::Core::Hashable
-      
+
         # Name used to push the container image to Google Container Registry, as
         # presented to `docker push`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Docker Registry 2.0 digest.
         # Corresponds to the JSON property `digest`
         # @return [String]
         attr_accessor :digest
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @digest = args[:digest] if args.key?(:digest)
         end
       end
-      
+
       # BuildStep describes a step to perform in the build pipeline.
       class BuildStep
         include Google::Apis::Core::Hashable
-      
+
         # Optional unique identifier for this build step, used in wait_for to
         # reference this build step as a dependency.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Working directory (relative to project source root) to use when running
         # this operation's container.
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
-      
+
         # The ID(s) of the step(s) that this build step depends on.
         # This build step will not start until all the build steps in wait_for
         # have completed successfully. If wait_for is empty, this build step will
@@ -452,14 +451,14 @@ module Google
         # Corresponds to the JSON property `waitFor`
         # @return [Array<String>]
         attr_accessor :wait_for
-      
+
         # A list of environment variable definitions to be used when running a step.
         # The elements are of the form "KEY=VALUE" for the environment variable "KEY"
         # being given the value "VALUE".
         # Corresponds to the JSON property `env`
         # @return [Array<String>]
         attr_accessor :env
-      
+
         # A list of arguments that will be presented to the step when it is started.
         # If the image used to run the step's container has an entrypoint, these args
         # will be used as arguments to that entrypoint. If the image does not define
@@ -468,7 +467,7 @@ module Google
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
-      
+
         # The name of the container image that will run this particular build step.
         # If the image is already available in the host's Docker daemon's cache, it
         # will be run directly. If not, the host will attempt to pull the image
@@ -486,17 +485,17 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Optional entrypoint to be used instead of the build step image's default
         # If unset, the image's default will be used.
         # Corresponds to the JSON property `entrypoint`
         # @return [String]
         attr_accessor :entrypoint
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
@@ -508,42 +507,42 @@ module Google
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
         end
       end
-      
+
       # RepoSource describes the location of the source in a Google Cloud Source
       # Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
-      
+
         # Name of the tag to build.
         # Corresponds to the JSON property `tagName`
         # @return [String]
         attr_accessor :tag_name
-      
+
         # Explicit commit SHA to build.
         # Corresponds to the JSON property `commitSha`
         # @return [String]
         attr_accessor :commit_sha
-      
+
         # ID of the project that owns the repo. If omitted, the project ID requesting
         # the build is assumed.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # Name of the repo. If omitted, the name "default" is assumed.
         # Corresponds to the JSON property `repoName`
         # @return [String]
         attr_accessor :repo_name
-      
+
         # Name of the branch to build.
         # Corresponds to the JSON property `branchName`
         # @return [String]
         attr_accessor :branch_name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
@@ -553,53 +552,53 @@ module Google
           @branch_name = args[:branch_name] if args.key?(:branch_name)
         end
       end
-      
+
       # Container message for hash values.
       class HashProp
         include Google::Apis::Core::Hashable
-      
+
         # The hash value.
         # Corresponds to the JSON property `value`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :value
-      
+
         # The type of hash that was performed.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @value = args[:value] if args.key?(:value)
           @type = args[:type] if args.key?(:type)
         end
       end
-      
+
       # Container message for hashes of byte content of files, used in
       # SourceProvenance messages to verify integrity of source input to the build.
       class FileHashes
         include Google::Apis::Core::Hashable
-      
+
         # Collection of file hashes.
         # Corresponds to the JSON property `fileHash`
         # @return [Array<Google::Apis::CloudbuildV1::HashProp>]
         attr_accessor :file_hash
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
         end
       end
-      
+
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -641,29 +640,29 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
-      
+
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
-      
+
         # A developer-facing error message, which should be in English. Any
         # user-facing error message should be localized and sent in the
         # google.rpc.Status.details field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
-      
+
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
@@ -671,7 +670,7 @@ module Google
           @details = args[:details] if args.key?(:details)
         end
       end
-      
+
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -681,51 +680,50 @@ module Google
       # The JSON representation for `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
-        def update!(**args)
-        end
+        def update!(**args); end
       end
-      
+
       # Configuration for an automated build in response to source repository
       # changes.
       class BuildTrigger
         include Google::Apis::Core::Hashable
-      
+
         # Time when the trigger was created.
         # @OutputOnly
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # If true, the trigger will never result in a build.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
+        alias disabled? disabled
+
         # Path, from the source root, to a file whose contents is used for the
         # template.
         # Corresponds to the JSON property `filename`
         # @return [String]
         attr_accessor :filename
-      
+
         # RepoSource describes the location of the source in a Google Cloud Source
         # Repository.
         # Corresponds to the JSON property `triggerTemplate`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
         attr_accessor :trigger_template
-      
+
         # Unique identifier of the trigger.
         # @OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # A build resource in the Container Builder API.
         # At a high level, a Build describes where to find source code, how to build
         # it (for example, the builder image to run on the source), and what tag to
@@ -742,21 +740,21 @@ module Google
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build
-      
+
         # Substitutions data for Build resource.
         # Corresponds to the JSON property `substitutions`
         # @return [Hash<String,String>]
         attr_accessor :substitutions
-      
+
         # Human-readable description of this trigger.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -769,7 +767,7 @@ module Google
           @description = args[:description] if args.key?(:description)
         end
       end
-      
+
       # A build resource in the Container Builder API.
       # At a high level, a Build describes where to find source code, how to build
       # it (for example, the builder image to run on the source), and what tag to
@@ -785,19 +783,19 @@ module Google
       # resolved from the specified branch or tag.
       class Build
         include Google::Apis::Core::Hashable
-      
+
         # Customer-readable message about the current status.
         # @OutputOnly
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
-      
+
         # Status of the build.
         # @OutputOnly
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
-      
+
         # Amount of time that this build should be allowed to run, to second
         # granularity. If this amount of time elapses, work on the build will cease
         # and the build status will be TIMEOUT.
@@ -805,7 +803,7 @@ module Google
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
-      
+
         # Google Cloud Storage bucket where logs should be written (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
@@ -814,58 +812,58 @@ module Google
         # Corresponds to the JSON property `logsBucket`
         # @return [String]
         attr_accessor :logs_bucket
-      
+
         # Results describes the artifacts created by the build pipeline.
         # Corresponds to the JSON property `results`
         # @return [Google::Apis::CloudbuildV1::Results]
         attr_accessor :results
-      
+
         # Describes the operations to be performed on the workspace.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::CloudbuildV1::BuildStep>]
         attr_accessor :steps
-      
+
         # The ID of the BuildTrigger that triggered this build, if it was
         # triggered automatically.
         # @OutputOnly
         # Corresponds to the JSON property `buildTriggerId`
         # @return [String]
         attr_accessor :build_trigger_id
-      
+
         # Tags for annotation of a Build. These are not docker tags.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
-      
+
         # Unique identifier of the build.
         # @OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Time at which execution of the build was started.
         # @OutputOnly
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
-      
+
         # Substitutions data for Build resource.
         # Corresponds to the JSON property `substitutions`
         # @return [Hash<String,String>]
         attr_accessor :substitutions
-      
+
         # Time at which the request to create the build was received.
         # @OutputOnly
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # Provenance of the source. Ways to find the original source, or verify that
         # some source was used for this build.
         # Corresponds to the JSON property `sourceProvenance`
         # @return [Google::Apis::CloudbuildV1::SourceProvenance]
         attr_accessor :source_provenance
-      
+
         # A list of images to be pushed upon the successful completion of all build
         # steps.
         # The images will be pushed using the builder service account's credentials.
@@ -875,13 +873,13 @@ module Google
         # Corresponds to the JSON property `images`
         # @return [Array<String>]
         attr_accessor :images
-      
+
         # ID of the project.
         # @OutputOnly.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # Time at which execution of the build was finished.
         # The difference between finish_time and start_time is the duration of the
         # build's execution.
@@ -889,28 +887,28 @@ module Google
         # Corresponds to the JSON property `finishTime`
         # @return [String]
         attr_accessor :finish_time
-      
+
         # URL to logs for this build in Google Cloud Logging.
         # @OutputOnly
         # Corresponds to the JSON property `logUrl`
         # @return [String]
         attr_accessor :log_url
-      
+
         # Source describes the location of the source in a supported storage
         # service.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CloudbuildV1::Source]
         attr_accessor :source
-      
+
         # Optional arguments to enable specific features of builds.
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::CloudbuildV1::BuildOptions]
         attr_accessor :options
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @status_detail = args[:status_detail] if args.key?(:status_detail)

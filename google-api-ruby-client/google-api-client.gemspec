@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'google/apis/version'
@@ -7,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = Google::Apis::VERSION
   spec.authors       = ['Steven Bazyl', 'Tim Emiola', 'Sergio Gomes', 'Bob Aman']
   spec.email         = ['sbazyl@google.com']
-  spec.summary       = %q{Client for accessing Google APIs}
+  spec.summary       = 'Client for accessing Google APIs'
   spec.homepage      = 'https://github.com/google/google-api-ruby-client'
   spec.license       = 'Apache-2.0'
 
@@ -16,7 +18,7 @@ Gem::Specification.new do |spec|
                        .reject { |f| f.match(%r{^(spec|script)/|^api_names_out}) }
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib', 'generated', 'third_party']
+  spec.require_paths = %w[lib generated third_party]
 
   spec.required_ruby_version = '~> 2.0'
 

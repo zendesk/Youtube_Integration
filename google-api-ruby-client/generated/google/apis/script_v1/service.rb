@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://script.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Runs a function in an Apps Script project. The project must be deployed
         # for use with the Apps Script Execution API.
         # This method requires authorization with an OAuth 2.0 token that includes at
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_script(script_id, execution_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/scripts/{scriptId}:run', options)
+          command = make_simple_command(:post, 'v1/scripts/{scriptId}:run', options)
           command.request_representation = Google::Apis::ScriptV1::ExecutionRequest::Representation
           command.request_object = execution_request_object
           command.response_representation = Google::Apis::ScriptV1::Operation::Representation

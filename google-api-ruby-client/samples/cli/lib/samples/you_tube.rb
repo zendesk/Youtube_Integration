@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +34,7 @@ module Samples
       youtube = YT::YouTubeService.new
       youtube.authorization = user_credentials_for(YT::AUTH_YOUTUBE)
 
-      metadata  = {
+      metadata = {
         snippet: {
           title: options[:title] || file
         },
@@ -41,7 +43,7 @@ module Samples
         }
       }
       result = youtube.insert_video('snippet,status', metadata, upload_source: file)
-      say "Upload complete"
+      say 'Upload complete'
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieves line items in CSV format.
         # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request_object
         # @param [String] fields
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_line_items(download_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'lineitems/downloadlineitems', options)
+          command = make_simple_command(:post, 'lineitems/downloadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest::Representation
           command.request_object = download_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponse::Representation
@@ -87,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads line items in CSV format.
         # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request_object
         # @param [String] fields
@@ -112,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_line_items(upload_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'lineitems/uploadlineitems', options)
+          command = make_simple_command(:post, 'lineitems/uploadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest::Representation
           command.request_object = upload_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponse::Representation
@@ -122,7 +124,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query_object
         # @param [String] fields
@@ -147,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_query(query_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'query', options)
+          command = make_simple_command(:post, 'query', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
           command.request_object = query_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
@@ -157,7 +159,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a stored query as well as the associated stored reports.
         # @param [Fixnum] query_id
         #   Query ID to delete.
@@ -183,14 +185,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deletequery(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'query/{queryId}', options)
+          command = make_simple_command(:delete, 'query/{queryId}', options)
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a stored query.
         # @param [Fixnum] query_id
         #   Query ID to retrieve.
@@ -216,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'query/{queryId}', options)
+          command = make_simple_command(:get, 'query/{queryId}', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::Query
           command.params['queryId'] = query_id unless query_id.nil?
@@ -225,7 +227,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves stored queries.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -249,7 +251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_queries(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'queries', options)
+          command = make_simple_command(:get, 'queries', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponse
           command.query['fields'] = fields unless fields.nil?
@@ -257,7 +259,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs a stored query to generate a report.
         # @param [Fixnum] query_id
         #   Query ID to run.
@@ -284,7 +286,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_query(query_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'query/{queryId}', options)
+          command = make_simple_command(:post, 'query/{queryId}', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.params['queryId'] = query_id unless query_id.nil?
@@ -293,7 +295,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves stored reports.
         # @param [Fixnum] query_id
         #   Query ID with which the reports are associated.
@@ -319,7 +321,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reports(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'queries/{queryId}/reports', options)
+          command = make_simple_command(:get, 'queries/{queryId}/reports', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponse
           command.params['queryId'] = query_id unless query_id.nil?
@@ -328,7 +330,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves entities in SDF format.
         # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadRequest] download_request_object
         # @param [String] fields
@@ -353,7 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_sdf(download_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'sdf/download', options)
+          command = make_simple_command(:post, 'sdf/download', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadRequest::Representation
           command.request_object = download_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadResponse::Representation

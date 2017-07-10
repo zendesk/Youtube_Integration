@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://youtubereporting.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Method for media download. Download is supported
         # on the URI `/v1/media/`+name`?alt=media`.
         # @param [String] resource_name
@@ -74,7 +76,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_medium(resource_name, quota_user: nil, fields: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'v1/media/{+resourceName}', options)
+            command = make_simple_command(:get, 'v1/media/{+resourceName}', options)
           else
             command = make_download_command(:get, 'v1/media/{+resourceName}', options)
             command.download_dest = download_dest
@@ -86,7 +88,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists jobs.
         # @param [String] on_behalf_of_content_owner
         #   The content owner's external ID on which behalf the user is acting on. If
@@ -121,7 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_jobs(on_behalf_of_content_owner: nil, page_token: nil, include_system_managed: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs', options)
+          command = make_simple_command(:get, 'v1/jobs', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListJobsResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -132,7 +134,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a job.
         # @param [String] job_id
         #   The ID of the job to retrieve.
@@ -157,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job(job_id, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Job::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Job
           command.params['jobId'] = job_id unless job_id.nil?
@@ -166,7 +168,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a job and returns it.
         # @param [Google::Apis::YoutubereportingV1::Job] job_object
         # @param [String] on_behalf_of_content_owner
@@ -190,7 +192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_job(job_object = nil, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/jobs', options)
+          command = make_simple_command(:post, 'v1/jobs', options)
           command.request_representation = Google::Apis::YoutubereportingV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::YoutubereportingV1::Job::Representation
@@ -200,7 +202,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a job.
         # @param [String] job_id
         #   The ID of the job to delete.
@@ -225,7 +227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_job(job_id, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/jobs/{jobId}', options)
+          command = make_simple_command(:delete, 'v1/jobs/{jobId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Empty::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Empty
           command.params['jobId'] = job_id unless job_id.nil?
@@ -234,7 +236,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists reports created by a specific job.
         # Returns NOT_FOUND if the job does not exist.
         # @param [String] job_id
@@ -276,7 +278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_job_reports(job_id, created_after: nil, page_token: nil, start_time_at_or_after: nil, page_size: nil, on_behalf_of_content_owner: nil, start_time_before: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}/reports', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}/reports', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportsResponse
           command.params['jobId'] = job_id unless job_id.nil?
@@ -290,7 +292,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the metadata of a specific report.
         # @param [String] job_id
         #   The ID of the job.
@@ -317,7 +319,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job_report(job_id, report_id, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}/reports/{reportId}', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}/reports/{reportId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Report::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Report
           command.params['jobId'] = job_id unless job_id.nil?
@@ -327,7 +329,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists report types.
         # @param [String] on_behalf_of_content_owner
         #   The content owner's external ID on which behalf the user is acting on. If
@@ -362,7 +364,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_report_types(on_behalf_of_content_owner: nil, page_token: nil, include_system_managed: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/reportTypes', options)
+          command = make_simple_command(:get, 'v1/reportTypes', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?

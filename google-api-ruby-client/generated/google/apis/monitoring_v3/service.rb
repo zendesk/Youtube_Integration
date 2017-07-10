@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +50,7 @@ module Google
           super('https://monitoring.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Deletes an existing group.
         # @param [String] name
         #   The group to delete. The format is "projects/`project_id_or_number`/groups/`
@@ -71,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -79,7 +81,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the existing groups.
         # @param [String] name
         #   The project whose groups are to be listed. The format is "projects/`
@@ -122,7 +124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_groups(name, page_token: nil, page_size: nil, ancestors_of_group: nil, children_of_group: nil, descendants_of_group: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/groups', options)
+          command = make_simple_command(:get, 'v3/{+name}/groups', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupsResponse
           command.params['name'] = name unless name.nil?
@@ -135,7 +137,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single group.
         # @param [String] name
         #   The group to retrieve. The format is "projects/`project_id_or_number`/groups/`
@@ -158,7 +160,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
           command.response_class = Google::Apis::MonitoringV3::Group
           command.params['name'] = name unless name.nil?
@@ -166,7 +168,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing group. You can change any group attributes except name.
         # @param [String] name
         #   Output only. The name of this group. The format is "projects/`
@@ -194,7 +196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v3/{+name}', options)
+          command = make_simple_command(:put, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
@@ -205,7 +207,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new group.
         # @param [String] name
         #   The project in which to create the group. The format is "projects/`
@@ -231,7 +233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/groups', options)
+          command = make_simple_command(:post, 'v3/{+name}/groups', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
@@ -242,7 +244,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the monitored resources that are members of a group.
         # @param [String] name
         #   The group whose members are listed. The format is "projects/`
@@ -282,7 +284,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_group_members(name, interval_end_time: nil, filter: nil, page_token: nil, interval_start_time: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/members', options)
+          command = make_simple_command(:get, 'v3/{+name}/members', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupMembersResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupMembersResponse
           command.params['name'] = name unless name.nil?
@@ -295,7 +297,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
         # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
         # projects.timeSeries.create instead.</aside>
@@ -321,7 +323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_collectd_time_series(name, create_collectd_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
+          command = make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
           command.request_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest::Representation
           command.request_object = create_collectd_time_series_request_object
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
@@ -331,7 +333,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or adds data to one or more time series. The response is empty if all
         # time series in the request were written. If any time series could not be
         # written, a corresponding failure message is included in the error response.
@@ -367,7 +369,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists time series that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
@@ -450,7 +452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_time_series(name, aggregation_group_by_fields: nil, interval_end_time: nil, aggregation_alignment_period: nil, page_size: nil, order_by: nil, aggregation_cross_series_reducer: nil, filter: nil, page_token: nil, aggregation_per_series_aligner: nil, interval_start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/timeSeries', options)
+          command = make_simple_command(:get, 'v3/{+name}/timeSeries', options)
           command.response_representation = Google::Apis::MonitoringV3::ListTimeSeriesResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListTimeSeriesResponse
           command.params['name'] = name unless name.nil?
@@ -469,7 +471,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a metric descriptor. Only user-created custom metrics can be deleted.
         # @param [String] name
         #   The metric descriptor on which to execute the request. The format is "projects/
@@ -493,7 +495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -501,7 +503,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists metric descriptors that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
@@ -536,7 +538,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_metric_descriptors(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
+          command = make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse
           command.params['name'] = name unless name.nil?
@@ -547,7 +549,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single metric descriptor. This method does not require a Stackdriver
         # account.
         # @param [String] name
@@ -572,7 +574,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MetricDescriptor
           command.params['name'] = name unless name.nil?
@@ -580,7 +582,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new metric descriptor. User-created metric descriptors define custom
         # metrics.
         # @param [String] name
@@ -605,7 +607,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_metric_descriptor(name, metric_descriptor_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/metricDescriptors', options)
+          command = make_simple_command(:post, 'v3/{+name}/metricDescriptors', options)
           command.request_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.request_object = metric_descriptor_object
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
@@ -615,7 +617,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists monitored resource descriptors that match a filter. This method does not
         # require a Stackdriver account.
         # @param [String] name
@@ -650,7 +652,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_monitored_resource_descriptors(name, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/monitoredResourceDescriptors', options)
+          command = make_simple_command(:get, 'v3/{+name}/monitoredResourceDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse
           command.params['name'] = name unless name.nil?
@@ -661,7 +663,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single monitored resource descriptor. This method does not require a
         # Stackdriver account.
         # @param [String] name
@@ -686,7 +688,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_monitored_resource_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MonitoredResourceDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MonitoredResourceDescriptor
           command.params['name'] = name unless name.nil?

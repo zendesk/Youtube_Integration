@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,11 +39,11 @@ module Samples
         project_id = options[:project_id] || 'publicdata'
         result = bigquery.list_datasets(project_id)
         data = []
-        data << ['id','kind']
+        data << %w[id kind]
         result.datasets.each do |dataset|
           data << [
             dataset.id,
-            dataset.kind,
+            dataset.kind
           ]
         end
         print_table(data)
@@ -60,11 +62,11 @@ module Samples
         dataset_id = options[:dataset_id] || 'samples'
         result = bigquery.list_tables(project_id, dataset_id)
         data = []
-        data << ['id','kind']
+        data << %w[id kind]
         result.tables.each do |table|
           data << [
             table.id,
-            table.kind,
+            table.kind
           ]
         end
         print_table(data)

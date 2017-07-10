@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,12 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupssettingsV1
-      
       class Groups
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Groups
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

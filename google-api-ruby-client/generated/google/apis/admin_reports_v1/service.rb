@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'admin/reports/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieves a list of activities for a specific customer and application.
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -101,7 +103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
+          command = make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
@@ -119,7 +121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Push changes to activities
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -168,7 +170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
+          command = make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminReportsV1::Channel::Representation
@@ -188,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] fields
@@ -213,7 +215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '/admin/reports_v1/channels/stop', options)
+          command = make_simple_command(:post, '/admin/reports_v1/channels/stop', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
@@ -221,7 +223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report which is a collection of properties / statistics for a
         # specific customer.
         # @param [String] date
@@ -267,7 +269,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report which is a collection of properties / statistics for a set
         # of users.
         # @param [String] user_key
@@ -308,7 +310,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
+          command = make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['userKey'] = user_key unless user_key.nil?

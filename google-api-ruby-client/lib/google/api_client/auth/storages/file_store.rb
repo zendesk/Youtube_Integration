@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2013 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +34,7 @@ module Google
       # @param [String] path
       #    Path to the credentials file.
       def initialize(path)
-        @path= path
+        @path = path
       end
 
       ##

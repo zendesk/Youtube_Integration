@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,55 +23,54 @@ require 'google/apis/errors'
 module Google
   module Apis
     module YoutubereportingV1
-      
       class Report
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ReportType
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListReportTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Media
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -82,13 +83,13 @@ module Google
           property :job_id, as: 'jobId'
         end
       end
-      
+
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
-      
+
       class ReportType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -98,25 +99,25 @@ module Google
           property :system_managed, as: 'systemManaged'
         end
       end
-      
+
       class ListReportTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :report_types, as: 'reportTypes', class: Google::Apis::YoutubereportingV1::ReportType, decorator: Google::Apis::YoutubereportingV1::ReportType::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :jobs, as: 'jobs', class: Google::Apis::YoutubereportingV1::Job, decorator: Google::Apis::YoutubereportingV1::Job::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -128,16 +129,16 @@ module Google
           property :system_managed, as: 'systemManaged'
         end
       end
-      
+
       class ListReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :reports, as: 'reports', class: Google::Apis::YoutubereportingV1::Report, decorator: Google::Apis::YoutubereportingV1::Report::Representation
-      
+
         end
       end
-      
+
       class Media
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

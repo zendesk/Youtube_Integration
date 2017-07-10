@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'tasks/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Deletes the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -78,14 +80,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_tasklist(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/@me/lists/{tasklist}', options)
+          command = make_simple_command(:delete, 'users/@me/lists/{tasklist}', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -111,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_tasklist(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/@me/lists/{tasklist}', options)
+          command = make_simple_command(:get, 'users/@me/lists/{tasklist}', options)
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -120,7 +122,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new task list and adds it to the authenticated user's task lists.
         # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
@@ -145,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_tasklist(task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/@me/lists', options)
+          command = make_simple_command(:post, 'users/@me/lists', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
@@ -155,7 +157,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all the authenticated user's task lists.
         # @param [Fixnum] max_results
         #   Maximum number of task lists returned on one page. Optional. The default is
@@ -184,7 +186,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tasklists(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/@me/lists', options)
+          command = make_simple_command(:get, 'users/@me/lists', options)
           command.response_representation = Google::Apis::TasksV1::TaskLists::Representation
           command.response_class = Google::Apis::TasksV1::TaskLists
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -194,7 +196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the authenticated user's specified task list. This method supports
         # patch semantics.
         # @param [String] tasklist
@@ -222,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'users/@me/lists/{tasklist}', options)
+          command = make_simple_command(:patch, 'users/@me/lists/{tasklist}', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
@@ -233,7 +235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -260,7 +262,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'users/@me/lists/{tasklist}', options)
+          command = make_simple_command(:put, 'users/@me/lists/{tasklist}', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
@@ -271,7 +273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears all completed tasks from the specified task list. The affected tasks
         # will be marked as 'hidden' and no longer be returned by default when
         # retrieving all tasks for a task list.
@@ -299,14 +301,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_task(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'lists/{tasklist}/clear', options)
+          command = make_simple_command(:post, 'lists/{tasklist}/clear', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified task from the task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -334,7 +336,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_task(tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'lists/{tasklist}/tasks/{task}', options)
+          command = make_simple_command(:delete, 'lists/{tasklist}/tasks/{task}', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -342,7 +344,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified task.
         # @param [String] tasklist
         #   Task list identifier.
@@ -370,7 +372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_task(tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'lists/{tasklist}/tasks/{task}', options)
+          command = make_simple_command(:get, 'lists/{tasklist}/tasks/{task}', options)
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -380,7 +382,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new task on the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -413,7 +415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_task(tasklist, task_object = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'lists/{tasklist}/tasks', options)
+          command = make_simple_command(:post, 'lists/{tasklist}/tasks', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
@@ -426,7 +428,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all tasks in the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -481,7 +483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'lists/{tasklist}/tasks', options)
+          command = make_simple_command(:get, 'lists/{tasklist}/tasks', options)
           command.response_representation = Google::Apis::TasksV1::Tasks::Representation
           command.response_class = Google::Apis::TasksV1::Tasks
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -500,7 +502,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves the specified task to another position in the task list. This can
         # include putting it as a child task under a new parent and/or move it to a
         # different position among its sibling tasks.
@@ -536,7 +538,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_task(tasklist, task, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'lists/{tasklist}/tasks/{task}/move', options)
+          command = make_simple_command(:post, 'lists/{tasklist}/tasks/{task}/move', options)
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -548,7 +550,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified task. This method supports patch semantics.
         # @param [String] tasklist
         #   Task list identifier.
@@ -577,7 +579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'lists/{tasklist}/tasks/{task}', options)
+          command = make_simple_command(:patch, 'lists/{tasklist}/tasks/{task}', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
@@ -589,7 +591,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified task.
         # @param [String] tasklist
         #   Task list identifier.
@@ -618,7 +620,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'lists/{tasklist}/tasks/{task}', options)
+          command = make_simple_command(:put, 'lists/{tasklist}/tasks/{task}', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation

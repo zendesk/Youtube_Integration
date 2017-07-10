@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'google/apis/adsense_v1_4'
 require 'googleauth'
 
 Adsense = Google::Apis::AdsenseV1_4
 
-RSpec.describe Google::Apis::AdsenseV1_4, :if => run_integration_tests? do
-
+RSpec.describe Google::Apis::AdsenseV1_4, if: run_integration_tests? do
   before(:context) do
     WebMock.allow_net_connect!
     @adsense = Adsense::AdSenseService.new
@@ -15,9 +16,9 @@ RSpec.describe Google::Apis::AdsenseV1_4, :if => run_integration_tests? do
   end
 
   it 'should download a report with multiple dimensions' do
-    report = @adsense.generate_report( Date.today.to_s, Date.today.to_s, dimension: ["DATE", "AD_UNIT_NAME"] )
+    report = @adsense.generate_report(Date.today.to_s, Date.today.to_s, dimension: %w[DATE AD_UNIT_NAME])
 
-    report_header_names = report.headers.map { |h| h.name }
+    report_header_names = report.headers.map(&:name)
     expect(report_header_names).to include('DATE')
     expect(report_header_names).to include('AD_UNIT_NAME')
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2013 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -127,7 +129,8 @@ RSpec.describe Google::APIClient::ClientSecrets do
               'redirect_uris'        => 'sample_redirect_uris',
               'refresh_token'        => 'sample_refresh_token',
               'token_credential_uri' => 'sample_token_credential_uri',
-              'token_uri'            => 'sample_token_uri' } }
+              'token_uri'            => 'sample_token_uri'
+            } }
         end
         subject { Google::APIClient::ClientSecrets.new(string_options) }
 
@@ -231,7 +234,8 @@ RSpec.describe Google::APIClient::ClientSecrets do
               redirect_uris:        'sample_redirect_uris',
               refresh_token:        'sample_refresh_token',
               token_credential_uri: 'sample_token_credential_uri',
-              token_uri:            'sample_token_uri' } }
+              token_uri:            'sample_token_uri'
+            } }
         end
         subject { Google::APIClient::ClientSecrets.new(symbol_options) }
 
@@ -321,8 +325,8 @@ RSpec.describe Google::APIClient::ClientSecrets do
 
   context 'with JSON file' do
     let(:file) { File.join(FIXTURES_PATH, 'files', 'client_secrets.json') }
-    subject(:secrets) { Google::APIClient::ClientSecrets.load(file)}
-  
+    subject(:secrets) { Google::APIClient::ClientSecrets.load(file) }
+
     it 'should load the correct client ID' do
       expect(secrets.client_id).to be == '898243283568.apps.googleusercontent.com'
     end
@@ -330,27 +334,27 @@ RSpec.describe Google::APIClient::ClientSecrets do
     it 'should load the correct client secret' do
       expect(secrets.client_secret).to be == 'i8YaXdGgiQ4_KrTVNGsB7QP1'
     end
-    
+
     context 'serialzed to hash' do
       subject(:hash) { secrets.to_hash }
       it 'should contain the flow as the first key' do
-        expect(hash).to have_key "installed"
+        expect(hash).to have_key 'installed'
       end
 
       it 'should contain the client ID' do
-        expect(hash["installed"]["client_id"]).to be == '898243283568.apps.googleusercontent.com'
+        expect(hash['installed']['client_id']).to be == '898243283568.apps.googleusercontent.com'
       end
 
       it 'should contain the client secret' do
-        expect(hash["installed"]["client_secret"]).to be == 'i8YaXdGgiQ4_KrTVNGsB7QP1'
+        expect(hash['installed']['client_secret']).to be == 'i8YaXdGgiQ4_KrTVNGsB7QP1'
       end
 
       it 'should remove empty value' do
-        expect(hash["installed"]["redirect_uris"]).to be nil
+        expect(hash['installed']['redirect_uris']).to be nil
       end
 
       it 'should remove nil values' do
-        expect(hash["installed"]["issued_at"]).to be nil
+        expect(hash['installed']['issued_at']).to be nil
       end
     end
   end
@@ -378,10 +382,9 @@ RSpec.describe Google::APIClient::ClientSecrets do
   end
 
   context 'with folder wihout client_secrets.json' do
-    it "should raise exception", fakefs: true do
-      FileUtils.mkdir("/tmp")
+    it 'should raise exception', fakefs: true do
+      FileUtils.mkdir('/tmp')
       expect { Google::APIClient::ClientSecrets.load('/tmp') }.to raise_exception(ArgumentError)
     end
   end
-
 end

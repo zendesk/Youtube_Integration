@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +24,7 @@ module Google
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
         RANGE_HEADER = 'Range'
-        OK_STATUS = [200, 201, 206]
+        OK_STATUS = [200, 201, 206].freeze
 
         # File or IO to write content to
         # @return [String, File, #write]
@@ -76,9 +78,9 @@ module Google
           end
 
           http_res = client.get(url.to_s,
-                     query: query,
-                     header: request_header,
-                     follow_redirect: true) do |res, chunk|
+                                query: query,
+                                header: request_header,
+                                follow_redirect: true) do |res, chunk|
             status = res.http_header.status_code.to_i
             if OK_STATUS.include?(status)
               if check_if_rewind_needed && status != 206
@@ -95,11 +97,11 @@ module Google
 
           @download_io.flush
 
-          if @close_io_on_finish
-            result = nil
-          else
-            result = @download_io
-          end
+          result = if @close_io_on_finish
+                     nil
+                   else
+                     @download_io
+                   end
           check_status(http_res.status.to_i, http_res.header, http_res.body)
           success(result, &block)
         rescue => e

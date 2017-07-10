@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,13 +47,11 @@ module Google
     #
     # @return [Logger]
     def self.rails_logger
-      if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
-          defined?(::Rails) &&
-          ::Rails.respond_to?(:logger) &&
-          !::Rails.logger.nil?
+      if ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') == 'true' &&
+         defined?(::Rails) &&
+         ::Rails.respond_to?(:logger) &&
+         !::Rails.logger.nil?
         ::Rails.logger
-      else
-        nil
       end
     end
   end

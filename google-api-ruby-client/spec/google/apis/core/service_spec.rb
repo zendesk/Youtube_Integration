@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -94,7 +96,6 @@ RSpec.describe Google::Apis::Core::BaseService do
   end
 
   context 'with proxy' do
-
     after(:example) do
       Google::Apis::ClientOptions.default.proxy_url = nil
     end
@@ -156,15 +157,15 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   context 'with batch' do
     before(:example) do
-      response = <<EOF.gsub(/\n/, "\r\n")
---batch123
-Content-Type: application/http
+      response = <<~EOF.gsub(/\n/, "\r\n")
+        --batch123
+        Content-Type: application/http
 
-HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
+        HTTP/1.1 200 OK
+        Content-Type: text/plain; charset=UTF-8
 
-Hello
---batch123--
+        Hello
+        --batch123--
 EOF
       stub_request(:post, 'https://www.googleapis.com/batch')
         .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
@@ -208,7 +209,6 @@ EOF
           service2.send(:execute_or_queue_command, command2, &b)
         end
       end.to raise_error
-
     end
   end
 
@@ -216,15 +216,15 @@ EOF
     before(:example) do
       allow(SecureRandom).to receive(:uuid).and_return('b1981e17-f622-49af-b2eb-203308b1b17d')
       allow(Digest::SHA1).to receive(:hexdigest).and_return('outer', 'inner')
-      response = <<EOF.gsub(/\n/, "\r\n")
---batch123
-Content-Type: application/http
+      response = <<~EOF.gsub(/\n/, "\r\n")
+        --batch123
+        Content-Type: application/http
 
-HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
+        HTTP/1.1 200 OK
+        Content-Type: text/plain; charset=UTF-8
 
-Hello
---batch123--
+        Hello
+        --batch123--
 EOF
       stub_request(:put, 'https://www.googleapis.com/upload/')
         .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
@@ -260,32 +260,32 @@ EOF
         command.upload_content_type = 'text/plain'
         service.send(:execute_or_queue_command, command)
       end
-      expected_body = <<EOF.gsub(/\n/, "\r\n")
---outer
-Content-Type: application/http
-Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
-Content-Length: 303
-Content-Transfer-Encoding: binary
+      expected_body = <<~EOF.gsub(/\n/, "\r\n")
+        --outer
+        Content-Type: application/http
+        Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
+        Content-Length: 303
+        Content-Transfer-Encoding: binary
 
-POST /upload/zoo/animals? HTTP/1.1
-Content-Type: multipart/related; boundary=inner
-X-Goog-Upload-Protocol: multipart
-Host: www.googleapis.com
+        POST /upload/zoo/animals? HTTP/1.1
+        Content-Type: multipart/related; boundary=inner
+        X-Goog-Upload-Protocol: multipart
+        Host: www.googleapis.com
 
---inner
-Content-Type: application/json
-
-
---inner
-Content-Type: text/plain
-Content-Length: 4
-Content-Transfer-Encoding: binary
-
-test
---inner--
+        --inner
+        Content-Type: application/json
 
 
---outer--
+        --inner
+        Content-Type: text/plain
+        Content-Length: 4
+        Content-Transfer-Encoding: binary
+
+        test
+        --inner--
+
+
+        --outer--
 
 EOF
       expect(a_request(:put, 'https://www.googleapis.com/upload/').with(body: expected_body)).to have_been_made
@@ -313,11 +313,14 @@ EOF
       let(:responses) do
         data = {}
         data[nil] = OpenStruct.new(
-          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo', hash_: { 'foo' => 1, 'bar' => 2 })
+          next_page_token: 'p1', alt_page_token: 'p2', items: %w[a b c], alt_items: [1, 2, 3], singular: 'foo', hash_: { 'foo' => 1, 'bar' => 2 }
+        )
         data['p1'] = OpenStruct.new(
-          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar', hash_: nil)
+          next_page_token: 'p2', items: %w[d e f], alt_items: [4, 5, 6], singular: 'bar', hash_: nil
+        )
         data['p2'] = OpenStruct.new(
-          next_page_token: nil, alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz', hash_: { 'baz' => 3 })
+          next_page_token: nil, alt_page_token: nil, items: %w[g h i], alt_items: [7, 8, 9], singular: 'baz', hash_: { 'baz' => 3 }
+        )
         data
       end
 
@@ -333,8 +336,7 @@ EOF
       end
 
       it 'should allow selecting another field for response page token' do
-        expect(service.fetch_all(response_page_token: :alt_page_token) { |token| responses[token] }
-              ).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
+        expect(service.fetch_all(response_page_token: :alt_page_token) { |token| responses[token] }).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
       end
 
       it 'should ignore nil collections' do
@@ -343,19 +345,19 @@ EOF
       end
 
       it 'should allow selecting another field for items' do
-        expect(service.fetch_all(items: :alt_items) { |token| responses[token] } ).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
+        expect(service.fetch_all(items: :alt_items) { |token| responses[token] }).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
       end
 
       it 'should allow iterating over singular items' do
-        expect(service.fetch_all(items: :singular) { |token| responses[token] } ).to contain_exactly('foo', 'bar', 'baz')
+        expect(service.fetch_all(items: :singular) { |token| responses[token] }).to contain_exactly('foo', 'bar', 'baz')
       end
 
       it 'should collate hash entries' do
-        expect(service.fetch_all(items: :hash_) { |token| responses[token] } ).to contain_exactly(['foo', 1], ['bar', 2], ['baz', 3])
+        expect(service.fetch_all(items: :hash_) { |token| responses[token] }).to contain_exactly(['foo', 1], ['bar', 2], ['baz', 3])
       end
 
       it 'should allow limiting the number of items to fetch' do
-        expect(service.fetch_all(max: 5) { |token| responses[token] } ).to contain_exactly('a', 'b', 'c', 'd', 'e')
+        expect(service.fetch_all(max: 5) { |token| responses[token] }).to contain_exactly('a', 'b', 'c', 'd', 'e')
       end
 
       it 'should yield the next token' do
@@ -370,12 +372,12 @@ EOF
       it 'should cache results' do
         count = 0
         items = service.fetch_all do |token|
-          count = count + 1
+          count += 1
           responses[token]
         end
 
-        items.each{ |i| puts i }
-        items.each{ |i| puts i }
+        items.each { |i| puts i }
+        items.each { |i| puts i }
 
         expect(count).to eq 3
       end
@@ -383,12 +385,12 @@ EOF
       it 'should allow disabling caching' do
         count = 0
         items = service.fetch_all(cache: false) do |token|
-          count = count + 1
+          count += 1
           responses[token]
         end
 
-        items.each{ |i| puts i }
-        items.each{ |i| puts i }
+        items.each { |i| puts i }
+        items.each { |i| puts i }
 
         expect(count).to eq 6
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -103,12 +105,12 @@ module Google
         # @return [void]
         # @raise [Google::Apis::BatchError] if batch is empty
         def prepare!
-          fail BatchError, 'Cannot make an empty batch request' if @calls.empty?
+          raise BatchError, 'Cannot make an empty batch request' if @calls.empty?
 
           serializer = CallSerializer.new
           multipart = Multipart.new(content_type: MULTIPART_MIXED)
           @calls.each_index do |index|
-            call, _ = @calls[index]
+            call, = @calls[index]
             content_id = id_to_header(index)
             io = serializer.to_part(call)
             multipart.add_upload(io, content_type: 'application/http', content_id: content_id)
@@ -121,19 +123,19 @@ module Google
 
         def ensure_valid_command(command)
           if command.is_a?(Google::Apis::Core::BaseUploadCommand) || command.is_a?(Google::Apis::Core::DownloadCommand)
-            fail Google::Apis::ClientError, 'Can not include media requests in batch'
+            raise Google::Apis::ClientError, 'Can not include media requests in batch'
           end
-          fail Google::Apis::ClientError, 'Invalid command object' unless command.is_a?(HttpCommand)
+          raise Google::Apis::ClientError, 'Invalid command object' unless command.is_a?(HttpCommand)
         end
 
         def id_to_header(call_id)
-          return sprintf('<%s+%i>', @base_id, call_id)
+          sprintf('<%s+%i>', @base_id, call_id)
         end
 
         def header_to_id(content_id)
           match = /<response-.*\+(\d+)>/.match(content_id)
           return match[1].to_i if match
-          return nil
+          nil
         end
 
       end
@@ -141,7 +143,7 @@ module Google
       # Wrapper request for batching multiple uploads in a single server request
       class BatchUploadCommand < BatchCommand
         def ensure_valid_command(command)
-          fail Google::Apis::ClientError, 'Can only include upload commands in batch' \
+          raise Google::Apis::ClientError, 'Can only include upload commands in batch' \
             unless command.is_a?(Google::Apis::Core::BaseUploadCommand)
         end
 
@@ -223,7 +225,7 @@ module Google
             line.sub!(/\s+\z/, '')
             break if line.empty?
             match = /\A([^:]+):\s*/.match(line)
-            fail BatchError, sprintf('Invalid header line in response: %s', line) if match.nil?
+            raise BatchError, sprintf('Invalid header line in response: %s', line) if match.nil?
             header[match[1]] = match.post_match
           end
           [header, payload]

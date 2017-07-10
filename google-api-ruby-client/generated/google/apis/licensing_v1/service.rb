@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
           @batch_path = 'batch'
         end
-        
+
         # Revoke License.
         # @param [String] product_id
         #   Name for product
@@ -82,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{productId}/sku/{skuId}/user/{userId}', options)
+          command = make_simple_command(:delete, '{productId}/sku/{skuId}/user/{userId}', options)
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
@@ -91,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get license assignment of a particular product and sku for a user
         # @param [String] product_id
         #   Name for product
@@ -121,7 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{productId}/sku/{skuId}/user/{userId}', options)
+          command = make_simple_command(:get, '{productId}/sku/{skuId}/user/{userId}', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
@@ -132,7 +134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License.
         # @param [String] product_id
         #   Name for product
@@ -161,7 +163,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_license_assignment(product_id, sku_id, license_assignment_insert_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{productId}/sku/{skuId}/user', options)
+          command = make_simple_command(:post, '{productId}/sku/{skuId}/user', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentInsert::Representation
           command.request_object = license_assignment_insert_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
@@ -173,7 +175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List license assignments for given product of the customer.
         # @param [String] product_id
         #   Name for product
@@ -207,7 +209,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_license_assignments_for_product(product_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{productId}/users', options)
+          command = make_simple_command(:get, '{productId}/users', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
@@ -219,7 +221,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List license assignments for given product and sku of the customer.
         # @param [String] product_id
         #   Name for product
@@ -255,7 +257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_license_assignments_for_product_and_sku(product_id, sku_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{productId}/sku/{skuId}/users', options)
+          command = make_simple_command(:get, '{productId}/sku/{skuId}/users', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
@@ -268,7 +270,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License. This method supports patch semantics.
         # @param [String] product_id
         #   Name for product
@@ -299,7 +301,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{productId}/sku/{skuId}/user/{userId}', options)
+          command = make_simple_command(:patch, '{productId}/sku/{skuId}/user/{userId}', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.request_object = license_assignment_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
@@ -312,7 +314,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License.
         # @param [String] product_id
         #   Name for product
@@ -343,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{productId}/sku/{skuId}/user/{userId}', options)
+          command = make_simple_command(:put, '{productId}/sku/{skuId}/user/{userId}', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.request_object = license_assignment_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation

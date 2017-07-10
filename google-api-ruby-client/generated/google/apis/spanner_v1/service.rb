@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://spanner.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Lists the supported instance configurations for a given project.
         # @param [String] parent
         #   Required. The name of the project for which a list of supported instance
@@ -78,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_configs(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstanceConfigsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstanceConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -88,7 +90,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a particular instance configuration.
         # @param [String] name
         #   Required. The name of the requested instance configuration. Values are of
@@ -111,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_config(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::InstanceConfig::Representation
           command.response_class = Google::Apis::SpannerV1::InstanceConfig
           command.params['name'] = name unless name.nil?
@@ -119,7 +121,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a particular instance.
         # @param [String] name
         #   Required. The name of the requested instance. Values are of the form
@@ -142,7 +144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Instance::Representation
           command.response_class = Google::Apis::SpannerV1::Instance
           command.params['name'] = name unless name.nil?
@@ -150,7 +152,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an instance, and begins allocating or releasing resources
         # as requested. The returned long-running
         # operation can be used to track the
@@ -207,7 +209,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_instance(name, update_instance_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::SpannerV1::UpdateInstanceRequest::Representation
           command.request_object = update_instance_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -217,7 +219,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that the caller has on the specified instance resource.
         # Attempting this RPC on a non-existent Cloud Spanner instance resource will
         # result in a NOT_FOUND error if the user has `spanner.instances.list`
@@ -247,7 +249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
@@ -257,7 +259,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an instance.
         # Immediately upon completion of the request:
         # * Billing ceases for all of the instance's reserved resources.
@@ -286,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -294,7 +296,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all instances in the given project.
         # @param [String] parent
         #   Required. The name of the project for which a list of instances is
@@ -341,7 +343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instances(parent, page_token: nil, page_size: nil, filter: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v1/{+parent}/instances', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -352,7 +354,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an instance and begins preparing it to begin serving. The
         # returned long-running operation
         # can be used to track the progress of preparing the new
@@ -402,7 +404,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_instance(parent, create_instance_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/instances', options)
+          command = make_simple_command(:post, 'v1/{+parent}/instances', options)
           command.request_representation = Google::Apis::SpannerV1::CreateInstanceRequest::Representation
           command.request_object = create_instance_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -412,7 +414,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on an instance resource. Replaces any
         # existing policy.
         # Authorization requires `spanner.instances.setIamPolicy` on
@@ -441,7 +443,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -451,7 +453,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for an instance resource. Returns an empty
         # policy if an instance exists but does not have a policy set.
         # Authorization requires `spanner.instances.getIamPolicy` on
@@ -480,7 +482,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_iam_policy(resource, get_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -490,7 +492,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a database resource. Returns an empty
         # policy if a database exists but does not have a policy set.
         # Authorization requires `spanner.databases.getIamPolicy` permission on
@@ -519,7 +521,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_database_iam_policy(resource, get_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -529,7 +531,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the state of a Cloud Spanner database.
         # @param [String] name
         #   Required. The name of the requested database. Values are of the form
@@ -552,7 +554,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Database::Representation
           command.response_class = Google::Apis::SpannerV1::Database
           command.params['name'] = name unless name.nil?
@@ -560,7 +562,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Drops (aka deletes) a Cloud Spanner database.
         # @param [String] database
         #   Required. The database to be dropped.
@@ -582,7 +584,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def drop_project_instance_database_database(database, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+database}', options)
+          command = make_simple_command(:delete, 'v1/{+database}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['database'] = database unless database.nil?
@@ -590,7 +592,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the schema of a Cloud Spanner database by
         # creating/altering/dropping tables, columns, indexes, etc. The returned
         # long-running operation will have a name of
@@ -619,7 +621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_instance_database_ddl(database, update_database_ddl_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+database}/ddl', options)
+          command = make_simple_command(:patch, 'v1/{+database}/ddl', options)
           command.request_representation = Google::Apis::SpannerV1::UpdateDatabaseDdlRequest::Representation
           command.request_object = update_database_ddl_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -629,7 +631,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that the caller has on the specified database resource.
         # Attempting this RPC on a non-existent Cloud Spanner database will result in
         # a NOT_FOUND error if the user has `spanner.databases.list` permission on
@@ -659,7 +661,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_database_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
@@ -669,7 +671,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the schema of a Cloud Spanner database as a list of formatted
         # DDL statements. This method does not show pending schema updates, those may
         # be queried using the Operations API.
@@ -693,7 +695,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_ddl(database, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+database}/ddl', options)
+          command = make_simple_command(:get, 'v1/{+database}/ddl', options)
           command.response_representation = Google::Apis::SpannerV1::GetDatabaseDdlResponse::Representation
           command.response_class = Google::Apis::SpannerV1::GetDatabaseDdlResponse
           command.params['database'] = database unless database.nil?
@@ -701,7 +703,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Cloud Spanner databases.
         # @param [String] parent
         #   Required. The instance whose databases should be listed.
@@ -731,7 +733,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_databases(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/databases', options)
+          command = make_simple_command(:get, 'v1/{+parent}/databases', options)
           command.response_representation = Google::Apis::SpannerV1::ListDatabasesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListDatabasesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -741,7 +743,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new Cloud Spanner database and starts to prepare it for serving.
         # The returned long-running operation will
         # have a name of the format `<database_name>/operations/<operation_id>` and
@@ -772,7 +774,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_database(parent, create_database_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/databases', options)
+          command = make_simple_command(:post, 'v1/{+parent}/databases', options)
           command.request_representation = Google::Apis::SpannerV1::CreateDatabaseRequest::Representation
           command.request_object = create_database_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -782,7 +784,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on a database resource. Replaces any
         # existing policy.
         # Authorization requires `spanner.databases.setIamPolicy` permission on
@@ -811,7 +813,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_database_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -821,7 +823,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -852,7 +854,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_instance_database_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -860,7 +862,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a long-running operation. This method indicates that the client is
         # no longer interested in the operation result. It does not cancel the
         # operation. If the server doesn't support this method, it returns
@@ -885,7 +887,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_database_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -893,7 +895,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding below allows API services to override the binding
@@ -924,7 +926,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_database_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -935,7 +937,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -959,7 +961,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -967,7 +969,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a session. Returns `NOT_FOUND` if the session does not exist.
         # This is mainly useful for determining whether a session is still
         # alive.
@@ -991,7 +993,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Session::Representation
           command.response_class = Google::Apis::SpannerV1::Session
           command.params['name'] = name unless name.nil?
@@ -999,7 +1001,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Ends a session, releasing server resources associated with it.
         # @param [String] name
         #   Required. The name of the session to delete.
@@ -1021,7 +1023,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1029,7 +1031,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Like ExecuteSql, except returns the result
         # set as a stream. Unlike ExecuteSql, there
         # is no limit on the size of the returned result set. However, no
@@ -1056,7 +1058,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_project_instance_database_session_streaming_sql(session, execute_sql_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
+          command = make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
           command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
           command.request_object = execute_sql_request_object
           command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
@@ -1066,7 +1068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Commits a transaction. The request includes the mutations to be
         # applied to rows in the database.
         # `Commit` might return an `ABORTED` error. This can occur at any time;
@@ -1095,7 +1097,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def commit_session(session, commit_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:commit', options)
+          command = make_simple_command(:post, 'v1/{+session}:commit', options)
           command.request_representation = Google::Apis::SpannerV1::CommitRequest::Representation
           command.request_object = commit_request_object
           command.response_representation = Google::Apis::SpannerV1::CommitResponse::Representation
@@ -1105,7 +1107,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Begins a new transaction. This step can often be skipped:
         # Read, ExecuteSql and
         # Commit can begin a new transaction as a
@@ -1131,7 +1133,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def begin_session_transaction(session, begin_transaction_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:beginTransaction', options)
+          command = make_simple_command(:post, 'v1/{+session}:beginTransaction', options)
           command.request_representation = Google::Apis::SpannerV1::BeginTransactionRequest::Representation
           command.request_object = begin_transaction_request_object
           command.response_representation = Google::Apis::SpannerV1::Transaction::Representation
@@ -1141,7 +1143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Executes an SQL query, returning all rows in a single reply. This
         # method cannot be used to return a result set larger than 10 MiB;
         # if the query yields more data than that, the query fails with
@@ -1172,7 +1174,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_session_sql(session, execute_sql_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeSql', options)
+          command = make_simple_command(:post, 'v1/{+session}:executeSql', options)
           command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
           command.request_object = execute_sql_request_object
           command.response_representation = Google::Apis::SpannerV1::ResultSet::Representation
@@ -1182,7 +1184,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Like Read, except returns the result set as a
         # stream. Unlike Read, there is no limit on the
         # size of the returned result set. However, no individual row in
@@ -1209,7 +1211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def streaming_project_instance_database_session_read(session, read_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:streamingRead', options)
+          command = make_simple_command(:post, 'v1/{+session}:streamingRead', options)
           command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
           command.request_object = read_request_object
           command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
@@ -1219,7 +1221,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Rolls back a transaction, releasing any locks it holds. It is a good
         # idea to call this for any transaction that includes one or more
         # Read or ExecuteSql requests and
@@ -1248,7 +1250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_session(session, rollback_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:rollback', options)
+          command = make_simple_command(:post, 'v1/{+session}:rollback', options)
           command.request_representation = Google::Apis::SpannerV1::RollbackRequest::Representation
           command.request_object = rollback_request_object
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
@@ -1258,7 +1260,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new session. A session can be used to perform
         # transactions that read and/or modify data in a Cloud Spanner database.
         # Sessions are meant to be reused for many consecutive
@@ -1295,7 +1297,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance_database_session(database, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+database}/sessions', options)
+          command = make_simple_command(:post, 'v1/{+database}/sessions', options)
           command.response_representation = Google::Apis::SpannerV1::Session::Representation
           command.response_class = Google::Apis::SpannerV1::Session
           command.params['database'] = database unless database.nil?
@@ -1303,7 +1305,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Reads rows from the database using key lookups and scans, as a
         # simple key/value style alternative to
         # ExecuteSql.  This method cannot be used to
@@ -1336,7 +1338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def read_session(session, read_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:read', options)
+          command = make_simple_command(:post, 'v1/{+session}:read', options)
           command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
           command.request_object = read_request_object
           command.response_representation = Google::Apis::SpannerV1::ResultSet::Representation
@@ -1346,7 +1348,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding below allows API services to override the binding
@@ -1377,7 +1379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -1388,7 +1390,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -1412,7 +1414,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1420,7 +1422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -1451,7 +1453,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_instance_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1459,7 +1461,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a long-running operation. This method indicates that the client is
         # no longer interested in the operation result. It does not cancel the
         # operation. If the server doesn't support this method, it returns
@@ -1484,7 +1486,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?

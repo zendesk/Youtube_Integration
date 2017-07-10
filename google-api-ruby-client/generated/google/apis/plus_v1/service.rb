@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'plus/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Get an activity.
         # @param [String] activity_id
         #   The ID of the activity to get.
@@ -78,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_activity(activity_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activities/{activityId}', options)
+          command = make_simple_command(:get, 'activities/{activityId}', options)
           command.response_representation = Google::Apis::PlusV1::Activity::Representation
           command.response_class = Google::Apis::PlusV1::Activity
           command.params['activityId'] = activity_id unless activity_id.nil?
@@ -87,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the activities in the specified collection for a particular user.
         # @param [String] user_id
         #   The ID of the user to get activities for. The special value "me" can be used
@@ -124,7 +126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(user_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'people/{userId}/activities/{collection}', options)
+          command = make_simple_command(:get, 'people/{userId}/activities/{collection}', options)
           command.response_representation = Google::Apis::PlusV1::ActivityFeed::Representation
           command.response_class = Google::Apis::PlusV1::ActivityFeed
           command.params['userId'] = user_id unless user_id.nil?
@@ -136,7 +138,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search public activities.
         # @param [String] query
         #   Full-text search query string.
@@ -175,7 +177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_activities(query, language: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activities', options)
+          command = make_simple_command(:get, 'activities', options)
           command.response_representation = Google::Apis::PlusV1::ActivityFeed::Representation
           command.response_class = Google::Apis::PlusV1::ActivityFeed
           command.query['language'] = language unless language.nil?
@@ -188,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a comment.
         # @param [String] comment_id
         #   The ID of the comment to get.
@@ -214,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_comment(comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'comments/{commentId}', options)
+          command = make_simple_command(:get, 'comments/{commentId}', options)
           command.response_representation = Google::Apis::PlusV1::Comment::Representation
           command.response_class = Google::Apis::PlusV1::Comment
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -223,7 +225,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the comments for an activity.
         # @param [String] activity_id
         #   The ID of the activity to get comments for.
@@ -259,7 +261,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments(activity_id, max_results: nil, page_token: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activities/{activityId}/comments', options)
+          command = make_simple_command(:get, 'activities/{activityId}/comments', options)
           command.response_representation = Google::Apis::PlusV1::CommentFeed::Representation
           command.response_class = Google::Apis::PlusV1::CommentFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
@@ -271,7 +273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a person's profile. If your app uses scope https://www.googleapis.com/auth/
         # plus.login, this method is guaranteed to return ageRange and language.
         # @param [String] user_id
@@ -299,7 +301,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_person(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'people/{userId}', options)
+          command = make_simple_command(:get, 'people/{userId}', options)
           command.response_representation = Google::Apis::PlusV1::Person::Representation
           command.response_class = Google::Apis::PlusV1::Person
           command.params['userId'] = user_id unless user_id.nil?
@@ -308,7 +310,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection.
         # @param [String] user_id
         #   Get the collection of people for the person identified. Use "me" to indicate
@@ -347,7 +349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_people(user_id, collection, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'people/{userId}/people/{collection}', options)
+          command = make_simple_command(:get, 'people/{userId}/people/{collection}', options)
           command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.params['userId'] = user_id unless user_id.nil?
@@ -360,7 +362,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection for a particular activity.
         # @param [String] activity_id
         #   The ID of the activity to get the list of people for.
@@ -396,7 +398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_people_by_activity(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activities/{activityId}/people/{collection}', options)
+          command = make_simple_command(:get, 'activities/{activityId}/people/{collection}', options)
           command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
@@ -408,7 +410,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search all public profiles.
         # @param [String] query
         #   Specify a query string for full text search of public text in all profiles.
@@ -445,7 +447,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_people(query, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'people', options)
+          command = make_simple_command(:get, 'people', options)
           command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.query['language'] = language unless language.nil?

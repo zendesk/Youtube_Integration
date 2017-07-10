@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://sheets.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Returns the spreadsheet at the given ID.
         # The caller must specify the spreadsheet ID.
         # By default, data within grids will not be returned.
@@ -88,7 +90,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet(spreadsheet_id, ranges: nil, include_grid_data: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}', options)
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
           command.response_class = Google::Apis::SheetsV4::Spreadsheet
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -98,7 +100,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a spreadsheet, returning the newly created spreadsheet.
         # @param [Google::Apis::SheetsV4::Spreadsheet] spreadsheet_object
         # @param [String] fields
@@ -119,7 +121,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_spreadsheet(spreadsheet_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets', options)
+          command = make_simple_command(:post, 'v4/spreadsheets', options)
           command.request_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
           command.request_object = spreadsheet_object
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
@@ -128,7 +130,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Applies one or more updates to the spreadsheet.
         # Each request is validated before
         # being applied. If any request is not valid then the entire request will
@@ -166,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_spreadsheet(spreadsheet_id, batch_update_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:batchUpdate', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:batchUpdate', options)
           command.request_representation = Google::Apis::SheetsV4::BatchUpdateSpreadsheetRequest::Representation
           command.request_object = batch_update_spreadsheet_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateSpreadsheetResponse::Representation
@@ -176,7 +178,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears values from a spreadsheet.
         # The caller must specify the spreadsheet ID and range.
         # Only values are cleared -- all other properties of the cell (such as
@@ -204,7 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_values(spreadsheet_id, range, clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
           command.request_representation = Google::Apis::SheetsV4::ClearValuesRequest::Representation
           command.request_object = clear_values_request_object
           command.response_representation = Google::Apis::SheetsV4::ClearValuesResponse::Representation
@@ -215,7 +217,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns one or more ranges of values from a spreadsheet.
         # The caller must specify the spreadsheet ID and one or more ranges.
         # @param [String] spreadsheet_id
@@ -255,7 +257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_spreadsheet_values(spreadsheet_id, ranges: nil, major_dimension: nil, value_render_option: nil, date_time_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
           command.response_representation = Google::Apis::SheetsV4::BatchGetValuesResponse::Representation
           command.response_class = Google::Apis::SheetsV4::BatchGetValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -267,7 +269,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Appends values to a spreadsheet. The input range is used to search for
         # existing data and find a "table" within that range. Values will be
         # appended to the next row of the table, starting with the first column of
@@ -321,7 +323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def append_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, response_value_render_option: nil, insert_data_option: nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
           command.response_representation = Google::Apis::SheetsV4::AppendValuesResponse::Representation
@@ -337,7 +339,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears one or more ranges of values from a spreadsheet.
         # The caller must specify the spreadsheet ID and one or more ranges.
         # Only values are cleared -- all other properties of the cell (such as
@@ -363,7 +365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_clear_values(spreadsheet_id, batch_clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClear', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClear', options)
           command.request_representation = Google::Apis::SheetsV4::BatchClearValuesRequest::Representation
           command.request_object = batch_clear_values_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchClearValuesResponse::Representation
@@ -373,7 +375,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a range of values from a spreadsheet.
         # The caller must specify the spreadsheet ID and a range.
         # @param [String] spreadsheet_id
@@ -413,7 +415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet_values(spreadsheet_id, range, major_dimension: nil, value_render_option: nil, date_time_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.response_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.response_class = Google::Apis::SheetsV4::ValueRange
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -425,7 +427,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets values in a range of a spreadsheet.
         # The caller must specify the spreadsheet ID, range, and
         # a valueInputOption.
@@ -469,7 +471,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, response_value_render_option: nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
+          command = make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
           command.response_representation = Google::Apis::SheetsV4::UpdateValuesResponse::Representation
@@ -484,7 +486,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets values in one or more ranges of a spreadsheet.
         # The caller must specify the spreadsheet ID,
         # a valueInputOption, and one or more
@@ -510,7 +512,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_values(spreadsheet_id, batch_update_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdate', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdate', options)
           command.request_representation = Google::Apis::SheetsV4::BatchUpdateValuesRequest::Representation
           command.request_object = batch_update_values_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesResponse::Representation
@@ -520,7 +522,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Copies a single sheet from a spreadsheet to another spreadsheet.
         # Returns the properties of the newly created sheet.
         # @param [String] spreadsheet_id
@@ -546,7 +548,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_spreadsheet(spreadsheet_id, sheet_id, copy_sheet_to_another_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
           command.request_representation = Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest::Representation
           command.request_object = copy_sheet_to_another_spreadsheet_request_object
           command.response_representation = Google::Apis::SheetsV4::SheetProperties::Representation

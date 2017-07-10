@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +20,7 @@ require 'googleauth'
 
 Urlshortener = Google::Apis::UrlshortenerV1
 
-RSpec.describe Google::Apis::UrlshortenerV1, :if => run_integration_tests? do
-
+RSpec.describe Google::Apis::UrlshortenerV1, if: run_integration_tests? do
   before(:context) do
     WebMock.allow_net_connect!
     @shortener = Urlshortener::UrlshortenerService.new
@@ -28,7 +29,7 @@ RSpec.describe Google::Apis::UrlshortenerV1, :if => run_integration_tests? do
 
   it 'should shorten URLs in a batch' do
     @urls = []
-    callback = lambda { |url, err| @urls << url unless url.nil? }
+    callback = ->(url, _err) { @urls << url unless url.nil? }
     @shortener.batch do |shortener|
       shortener.insert_url(Urlshortener::Url.new(long_url: 'https://example.com/foo'), &callback)
       shortener.insert_url(Urlshortener::Url.new(long_url: 'https://example.com/bar'), &callback)
@@ -41,5 +42,4 @@ RSpec.describe Google::Apis::UrlshortenerV1, :if => run_integration_tests? do
   after(:context) do
     WebMock.disable_net_connect!
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://kgsearch.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Searches Knowledge Graph for entities that match the constraints.
         # A list of matched entities will be returned in response, which will be in
         # JSON-LD format and compatible with http://schema.org
@@ -87,7 +89,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_entities(indent: nil, languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/entities:search', options)
+          command = make_simple_command(:get, 'v1/entities:search', options)
           command.response_representation = Google::Apis::KgsearchV1::SearchResponse::Representation
           command.response_class = Google::Apis::KgsearchV1::SearchResponse
           command.query['indent'] = indent unless indent.nil?

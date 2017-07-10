@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'surveys/v2/')
           @batch_path = 'batch'
         end
-        
+
         # Retrieves a MobileAppPanel that is available to the authenticated user.
         # @param [String] panel_id
         #   External URL ID for the panel.
@@ -78,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_mobileapppanel(panel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'mobileAppPanels/{panelId}', options)
+          command = make_simple_command(:get, 'mobileAppPanels/{panelId}', options)
           command.response_representation = Google::Apis::SurveysV2::MobileAppPanel::Representation
           command.response_class = Google::Apis::SurveysV2::MobileAppPanel
           command.params['panelId'] = panel_id unless panel_id.nil?
@@ -87,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the MobileAppPanels available to the authenticated user.
         # @param [Fixnum] max_results
         # @param [Fixnum] start_index
@@ -114,7 +116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_mobileapppanels(max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'mobileAppPanels', options)
+          command = make_simple_command(:get, 'mobileAppPanels', options)
           command.response_representation = Google::Apis::SurveysV2::MobileAppPanelsListResponse::Representation
           command.response_class = Google::Apis::SurveysV2::MobileAppPanelsListResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -125,7 +127,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a MobileAppPanel. Currently the only property that can be updated is
         # the owners property.
         # @param [String] panel_id
@@ -153,7 +155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_mobileapppanel(panel_id, mobile_app_panel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'mobileAppPanels/{panelId}', options)
+          command = make_simple_command(:put, 'mobileAppPanels/{panelId}', options)
           command.request_representation = Google::Apis::SurveysV2::MobileAppPanel::Representation
           command.request_object = mobile_app_panel_object
           command.response_representation = Google::Apis::SurveysV2::MobileAppPanel::Representation
@@ -164,7 +166,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves any survey results that have been produced so far. Results are
         # formatted as an Excel file. You must add "?alt=media" to the URL as an
         # argument to get results.
@@ -196,7 +198,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_result(survey_url_id, results_get_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'surveys/{surveyUrlId}/results', options)
+            command = make_simple_command(:get, 'surveys/{surveyUrlId}/results', options)
           else
             command = make_download_command(:get, 'surveys/{surveyUrlId}/results', options)
             command.download_dest = download_dest
@@ -211,7 +213,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a survey from view in all user GET requests.
         # @param [String] survey_url_id
         #   External URL ID for the survey.
@@ -237,7 +239,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_survey(survey_url_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'surveys/{surveyUrlId}', options)
+          command = make_simple_command(:delete, 'surveys/{surveyUrlId}', options)
           command.response_representation = Google::Apis::SurveysV2::SurveysDeleteResponse::Representation
           command.response_class = Google::Apis::SurveysV2::SurveysDeleteResponse
           command.params['surveyUrlId'] = survey_url_id unless survey_url_id.nil?
@@ -246,7 +248,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified survey.
         # @param [String] survey_url_id
         #   External URL ID for the survey.
@@ -272,7 +274,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_survey(survey_url_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'surveys/{surveyUrlId}', options)
+          command = make_simple_command(:get, 'surveys/{surveyUrlId}', options)
           command.response_representation = Google::Apis::SurveysV2::Survey::Representation
           command.response_class = Google::Apis::SurveysV2::Survey
           command.params['surveyUrlId'] = survey_url_id unless survey_url_id.nil?
@@ -281,7 +283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a survey.
         # @param [Google::Apis::SurveysV2::Survey] survey_object
         # @param [String] fields
@@ -306,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_survey(survey_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'surveys', options)
+          command = make_simple_command(:post, 'surveys', options)
           command.request_representation = Google::Apis::SurveysV2::Survey::Representation
           command.request_object = survey_object
           command.response_representation = Google::Apis::SurveysV2::Survey::Representation
@@ -316,7 +318,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the surveys owned by the authenticated user.
         # @param [Fixnum] max_results
         # @param [Fixnum] start_index
@@ -343,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_surveys(max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'surveys', options)
+          command = make_simple_command(:get, 'surveys', options)
           command.response_representation = Google::Apis::SurveysV2::SurveysListResponse::Representation
           command.response_class = Google::Apis::SurveysV2::SurveysListResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -354,7 +356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Begins running a survey.
         # @param [String] resource_id
         # @param [Google::Apis::SurveysV2::SurveysStartRequest] surveys_start_request_object
@@ -380,7 +382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_survey(resource_id, surveys_start_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'surveys/{resourceId}/start', options)
+          command = make_simple_command(:post, 'surveys/{resourceId}/start', options)
           command.request_representation = Google::Apis::SurveysV2::SurveysStartRequest::Representation
           command.request_object = surveys_start_request_object
           command.response_representation = Google::Apis::SurveysV2::SurveysStartResponse::Representation
@@ -391,7 +393,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stops a running survey.
         # @param [String] resource_id
         # @param [String] fields
@@ -416,7 +418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_survey(resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'surveys/{resourceId}/stop', options)
+          command = make_simple_command(:post, 'surveys/{resourceId}/stop', options)
           command.response_representation = Google::Apis::SurveysV2::SurveysStopResponse::Representation
           command.response_class = Google::Apis::SurveysV2::SurveysStopResponse
           command.params['resourceId'] = resource_id unless resource_id.nil?
@@ -425,7 +427,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a survey. Currently the only property that can be updated is the
         # owners property.
         # @param [String] survey_url_id
@@ -453,7 +455,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_survey(survey_url_id, survey_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'surveys/{surveyUrlId}', options)
+          command = make_simple_command(:put, 'surveys/{surveyUrlId}', options)
           command.request_representation = Google::Apis::SurveysV2::Survey::Representation
           command.request_object = survey_object
           command.response_representation = Google::Apis::SurveysV2::Survey::Representation

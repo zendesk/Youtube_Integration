@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'customsearch/')
           @batch_path = 'batch'
         end
-        
+
         # Returns metadata about the search performed, metadata about the custom search
         # engine used for the search, and the search results.
         # @param [String] q
@@ -152,7 +154,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_cses(q, c2coff: nil, cr: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, sort: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1', options)
+          command = make_simple_command(:get, 'v1', options)
           command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
           command.query['c2coff'] = c2coff unless c2coff.nil?

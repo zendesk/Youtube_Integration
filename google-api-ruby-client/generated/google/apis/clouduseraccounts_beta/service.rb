@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'clouduseraccounts/beta/projects/')
           @batch_path = 'batch'
         end
-        
+
         # Deletes the specified operation resource.
         # @param [String] project
         #   Project ID for this request.
@@ -81,7 +83,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_accounts_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/operations/{operation}', options)
+          command = make_simple_command(:delete, '{project}/global/operations/{operation}', options)
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,7 +91,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified operation resource.
         # @param [String] project
         #   Project ID for this request.
@@ -117,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_accounts_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/operations/{operation}', options)
+          command = make_simple_command(:get, '{project}/global/operations/{operation}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::Operation
           command.params['project'] = project unless project.nil?
@@ -127,7 +129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified
         # project.
         # @param [String] project
@@ -194,7 +196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_accounts_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/operations', options)
+          command = make_simple_command(:get, '{project}/global/operations', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::OperationList::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::OperationList
           command.params['project'] = project unless project.nil?
@@ -207,7 +209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds users to the specified group.
         # @param [String] project
         #   Project ID for this request.
@@ -236,7 +238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_group_member(project, group_name, groups_add_member_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/groups/{groupName}/addMember', options)
+          command = make_simple_command(:post, '{project}/global/groups/{groupName}/addMember', options)
           command.request_representation = Google::Apis::ClouduseraccountsBeta::GroupsAddMemberRequest::Representation
           command.request_object = groups_add_member_request_object
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
@@ -248,7 +250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Group resource.
         # @param [String] project
         #   Project ID for this request.
@@ -276,7 +278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group(project, group_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/groups/{groupName}', options)
+          command = make_simple_command(:delete, '{project}/global/groups/{groupName}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::Operation
           command.params['project'] = project unless project.nil?
@@ -286,7 +288,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Group resource.
         # @param [String] project
         #   Project ID for this request.
@@ -314,7 +316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group(project, group_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/groups/{groupName}', options)
+          command = make_simple_command(:get, '{project}/global/groups/{groupName}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Group::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::Group
           command.params['project'] = project unless project.nil?
@@ -324,7 +326,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Group resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -352,7 +354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_group(project, group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/groups', options)
+          command = make_simple_command(:post, '{project}/global/groups', options)
           command.request_representation = Google::Apis::ClouduseraccountsBeta::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
@@ -363,7 +365,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of groups contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -429,7 +431,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/groups', options)
+          command = make_simple_command(:get, '{project}/global/groups', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::GroupList::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::GroupList
           command.params['project'] = project unless project.nil?
@@ -442,7 +444,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes users from the specified group.
         # @param [String] project
         #   Project ID for this request.
@@ -471,7 +473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_group_member(project, group_name, groups_remove_member_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/groups/{groupName}/removeMember', options)
+          command = make_simple_command(:post, '{project}/global/groups/{groupName}/removeMember', options)
           command.request_representation = Google::Apis::ClouduseraccountsBeta::GroupsRemoveMemberRequest::Representation
           command.request_object = groups_remove_member_request_object
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
@@ -483,7 +485,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of authorized public keys for a specific user account.
         # @param [String] project
         #   Project ID for this request.
@@ -517,7 +519,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_linux_authorized_keys_view(project, zone, user, instance, login: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/authorizedKeysView/{user}', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/authorizedKeysView/{user}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::LinuxGetAuthorizedKeysViewResponse::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::LinuxGetAuthorizedKeysViewResponse
           command.params['project'] = project unless project.nil?
@@ -530,7 +532,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of user accounts for an instance within a specific project.
         # @param [String] project
         #   Project ID for this request.
@@ -600,7 +602,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_linux_linux_account_views(project, zone, instance, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/linuxAccountViews', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/linuxAccountViews', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::LinuxGetLinuxAccountViewsResponse::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::LinuxGetLinuxAccountViewsResponse
           command.params['project'] = project unless project.nil?
@@ -615,7 +617,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a public key to the specified User resource with the data included in the
         # request.
         # @param [String] project
@@ -645,7 +647,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_user_public_key(project, user, public_key_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/users/{user}/addPublicKey', options)
+          command = make_simple_command(:post, '{project}/global/users/{user}/addPublicKey', options)
           command.request_representation = Google::Apis::ClouduseraccountsBeta::PublicKey::Representation
           command.request_object = public_key_object
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
@@ -657,7 +659,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified User resource.
         # @param [String] project
         #   Project ID for this request.
@@ -685,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user(project, user, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/users/{user}', options)
+          command = make_simple_command(:delete, '{project}/global/users/{user}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::Operation
           command.params['project'] = project unless project.nil?
@@ -695,7 +697,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified User resource.
         # @param [String] project
         #   Project ID for this request.
@@ -723,7 +725,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user(project, user, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/users/{user}', options)
+          command = make_simple_command(:get, '{project}/global/users/{user}', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::User::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::User
           command.params['project'] = project unless project.nil?
@@ -733,7 +735,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a User resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -761,7 +763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user(project, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/users', options)
+          command = make_simple_command(:post, '{project}/global/users', options)
           command.request_representation = Google::Apis::ClouduseraccountsBeta::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
@@ -772,7 +774,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of users contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -838,7 +840,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_users(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/users', options)
+          command = make_simple_command(:get, '{project}/global/users', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::UserList::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::UserList
           command.params['project'] = project unless project.nil?
@@ -851,7 +853,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified public key from the user.
         # @param [String] project
         #   Project ID for this request.
@@ -883,7 +885,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_user_public_key(project, user, fingerprint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/users/{user}/removePublicKey', options)
+          command = make_simple_command(:post, '{project}/global/users/{user}/removePublicKey', options)
           command.response_representation = Google::Apis::ClouduseraccountsBeta::Operation::Representation
           command.response_class = Google::Apis::ClouduseraccountsBeta::Operation
           command.params['project'] = project unless project.nil?

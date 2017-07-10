@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://slides.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Gets the latest version of the specified presentation.
         # @param [String] presentation_id
         #   The ID of the presentation to retrieve.
@@ -68,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation(presentation_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
+          command = make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
           command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
           command.response_class = Google::Apis::SlidesV1::Presentation
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
@@ -76,7 +78,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new presentation using the title given in the request. Other
         # fields in the request are ignored.
         # Returns the created presentation.
@@ -99,7 +101,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_presentation(presentation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/presentations', options)
+          command = make_simple_command(:post, 'v1/presentations', options)
           command.request_representation = Google::Apis::SlidesV1::Presentation::Representation
           command.request_object = presentation_object
           command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
@@ -108,7 +110,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Applies one or more updates to the presentation.
         # Each request is validated before
         # being applied. If any request is not valid, then the entire request will
@@ -147,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_presentation(presentation_id, batch_update_presentation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/presentations/{presentationId}:batchUpdate', options)
+          command = make_simple_command(:post, 'v1/presentations/{presentationId}:batchUpdate', options)
           command.request_representation = Google::Apis::SlidesV1::BatchUpdatePresentationRequest::Representation
           command.request_object = batch_update_presentation_request_object
           command.response_representation = Google::Apis::SlidesV1::BatchUpdatePresentationResponse::Representation
@@ -157,7 +159,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest version of the specified page in the presentation.
         # @param [String] presentation_id
         #   The ID of the presentation to retrieve.
@@ -181,7 +183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation_page(presentation_id, page_object_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}', options)
+          command = make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}', options)
           command.response_representation = Google::Apis::SlidesV1::Page::Representation
           command.response_class = Google::Apis::SlidesV1::Page
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
@@ -190,7 +192,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a thumbnail of the latest version of the specified page in the
         # presentation and returns a URL to the thumbnail image.
         # @param [String] presentation_id
@@ -222,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation_page_thumbnail(presentation_id, page_object_id, thumbnail_properties_mime_type: nil, thumbnail_properties_thumbnail_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', options)
+          command = make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', options)
           command.response_representation = Google::Apis::SlidesV1::Thumbnail::Representation
           command.response_class = Google::Apis::SlidesV1::Thumbnail
           command.params['presentationId'] = presentation_id unless presentation_id.nil?

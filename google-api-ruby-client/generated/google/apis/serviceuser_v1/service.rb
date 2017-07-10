@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +50,7 @@ module Google
           super('https://serviceuser.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Search available services.
         # When no filter is specified, returns all accessible services. For
         # authenticated users, also returns all services the calling user has
@@ -76,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_services(page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services:search', options)
+          command = make_simple_command(:get, 'v1/services:search', options)
           command.response_representation = Google::Apis::ServiceuserV1::SearchServicesResponse::Representation
           command.response_class = Google::Apis::ServiceuserV1::SearchServicesResponse
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enable a service so it can be used with a project.
         # See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
         # more information.
@@ -113,7 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_service(name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:enable', options)
+          command = make_simple_command(:post, 'v1/{+name}:enable', options)
           command.request_representation = Google::Apis::ServiceuserV1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
           command.response_representation = Google::Apis::ServiceuserV1::Operation::Representation
@@ -123,7 +125,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List enabled services for the specified consumer.
         # @param [String] parent
         #   List enabled services for the specified parent.
@@ -152,7 +154,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_services(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/services', options)
+          command = make_simple_command(:get, 'v1/{+parent}/services', options)
           command.response_representation = Google::Apis::ServiceuserV1::ListEnabledServicesResponse::Representation
           command.response_class = Google::Apis::ServiceuserV1::ListEnabledServicesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -162,7 +164,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Disable a service so it can no longer be used with a
         # project. This prevents unintended usage that may cause unexpected billing
         # charges or security leaks.
@@ -192,7 +194,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_service(name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:disable', options)
+          command = make_simple_command(:post, 'v1/{+name}:disable', options)
           command.request_representation = Google::Apis::ServiceuserV1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
           command.response_representation = Google::Apis::ServiceuserV1::Operation::Representation

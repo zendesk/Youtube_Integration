@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'qpxExpress/v1/trips/')
           @batch_path = 'batch'
         end
-        
+
         # Returns a list of flights.
         # @param [Google::Apis::QpxExpressV1::SearchTripsRequest] search_trips_request_object
         # @param [String] fields
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_trips(search_trips_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'search', options)
+          command = make_simple_command(:post, 'search', options)
           command.request_representation = Google::Apis::QpxExpressV1::SearchTripsRequest::Representation
           command.request_object = search_trips_request_object
           command.response_representation = Google::Apis::QpxExpressV1::SearchTripsResponse::Representation

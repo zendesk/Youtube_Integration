@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +23,6 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ToolresultsV1beta3
-      
       # `Any` contains an arbitrary serialized protocol buffer message along with a
       # URL that describes the type of the serialized message.
       # Protobuf library provides support to pack/unpack Any values in the form of
@@ -55,7 +56,7 @@ module Google
       # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
       class Any
         include Google::Apis::Core::Hashable
-      
+
         # A URL/resource name whose content describes the type of the serialized
         # protocol buffer message.
         # For URLs which use the scheme `http`, `https`, or no scheme, the following
@@ -73,47 +74,47 @@ module Google
         # Corresponds to the JSON property `typeUrl`
         # @return [String]
         attr_accessor :type_url
-      
+
         # Must be a valid serialized protocol buffer of the above specified type.
         # Corresponds to the JSON property `value`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :value
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @type_url = args[:type_url] if args.key?(:type_url)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
+
       # Encapsulates the metadata for basic sample series represented by a line chart
       class BasicPerfSampleSeries
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `perfMetricType`
         # @return [String]
         attr_accessor :perf_metric_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `perfUnit`
         # @return [String]
         attr_accessor :perf_unit
-      
-        # 
+
+        #
         # Corresponds to the JSON property `sampleSeriesLabel`
         # @return [String]
         attr_accessor :sample_series_label
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @perf_metric_type = args[:perf_metric_type] if args.key?(:perf_metric_type)
@@ -121,69 +122,69 @@ module Google
           @sample_series_label = args[:sample_series_label] if args.key?(:sample_series_label)
         end
       end
-      
+
       # The request must provide up to a maximum of 5000 samples to be created; a
       # larger sample size will cause an INVALID_ARGUMENT error
       class BatchCreatePerfSamplesRequest
         include Google::Apis::Core::Hashable
-      
+
         # The set of PerfSamples to create should not include existing timestamps
         # Corresponds to the JSON property `perfSamples`
         # @return [Array<Google::Apis::ToolresultsV1beta3::PerfSample>]
         attr_accessor :perf_samples
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @perf_samples = args[:perf_samples] if args.key?(:perf_samples)
         end
       end
-      
-      # 
+
+      #
       class BatchCreatePerfSamplesResponse
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `perfSamples`
         # @return [Array<Google::Apis::ToolresultsV1beta3::PerfSample>]
         attr_accessor :perf_samples
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @perf_samples = args[:perf_samples] if args.key?(:perf_samples)
         end
       end
-      
-      # 
+
+      #
       class CpuInfo
         include Google::Apis::Core::Hashable
-      
+
         # description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
         # Corresponds to the JSON property `cpuProcessor`
         # @return [String]
         attr_accessor :cpu_processor
-      
+
         # the CPU clock speed in GHz
         # Corresponds to the JSON property `cpuSpeedInGhz`
         # @return [Float]
         attr_accessor :cpu_speed_in_ghz
-      
+
         # the number of CPU cores
         # Corresponds to the JSON property `numberOfCores`
         # @return [Fixnum]
         attr_accessor :number_of_cores
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @cpu_processor = args[:cpu_processor] if args.key?(:cpu_processor)
@@ -191,7 +192,7 @@ module Google
           @number_of_cores = args[:number_of_cores] if args.key?(:number_of_cores)
         end
       end
-      
+
       # A Duration represents a signed, fixed-length span of time represented as a
       # count of seconds and fractions of seconds at nanosecond resolution. It is
       # independent of any calendar and concepts like "day" or "month". It is related
@@ -224,7 +225,7 @@ module Google
       # format as "3.000001s".
       class Duration
         include Google::Apis::Core::Hashable
-      
+
         # Signed fractions of a second at nanosecond resolution of the span of time.
         # Durations less than one second are represented with a 0 `seconds` field and a
         # positive or negative `nanos` field. For durations of one second or more, a non-
@@ -233,25 +234,25 @@ module Google
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
-      
+
         # Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,
         # 000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/
         # hr * 24 hr/day * 365.25 days/year * 10000 years
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
-      
+
       # An Execution represents a collection of Steps. For instance, it could
       # represent: - a mobile test executed across a range of device configurations -
       # a jenkins job with a build step followed by a test step
@@ -260,7 +261,7 @@ module Google
       # it becomes immutable.
       class Execution
         include Google::Apis::Core::Hashable
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -314,7 +315,7 @@ module Google
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -368,19 +369,19 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
-      
+
         # A unique identifier within a History for this Execution.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
         # - In response always set - In create/update request: never set
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
-      
+
         # Interprets a result so that humans and machines can act on it.
         # Corresponds to the JSON property `outcome`
         # @return [Google::Apis::ToolresultsV1beta3::Outcome]
         attr_accessor :outcome
-      
+
         # The initial state is IN_PROGRESS.
         # The only legal state transitions is from IN_PROGRESS to COMPLETE.
         # A PRECONDITION_FAILED will be returned if an invalid transition is requested.
@@ -393,18 +394,18 @@ module Google
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
+
         # TestExecution Matrix ID that the Test Service uses.
         # - In response: present if set by create - In create: optional - In update:
         # never set
         # Corresponds to the JSON property `testExecutionMatrixId`
         # @return [String]
         attr_accessor :test_execution_matrix_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
@@ -415,46 +416,46 @@ module Google
           @test_execution_matrix_id = args[:test_execution_matrix_id] if args.key?(:test_execution_matrix_id)
         end
       end
-      
-      # 
+
+      #
       class FailureDetail
         include Google::Apis::Core::Hashable
-      
+
         # If the failure was severe because the system under test crashed.
         # Corresponds to the JSON property `crashed`
         # @return [Boolean]
         attr_accessor :crashed
-        alias_method :crashed?, :crashed
-      
+        alias crashed? crashed
+
         # If an app is not installed and thus no test can be run with the app. This
         # might be caused by trying to run a test on an unsupported platform.
         # Corresponds to the JSON property `notInstalled`
         # @return [Boolean]
         attr_accessor :not_installed
-        alias_method :not_installed?, :not_installed
-      
+        alias not_installed? not_installed
+
         # If a native process other than the app crashed.
         # Corresponds to the JSON property `otherNativeCrash`
         # @return [Boolean]
         attr_accessor :other_native_crash
-        alias_method :other_native_crash?, :other_native_crash
-      
+        alias other_native_crash? other_native_crash
+
         # If the test overran some time limit, and that is why it failed.
         # Corresponds to the JSON property `timedOut`
         # @return [Boolean]
         attr_accessor :timed_out
-        alias_method :timed_out?, :timed_out
-      
+        alias timed_out? timed_out
+
         # If the robo was unable to crawl the app; perhaps because the app did not start.
         # Corresponds to the JSON property `unableToCrawl`
         # @return [Boolean]
         attr_accessor :unable_to_crawl
-        alias_method :unable_to_crawl?, :unable_to_crawl
-      
+        alias unable_to_crawl? unable_to_crawl
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @crashed = args[:crashed] if args.key?(:crashed)
@@ -464,11 +465,11 @@ module Google
           @unable_to_crawl = args[:unable_to_crawl] if args.key?(:unable_to_crawl)
         end
       end
-      
+
       # A reference to a file.
       class FileReference
         include Google::Apis::Core::Hashable
-      
+
         # The URI of a file stored in Google Cloud Storage.
         # For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in
         # gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://
@@ -478,17 +479,17 @@ module Google
         # Corresponds to the JSON property `fileUri`
         # @return [String]
         attr_accessor :file_uri
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @file_uri = args[:file_uri] if args.key?(:file_uri)
         end
       end
-      
+
       # A History represents a sorted list of Executions ordered by the
       # start_timestamp_millis field (descending). It can be used to group all the
       # Executions of a continuous build.
@@ -497,32 +498,32 @@ module Google
       # order to order Executions per branch.
       class History
         include Google::Apis::Core::Hashable
-      
+
         # A short human-readable (plain text) name to display in the UI. Maximum of 100
         # characters.
         # - In response: present if set during create. - In create request: optional
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
-      
+
         # A unique identifier within a project for this History.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
         # - In response always set - In create request: never set
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
-      
+
         # A name to uniquely identify a history within a project. Maximum of 100
         # characters.
         # - In response always set - In create request: always set
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -530,11 +531,11 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # An image, with a link to the main image and a thumbnail.
       class Image
         include Google::Apis::Core::Hashable
-      
+
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). The error model is designed to be:
@@ -577,27 +578,27 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ToolresultsV1beta3::Status]
         attr_accessor :error
-      
+
         # A reference to a ToolExecution output file.
         # Corresponds to the JSON property `sourceImage`
         # @return [Google::Apis::ToolresultsV1beta3::ToolOutputReference]
         attr_accessor :source_image
-      
+
         # The step to which the image is attached.
         # Always set.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
-      
+
         # A single thumbnail, with its size and format.
         # Corresponds to the JSON property `thumbnail`
         # @return [Google::Apis::ToolresultsV1beta3::Thumbnail]
         attr_accessor :thumbnail
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
@@ -606,19 +607,19 @@ module Google
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
         end
       end
-      
-      # 
+
+      #
       class InconclusiveDetail
         include Google::Apis::Core::Hashable
-      
+
         # If the end user aborted the test execution before a pass or fail could be
         # determined. For example, the user pressed ctrl-c which sent a kill signal to
         # the test runner while the test was running.
         # Corresponds to the JSON property `abortedByUser`
         # @return [Boolean]
         attr_accessor :aborted_by_user
-        alias_method :aborted_by_user?, :aborted_by_user
-      
+        alias aborted_by_user? aborted_by_user
+
         # If the test runner could not determine success or failure because the test
         # depends on a component other than the system under test which failed.
         # For example, a mobile test requires provisioning a device where the test
@@ -626,55 +627,55 @@ module Google
         # Corresponds to the JSON property `infrastructureFailure`
         # @return [Boolean]
         attr_accessor :infrastructure_failure
-        alias_method :infrastructure_failure?, :infrastructure_failure
-      
+        alias infrastructure_failure? infrastructure_failure
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @aborted_by_user = args[:aborted_by_user] if args.key?(:aborted_by_user)
           @infrastructure_failure = args[:infrastructure_failure] if args.key?(:infrastructure_failure)
         end
       end
-      
-      # 
+
+      #
       class ListExecutionsResponse
         include Google::Apis::Core::Hashable
-      
+
         # Executions.
         # Always set.
         # Corresponds to the JSON property `executions`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Execution>]
         attr_accessor :executions
-      
+
         # A continuation token to resume the query at the next item.
         # Will only be set if there are more Executions to fetch.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @executions = args[:executions] if args.key?(:executions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Response message for HistoryService.List
       class ListHistoriesResponse
         include Google::Apis::Core::Hashable
-      
+
         # Histories.
         # Corresponds to the JSON property `histories`
         # @return [Array<Google::Apis::ToolresultsV1beta3::History>]
         attr_accessor :histories
-      
+
         # A continuation token to resume the query at the next item.
         # Will only be set if there are more histories to fetch.
         # Tokens are valid for up to one hour from the time of the first list request.
@@ -684,75 +685,75 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @histories = args[:histories] if args.key?(:histories)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
-      # 
+
+      #
       class ListPerfSampleSeriesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The resulting PerfSampleSeries sorted by id
         # Corresponds to the JSON property `perfSampleSeries`
         # @return [Array<Google::Apis::ToolresultsV1beta3::PerfSampleSeries>]
         attr_accessor :perf_sample_series
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @perf_sample_series = args[:perf_sample_series] if args.key?(:perf_sample_series)
         end
       end
-      
-      # 
+
+      #
       class ListPerfSamplesResponse
         include Google::Apis::Core::Hashable
-      
+
         # Optional, returned if result size exceeds the page size specified in the
         # request (or the default page size, 500, if unspecified). It indicates the last
         # sample timestamp to be used as page_token in subsequent request
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
-        # 
+
+        #
         # Corresponds to the JSON property `perfSamples`
         # @return [Array<Google::Apis::ToolresultsV1beta3::PerfSample>]
         attr_accessor :perf_samples
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @perf_samples = args[:perf_samples] if args.key?(:perf_samples)
         end
       end
-      
+
       # A response containing the thumbnails in a step.
       class ListStepThumbnailsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A continuation token to resume the query at the next item.
         # If set, indicates that there are more thumbnails to read, by calling list
         # again with this value in the page_token field.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # A list of image data.
         # Images are returned in a deterministic order; they are ordered by these
         # factors, in order of importance: * First, by their associated test case.
@@ -763,81 +764,81 @@ module Google
         # Corresponds to the JSON property `thumbnails`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Image>]
         attr_accessor :thumbnails
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
         end
       end
-      
+
       # Response message for StepService.List.
       class ListStepsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A continuation token to resume the query at the next item.
         # If set, indicates that there are more steps to read, by calling list again
         # with this value in the page_token field.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # Steps.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Step>]
         attr_accessor :steps
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @steps = args[:steps] if args.key?(:steps)
         end
       end
-      
-      # 
+
+      #
       class MemoryInfo
         include Google::Apis::Core::Hashable
-      
+
         # Maximum memory that can be allocated to the process in KiB
         # Corresponds to the JSON property `memoryCapInKibibyte`
         # @return [Fixnum]
         attr_accessor :memory_cap_in_kibibyte
-      
+
         # Total memory available on the device in KiB
         # Corresponds to the JSON property `memoryTotalInKibibyte`
         # @return [Fixnum]
         attr_accessor :memory_total_in_kibibyte
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @memory_cap_in_kibibyte = args[:memory_cap_in_kibibyte] if args.key?(:memory_cap_in_kibibyte)
           @memory_total_in_kibibyte = args[:memory_total_in_kibibyte] if args.key?(:memory_total_in_kibibyte)
         end
       end
-      
+
       # Interprets a result so that humans and machines can act on it.
       class Outcome
         include Google::Apis::Core::Hashable
-      
+
         # More information about a FAILURE outcome.
         # Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.
         # Optional
         # Corresponds to the JSON property `failureDetail`
         # @return [Google::Apis::ToolresultsV1beta3::FailureDetail]
         attr_accessor :failure_detail
-      
+
         # More information about an INCONCLUSIVE outcome.
         # Returns INVALID_ARGUMENT if this field is set but the summary is not
         # INCONCLUSIVE.
@@ -845,31 +846,31 @@ module Google
         # Corresponds to the JSON property `inconclusiveDetail`
         # @return [Google::Apis::ToolresultsV1beta3::InconclusiveDetail]
         attr_accessor :inconclusive_detail
-      
+
         # More information about a SKIPPED outcome.
         # Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.
         # Optional
         # Corresponds to the JSON property `skippedDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SkippedDetail]
         attr_accessor :skipped_detail
-      
+
         # More information about a SUCCESS outcome.
         # Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.
         # Optional
         # Corresponds to the JSON property `successDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SuccessDetail]
         attr_accessor :success_detail
-      
+
         # The simplest way to interpret a result.
         # Required
         # Corresponds to the JSON property `summary`
         # @return [String]
         attr_accessor :summary
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @failure_detail = args[:failure_detail] if args.key?(:failure_detail)
@@ -879,70 +880,70 @@ module Google
           @summary = args[:summary] if args.key?(:summary)
         end
       end
-      
+
       # Encapsulates performance environment info
       class PerfEnvironment
         include Google::Apis::Core::Hashable
-      
+
         # CPU related environment info
         # Corresponds to the JSON property `cpuInfo`
         # @return [Google::Apis::ToolresultsV1beta3::CpuInfo]
         attr_accessor :cpu_info
-      
+
         # Memory related environment info
         # Corresponds to the JSON property `memoryInfo`
         # @return [Google::Apis::ToolresultsV1beta3::MemoryInfo]
         attr_accessor :memory_info
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @memory_info = args[:memory_info] if args.key?(:memory_info)
         end
       end
-      
+
       # A summary of perf metrics collected and performance environment info
       class PerfMetricsSummary
         include Google::Apis::Core::Hashable
-      
+
         # A tool results execution ID.
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
-      
+
         # A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
-      
+
         # Encapsulates performance environment info
         # Corresponds to the JSON property `perfEnvironment`
         # @return [Google::Apis::ToolresultsV1beta3::PerfEnvironment]
         attr_accessor :perf_environment
-      
+
         # Set of resource collected
         # Corresponds to the JSON property `perfMetrics`
         # @return [Array<String>]
         attr_accessor :perf_metrics
-      
+
         # The cloud project
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # A tool results step ID.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
@@ -953,11 +954,11 @@ module Google
           @step_id = args[:step_id] if args.key?(:step_id)
         end
       end
-      
+
       # Resource representing a single performance measure or data point
       class PerfSample
         include Google::Apis::Core::Hashable
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -1011,61 +1012,61 @@ module Google
         # Corresponds to the JSON property `sampleTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :sample_time
-      
+
         # Value observed
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @sample_time = args[:sample_time] if args.key?(:sample_time)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
+
       # Resource representing a collection of performance samples (or data points)
       class PerfSampleSeries
         include Google::Apis::Core::Hashable
-      
+
         # Encapsulates the metadata for basic sample series represented by a line chart
         # Corresponds to the JSON property `basicPerfSampleSeries`
         # @return [Google::Apis::ToolresultsV1beta3::BasicPerfSampleSeries]
         attr_accessor :basic_perf_sample_series
-      
+
         # A tool results execution ID.
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
-      
+
         # A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
-      
+
         # The cloud project
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # A sample series id
         # Corresponds to the JSON property `sampleSeriesId`
         # @return [String]
         attr_accessor :sample_series_id
-      
+
         # A tool results step ID.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @basic_perf_sample_series = args[:basic_perf_sample_series] if args.key?(:basic_perf_sample_series)
@@ -1076,83 +1077,83 @@ module Google
           @step_id = args[:step_id] if args.key?(:step_id)
         end
       end
-      
+
       # Per-project settings for the Tool Results service.
       class ProjectSettings
         include Google::Apis::Core::Hashable
-      
+
         # The name of the Google Cloud Storage bucket to which results are written.
         # By default, this is unset.
         # In update request: optional In response: optional
         # Corresponds to the JSON property `defaultBucket`
         # @return [String]
         attr_accessor :default_bucket
-      
+
         # The name of the project's settings.
         # Always of the form: projects/`project-id`/settings
         # In update request: never set In response: always set
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @default_bucket = args[:default_bucket] if args.key?(:default_bucket)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # Request message for StepService.PublishXunitXmlFiles.
       class PublishXunitXmlFilesRequest
         include Google::Apis::Core::Hashable
-      
+
         # URI of the Xunit XML files to publish.
         # The maximum size of the file this reference is pointing to is 50MB.
         # Required.
         # Corresponds to the JSON property `xunitXmlFiles`
         # @return [Array<Google::Apis::ToolresultsV1beta3::FileReference>]
         attr_accessor :xunit_xml_files
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @xunit_xml_files = args[:xunit_xml_files] if args.key?(:xunit_xml_files)
         end
       end
-      
-      # 
+
+      #
       class SkippedDetail
         include Google::Apis::Core::Hashable
-      
+
         # If the App doesn't support the specific API level.
         # Corresponds to the JSON property `incompatibleAppVersion`
         # @return [Boolean]
         attr_accessor :incompatible_app_version
-        alias_method :incompatible_app_version?, :incompatible_app_version
-      
+        alias incompatible_app_version? incompatible_app_version
+
         # If the App doesn't run on the specific architecture, for example, x86.
         # Corresponds to the JSON property `incompatibleArchitecture`
         # @return [Boolean]
         attr_accessor :incompatible_architecture
-        alias_method :incompatible_architecture?, :incompatible_architecture
-      
+        alias incompatible_architecture? incompatible_architecture
+
         # If the requested OS version doesn't run on the specific device model.
         # Corresponds to the JSON property `incompatibleDevice`
         # @return [Boolean]
         attr_accessor :incompatible_device
-        alias_method :incompatible_device?, :incompatible_device
-      
+        alias incompatible_device? incompatible_device
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @incompatible_app_version = args[:incompatible_app_version] if args.key?(:incompatible_app_version)
@@ -1160,27 +1161,27 @@ module Google
           @incompatible_device = args[:incompatible_device] if args.key?(:incompatible_device)
         end
       end
-      
+
       # A stacktrace.
       class StackTrace
         include Google::Apis::Core::Hashable
-      
+
         # The stack trace message.
         # Required
         # Corresponds to the JSON property `exception`
         # @return [String]
         attr_accessor :exception
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @exception = args[:exception] if args.key?(:exception)
         end
       end
-      
+
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). The error model is designed to be:
@@ -1222,29 +1223,29 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
-      
+
         # The status code, which should be an enum value of [google.rpc.Code][].
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
-      
+
         # A list of messages that carry the error details. There will be a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Any>]
         attr_accessor :details
-      
+
         # A developer-facing error message, which should be in English. Any user-facing
         # error message should be localized and sent in the [google.rpc.Status.details][]
         # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
@@ -1252,7 +1253,7 @@ module Google
           @message = args[:message] if args.key?(:message)
         end
       end
-      
+
       # A Step represents a single operation performed as part of Execution. A step
       # can be used to represent the execution of a tool ( for example a test runner
       # execution or an execution of a compiler).
@@ -1269,7 +1270,7 @@ module Google
       # becomes immutable.
       class Step
         include Google::Apis::Core::Hashable
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -1323,7 +1324,7 @@ module Google
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -1377,14 +1378,14 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
-      
+
         # A description of this tool For example: mvn clean package -D skipTests=true
         # - In response: present if set by create/update request - In create/update
         # request: optional
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # A Duration represents a signed, fixed-length span of time represented as a
         # count of seconds and fractions of seconds at nanosecond resolution. It is
         # independent of any calendar and concepts like "day" or "month". It is related
@@ -1418,7 +1419,7 @@ module Google
         # Corresponds to the JSON property `deviceUsageDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :device_usage_duration
-      
+
         # If the execution containing this step has any dimension_definition set, then
         # this field allows the child to specify the values of the dimensions.
         # The keys must exactly match the dimension_definition of the execution.
@@ -1444,15 +1445,15 @@ module Google
         # Corresponds to the JSON property `dimensionValue`
         # @return [Array<Google::Apis::ToolresultsV1beta3::StepDimensionValueEntry>]
         attr_accessor :dimension_value
-      
+
         # Whether any of the outputs of this step are images whose thumbnails can be
         # fetched with ListThumbnails.
         # - In response: always set - In create/update request: never set
         # Corresponds to the JSON property `hasImages`
         # @return [Boolean]
         attr_accessor :has_images
-        alias_method :has_images?, :has_images
-      
+        alias has_images? has_images
+
         # Arbitrary user-supplied key/value pairs that are associated with the step.
         # Users are responsible for managing the key namespace such that keys don't
         # accidentally collide.
@@ -1464,7 +1465,7 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::ToolresultsV1beta3::StepLabelsEntry>]
         attr_accessor :labels
-      
+
         # A short human-readable name to display in the UI. Maximum of 100 characters.
         # For example: Clean build
         # A PRECONDITION_FAILED will be returned upon creating a new step if it shares
@@ -1477,12 +1478,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Interprets a result so that humans and machines can act on it.
         # Corresponds to the JSON property `outcome`
         # @return [Google::Apis::ToolresultsV1beta3::Outcome]
         attr_accessor :outcome
-      
+
         # A Duration represents a signed, fixed-length span of time represented as a
         # count of seconds and fractions of seconds at nanosecond resolution. It is
         # independent of any calendar and concepts like "day" or "month". It is related
@@ -1516,7 +1517,7 @@ module Google
         # Corresponds to the JSON property `runDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :run_duration
-      
+
         # The initial state is IN_PROGRESS. The only legal state transitions are *
         # IN_PROGRESS -> COMPLETE
         # A PRECONDITION_FAILED will be returned if an invalid transition is requested.
@@ -1527,14 +1528,14 @@ module Google
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
+
         # A unique identifier within a Execution for this Step.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
         # - In response: always set - In create/update request: never set
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
-      
+
         # A step that represents running tests.
         # It accepts ant-junit xml files which will be parsed into structured test
         # results by the service. Xml file paths are updated in order to append more
@@ -1543,17 +1544,17 @@ module Google
         # Corresponds to the JSON property `testExecutionStep`
         # @return [Google::Apis::ToolresultsV1beta3::TestExecutionStep]
         attr_accessor :test_execution_step
-      
+
         # Generic tool step to be used for binaries we do not explicitly support. For
         # example: running cp to copy artifacts from one location to another.
         # Corresponds to the JSON property `toolExecutionStep`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecutionStep]
         attr_accessor :tool_execution_step
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
@@ -1572,104 +1573,104 @@ module Google
           @tool_execution_step = args[:tool_execution_step] if args.key?(:tool_execution_step)
         end
       end
-      
-      # 
+
+      #
       class StepDimensionValueEntry
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
-        # 
+
+        #
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
-      # 
+
+      #
       class StepLabelsEntry
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
-        # 
+
+        #
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
-      # 
+
+      #
       class SuccessDetail
         include Google::Apis::Core::Hashable
-      
+
         # If a native process other than the app crashed.
         # Corresponds to the JSON property `otherNativeCrash`
         # @return [Boolean]
         attr_accessor :other_native_crash
-        alias_method :other_native_crash?, :other_native_crash
-      
+        alias other_native_crash? other_native_crash
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @other_native_crash = args[:other_native_crash] if args.key?(:other_native_crash)
         end
       end
-      
+
       # A reference to a test case.
       # Test case references are canonically ordered lexicographically by these three
       # factors: * First, by test_suite_name. * Second, by class_name. * Third, by
       # name.
       class TestCaseReference
         include Google::Apis::Core::Hashable
-      
+
         # The name of the class.
         # Corresponds to the JSON property `className`
         # @return [String]
         attr_accessor :class_name
-      
+
         # The name of the test case.
         # Required.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The name of the test suite to which this test case belongs.
         # Corresponds to the JSON property `testSuiteName`
         # @return [String]
         attr_accessor :test_suite_name
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @class_name = args[:class_name] if args.key?(:class_name)
@@ -1677,7 +1678,7 @@ module Google
           @test_suite_name = args[:test_suite_name] if args.key?(:test_suite_name)
         end
       end
-      
+
       # A step that represents running tests.
       # It accepts ant-junit xml files which will be parsed into structured test
       # results by the service. Xml file paths are updated in order to append more
@@ -1685,7 +1686,7 @@ module Google
       # Users can also add test results manually by using the test_result field.
       class TestExecutionStep
         include Google::Apis::Core::Hashable
-      
+
         # Issues observed during the test execution.
         # For example, if the mobile app under test crashed during the test, the error
         # message and the stack trace content can be recorded here to assist debugging.
@@ -1694,7 +1695,7 @@ module Google
         # Corresponds to the JSON property `testIssues`
         # @return [Array<Google::Apis::ToolresultsV1beta3::TestIssue>]
         attr_accessor :test_issues
-      
+
         # List of test suite overview contents. This could be parsed from xUnit XML log
         # by server, or uploaded directly by user. This references should only be called
         # when test suites are fully parsed or uploaded.
@@ -1704,22 +1705,22 @@ module Google
         # Corresponds to the JSON property `testSuiteOverviews`
         # @return [Array<Google::Apis::ToolresultsV1beta3::TestSuiteOverview>]
         attr_accessor :test_suite_overviews
-      
+
         # Testing timing break down to know phases.
         # Corresponds to the JSON property `testTiming`
         # @return [Google::Apis::ToolresultsV1beta3::TestTiming]
         attr_accessor :test_timing
-      
+
         # An execution of an arbitrary tool. It could be a test runner or a tool copying
         # artifacts or deploying code.
         # Corresponds to the JSON property `toolExecution`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecution]
         attr_accessor :tool_execution
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @test_issues = args[:test_issues] if args.key?(:test_issues)
@@ -1728,82 +1729,82 @@ module Google
           @tool_execution = args[:tool_execution] if args.key?(:tool_execution)
         end
       end
-      
+
       # An abnormal event observed during the test execution.
       class TestIssue
         include Google::Apis::Core::Hashable
-      
+
         # A brief human-readable message describing the abnormal event.
         # Required.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
-      
+
         # A stacktrace.
         # Corresponds to the JSON property `stackTrace`
         # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
         attr_accessor :stack_trace
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
         end
       end
-      
+
       # A summary of a test suite result either parsed from XML or uploaded directly
       # by a user.
       # Note: the API related comments are for StepService only. This message is also
       # being used in ExecutionService in a read only mode for the corresponding step.
       class TestSuiteOverview
         include Google::Apis::Core::Hashable
-      
+
         # Number of test cases in error, typically set by the service by parsing the
         # xml_source.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
         attr_accessor :error_count
-      
+
         # Number of failed test cases, typically set by the service by parsing the
         # xml_source. May also be set by the user.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `failureCount`
         # @return [Fixnum]
         attr_accessor :failure_count
-      
+
         # The name of the test suite.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Number of test cases not run, typically set by the service by parsing the
         # xml_source.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `skippedCount`
         # @return [Fixnum]
         attr_accessor :skipped_count
-      
+
         # Number of test cases, typically set by the service by parsing the xml_source.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `totalCount`
         # @return [Fixnum]
         attr_accessor :total_count
-      
+
         # A reference to a file.
         # Corresponds to the JSON property `xmlSource`
         # @return [Google::Apis::ToolresultsV1beta3::FileReference]
         attr_accessor :xml_source
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error_count = args[:error_count] if args.key?(:error_count)
@@ -1814,11 +1815,11 @@ module Google
           @xml_source = args[:xml_source] if args.key?(:xml_source)
         end
       end
-      
+
       # Testing timing break down to know phases.
       class TestTiming
         include Google::Apis::Core::Hashable
-      
+
         # A Duration represents a signed, fixed-length span of time represented as a
         # count of seconds and fractions of seconds at nanosecond resolution. It is
         # independent of any calendar and concepts like "day" or "month". It is related
@@ -1852,27 +1853,27 @@ module Google
         # Corresponds to the JSON property `testProcessDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :test_process_duration
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @test_process_duration = args[:test_process_duration] if args.key?(:test_process_duration)
         end
       end
-      
+
       # A single thumbnail, with its size and format.
       class Thumbnail
         include Google::Apis::Core::Hashable
-      
+
         # The thumbnail's content type, i.e. "image/png".
         # Always set.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
-      
+
         # The thumbnail file itself.
         # That is, the bytes here are precisely the bytes that make up the thumbnail
         # file; they can be served as an image as-is (with the appropriate content type.)
@@ -1881,23 +1882,23 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
-      
+
         # The height of the thumbnail, in pixels.
         # Always set.
         # Corresponds to the JSON property `heightPx`
         # @return [Fixnum]
         attr_accessor :height_px
-      
+
         # The width of the thumbnail, in pixels.
         # Always set.
         # Corresponds to the JSON property `widthPx`
         # @return [Fixnum]
         attr_accessor :width_px
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @content_type = args[:content_type] if args.key?(:content_type)
@@ -1906,7 +1907,7 @@ module Google
           @width_px = args[:width_px] if args.key?(:width_px)
         end
       end
-      
+
       # A Timestamp represents a point in time independent of any time zone or
       # calendar, represented as seconds and fractions of seconds at nanosecond
       # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -1959,36 +1960,36 @@ module Google
       # formatter capable of generating timestamps in this format.
       class Timestamp
         include Google::Apis::Core::Hashable
-      
+
         # Non-negative fractions of a second at nanosecond resolution. Negative second
         # values with fractions must still have non-negative nanos values that count
         # forward in time. Must be from 0 to 999,999,999 inclusive.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
-      
+
         # Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be
         # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
-      
+
       # An execution of an arbitrary tool. It could be a test runner or a tool copying
       # artifacts or deploying code.
       class ToolExecution
         include Google::Apis::Core::Hashable
-      
+
         # The full tokenized command line including the program name (equivalent to argv
         # in a C program).
         # - In response: present if set by create request - In create request: optional -
@@ -1996,12 +1997,12 @@ module Google
         # Corresponds to the JSON property `commandLineArguments`
         # @return [Array<String>]
         attr_accessor :command_line_arguments
-      
+
         # Exit code from a tool execution.
         # Corresponds to the JSON property `exitCode`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExitCode]
         attr_accessor :exit_code
-      
+
         # References to any plain text logs output the tool execution.
         # This field can be set before the tool has exited in order to be able to have
         # access to a live view of the logs while the tool is running.
@@ -2012,7 +2013,7 @@ module Google
         # Corresponds to the JSON property `toolLogs`
         # @return [Array<Google::Apis::ToolresultsV1beta3::FileReference>]
         attr_accessor :tool_logs
-      
+
         # References to opaque files of any format output by the tool execution.
         # The maximum allowed number of tool outputs per step is 1000.
         # - In response: present if set by create/update request - In create request:
@@ -2021,11 +2022,11 @@ module Google
         # Corresponds to the JSON property `toolOutputs`
         # @return [Array<Google::Apis::ToolresultsV1beta3::ToolOutputReference>]
         attr_accessor :tool_outputs
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @command_line_arguments = args[:command_line_arguments] if args.key?(:command_line_arguments)
@@ -2034,52 +2035,52 @@ module Google
           @tool_outputs = args[:tool_outputs] if args.key?(:tool_outputs)
         end
       end
-      
+
       # Generic tool step to be used for binaries we do not explicitly support. For
       # example: running cp to copy artifacts from one location to another.
       class ToolExecutionStep
         include Google::Apis::Core::Hashable
-      
+
         # An execution of an arbitrary tool. It could be a test runner or a tool copying
         # artifacts or deploying code.
         # Corresponds to the JSON property `toolExecution`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecution]
         attr_accessor :tool_execution
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @tool_execution = args[:tool_execution] if args.key?(:tool_execution)
         end
       end
-      
+
       # Exit code from a tool execution.
       class ToolExitCode
         include Google::Apis::Core::Hashable
-      
+
         # Tool execution exit code. A value of 0 means that the execution was successful.
         # - In response: always set - In create/update request: always set
         # Corresponds to the JSON property `number`
         # @return [Fixnum]
         attr_accessor :number
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @number = args[:number] if args.key?(:number)
         end
       end
-      
+
       # A reference to a ToolExecution output file.
       class ToolOutputReference
         include Google::Apis::Core::Hashable
-      
+
         # A Timestamp represents a point in time independent of any time zone or
         # calendar, represented as seconds and fractions of seconds at nanosecond
         # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
@@ -2133,12 +2134,12 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
-      
+
         # A reference to a file.
         # Corresponds to the JSON property `output`
         # @return [Google::Apis::ToolresultsV1beta3::FileReference]
         attr_accessor :output
-      
+
         # A reference to a test case.
         # Test case references are canonically ordered lexicographically by these three
         # factors: * First, by test_suite_name. * Second, by class_name. * Third, by
@@ -2146,11 +2147,11 @@ module Google
         # Corresponds to the JSON property `testCase`
         # @return [Google::Apis::ToolresultsV1beta3::TestCaseReference]
         attr_accessor :test_case
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)

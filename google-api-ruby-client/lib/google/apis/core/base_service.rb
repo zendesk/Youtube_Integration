@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,9 +52,9 @@ module Google
             @result_cache = Hash.new do |h, k|
               h[k] = @block.call(k, @service)
             end
-            @fetch_proc = Proc.new { |token| @result_cache[token] }
+            @fetch_proc = proc { |token| @result_cache[token] }
           else
-            @fetch_proc = Proc.new { |token| @block.call(token, @service) }
+            @fetch_proc = proc { |token| @block.call(token, @service) }
           end
         end
 
@@ -63,15 +65,15 @@ module Google
           loop do
             @last_result = @fetch_proc.call(page_token)
             items = @last_result.send(@items_field)
-            if items.kind_of?(Array)
+            if items.is_a?(Array)
               for item in items
-                item_count = item_count + 1
+                item_count += 1
                 break if @max && item_count > @max
                 yield item
               end
-            elsif items.kind_of?(Hash)
+            elsif items.is_a?(Hash)
               items.each do |key, val|
-                item_count = item_count + 1
+                item_count += 1
                 break if @max && item_count > @max
                 yield key, val
               end
@@ -216,7 +218,6 @@ module Google
           @client ||= new_client
         end
 
-
         # Simple escape hatch for making API requests directly to a given
         # URL. This is not intended to be used as a generic HTTP client
         # and should be used only in cases where no service method exists
@@ -241,11 +242,11 @@ module Google
         #
         # @return [String] HTTP response body
         def http(method, url, params: nil, body: nil, download_dest: nil, options: nil, &block)
-          if download_dest
-            command = DownloadCommand.new(method, url, body: body)
-          else
-            command = HttpCommand.new(method, url, body: body)
-          end
+          command = if download_dest
+                      DownloadCommand.new(method, url, body: body)
+                    else
+                      HttpCommand.new(method, url, body: body)
+                    end
           command.options = request_options.merge(options)
           apply_command_defaults(command)
           command.query.merge(Hash(params))
@@ -279,8 +280,8 @@ module Google
         #   file_list = service.fetch_all { |token, s| s.list_files(page_token: token) }
         #   file_list.each { |f| ... }
         def fetch_all(max: nil, items: :items, cache: true, response_page_token: :next_page_token, &block)
-          fail "fetch_all may not be used inside a batch" if batch?
-          return PagedResults.new(self, max: max, items: items, cache: cache, response_page_token: response_page_token, &block)
+          raise 'fetch_all may not be used inside a batch' if batch?
+          PagedResults.new(self, max: max, items: items, cache: cache, response_page_token: response_page_token, &block)
         end
 
         protected
@@ -296,11 +297,11 @@ module Google
         # @return [Google::Apis::Core::UploadCommand]
         def make_upload_command(method, path, options)
           template = Addressable::Template.new(root_url + upload_path + path)
-          if batch?
-            command = MultipartUploadCommand.new(method, template)
-          else
-            command = ResumableUploadCommand.new(method, template)
-          end
+          command = if batch?
+                      MultipartUploadCommand.new(method, template)
+                    else
+                      ResumableUploadCommand.new(method, template)
+                    end
           command.options = request_options.merge(options)
           apply_command_defaults(command)
           command
@@ -353,7 +354,7 @@ module Google
         def execute_or_queue_command(command, &callback)
           batch_command = current_batch
           if batch_command
-            fail "Can not combine services in a batch" if Thread.current[:google_api_batch_service] != self
+            raise 'Can not combine services in a batch' if Thread.current[:google_api_batch_service] != self
             batch_command.add(command, &callback)
             nil
           else
@@ -363,8 +364,7 @@ module Google
 
         # Update commands with service-specific options. To be implemented by subclasses
         # @param [Google::Apis::Core::HttpCommand] _command
-        def apply_command_defaults(_command)
-        end
+        def apply_command_defaults(_command); end
 
         private
 
@@ -384,7 +384,7 @@ module Google
         # Start a new thread-local batch context
         # @param [Google::Apis::Core::BatchCommand] cmd
         def start_batch(cmd)
-          fail "Batch already in progress" if batch?
+          raise 'Batch already in progress' if batch?
           Thread.current[:google_api_batch] = cmd
           Thread.current[:google_api_batch_service] = self
         end
@@ -419,7 +419,6 @@ module Google
           client.debug_dev = logger if client_options.log_http_requests
           client
         end
-
 
         # Build the user agent header
         # @return [String]

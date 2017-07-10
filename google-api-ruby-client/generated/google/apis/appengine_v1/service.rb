@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://appengine.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Gets information about an application.
         # @param [String] apps_id
         #   Part of `name`. Name of the Application resource to get. Example: apps/myapp.
@@ -69,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app(apps_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Application::Representation
           command.response_class = Google::Apis::AppengineV1::Application
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -77,7 +79,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified Application resource. You can update the following
         # fields:
         # auth_domain - Google authentication domain for controlling user access to the
@@ -107,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app(apps_id, application_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -118,7 +120,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an App Engine application for a Google Cloud Platform project.
         # Required fields:
         # id - The ID of the target Cloud Platform project.
@@ -145,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app(application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps', options)
+          command = make_simple_command(:post, 'v1/apps', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -154,7 +156,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Recreates the required App Engine features for the specified App Engine
         # application, for example a Cloud Storage bucket or App Engine service account.
         # Use this method if you receive an error message about a missing feature, for
@@ -180,7 +182,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def repair_application(apps_id, repair_application_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}:repair', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}:repair', options)
           command.request_representation = Google::Apis::AppengineV1::RepairApplicationRequest::Representation
           command.request_object = repair_application_request_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -190,7 +192,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding
         # allows API services to override the binding to use different resource name
@@ -225,7 +227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_operations(apps_id, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/operations', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/operations', options)
           command.response_representation = Google::Apis::AppengineV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListOperationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -236,7 +238,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] apps_id
@@ -261,7 +263,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_operation(apps_id, operations_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/operations/{operationsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/operations/{operationsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -270,7 +272,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists information about the supported locations for this service.
         # @param [String] apps_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
@@ -298,7 +300,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_locations(apps_id, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
           command.response_representation = Google::Apis::AppengineV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListLocationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -309,7 +311,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about a location.
         # @param [String] apps_id
         #   Part of `name`. Resource name for the location.
@@ -333,7 +335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_location(apps_id, locations_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/locations/{locationsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/locations/{locationsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Location::Representation
           command.response_class = Google::Apis::AppengineV1::Location
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -342,7 +344,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified service and all enclosed versions.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -367,7 +369,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service(apps_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -376,7 +378,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the services in the application.
         # @param [String] apps_id
         #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
@@ -402,7 +404,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_services(apps_id, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services', options)
           command.response_representation = Google::Apis::AppengineV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListServicesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -412,7 +414,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the current configuration of the specified service.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -437,7 +439,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service(apps_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Service::Representation
           command.response_class = Google::Apis::AppengineV1::Service
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -446,7 +448,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the configuration of the specified service.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
@@ -487,7 +489,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_service(apps_id, services_id, service_object = nil, update_mask: nil, migrate_traffic: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.request_representation = Google::Apis::AppengineV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -500,7 +502,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing Version resource.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -527,7 +529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service_version(apps_id, services_id, versions_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -537,7 +539,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the versions of a service.
         # @param [String] apps_id
         #   Part of `parent`. Name of the parent Service resource. Example: apps/myapp/
@@ -568,7 +570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_service_versions(apps_id, services_id, page_token: nil, page_size: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
           command.response_representation = Google::Apis::AppengineV1::ListVersionsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListVersionsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -580,7 +582,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified Version resource. By default, only a BASIC_VIEW will be
         # returned. Specify the FULL_VIEW parameter to get the full resource.
         # @param [String] apps_id
@@ -610,7 +612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service_version(apps_id, services_id, versions_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Version::Representation
           command.response_class = Google::Apis::AppengineV1::Version
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -621,7 +623,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified Version resource. You can specify the following fields
         # depending on the App Engine environment and type of scaling that the version
         # resource uses:
@@ -668,7 +670,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_service_version(apps_id, services_id, versions_id, version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.request_representation = Google::Apis::AppengineV1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -681,7 +683,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deploys code and resource files to a new version.
         # @param [String] apps_id
         #   Part of `parent`. Name of the parent resource to create this version under.
@@ -707,7 +709,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app_service_version(apps_id, services_id, version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
           command.request_representation = Google::Apis::AppengineV1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -718,7 +720,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stops a running instance.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -747,7 +749,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service_version_instance(apps_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -758,7 +760,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the instances of a version.Tip: To aggregate details about instances
         # over time, see the Stackdriver Monitoring API (https://cloud.google.com/
         # monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
@@ -791,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_service_version_instances(apps_id, services_id, versions_id, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', options)
           command.response_representation = Google::Apis::AppengineV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListInstancesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -803,7 +805,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets instance information.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
@@ -832,7 +834,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service_version_instance(apps_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Instance::Representation
           command.response_class = Google::Apis::AppengineV1::Instance
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -843,7 +845,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enables debugging on a VM instance. This allows you to use the SSH command to
         # connect to the virtual machine where the instance lives. While in "debug mode",
         # the instance continues to serve live traffic. You should delete the instance
@@ -878,7 +880,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def debug_instance(apps_id, services_id, versions_id, instances_id, debug_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
           command.request_representation = Google::Apis::AppengineV1::DebugInstanceRequest::Representation
           command.request_object = debug_instance_request_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation

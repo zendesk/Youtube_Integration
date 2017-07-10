@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,10 +43,10 @@ module Samples
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(ga:date)
-      metrics = %w(ga:sessions ga:users ga:newUsers ga:percentNewSessions
-                   ga:sessionDuration ga:avgSessionDuration)
-      sort = %w(ga:date)
+      dimensions = %w[ga:date]
+      metrics = %w[ga:sessions ga:users ga:newUsers ga:percentNewSessions
+                   ga:sessionDuration ga:avgSessionDuration]
+      sort = %w[ga:date]
       result = analytics.get_ga_data("ga:#{profile_id}",
                                      options[:start],
                                      options[:end],
@@ -53,7 +55,7 @@ module Samples
                                      sort: sort.join(','))
 
       data = []
-      data.push(result.column_headers.map { |h| h.name })
+      data.push(result.column_headers.map(&:name))
       data.push(*result.rows)
       print_table(data)
     end
@@ -63,16 +65,16 @@ module Samples
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(rt:medium rt:pagePath)
-      metrics = %w(rt:activeUsers)
-      sort = %w(rt:medium rt:pagePath)
+      dimensions = %w[rt:medium rt:pagePath]
+      metrics = %w[rt:activeUsers]
+      sort = %w[rt:medium rt:pagePath]
       result = analytics.get_realtime_data("ga:#{profile_id}",
                                            metrics.join(','),
                                            dimensions: dimensions.join(','),
                                            sort: sort.join(','))
 
       data = []
-      data.push(result.column_headers.map { |h| h.name })
+      data.push(result.column_headers.map(&:name))
       data.push(*result.rows)
       print_table(data)
     end

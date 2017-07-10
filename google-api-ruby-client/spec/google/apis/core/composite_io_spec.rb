@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +18,6 @@ require 'spec_helper'
 require 'google/apis/core/composite_io'
 
 RSpec.describe Google::Apis::Core::CompositeIO do
-
   shared_examples 'should act like IO' do
     it 'should read from all IOs' do
       expect(io.read).to eq 'Hello Cruel World'
@@ -52,9 +53,10 @@ RSpec.describe Google::Apis::Core::CompositeIO do
   context 'with StringIOs' do
     let(:io) do
       Google::Apis::Core::CompositeIO.new(
-          StringIO.new("Hello "),
-          StringIO.new("Cruel "),
-          StringIO.new("World"))
+        StringIO.new('Hello '),
+        StringIO.new('Cruel '),
+        StringIO.new('World')
+      )
     end
     include_examples 'should act like IO'
   end
@@ -72,5 +74,4 @@ RSpec.describe Google::Apis::Core::CompositeIO do
     end
     include_examples 'should act like IO'
   end
-
 end

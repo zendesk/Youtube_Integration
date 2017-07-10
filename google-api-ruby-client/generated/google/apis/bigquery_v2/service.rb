@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'bigquery/v2/')
           @batch_path = 'batch'
         end
-        
+
         # Deletes the dataset specified by the datasetId value. Before you can delete a
         # dataset, you must delete all its tables, either manually or by specifying
         # deleteContents. Immediately after deletion, you can create another dataset
@@ -86,7 +88,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_dataset(project_id, dataset_id, delete_contents: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'projects/{projectId}/datasets/{datasetId}', options)
+          command = make_simple_command(:delete, 'projects/{projectId}/datasets/{datasetId}', options)
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['deleteContents'] = delete_contents unless delete_contents.nil?
@@ -95,7 +97,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the dataset specified by datasetID.
         # @param [String] project_id
         #   Project ID of the requested dataset
@@ -123,7 +125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_dataset(project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
@@ -133,7 +135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new empty dataset.
         # @param [String] project_id
         #   Project ID of the new dataset
@@ -160,7 +162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_dataset(project_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'projects/{projectId}/datasets', options)
+          command = make_simple_command(:post, 'projects/{projectId}/datasets', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
@@ -171,7 +173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all datasets in the specified project to which you have been granted the
         # READER dataset role.
         # @param [String] project_id
@@ -209,7 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datasets(project_id, all: nil, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/datasets', options)
+          command = make_simple_command(:get, 'projects/{projectId}/datasets', options)
           command.response_representation = Google::Apis::BigqueryV2::DatasetList::Representation
           command.response_class = Google::Apis::BigqueryV2::DatasetList
           command.params['projectId'] = project_id unless project_id.nil?
@@ -222,7 +224,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource. This method supports patch
@@ -254,7 +256,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'projects/{projectId}/datasets/{datasetId}', options)
+          command = make_simple_command(:patch, 'projects/{projectId}/datasets/{datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
@@ -266,7 +268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource.
@@ -297,7 +299,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'projects/{projectId}/datasets/{datasetId}', options)
+          command = make_simple_command(:put, 'projects/{projectId}/datasets/{datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
@@ -309,7 +311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Requests that a job be cancelled. This call will return immediately, and the
         # client will need to poll for the job status to see if the cancel completed
         # successfully. Cancelled jobs may still incur costs.
@@ -339,7 +341,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'projects/{projectId}/jobs/{jobId}/cancel', options)
+          command = make_simple_command(:post, 'projects/{projectId}/jobs/{jobId}/cancel', options)
           command.response_representation = Google::Apis::BigqueryV2::CancelJobResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::CancelJobResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -349,7 +351,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns information about a specific job. Job information is available for a
         # six month period after creation. Requires that you're the person who ran the
         # job, or have the Is Owner project role.
@@ -379,7 +381,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Job::Representation
           command.response_class = Google::Apis::BigqueryV2::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -389,7 +391,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the results of a query job.
         # @param [String] project_id
         #   [Required] Project ID of the query job
@@ -427,7 +429,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job_query_results(project_id, job_id, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/queries/{jobId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/queries/{jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::GetQueryResultsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -441,7 +443,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts a new asynchronous job. Requires the Can View project role.
         # @param [String] project_id
         #   Project ID of the project that will be billed for the job
@@ -473,7 +475,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_job(project_id, job_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'projects/{projectId}/jobs', options)
+            command = make_simple_command(:post, 'projects/{projectId}/jobs', options)
           else
             command = make_upload_command(:post, 'projects/{projectId}/jobs', options)
             command.upload_source = upload_source
@@ -489,7 +491,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all jobs that you started in the specified project. Job information is
         # available for a six month period after creation. The job list is sorted in
         # reverse chronological order, by job creation time. Requires the Can View
@@ -528,7 +530,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_jobs(project_id, all_users: nil, max_results: nil, page_token: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/jobs', options)
+          command = make_simple_command(:get, 'projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::BigqueryV2::JobList::Representation
           command.response_class = Google::Apis::BigqueryV2::JobList
           command.params['projectId'] = project_id unless project_id.nil?
@@ -542,7 +544,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs a BigQuery SQL query synchronously and returns query results if the query
         # completes within a specified timeout.
         # @param [String] project_id
@@ -570,7 +572,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_job(project_id, query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'projects/{projectId}/queries', options)
+          command = make_simple_command(:post, 'projects/{projectId}/queries', options)
           command.request_representation = Google::Apis::BigqueryV2::QueryRequest::Representation
           command.request_object = query_request_object
           command.response_representation = Google::Apis::BigqueryV2::QueryResponse::Representation
@@ -581,7 +583,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all projects to which you have been granted any project role.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
@@ -609,7 +611,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_projects(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects', options)
+          command = make_simple_command(:get, 'projects', options)
           command.response_representation = Google::Apis::BigqueryV2::ProjectList::Representation
           command.response_class = Google::Apis::BigqueryV2::ProjectList
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -619,7 +621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Streams data into BigQuery one record at a time without needing to run a load
         # job. Requires the WRITER dataset role.
         # @param [String] project_id
@@ -651,7 +653,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_all_table_data(project_id, dataset_id, table_id, insert_all_table_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll', options)
+          command = make_simple_command(:post, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll', options)
           command.request_representation = Google::Apis::BigqueryV2::InsertAllTableDataRequest::Representation
           command.request_object = insert_all_table_data_request_object
           command.response_representation = Google::Apis::BigqueryV2::InsertAllTableDataResponse::Representation
@@ -664,7 +666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves table data from a specified set of rows. Requires the READER dataset
         # role.
         # @param [String] project_id
@@ -704,7 +706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_table_data(project_id, dataset_id, table_id, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data', options)
+          command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data', options)
           command.response_representation = Google::Apis::BigqueryV2::TableDataList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableDataList
           command.params['projectId'] = project_id unless project_id.nil?
@@ -719,7 +721,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the table specified by tableId from the dataset. If the table contains
         # data, all the data will be deleted.
         # @param [String] project_id
@@ -750,7 +752,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_table(project_id, dataset_id, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
+          command = make_simple_command(:delete, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
@@ -759,7 +761,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified table resource by table ID. This method does not return the
         # data in the table, it only returns the table resource, which describes the
         # structure of this table.
@@ -794,7 +796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_table(project_id, dataset_id, table_id, selected_fields: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
@@ -806,7 +808,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new, empty table in the dataset.
         # @param [String] project_id
         #   Project ID of the new table
@@ -835,7 +837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_table(project_id, dataset_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'projects/{projectId}/datasets/{datasetId}/tables', options)
+          command = make_simple_command(:post, 'projects/{projectId}/datasets/{datasetId}/tables', options)
           command.request_representation = Google::Apis::BigqueryV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::BigqueryV2::Table::Representation
@@ -847,7 +849,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all tables in the specified dataset. Requires the READER dataset role.
         # @param [String] project_id
         #   Project ID of the tables to list
@@ -879,7 +881,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tables(project_id, dataset_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables', options)
+          command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables', options)
           command.response_representation = Google::Apis::BigqueryV2::TableList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableList
           command.params['projectId'] = project_id unless project_id.nil?
@@ -891,7 +893,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource. This method supports patch semantics.
@@ -924,7 +926,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_table(project_id, dataset_id, table_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
+          command = make_simple_command(:patch, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::BigqueryV2::Table::Representation
@@ -937,7 +939,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource.
@@ -970,7 +972,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_table(project_id, dataset_id, table_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
+          command = make_simple_command(:put, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::BigqueryV2::Table::Representation

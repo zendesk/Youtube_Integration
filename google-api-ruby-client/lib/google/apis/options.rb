@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +24,8 @@ module Google
       :open_timeout_sec,
       :read_timeout_sec,
       :send_timeout_sec,
-      :log_http_requests)
+      :log_http_requests
+    )
 
     RequestOptions = Struct.new(
       :authorization,
@@ -31,7 +34,8 @@ module Google
       :normalize_unicode,
       :skip_serialization,
       :skip_deserialization,
-      :api_format_version)
+      :api_format_version
+    )
 
     # General client options
     class ClientOptions

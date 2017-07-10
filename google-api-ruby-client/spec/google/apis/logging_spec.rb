@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +46,6 @@ RSpec.describe Google::Apis do
   end
 
   context 'with Rails' do
-
     before(:example) do
       Google::Apis.logger = nil
       Kernel.const_set('Rails', Module.new) unless defined?(::Rails)

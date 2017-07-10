@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://clouderrorreporting.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Deletes all error events of a given project.
         # @param [String] project_name
         #   [Required] The resource name of the Google Cloud Platform project. Written
@@ -73,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_events(project_name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+projectName}/events', options)
+          command = make_simple_command(:delete, 'v1beta1/{+projectName}/events', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse
           command.params['projectName'] = project_name unless project_name.nil?
@@ -81,7 +83,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the specified group.
         # @param [String] group_name
         #   [Required] The group resource name. Written as
@@ -109,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_group(group_name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+groupName}', options)
+          command = make_simple_command(:get, 'v1beta1/{+groupName}', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup
           command.params['groupName'] = group_name unless group_name.nil?
@@ -117,7 +119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replace the data for the specified group.
         # Fails if the group does not exist.
         # @param [String] name
@@ -142,7 +144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_group(name, error_group_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.request_object = error_group_object
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
@@ -152,7 +154,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the specified groups.
         # @param [String] project_name
         #   [Required] The resource name of the Google Cloud Platform project. Written
@@ -213,7 +215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_group_stats(project_name, alignment_time: nil, service_filter_resource_type: nil, timed_count_duration: nil, page_token: nil, time_range_period: nil, alignment: nil, group_id: nil, service_filter_service: nil, page_size: nil, order: nil, service_filter_version: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+projectName}/groupStats', options)
+          command = make_simple_command(:get, 'v1beta1/{+projectName}/groupStats', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse
           command.params['projectName'] = project_name unless project_name.nil?
@@ -232,7 +234,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the specified events.
         # @param [String] project_name
         #   [Required] The resource name of the Google Cloud Platform project. Written
@@ -278,7 +280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_events(project_name, group_id: nil, page_token: nil, service_filter_service: nil, page_size: nil, service_filter_version: nil, service_filter_resource_type: nil, time_range_period: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
+          command = make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse
           command.params['projectName'] = project_name unless project_name.nil?
@@ -293,7 +295,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Report an individual error event.
         # This endpoint accepts <strong>either</strong> an OAuth token,
         # <strong>or</strong> an
@@ -327,7 +329,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def report_project_event(project_name, reported_error_event_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+projectName}/events:report', options)
+          command = make_simple_command(:post, 'v1beta1/{+projectName}/events:report', options)
           command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent::Representation
           command.request_object = reported_error_event_object
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse::Representation

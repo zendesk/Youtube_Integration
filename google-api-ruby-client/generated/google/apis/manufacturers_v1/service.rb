@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://manufacturers.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Lists all the products in a Manufacturer Center account.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
@@ -74,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_products(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products', options)
+          command = make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::ManufacturersV1::ListProductsResponse::Representation
           command.response_class = Google::Apis::ManufacturersV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -84,7 +86,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the product from a Manufacturer Center account, including product
         # issues.
         # @param [String] parent
@@ -117,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
           command.response_representation = Google::Apis::ManufacturersV1::Product::Representation
           command.response_class = Google::Apis::ManufacturersV1::Product
           command.params['parent'] = parent unless parent.nil?

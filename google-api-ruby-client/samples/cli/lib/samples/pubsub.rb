@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -107,7 +109,7 @@ module Samples
       end
 
       # Acknowledge receipt
-      ack_ids = response.received_messages.map{ |msg| msg.ack_id }
+      ack_ids = response.received_messages.map(&:ack_id)
       pubsub.acknowledge_subscription(subscription, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
     end
   end

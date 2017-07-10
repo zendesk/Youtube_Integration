@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'groups/v1/groups/')
           @batch_path = 'batch'
         end
-        
+
         # Gets one resource by id.
         # @param [String] group_unique_id
         #   The resource ID
@@ -78,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group(group_unique_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{groupUniqueId}', options)
+          command = make_simple_command(:get, '{groupUniqueId}', options)
           command.query['alt'] = 'json'
           command.response_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
@@ -88,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing resource. This method supports patch semantics.
         # @param [String] group_unique_id
         #   The resource ID
@@ -115,7 +117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{groupUniqueId}', options)
+          command = make_simple_command(:patch, '{groupUniqueId}', options)
           command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.request_object = groups_object
           command.query['alt'] = 'json'
@@ -127,7 +129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing resource.
         # @param [String] group_unique_id
         #   The resource ID
@@ -154,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{groupUniqueId}', options)
+          command = make_simple_command(:put, '{groupUniqueId}', options)
           command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.request_object = groups_object
           command.query['alt'] = 'json'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +29,7 @@ module Google
       class HttpCommand
         include Logging
 
-        RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError]
+        RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError].freeze
 
         # Request options
         # @return [Google::Apis::RequestOptions]
@@ -72,7 +74,7 @@ module Google
           self.url = url
           self.url = Addressable::Template.new(url) if url.is_a?(String)
           self.method = method
-          self.header = Hash.new
+          self.header = ({})
           self.body = body
           self.query = {}
           self.params = {}
@@ -102,9 +104,7 @@ module Google
                                   on: [Google::Apis::AuthorizationError],
                                   on_retry: proc { |*| refresh_authorization } do
                 execute_once(client).tap do |result|
-                  if block_given?
-                    yield result, nil
-                  end
+                  yield result, nil if block_given?
                 end
               end
             end
@@ -157,14 +157,12 @@ module Google
           end
 
           self.body = '' unless self.body
-
         end
 
         # Release any resources used by this command
         # @private
         # @return [void]
-        def release!
-        end
+        def release!; end
 
         # Check the response and either decode body or raise error
         #
@@ -242,9 +240,9 @@ module Google
         #  Result object
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
-        def success(result, &block)
+        def success(result)
           logger.debug { sprintf('Success - %s', PP.pp(result, '')) }
-          block.call(result, nil) if block_given?
+          yield(result, nil) if block_given?
           result
         end
 
@@ -268,8 +266,8 @@ module Google
           elsif err.is_a?(HTTPClient::TimeoutError) || err.is_a?(SocketError)
             err = Google::Apis::TransmissionError.new(err)
           end
-          block.call(nil, err) if block_given?
-          fail err if rethrow || block.nil?
+          yield(nil, err) if block_given?
+          raise err if rethrow || block.nil?
         end
 
         # Execute the command once.
@@ -318,7 +316,7 @@ module Google
         end
 
         def allow_form_encoding?
-          [:post, :put].include?(method) && body.nil?
+          %i[post put].include?(method) && body.nil?
         end
 
         private

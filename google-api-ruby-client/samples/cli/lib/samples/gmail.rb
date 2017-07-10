@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -132,7 +134,7 @@ module Samples
 
       attrs = {
         json_key_io: 'client_secret.json',
-        scope: [ Gmail::AUTH_GMAIL_SETTINGS_BASIC ]
+        scope: [Gmail::AUTH_GMAIL_SETTINGS_BASIC]
       }
 
       auth = Google::Auth::ServiceAccountCredentials.make_creds(attrs)
@@ -145,7 +147,7 @@ module Samples
 
       gmail.authorization = impersonate_auth
 
-      send_as_object = {"signature": new_signature_content}
+      send_as_object = { "signature": new_signature_content }
       # options: {} is necessary for method to be called correctly.
       result = service.patch_user_setting_send_as(user_id, send_as_email, send_as_object, options: {})
 

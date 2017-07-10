@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,7 +57,8 @@ RSpec.describe Google::Apis::Error do
             error,
             body:       'this is body',
             header:     'this is header',
-            status_code: 200)
+            status_code: 200
+          )
         end
 
         it 'instance variables @body, @header, and @status_code will not be nil' do
@@ -81,7 +84,8 @@ RSpec.describe Google::Apis::Error do
     context '@cause is falsy' do
       before do
         expect_any_instance_of(subject.class.superclass).to receive(:backtrace).and_return(
-            "super class's #backtrace called")
+          "super class's #backtrace called"
+        )
       end
 
       it "calls super class's #backtrace" do

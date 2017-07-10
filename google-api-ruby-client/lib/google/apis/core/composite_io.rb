@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,24 +59,22 @@ module Google
             end
             @index += 1
           end while @index < @ios.length
-          buf.length > 0 ? buf : nil
+          !buf.empty? ? buf : nil
         end
 
         def size
           @sizes.reduce(:+)
         end
 
-        alias_method :length, :size
+        alias length size
 
-        def pos
-          @pos
-        end
+        attr_reader :pos
 
         def pos=(pos)
-          fail ArgumentError, "Position can not be negative" if pos < 0
+          raise ArgumentError, 'Position can not be negative' if pos < 0
           @pos = pos
           new_index = nil
-          @ios.each_with_index do |io,idx|
+          @ios.each_with_index do |io, idx|
             size = io.size
             if pos <= size
               new_index ||= idx

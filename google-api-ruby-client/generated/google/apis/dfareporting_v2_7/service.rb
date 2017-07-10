@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'dfareporting/v2.7/')
           @batch_path = 'batch'
         end
-        
+
         # Gets the account's active ad summary by account ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -80,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_active_ad_summary(profile_id, summary_account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountActiveAdSummary::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountActiveAdSummary
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -90,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account permission group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -118,7 +120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_permission_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountPermissionGroups/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountPermissionGroups/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountPermissionGroup::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountPermissionGroup
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -128,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of account permission groups.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -154,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_permission_groups(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountPermissionGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountPermissionGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountPermissionGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountPermissionGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -163,7 +165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account permission by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -191,7 +193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_permission(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountPermissions/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountPermissions/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountPermission::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountPermission
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -201,7 +203,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of account permissions.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -227,7 +229,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_permissions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountPermissions', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountPermissions', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountPermissionsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountPermissionsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -236,7 +238,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account user profile by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -264,7 +266,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_user_profile(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountUserProfiles/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountUserProfiles/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountUserProfile
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -274,7 +276,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new account user profile.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -301,7 +303,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_account_user_profile(profile_id, account_user_profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/accountUserProfiles', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/accountUserProfiles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
           command.request_object = account_user_profile_object
           command.response_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
@@ -312,7 +314,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of account user profiles, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -363,7 +365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_user_profiles(profile_id, active: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, user_role_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accountUserProfiles', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accountUserProfiles', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountUserProfilesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountUserProfilesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -381,7 +383,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account user profile. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -410,7 +412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account_user_profile(profile_id, id, account_user_profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/accountUserProfiles', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/accountUserProfiles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
           command.request_object = account_user_profile_object
           command.response_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
@@ -422,7 +424,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account user profile.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -449,7 +451,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account_user_profile(profile_id, account_user_profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/accountUserProfiles', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/accountUserProfiles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
           command.request_object = account_user_profile_object
           command.response_representation = Google::Apis::DfareportingV2_7::AccountUserProfile::Representation
@@ -460,7 +462,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -488,7 +490,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accounts/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accounts/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Account::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Account
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -498,7 +500,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of accounts, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -544,7 +546,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(profile_id, active: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/accounts', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/accounts', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AccountsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AccountsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -560,7 +562,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -589,7 +591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account(profile_id, id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/accounts', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/accounts', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::DfareportingV2_7::Account::Representation
@@ -601,7 +603,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -628,7 +630,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account(profile_id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/accounts', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/accounts', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::DfareportingV2_7::Account::Representation
@@ -639,7 +641,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one ad by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -667,7 +669,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ad(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/ads/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/ads/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Ad::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Ad
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -677,7 +679,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new ad.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -704,7 +706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_ad(profile_id, ad_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/ads', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/ads', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Ad::Representation
           command.request_object = ad_object
           command.response_representation = Google::Apis::DfareportingV2_7::Ad::Representation
@@ -715,7 +717,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of ads, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -799,7 +801,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ads(profile_id, active: nil, advertiser_id: nil, archived: nil, audience_segment_ids: nil, campaign_ids: nil, compatibility: nil, creative_ids: nil, creative_optimization_configuration_ids: nil, dynamic_click_tracker: nil, ids: nil, landing_page_ids: nil, max_results: nil, overridden_event_tag_id: nil, page_token: nil, placement_ids: nil, remarketing_list_ids: nil, search_string: nil, size_ids: nil, sort_field: nil, sort_order: nil, ssl_compliant: nil, ssl_required: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/ads', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/ads', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AdsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AdsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -831,7 +833,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing ad. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -860,7 +862,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_ad(profile_id, id, ad_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/ads', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/ads', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Ad::Representation
           command.request_object = ad_object
           command.response_representation = Google::Apis::DfareportingV2_7::Ad::Representation
@@ -872,7 +874,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing ad.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -899,7 +901,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_ad(profile_id, ad_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/ads', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/ads', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Ad::Representation
           command.request_object = ad_object
           command.response_representation = Google::Apis::DfareportingV2_7::Ad::Representation
@@ -910,7 +912,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing advertiser group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -938,7 +940,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_advertiser_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/advertiserGroups/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/advertiserGroups/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -946,7 +948,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one advertiser group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -974,7 +976,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_advertiser_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/advertiserGroups/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/advertiserGroups/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AdvertiserGroup
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -984,7 +986,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new advertiser group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1011,7 +1013,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_advertiser_group(profile_id, advertiser_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/advertiserGroups', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/advertiserGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
           command.request_object = advertiser_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
@@ -1022,7 +1024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of advertiser groups, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -1067,7 +1069,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_advertiser_groups(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/advertiserGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/advertiserGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertiserGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AdvertiserGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1082,7 +1084,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser group. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1111,7 +1113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_advertiser_group(profile_id, id, advertiser_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/advertiserGroups', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/advertiserGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
           command.request_object = advertiser_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
@@ -1123,7 +1125,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1150,7 +1152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_advertiser_group(profile_id, advertiser_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/advertiserGroups', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/advertiserGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
           command.request_object = advertiser_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertiserGroup::Representation
@@ -1161,7 +1163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one advertiser by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1189,7 +1191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_advertiser(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/advertisers/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/advertisers/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Advertiser
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1199,7 +1201,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new advertiser.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1226,7 +1228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_advertiser(profile_id, advertiser_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/advertisers', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/advertisers', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
           command.request_object = advertiser_object
           command.response_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
@@ -1237,7 +1239,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of advertisers, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -1294,7 +1296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_advertisers(profile_id, advertiser_group_ids: nil, floodlight_configuration_ids: nil, ids: nil, include_advertisers_without_groups_only: nil, max_results: nil, only_parent: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, status: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/advertisers', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/advertisers', options)
           command.response_representation = Google::Apis::DfareportingV2_7::AdvertisersListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::AdvertisersListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1315,7 +1317,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1344,7 +1346,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_advertiser(profile_id, id, advertiser_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/advertisers', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/advertisers', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
           command.request_object = advertiser_object
           command.response_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
@@ -1356,7 +1358,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1383,7 +1385,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_advertiser(profile_id, advertiser_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/advertisers', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/advertisers', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
           command.request_object = advertiser_object
           command.response_representation = Google::Apis::DfareportingV2_7::Advertiser::Representation
@@ -1394,7 +1396,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of browsers.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1420,7 +1422,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_browsers(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/browsers', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/browsers', options)
           command.response_representation = Google::Apis::DfareportingV2_7::BrowsersListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::BrowsersListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1429,7 +1431,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Associates a creative with the specified campaign. This method creates a
         # default ad with dimensions matching the creative in the campaign if such a
         # default ad does not exist already.
@@ -1472,7 +1474,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of creative IDs associated with the specified campaign.
         # This method supports paging.
         # @param [Fixnum] profile_id
@@ -1507,7 +1509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_campaign_creative_associations(profile_id, campaign_id, max_results: nil, page_token: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CampaignCreativeAssociationsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CampaignCreativeAssociationsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1520,7 +1522,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one campaign by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1548,7 +1550,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_campaign(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Campaign::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Campaign
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1558,7 +1560,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new campaign.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1603,7 +1605,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of campaigns, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1661,7 +1663,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_campaigns(profile_id, advertiser_group_ids: nil, advertiser_ids: nil, archived: nil, at_least_one_optimization_activity: nil, excluded_ids: nil, ids: nil, max_results: nil, overridden_event_tag_id: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/campaigns', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/campaigns', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CampaignsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CampaignsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1683,7 +1685,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1712,7 +1714,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_campaign(profile_id, id, campaign_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/campaigns', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/campaigns', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Campaign::Representation
           command.request_object = campaign_object
           command.response_representation = Google::Apis::DfareportingV2_7::Campaign::Representation
@@ -1724,7 +1726,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1762,7 +1764,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one change log by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1790,7 +1792,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_change_log(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/changeLogs/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/changeLogs/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ChangeLog::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ChangeLog
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1800,7 +1802,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of change logs. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1857,7 +1859,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_change_logs(profile_id, action: nil, ids: nil, max_change_time: nil, max_results: nil, min_change_time: nil, object_ids: nil, object_type: nil, page_token: nil, search_string: nil, user_profile_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/changeLogs', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/changeLogs', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ChangeLogsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ChangeLogsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1876,7 +1878,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of cities, possibly filtered.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1910,7 +1912,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_cities(profile_id, country_dart_ids: nil, dart_ids: nil, name_prefix: nil, region_dart_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/cities', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/cities', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CitiesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CitiesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1923,7 +1925,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one connection type by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1951,7 +1953,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_connection_type(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/connectionTypes/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/connectionTypes/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ConnectionType::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ConnectionType
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1961,7 +1963,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of connection types.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -1987,7 +1989,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_connection_types(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/connectionTypes', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/connectionTypes', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ConnectionTypesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ConnectionTypesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -1996,7 +1998,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing content category.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2024,7 +2026,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_content_category(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/contentCategories/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/contentCategories/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2032,7 +2034,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one content category by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2060,7 +2062,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_content_category(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/contentCategories/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/contentCategories/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ContentCategory
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2070,7 +2072,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new content category.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2097,7 +2099,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_content_category(profile_id, content_category_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/contentCategories', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/contentCategories', options)
           command.request_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
           command.request_object = content_category_object
           command.response_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
@@ -2108,7 +2110,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of content categories, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -2153,7 +2155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_content_categories(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/contentCategories', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/contentCategories', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ContentCategoriesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ContentCategoriesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2168,7 +2170,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing content category. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2197,7 +2199,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_content_category(profile_id, id, content_category_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/contentCategories', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/contentCategories', options)
           command.request_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
           command.request_object = content_category_object
           command.response_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
@@ -2209,7 +2211,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing content category.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2236,7 +2238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_content_category(profile_id, content_category_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/contentCategories', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/contentCategories', options)
           command.request_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
           command.request_object = content_category_object
           command.response_representation = Google::Apis::DfareportingV2_7::ContentCategory::Representation
@@ -2247,7 +2249,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts conversions.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2274,7 +2276,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batchinsert_conversion(profile_id, conversions_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/conversions/batchinsert', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/conversions/batchinsert', options)
           command.request_representation = Google::Apis::DfareportingV2_7::ConversionsBatchInsertRequest::Representation
           command.request_object = conversions_batch_insert_request_object
           command.response_representation = Google::Apis::DfareportingV2_7::ConversionsBatchInsertResponse::Representation
@@ -2285,7 +2287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one country by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2313,7 +2315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_country(profile_id, dart_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/countries/{dartId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/countries/{dartId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Country::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Country
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2323,7 +2325,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of countries.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2349,7 +2351,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_countries(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/countries', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/countries', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CountriesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CountriesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2358,7 +2360,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative asset.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2392,7 +2394,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative_asset(profile_id, advertiser_id, creative_asset_metadata_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets', options)
+            command = make_simple_command(:post, 'userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets', options)
           else
             command = make_upload_command(:post, 'userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets', options)
             command.upload_source = upload_source
@@ -2409,7 +2411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing creative field value.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2439,7 +2441,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_creative_field_value(profile_id, creative_field_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['creativeFieldId'] = creative_field_id unless creative_field_id.nil?
           command.params['id'] = id unless id.nil?
@@ -2448,7 +2450,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative field value by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2478,7 +2480,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_creative_field_value(profile_id, creative_field_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeFieldValue
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2489,7 +2491,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative field value.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2518,7 +2520,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative_field_value(profile_id, creative_field_id, creative_field_value_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
           command.request_object = creative_field_value_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
@@ -2530,7 +2532,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative field values, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -2572,7 +2574,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creative_field_values(profile_id, creative_field_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldValuesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeFieldValuesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2588,7 +2590,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field value. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2619,7 +2621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_creative_field_value(profile_id, creative_field_id, id, creative_field_value_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
           command.request_object = creative_field_value_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
@@ -2632,7 +2634,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field value.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2661,7 +2663,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_creative_field_value(profile_id, creative_field_id, creative_field_value_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
           command.request_object = creative_field_value_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldValue::Representation
@@ -2673,7 +2675,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing creative field.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2701,7 +2703,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_creative_field(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/creativeFields/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/creativeFields/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2709,7 +2711,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative field by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2737,7 +2739,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_creative_field(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeFields/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeField
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2747,7 +2749,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative field.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2774,7 +2776,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative_field(profile_id, creative_field_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/creativeFields', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/creativeFields', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
           command.request_object = creative_field_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
@@ -2785,7 +2787,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative fields, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -2832,7 +2834,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creative_fields(profile_id, advertiser_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeFields', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeFields', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeFieldsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeFieldsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2848,7 +2850,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2877,7 +2879,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_creative_field(profile_id, id, creative_field_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/creativeFields', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/creativeFields', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
           command.request_object = creative_field_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
@@ -2889,7 +2891,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2916,7 +2918,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_creative_field(profile_id, creative_field_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/creativeFields', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/creativeFields', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
           command.request_object = creative_field_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeField::Representation
@@ -2927,7 +2929,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2955,7 +2957,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_creative_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeGroups/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeGroups/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeGroup
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -2965,7 +2967,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -2992,7 +2994,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative_group(profile_id, creative_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/creativeGroups', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/creativeGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
           command.request_object = creative_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
@@ -3003,7 +3005,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative groups, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -3052,7 +3054,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creative_groups(profile_id, advertiser_ids: nil, group_number: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creativeGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creativeGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativeGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3069,7 +3071,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative group. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3098,7 +3100,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_creative_group(profile_id, id, creative_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/creativeGroups', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/creativeGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
           command.request_object = creative_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
@@ -3110,7 +3112,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3137,7 +3139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_creative_group(profile_id, creative_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/creativeGroups', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/creativeGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
           command.request_object = creative_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::CreativeGroup::Representation
@@ -3148,7 +3150,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3176,7 +3178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_creative(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creatives/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creatives/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Creative::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Creative
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3186,7 +3188,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3213,7 +3215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative(profile_id, creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/creatives', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/creatives', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Creative::Representation
           command.request_object = creative_object
           command.response_representation = Google::Apis::DfareportingV2_7::Creative::Representation
@@ -3224,7 +3226,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creatives, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3289,7 +3291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creatives(profile_id, active: nil, advertiser_id: nil, archived: nil, campaign_id: nil, companion_creative_ids: nil, creative_field_ids: nil, ids: nil, max_results: nil, page_token: nil, rendering_ids: nil, search_string: nil, size_ids: nil, sort_field: nil, sort_order: nil, studio_creative_id: nil, types: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/creatives', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/creatives', options)
           command.response_representation = Google::Apis::DfareportingV2_7::CreativesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::CreativesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3314,7 +3316,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3343,7 +3345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_creative(profile_id, id, creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/creatives', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/creatives', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Creative::Representation
           command.request_object = creative_object
           command.response_representation = Google::Apis::DfareportingV2_7::Creative::Representation
@@ -3355,7 +3357,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3382,7 +3384,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_creative(profile_id, creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/creatives', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/creatives', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Creative::Representation
           command.request_object = creative_object
           command.response_representation = Google::Apis::DfareportingV2_7::Creative::Representation
@@ -3393,7 +3395,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of report dimension values for a list of filters.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -3424,7 +3426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_dimension_value(profile_id, dimension_value_request_object = nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/dimensionvalues/query', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/dimensionvalues/query', options)
           command.request_representation = Google::Apis::DfareportingV2_7::DimensionValueRequest::Representation
           command.request_object = dimension_value_request_object
           command.response_representation = Google::Apis::DfareportingV2_7::DimensionValueList::Representation
@@ -3437,7 +3439,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one directory site contact by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3465,7 +3467,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_directory_site_contact(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::DirectorySiteContact::Representation
           command.response_class = Google::Apis::DfareportingV2_7::DirectorySiteContact
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3475,7 +3477,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of directory site contacts, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -3524,7 +3526,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_directory_site_contacts(profile_id, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts', options)
           command.response_representation = Google::Apis::DfareportingV2_7::DirectorySiteContactsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::DirectorySiteContactsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3540,7 +3542,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one directory site by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3568,7 +3570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_directory_site(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/directorySites/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySites/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::DirectorySite::Representation
           command.response_class = Google::Apis::DfareportingV2_7::DirectorySite
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3578,7 +3580,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new directory site.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3605,7 +3607,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_directory_site(profile_id, directory_site_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/directorySites', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/directorySites', options)
           command.request_representation = Google::Apis::DfareportingV2_7::DirectorySite::Representation
           command.request_object = directory_site_object
           command.response_representation = Google::Apis::DfareportingV2_7::DirectorySite::Representation
@@ -3616,7 +3618,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of directory sites, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -3679,7 +3681,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_directory_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, active: nil, country_id: nil, dfp_network_code: nil, ids: nil, max_results: nil, page_token: nil, parent_id: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/directorySites', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySites', options)
           command.response_representation = Google::Apis::DfareportingV2_7::DirectorySitesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::DirectorySitesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3701,7 +3703,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing dynamic targeting key.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3735,7 +3737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_dynamic_targeting_key(profile_id, object_id_, name, object_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/dynamicTargetingKeys/{objectId}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/dynamicTargetingKeys/{objectId}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['objectId'] = object_id_ unless object_id_.nil?
           command.query['name'] = name unless name.nil?
@@ -3745,7 +3747,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new dynamic targeting key. Keys must be created at the advertiser
         # level before being assigned to the advertiser's ads, creatives, or placements.
         # There is a maximum of 1000 keys per advertiser, out of which a maximum of 20
@@ -3775,7 +3777,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_dynamic_targeting_key(profile_id, dynamic_targeting_key_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/dynamicTargetingKeys', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/dynamicTargetingKeys', options)
           command.request_representation = Google::Apis::DfareportingV2_7::DynamicTargetingKey::Representation
           command.request_object = dynamic_targeting_key_object
           command.response_representation = Google::Apis::DfareportingV2_7::DynamicTargetingKey::Representation
@@ -3786,7 +3788,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of dynamic targeting keys.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3833,7 +3835,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing event tag.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3861,7 +3863,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_event_tag(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/eventTags/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/eventTags/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3869,7 +3871,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one event tag by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3897,7 +3899,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_event_tag(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/eventTags/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/eventTags/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
           command.response_class = Google::Apis::DfareportingV2_7::EventTag
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -3907,7 +3909,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new event tag.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3934,7 +3936,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_event_tag(profile_id, event_tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/eventTags', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/eventTags', options)
           command.request_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
           command.request_object = event_tag_object
           command.response_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
@@ -3945,7 +3947,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of event tags, possibly filtered.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4009,7 +4011,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_event_tags(profile_id, ad_id: nil, advertiser_id: nil, campaign_id: nil, definitions_only: nil, enabled: nil, event_tag_types: nil, ids: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/eventTags', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/eventTags', options)
           command.response_representation = Google::Apis::DfareportingV2_7::EventTagsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::EventTagsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4028,7 +4030,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing event tag. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4057,7 +4059,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_event_tag(profile_id, id, event_tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/eventTags', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/eventTags', options)
           command.request_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
           command.request_object = event_tag_object
           command.response_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
@@ -4069,7 +4071,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing event tag.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4096,7 +4098,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_event_tag(profile_id, event_tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/eventTags', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/eventTags', options)
           command.request_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
           command.request_object = event_tag_object
           command.response_representation = Google::Apis::DfareportingV2_7::EventTag::Representation
@@ -4107,7 +4109,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report file by its report ID and file ID. This method supports
         # media download.
         # @param [Fixnum] report_id
@@ -4139,7 +4141,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_file(report_id, file_id, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'reports/{reportId}/files/{fileId}', options)
+            command = make_simple_command(:get, 'reports/{reportId}/files/{fileId}', options)
           else
             command = make_download_command(:get, 'reports/{reportId}/files/{fileId}', options)
             command.download_dest = download_dest
@@ -4153,7 +4155,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists files for a user profile.
         # @param [Fixnum] profile_id
         #   The DFA profile ID.
@@ -4189,7 +4191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_files(profile_id, max_results: nil, page_token: nil, scope: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/files', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/files', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FileList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FileList
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4203,7 +4205,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing floodlight activity.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4231,7 +4233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_floodlight_activity(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/floodlightActivities/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/floodlightActivities/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4239,7 +4241,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a tag for a floodlight activity.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4267,7 +4269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generatetag_floodlight_activity(profile_id, floodlight_activity_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivities/generatetag', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivities/generatetag', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivitiesGenerateTagResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightActivitiesGenerateTagResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4277,7 +4279,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight activity by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4305,7 +4307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_floodlight_activity(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivities/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivities/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightActivity
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4315,7 +4317,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new floodlight activity.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4342,7 +4344,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_floodlight_activity(profile_id, floodlight_activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivities', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivities', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
           command.request_object = floodlight_activity_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
@@ -4353,7 +4355,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight activities, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -4421,7 +4423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_floodlight_activities(profile_id, advertiser_id: nil, floodlight_activity_group_ids: nil, floodlight_activity_group_name: nil, floodlight_activity_group_tag_string: nil, floodlight_activity_group_type: nil, floodlight_configuration_id: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, tag_string: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivities', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivities', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivitiesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightActivitiesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4443,7 +4445,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4472,7 +4474,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_floodlight_activity(profile_id, id, floodlight_activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/floodlightActivities', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/floodlightActivities', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
           command.request_object = floodlight_activity_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
@@ -4484,7 +4486,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4511,7 +4513,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_floodlight_activity(profile_id, floodlight_activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/floodlightActivities', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/floodlightActivities', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
           command.request_object = floodlight_activity_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivity::Representation
@@ -4522,7 +4524,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight activity group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4550,7 +4552,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_floodlight_activity_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivityGroups/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivityGroups/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightActivityGroup
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4560,7 +4562,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new floodlight activity group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4587,7 +4589,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_floodlight_activity_group(profile_id, floodlight_activity_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivityGroups', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/floodlightActivityGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
           command.request_object = floodlight_activity_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
@@ -4598,7 +4600,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight activity groups, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -4656,7 +4658,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_floodlight_activity_groups(profile_id, advertiser_id: nil, floodlight_configuration_id: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivityGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightActivityGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightActivityGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4674,7 +4676,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity group. This method supports patch
         # semantics.
         # @param [Fixnum] profile_id
@@ -4704,7 +4706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_floodlight_activity_group(profile_id, id, floodlight_activity_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/floodlightActivityGroups', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/floodlightActivityGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
           command.request_object = floodlight_activity_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
@@ -4716,7 +4718,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4743,7 +4745,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_floodlight_activity_group(profile_id, floodlight_activity_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/floodlightActivityGroups', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/floodlightActivityGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
           command.request_object = floodlight_activity_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightActivityGroup::Representation
@@ -4754,7 +4756,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight configuration by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4782,7 +4784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_floodlight_configuration(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightConfigurations/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightConfigurations/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightConfiguration::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightConfiguration
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4792,7 +4794,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight configurations, possibly filtered.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4821,7 +4823,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_floodlight_configurations(profile_id, ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/floodlightConfigurations', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/floodlightConfigurations', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightConfigurationsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FloodlightConfigurationsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4831,7 +4833,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight configuration. This method supports patch
         # semantics.
         # @param [Fixnum] profile_id
@@ -4861,7 +4863,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_floodlight_configuration(profile_id, id, floodlight_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/floodlightConfigurations', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/floodlightConfigurations', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightConfiguration::Representation
           command.request_object = floodlight_configuration_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightConfiguration::Representation
@@ -4873,7 +4875,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight configuration.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4900,7 +4902,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_floodlight_configuration(profile_id, floodlight_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/floodlightConfigurations', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/floodlightConfigurations', options)
           command.request_representation = Google::Apis::DfareportingV2_7::FloodlightConfiguration::Representation
           command.request_object = floodlight_configuration_object
           command.response_representation = Google::Apis::DfareportingV2_7::FloodlightConfiguration::Representation
@@ -4911,7 +4913,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one inventory item by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -4941,7 +4943,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_inventory_item(profile_id, project_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::InventoryItem::Representation
           command.response_class = Google::Apis::DfareportingV2_7::InventoryItem
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -4952,7 +4954,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of inventory items, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -4999,7 +5001,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_inventory_items(profile_id, project_id, ids: nil, in_plan: nil, max_results: nil, order_id: nil, page_token: nil, site_id: nil, sort_field: nil, sort_order: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/inventoryItems', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/inventoryItems', options)
           command.response_representation = Google::Apis::DfareportingV2_7::InventoryItemsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::InventoryItemsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5018,7 +5020,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing campaign landing page.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5048,7 +5050,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_landing_page(profile_id, campaign_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
           command.params['id'] = id unless id.nil?
@@ -5057,7 +5059,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one campaign landing page by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5087,7 +5089,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_landing_page(profile_id, campaign_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
           command.response_class = Google::Apis::DfareportingV2_7::LandingPage
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5098,7 +5100,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new landing page for the specified campaign.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5127,7 +5129,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_landing_page(profile_id, campaign_id, landing_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
           command.request_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
           command.request_object = landing_page_object
           command.response_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
@@ -5139,7 +5141,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of landing pages for the specified campaign.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5167,7 +5169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_landing_pages(profile_id, campaign_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
           command.response_representation = Google::Apis::DfareportingV2_7::LandingPagesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::LandingPagesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5177,7 +5179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign landing page. This method supports patch
         # semantics.
         # @param [Fixnum] profile_id
@@ -5209,7 +5211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_landing_page(profile_id, campaign_id, id, landing_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
           command.request_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
           command.request_object = landing_page_object
           command.response_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
@@ -5222,7 +5224,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign landing page.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5251,7 +5253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_landing_page(profile_id, campaign_id, landing_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages', options)
           command.request_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
           command.request_object = landing_page_object
           command.response_representation = Google::Apis::DfareportingV2_7::LandingPage::Representation
@@ -5263,7 +5265,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of languages.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5289,7 +5291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_languages(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/languages', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/languages', options)
           command.response_representation = Google::Apis::DfareportingV2_7::LanguagesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::LanguagesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5298,7 +5300,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of metros.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5324,7 +5326,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metros(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/metros', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/metros', options)
           command.response_representation = Google::Apis::DfareportingV2_7::MetrosListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::MetrosListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5333,7 +5335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one mobile carrier by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5361,7 +5363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_mobile_carrier(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/mobileCarriers/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/mobileCarriers/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::MobileCarrier::Representation
           command.response_class = Google::Apis::DfareportingV2_7::MobileCarrier
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5371,7 +5373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of mobile carriers.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5397,7 +5399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_mobile_carriers(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/mobileCarriers', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/mobileCarriers', options)
           command.response_representation = Google::Apis::DfareportingV2_7::MobileCarriersListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::MobileCarriersListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5406,7 +5408,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one operating system version by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5434,7 +5436,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operating_system_version(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/operatingSystemVersions/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/operatingSystemVersions/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OperatingSystemVersion::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OperatingSystemVersion
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5444,7 +5446,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of operating system versions.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5470,7 +5472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operating_system_versions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/operatingSystemVersions', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/operatingSystemVersions', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OperatingSystemVersionsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OperatingSystemVersionsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5479,7 +5481,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one operating system by DART ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5507,7 +5509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operating_system(profile_id, dart_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/operatingSystems/{dartId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/operatingSystems/{dartId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OperatingSystem::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OperatingSystem
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5517,7 +5519,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of operating systems.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5543,7 +5545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operating_systems(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/operatingSystems', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/operatingSystems', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OperatingSystemsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OperatingSystemsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5552,7 +5554,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one order document by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5582,7 +5584,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order_document(profile_id, project_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OrderDocument::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OrderDocument
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5593,7 +5595,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of order documents, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -5646,7 +5648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_order_documents(profile_id, project_id, approved: nil, ids: nil, max_results: nil, order_id: nil, page_token: nil, search_string: nil, site_id: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orderDocuments', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orderDocuments', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OrderDocumentsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OrderDocumentsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5665,7 +5667,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one order by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5695,7 +5697,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order(profile_id, project_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orders/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orders/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Order::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Order
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5706,7 +5708,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of orders, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5753,7 +5755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orders(profile_id, project_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, site_id: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orders', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{projectId}/orders', options)
           command.response_representation = Google::Apis::DfareportingV2_7::OrdersListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::OrdersListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5770,7 +5772,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5808,7 +5810,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5835,7 +5837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_placement_group(profile_id, placement_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/placementGroups', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/placementGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
           command.request_object = placement_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
@@ -5846,7 +5848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placement groups, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -5928,7 +5930,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_placement_groups(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, content_category_ids: nil, directory_site_ids: nil, ids: nil, max_end_date: nil, max_results: nil, max_start_date: nil, min_end_date: nil, min_start_date: nil, page_token: nil, placement_group_type: nil, placement_strategy_ids: nil, pricing_types: nil, search_string: nil, site_ids: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/placementGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/placementGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlacementGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -5956,7 +5958,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement group. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -5985,7 +5987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_placement_group(profile_id, id, placement_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/placementGroups', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/placementGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
           command.request_object = placement_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
@@ -5997,7 +5999,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement group.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6024,7 +6026,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_placement_group(profile_id, placement_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/placementGroups', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/placementGroups', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
           command.request_object = placement_group_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementGroup::Representation
@@ -6035,7 +6037,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing placement strategy.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6063,7 +6065,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_placement_strategy(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/placementStrategies/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/placementStrategies/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -6071,7 +6073,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement strategy by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6109,7 +6111,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement strategy.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6136,7 +6138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_placement_strategy(profile_id, placement_strategy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/placementStrategies', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/placementStrategies', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
           command.request_object = placement_strategy_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
@@ -6147,7 +6149,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placement strategies, possibly filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -6192,7 +6194,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_placement_strategies(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/placementStrategies', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/placementStrategies', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementStrategiesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlacementStrategiesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6207,7 +6209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement strategy. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6236,7 +6238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_placement_strategy(profile_id, id, placement_strategy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/placementStrategies', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/placementStrategies', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
           command.request_object = placement_strategy_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
@@ -6248,7 +6250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement strategy.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6275,7 +6277,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_placement_strategy(profile_id, placement_strategy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/placementStrategies', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/placementStrategies', options)
           command.request_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
           command.request_object = placement_strategy_object
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementStrategy::Representation
@@ -6286,7 +6288,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates tags for a placement.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6318,7 +6320,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generatetags_placement(profile_id, campaign_id: nil, placement_ids: nil, tag_formats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/placements/generatetags', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/placements/generatetags', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementsGenerateTagsResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlacementsGenerateTagsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6330,7 +6332,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6368,7 +6370,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6395,7 +6397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_placement(profile_id, placement_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/placements', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/placements', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Placement::Representation
           command.request_object = placement_object
           command.response_representation = Google::Apis::DfareportingV2_7::Placement::Representation
@@ -6406,7 +6408,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placements, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6490,7 +6492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_placements(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, compatibilities: nil, content_category_ids: nil, directory_site_ids: nil, group_ids: nil, ids: nil, max_end_date: nil, max_results: nil, max_start_date: nil, min_end_date: nil, min_start_date: nil, page_token: nil, payment_source: nil, placement_strategy_ids: nil, pricing_types: nil, search_string: nil, site_ids: nil, size_ids: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/placements', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/placements', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlacementsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlacementsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6521,7 +6523,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6550,7 +6552,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_placement(profile_id, id, placement_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/placements', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/placements', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Placement::Representation
           command.request_object = placement_object
           command.response_representation = Google::Apis::DfareportingV2_7::Placement::Representation
@@ -6562,7 +6564,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6589,7 +6591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_placement(profile_id, placement_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/placements', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/placements', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Placement::Representation
           command.request_object = placement_object
           command.response_representation = Google::Apis::DfareportingV2_7::Placement::Representation
@@ -6600,7 +6602,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one platform type by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6628,7 +6630,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_platform_type(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/platformTypes/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/platformTypes/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlatformType::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlatformType
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6638,7 +6640,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of platform types.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6664,7 +6666,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_platform_types(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/platformTypes', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/platformTypes', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PlatformTypesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PlatformTypesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6673,7 +6675,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one postal code by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6701,7 +6703,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_postal_code(profile_id, code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/postalCodes/{code}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/postalCodes/{code}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PostalCode::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PostalCode
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6711,7 +6713,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of postal codes.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6737,7 +6739,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_postal_codes(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/postalCodes', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/postalCodes', options)
           command.response_representation = Google::Apis::DfareportingV2_7::PostalCodesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::PostalCodesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6746,7 +6748,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one project by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6774,7 +6776,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Project::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Project
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6784,7 +6786,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of projects, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6829,7 +6831,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_projects(profile_id, advertiser_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/projects', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/projects', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ProjectsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ProjectsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6845,7 +6847,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of regions.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6871,7 +6873,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_regions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/regions', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/regions', options)
           command.response_representation = Google::Apis::DfareportingV2_7::RegionsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::RegionsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6880,7 +6882,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list share by remarketing list ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6908,7 +6910,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_remarketing_list_share(profile_id, remarketing_list_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/remarketingListShares/{remarketingListId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/remarketingListShares/{remarketingListId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::RemarketingListShare::Representation
           command.response_class = Google::Apis::DfareportingV2_7::RemarketingListShare
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -6918,7 +6920,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list share. This method supports patch
         # semantics.
         # @param [Fixnum] profile_id
@@ -6948,7 +6950,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_remarketing_list_share(profile_id, remarketing_list_id, remarketing_list_share_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/remarketingListShares', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/remarketingListShares', options)
           command.request_representation = Google::Apis::DfareportingV2_7::RemarketingListShare::Representation
           command.request_object = remarketing_list_share_object
           command.response_representation = Google::Apis::DfareportingV2_7::RemarketingListShare::Representation
@@ -6960,7 +6962,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list share.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -6998,7 +7000,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7026,7 +7028,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_remarketing_list(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/remarketingLists/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/remarketingLists/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::RemarketingList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::RemarketingList
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7036,7 +7038,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new remarketing list.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7074,7 +7076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of remarketing lists, possibly filtered. This method supports
         # paging.
         # @param [Fixnum] profile_id
@@ -7123,7 +7125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_remarketing_lists(profile_id, advertiser_id, active: nil, floodlight_activity_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/remarketingLists', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/remarketingLists', options)
           command.response_representation = Google::Apis::DfareportingV2_7::RemarketingListsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::RemarketingListsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7140,7 +7142,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7169,7 +7171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_remarketing_list(profile_id, id, remarketing_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/remarketingLists', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/remarketingLists', options)
           command.request_representation = Google::Apis::DfareportingV2_7::RemarketingList::Representation
           command.request_object = remarketing_list_object
           command.response_representation = Google::Apis::DfareportingV2_7::RemarketingList::Representation
@@ -7181,7 +7183,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7219,7 +7221,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a report by its ID.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7247,7 +7249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_report(profile_id, report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/reports/{reportId}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/reports/{reportId}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['reportId'] = report_id unless report_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -7255,7 +7257,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report by its ID.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7283,7 +7285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_report(profile_id, report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Report::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Report
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7293,7 +7295,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a report.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7320,7 +7322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_report(profile_id, report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/reports', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/reports', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Report::Representation
           command.request_object = report_object
           command.response_representation = Google::Apis::DfareportingV2_7::Report::Representation
@@ -7331,7 +7333,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of reports.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7367,7 +7369,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reports(profile_id, max_results: nil, page_token: nil, scope: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/reports', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/reports', options)
           command.response_representation = Google::Apis::DfareportingV2_7::ReportList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::ReportList
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7381,7 +7383,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a report. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7410,7 +7412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_report(profile_id, report_id, report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/reports/{reportId}', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/reports/{reportId}', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Report::Representation
           command.request_object = report_object
           command.response_representation = Google::Apis::DfareportingV2_7::Report::Representation
@@ -7422,7 +7424,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs a report.
         # @param [Fixnum] profile_id
         #   The DFA profile ID.
@@ -7452,7 +7454,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_report(profile_id, report_id, synchronous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/reports/{reportId}/run', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/reports/{reportId}/run', options)
           command.response_representation = Google::Apis::DfareportingV2_7::File::Representation
           command.response_class = Google::Apis::DfareportingV2_7::File
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7463,7 +7465,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a report.
         # @param [Fixnum] profile_id
         #   The DFA user profile ID.
@@ -7492,7 +7494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_report(profile_id, report_id, report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/reports/{reportId}', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/reports/{reportId}', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Report::Representation
           command.request_object = report_object
           command.response_representation = Google::Apis::DfareportingV2_7::Report::Representation
@@ -7504,7 +7506,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the fields that are compatible to be selected in the respective
         # sections of a report criteria, given the fields already selected in the input
         # report and user permissions.
@@ -7533,7 +7535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_report_compatible_field(profile_id, report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/reports/compatiblefields/query', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/reports/compatiblefields/query', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Report::Representation
           command.request_object = report_object
           command.response_representation = Google::Apis::DfareportingV2_7::CompatibleFields::Representation
@@ -7544,7 +7546,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report file. This method supports media download.
         # @param [Fixnum] profile_id
         #   The DFA profile ID.
@@ -7577,7 +7579,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_report_file(profile_id, report_id, file_id, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}/files/{fileId}', options)
+            command = make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}/files/{fileId}', options)
           else
             command = make_download_command(:get, 'userprofiles/{profileId}/reports/{reportId}/files/{fileId}', options)
             command.download_dest = download_dest
@@ -7592,7 +7594,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists files for a report.
         # @param [Fixnum] profile_id
         #   The DFA profile ID.
@@ -7628,7 +7630,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_report_files(profile_id, report_id, max_results: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}/files', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/reports/{reportId}/files', options)
           command.response_representation = Google::Apis::DfareportingV2_7::FileList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::FileList
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7642,7 +7644,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one site by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7670,7 +7672,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_site(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/sites/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/sites/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Site::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Site
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7680,7 +7682,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new site.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7707,7 +7709,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_site(profile_id, site_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/sites', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/sites', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Site::Representation
           command.request_object = site_object
           command.response_representation = Google::Apis::DfareportingV2_7::Site::Representation
@@ -7718,7 +7720,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of sites, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7781,7 +7783,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, ad_words_site: nil, approved: nil, campaign_ids: nil, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, unmapped_site: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/sites', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/sites', options)
           command.response_representation = Google::Apis::DfareportingV2_7::SitesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::SitesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7805,7 +7807,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing site. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7834,7 +7836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_site(profile_id, id, site_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/sites', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/sites', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Site::Representation
           command.request_object = site_object
           command.response_representation = Google::Apis::DfareportingV2_7::Site::Representation
@@ -7846,7 +7848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing site.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7873,7 +7875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_site(profile_id, site_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/sites', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/sites', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Site::Representation
           command.request_object = site_object
           command.response_representation = Google::Apis::DfareportingV2_7::Site::Representation
@@ -7884,7 +7886,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one size by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7912,7 +7914,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_size(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/sizes/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/sizes/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Size::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Size
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -7922,7 +7924,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new size.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7949,7 +7951,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_size(profile_id, size_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/sizes', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/sizes', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Size::Representation
           command.request_object = size_object
           command.response_representation = Google::Apis::DfareportingV2_7::Size::Representation
@@ -7960,7 +7962,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of sizes, possibly filtered.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -7994,7 +7996,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sizes(profile_id, height: nil, iab_standard: nil, ids: nil, width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/sizes', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/sizes', options)
           command.response_representation = Google::Apis::DfareportingV2_7::SizesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::SizesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8007,7 +8009,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one subaccount by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8035,7 +8037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subaccount(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/subaccounts/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/subaccounts/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
           command.response_class = Google::Apis::DfareportingV2_7::Subaccount
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8045,7 +8047,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new subaccount.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8072,7 +8074,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_subaccount(profile_id, subaccount_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/subaccounts', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/subaccounts', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
           command.request_object = subaccount_object
           command.response_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
@@ -8083,7 +8085,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of subaccounts, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8126,7 +8128,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subaccounts(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/subaccounts', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/subaccounts', options)
           command.response_representation = Google::Apis::DfareportingV2_7::SubaccountsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::SubaccountsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8141,7 +8143,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing subaccount. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8170,7 +8172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_subaccount(profile_id, id, subaccount_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/subaccounts', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/subaccounts', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
           command.request_object = subaccount_object
           command.response_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
@@ -8182,7 +8184,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing subaccount.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8209,7 +8211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_subaccount(profile_id, subaccount_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/subaccounts', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/subaccounts', options)
           command.request_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
           command.request_object = subaccount_object
           command.response_representation = Google::Apis::DfareportingV2_7::Subaccount::Representation
@@ -8220,7 +8222,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8248,7 +8250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_targetable_remarketing_list(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/targetableRemarketingLists/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/targetableRemarketingLists/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::TargetableRemarketingList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::TargetableRemarketingList
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8258,7 +8260,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of targetable remarketing lists, possibly filtered. This
         # method supports paging.
         # @param [Fixnum] profile_id
@@ -8305,7 +8307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_targetable_remarketing_lists(profile_id, advertiser_id, active: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/targetableRemarketingLists', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/targetableRemarketingLists', options)
           command.response_representation = Google::Apis::DfareportingV2_7::TargetableRemarketingListsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::TargetableRemarketingListsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8321,7 +8323,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one targeting template by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8349,7 +8351,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_targeting_template(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/targetingTemplates/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/targetingTemplates/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
           command.response_class = Google::Apis::DfareportingV2_7::TargetingTemplate
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8359,7 +8361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new targeting template.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8386,7 +8388,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_targeting_template(profile_id, targeting_template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/targetingTemplates', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/targetingTemplates', options)
           command.request_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
           command.request_object = targeting_template_object
           command.response_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
@@ -8397,7 +8399,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of targeting templates, optionally filtered. This method
         # supports paging.
         # @param [Fixnum] profile_id
@@ -8443,7 +8445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_targeting_templates(profile_id, advertiser_id: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/targetingTemplates', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/targetingTemplates', options)
           command.response_representation = Google::Apis::DfareportingV2_7::TargetingTemplatesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::TargetingTemplatesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8459,7 +8461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing targeting template. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8488,7 +8490,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_targeting_template(profile_id, id, targeting_template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/targetingTemplates', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/targetingTemplates', options)
           command.request_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
           command.request_object = targeting_template_object
           command.response_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
@@ -8500,7 +8502,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing targeting template.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8527,7 +8529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_targeting_template(profile_id, targeting_template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/targetingTemplates', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/targetingTemplates', options)
           command.request_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
           command.request_object = targeting_template_object
           command.response_representation = Google::Apis::DfareportingV2_7::TargetingTemplate::Representation
@@ -8538,7 +8540,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user profile by ID.
         # @param [Fixnum] profile_id
         #   The user profile ID.
@@ -8564,7 +8566,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_profile(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserProfile::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserProfile
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8573,7 +8575,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of user profiles for a user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8597,7 +8599,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_profiles(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles', options)
+          command = make_simple_command(:get, 'userprofiles', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserProfileList::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserProfileList
           command.query['fields'] = fields unless fields.nil?
@@ -8605,7 +8607,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role permission group by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8633,7 +8635,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_role_permission_group(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissionGroups/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissionGroups/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRolePermissionGroup::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRolePermissionGroup
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8643,7 +8645,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of all supported user role permission groups.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8669,7 +8671,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_role_permission_groups(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissionGroups', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissionGroups', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRolePermissionGroupsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRolePermissionGroupsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8678,7 +8680,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role permission by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8706,7 +8708,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_role_permission(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissions/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissions/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRolePermission::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRolePermission
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8716,7 +8718,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of user role permissions, possibly filtered.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8744,7 +8746,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_role_permissions(profile_id, ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissions', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRolePermissions', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRolePermissionsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRolePermissionsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8754,7 +8756,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing user role.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8782,7 +8784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_role(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'userprofiles/{profileId}/userRoles/{id}', options)
+          command = make_simple_command(:delete, 'userprofiles/{profileId}/userRoles/{id}', options)
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8790,7 +8792,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8818,7 +8820,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_role(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRoles/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRoles/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRole
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8828,7 +8830,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new user role.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8855,7 +8857,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user_role(profile_id, user_role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'userprofiles/{profileId}/userRoles', options)
+          command = make_simple_command(:post, 'userprofiles/{profileId}/userRoles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
           command.request_object = user_role_object
           command.response_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
@@ -8866,7 +8868,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of user roles, possibly filtered. This method supports paging.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8914,7 +8916,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_roles(profile_id, account_user_role_only: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/userRoles', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/userRoles', options)
           command.response_representation = Google::Apis::DfareportingV2_7::UserRolesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::UserRolesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -8931,7 +8933,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing user role. This method supports patch semantics.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8960,7 +8962,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_role(profile_id, id, user_role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'userprofiles/{profileId}/userRoles', options)
+          command = make_simple_command(:patch, 'userprofiles/{profileId}/userRoles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
           command.request_object = user_role_object
           command.response_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
@@ -8972,7 +8974,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing user role.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -8999,7 +9001,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_role(profile_id, user_role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'userprofiles/{profileId}/userRoles', options)
+          command = make_simple_command(:put, 'userprofiles/{profileId}/userRoles', options)
           command.request_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
           command.request_object = user_role_object
           command.response_representation = Google::Apis::DfareportingV2_7::UserRole::Representation
@@ -9010,7 +9012,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one video format by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -9038,7 +9040,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_format(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/videoFormats/{id}', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/videoFormats/{id}', options)
           command.response_representation = Google::Apis::DfareportingV2_7::VideoFormat::Representation
           command.response_class = Google::Apis::DfareportingV2_7::VideoFormat
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -9048,7 +9050,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists available video formats.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -9074,7 +9076,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_video_formats(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userprofiles/{profileId}/videoFormats', options)
+          command = make_simple_command(:get, 'userprofiles/{profileId}/videoFormats', options)
           command.response_representation = Google::Apis::DfareportingV2_7::VideoFormatsListResponse::Representation
           command.response_class = Google::Apis::DfareportingV2_7::VideoFormatsListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?

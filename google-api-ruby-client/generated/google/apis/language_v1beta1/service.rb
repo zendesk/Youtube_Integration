@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +50,7 @@ module Google
           super('https://language.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Analyzes the sentiment of the provided text.
         # @param [Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest] analyze_sentiment_request_object
         # @param [String] fields
@@ -69,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_sentiment(analyze_sentiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSentiment', options)
+          command = make_simple_command(:post, 'v1beta1/documents:analyzeSentiment', options)
           command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest::Representation
           command.request_object = analyze_sentiment_request_object
           command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse::Representation
@@ -78,7 +80,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # A convenience method that provides all the features that analyzeSentiment,
         # analyzeEntities, and analyzeSyntax provide in one call.
         # @param [Google::Apis::LanguageV1beta1::AnnotateTextRequest] annotate_text_request_object
@@ -100,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_document_text(annotate_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:annotateText', options)
+          command = make_simple_command(:post, 'v1beta1/documents:annotateText', options)
           command.request_representation = Google::Apis::LanguageV1beta1::AnnotateTextRequest::Representation
           command.request_object = annotate_text_request_object
           command.response_representation = Google::Apis::LanguageV1beta1::AnnotateTextResponse::Representation
@@ -109,7 +111,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Finds named entities (currently proper names and common nouns) in the text
         # along with entity types, salience, mentions for each entity, and
         # other properties.
@@ -132,7 +134,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_entities(analyze_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:analyzeEntities', options)
+          command = make_simple_command(:post, 'v1beta1/documents:analyzeEntities', options)
           command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeEntitiesRequest::Representation
           command.request_object = analyze_entities_request_object
           command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeEntitiesResponse::Representation
@@ -141,7 +143,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Analyzes the syntax of the text and provides sentence boundaries and
         # tokenization along with part of speech tags, dependency trees, and other
         # properties.
@@ -164,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_syntax(analyze_syntax_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSyntax', options)
+          command = make_simple_command(:post, 'v1beta1/documents:analyzeSyntax', options)
           command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxRequest::Representation
           command.request_object = analyze_syntax_request_object
           command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse::Representation

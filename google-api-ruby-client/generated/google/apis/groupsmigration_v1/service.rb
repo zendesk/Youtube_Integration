@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'groups/v1/groups/')
           @batch_path = 'batch'
         end
-        
+
         # Inserts a new mail into the archive of the Google group.
         # @param [String] group_id
         #   The group ID
@@ -83,7 +85,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_archive(group_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{groupId}/archive', options)
+            command = make_simple_command(:post, '{groupId}/archive', options)
           else
             command = make_upload_command(:post, '{groupId}/archive', options)
             command.upload_source = upload_source

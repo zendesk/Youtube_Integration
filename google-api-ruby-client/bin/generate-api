@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 begin
   require 'thor'
 rescue LoadError => e
-  puts "Thor is required. Please install the gem with development dependencies."
+  puts 'Thor is required. Please install the gem with development dependencies.'
   exit 1
 end
 
@@ -20,7 +21,7 @@ module Google
 
     include Thor::Actions
 
-    Google::Apis::ClientOptions.default.application_name = "generate-api"
+    Google::Apis::ClientOptions.default.application_name = 'generate-api'
     Google::Apis::ClientOptions.default.application_version = Google::Apis::VERSION
 
     Discovery = Google::Apis::DiscoveryV1
@@ -38,7 +39,7 @@ module Google
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
       generate_from_url(options[:url]) if options[:url]
       generate_from_file(options[:file]) if options[:file]
-      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] ) if options[:id] || options[:from_discovery]
+      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id]) if options[:id] || options[:from_discovery]
       create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 
@@ -99,17 +100,14 @@ module Google
       end
 
       def ensure_active_support
-        begin
-          require 'active_support/inflector'
-        rescue LoadError => e
-          error 'ActiveSupport is required, please run:'
-          error 'gem install activesupport'
-          exit 1
-        end
+        require 'active_support/inflector'
+      rescue LoadError => e
+        error 'ActiveSupport is required, please run:'
+        error 'gem install activesupport'
+        exit 1
       end
     end
   end
-
 end
 
 Google::ApiGenerator.start(ARGV)

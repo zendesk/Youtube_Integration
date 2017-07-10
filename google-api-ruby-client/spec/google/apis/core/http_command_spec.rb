@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -140,7 +142,6 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       it 'should raise error with HTTP status code' do
         expect(err.status_code).to eq 500
       end
-
     end
 
     context('with callbacks') do
@@ -252,7 +253,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     it 'should not swallow errors raised in block' do
-      expect { command.execute(client) { raise "Potatoes detected in tailpipe" } }.to raise_error("Potatoes detected in tailpipe")
+      expect { command.execute(client) { raise 'Potatoes detected in tailpipe' } }.to raise_error('Potatoes detected in tailpipe')
     end
   end
 
@@ -260,7 +261,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -268,7 +269,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&foo=bar')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -283,10 +284,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
   it 'should form encode parameters when method is POST and no body present' do
     stub_request(:post, 'https://www.googleapis.com/zoo/animals')
-        .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
-        .to_return(status: [200, ''])
+      .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
+      .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.query['b'] = 'hello'
     command.query['c'] = nil
     command.query['d'] = 0
@@ -325,5 +326,4 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.options.normalize_unicode = true
     command.execute(client)
   end
-
 end

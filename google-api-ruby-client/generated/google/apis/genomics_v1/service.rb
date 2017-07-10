@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://genomics.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Deletes an annotation set. Caller must have WRITE permission
         # for the associated annotation set.
         # @param [String] annotation_set_id
@@ -69,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_annotationset(annotation_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/annotationsets/{annotationSetId}', options)
+          command = make_simple_command(:delete, 'v1/annotationsets/{annotationSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['annotationSetId'] = annotation_set_id unless annotation_set_id.nil?
@@ -77,7 +79,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotation sets that match the given criteria. Annotation sets
         # are returned in an unspecified order. This order is consistent, such that
         # two queries for the same content (regardless of page size) yield annotation
@@ -102,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_annotationset_annotation_sets(search_annotation_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotationsets/search', options)
+          command = make_simple_command(:post, 'v1/annotationsets/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchAnnotationSetsRequest::Representation
           command.request_object = search_annotation_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchAnnotationSetsResponse::Representation
@@ -111,7 +113,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation set. Caller must have READ permission for
         # the associated dataset.
         # @param [String] annotation_set_id
@@ -134,7 +136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_annotation_set(annotation_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/annotationsets/{annotationSetId}', options)
+          command = make_simple_command(:get, 'v1/annotationsets/{annotationSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
           command.response_class = Google::Apis::GenomicsV1::AnnotationSet
           command.params['annotationSetId'] = annotation_set_id unless annotation_set_id.nil?
@@ -142,7 +144,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation set. The update must respect all mutability
         # restrictions and other invariants described on the annotation set resource.
         # Caller must have WRITE permission for the associated dataset.
@@ -173,7 +175,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_annotationset(annotation_set_id, annotation_set_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/annotationsets/{annotationSetId}', options)
+          command = make_simple_command(:put, 'v1/annotationsets/{annotationSetId}', options)
           command.request_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
           command.request_object = annotation_set_object
           command.response_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
@@ -184,7 +186,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new annotation set. Caller must have WRITE permission for the
         # associated dataset.
         # The following fields are required:
@@ -211,7 +213,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_annotation_set(annotation_set_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotationsets', options)
+          command = make_simple_command(:post, 'v1/annotationsets', options)
           command.request_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
           command.request_object = annotation_set_object
           command.response_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
@@ -220,7 +222,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Merges the given variants with existing variants.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -322,7 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def merge_variants(merge_variants_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variants:merge', options)
+          command = make_simple_command(:post, 'v1/variants:merge', options)
           command.request_representation = Google::Apis::GenomicsV1::MergeVariantsRequest::Representation
           command.request_object = merge_variants_request_object
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
@@ -331,7 +333,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates variant data by asynchronously importing the provided information.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -366,7 +368,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_variants(import_variants_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variants:import', options)
+          command = make_simple_command(:post, 'v1/variants:import', options)
           command.request_representation = Google::Apis::GenomicsV1::ImportVariantsRequest::Representation
           command.request_object = import_variants_request_object
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
@@ -375,7 +377,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a variant.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -400,7 +402,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_variant(variant_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/variants/{variantId}', options)
+          command = make_simple_command(:delete, 'v1/variants/{variantId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['variantId'] = variant_id unless variant_id.nil?
@@ -408,7 +410,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -432,7 +434,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_variant(variant_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variants', options)
+          command = make_simple_command(:post, 'v1/variants', options)
           command.request_representation = Google::Apis::GenomicsV1::Variant::Representation
           command.request_object = variant_object
           command.response_representation = Google::Apis::GenomicsV1::Variant::Representation
@@ -441,7 +443,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of variants matching the criteria.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -468,7 +470,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_variants(search_variants_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variants/search', options)
+          command = make_simple_command(:post, 'v1/variants/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchVariantsRequest::Representation
           command.request_object = search_variants_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchVariantsResponse::Representation
@@ -477,7 +479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant by ID.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -502,7 +504,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_variant(variant_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/variants/{variantId}', options)
+          command = make_simple_command(:get, 'v1/variants/{variantId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Variant::Representation
           command.response_class = Google::Apis::GenomicsV1::Variant
           command.params['variantId'] = variant_id unless variant_id.nil?
@@ -510,7 +512,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant.
         # For the definitions of variants and other genomics resources, see
         # [Fundamentals of Google
@@ -543,7 +545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_variant(variant_id, variant_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/variants/{variantId}', options)
+          command = make_simple_command(:patch, 'v1/variants/{variantId}', options)
           command.request_representation = Google::Apis::GenomicsV1::Variant::Representation
           command.request_object = variant_object
           command.response_representation = Google::Apis::GenomicsV1::Variant::Representation
@@ -554,7 +556,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for references which match the given criteria.
         # For the definitions of references and other genomics resources, see
         # [Fundamentals of Google
@@ -581,7 +583,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_references(search_references_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/references/search', options)
+          command = make_simple_command(:post, 'v1/references/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchReferencesRequest::Representation
           command.request_object = search_references_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchReferencesResponse::Representation
@@ -590,7 +592,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference.
         # For the definitions of references and other genomics resources, see
         # [Fundamentals of Google
@@ -618,7 +620,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference(reference_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/references/{referenceId}', options)
+          command = make_simple_command(:get, 'v1/references/{referenceId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Reference::Representation
           command.response_class = Google::Apis::GenomicsV1::Reference
           command.params['referenceId'] = reference_id unless reference_id.nil?
@@ -626,7 +628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the bases in a reference, optionally restricted to a range.
         # For the definitions of references and other genomics resources, see
         # [Fundamentals of Google
@@ -667,7 +669,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reference_bases(reference_id, end_position: nil, page_token: nil, page_size: nil, start_position: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/references/{referenceId}/bases', options)
+          command = make_simple_command(:get, 'v1/references/{referenceId}/bases', options)
           command.response_representation = Google::Apis::GenomicsV1::ListBasesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListBasesResponse
           command.params['referenceId'] = reference_id unless reference_id.nil?
@@ -679,7 +681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified dataset. Replaces any
         # existing policy.
         # For the definitions of datasets and other genomics resources, see
@@ -709,7 +711,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_dataset_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::GenomicsV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::GenomicsV1::Policy::Representation
@@ -719,7 +721,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new dataset.
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
@@ -743,7 +745,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_dataset(dataset_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/datasets', options)
+          command = make_simple_command(:post, 'v1/datasets', options)
           command.request_representation = Google::Apis::GenomicsV1::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::GenomicsV1::Dataset::Representation
@@ -752,7 +754,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for the dataset. This is empty if the
         # policy or resource does not exist.
         # See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
@@ -782,7 +784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_dataset_iam_policy(resource, get_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::GenomicsV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::GenomicsV1::Policy::Representation
@@ -792,7 +794,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a dataset.
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
@@ -824,7 +826,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_dataset(dataset_id, dataset_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/datasets/{datasetId}', options)
+          command = make_simple_command(:patch, 'v1/datasets/{datasetId}', options)
           command.request_representation = Google::Apis::GenomicsV1::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::GenomicsV1::Dataset::Representation
@@ -835,7 +837,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undeletes a dataset by restoring a dataset which was deleted via this API.
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
@@ -862,7 +864,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_dataset(dataset_id, undelete_dataset_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/datasets/{datasetId}:undelete', options)
+          command = make_simple_command(:post, 'v1/datasets/{datasetId}:undelete', options)
           command.request_representation = Google::Apis::GenomicsV1::UndeleteDatasetRequest::Representation
           command.request_object = undelete_dataset_request_object
           command.response_representation = Google::Apis::GenomicsV1::Dataset::Representation
@@ -872,7 +874,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a dataset by ID.
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
@@ -897,7 +899,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_dataset(dataset_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/datasets/{datasetId}', options)
+          command = make_simple_command(:get, 'v1/datasets/{datasetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1::Dataset
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -905,7 +907,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # See <a href="/iam/docs/managing-policies#testing_permissions">Testing
         # Permissions</a> for more information.
@@ -934,7 +936,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_dataset_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::GenomicsV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::GenomicsV1::TestIamPermissionsResponse::Representation
@@ -944,7 +946,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a dataset and all of its contents (all read group sets,
         # reference sets, variant sets, call sets, annotation sets, etc.)
         # This is reversible (up to one week after the deletion) via
@@ -974,7 +976,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_dataset(dataset_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/datasets/{datasetId}', options)
+          command = make_simple_command(:delete, 'v1/datasets/{datasetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -982,7 +984,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists datasets within a project.
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
@@ -1014,7 +1016,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datasets(page_token: nil, page_size: nil, project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/datasets', options)
+          command = make_simple_command(:get, 'v1/datasets', options)
           command.response_representation = Google::Apis::GenomicsV1::ListDatasetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListDatasetsResponse
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1024,7 +1026,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports variant set data to an external destination.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1051,7 +1053,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_variant_set(variant_set_id, export_variant_set_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variantsets/{variantSetId}:export', options)
+          command = make_simple_command(:post, 'v1/variantsets/{variantSetId}:export', options)
           command.request_representation = Google::Apis::GenomicsV1::ExportVariantSetRequest::Representation
           command.request_object = export_variant_set_request_object
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
@@ -1061,7 +1063,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of all variant sets matching search criteria.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1088,7 +1090,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_variant_sets(search_variant_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variantsets/search', options)
+          command = make_simple_command(:post, 'v1/variantsets/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchVariantSetsRequest::Representation
           command.request_object = search_variant_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchVariantSetsResponse::Representation
@@ -1097,7 +1099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant set using patch semantics.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1130,7 +1132,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_variantset(variant_set_id, variant_set_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/variantsets/{variantSetId}', options)
+          command = make_simple_command(:patch, 'v1/variantsets/{variantSetId}', options)
           command.request_representation = Google::Apis::GenomicsV1::VariantSet::Representation
           command.request_object = variant_set_object
           command.response_representation = Google::Apis::GenomicsV1::VariantSet::Representation
@@ -1141,7 +1143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant set by ID.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1166,7 +1168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_variantset(variant_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/variantsets/{variantSetId}', options)
+          command = make_simple_command(:get, 'v1/variantsets/{variantSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::VariantSet::Representation
           command.response_class = Google::Apis::GenomicsV1::VariantSet
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
@@ -1174,7 +1176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a variant set including all variants, call sets, and calls within.
         # This is not reversible.
         # For the definitions of variant sets and other genomics resources, see
@@ -1200,7 +1202,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_variantset(variant_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/variantsets/{variantSetId}', options)
+          command = make_simple_command(:delete, 'v1/variantsets/{variantSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
@@ -1208,7 +1210,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant set.
         # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1235,7 +1237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_variantset(variant_set_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variantsets', options)
+          command = make_simple_command(:post, 'v1/variantsets', options)
           command.request_representation = Google::Apis::GenomicsV1::VariantSet::Representation
           command.request_object = variant_set_object
           command.response_representation = Google::Apis::GenomicsV1::VariantSet::Representation
@@ -1244,7 +1246,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates one or more new annotations atomically. All annotations must
         # belong to the same annotation set. Caller must have WRITE
         # permission for this annotation set. For optimal performance, batch
@@ -1276,7 +1278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_create_annotations(batch_create_annotations_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotations:batchCreate', options)
+          command = make_simple_command(:post, 'v1/annotations:batchCreate', options)
           command.request_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsRequest::Representation
           command.request_object = batch_create_annotations_request_object
           command.response_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse::Representation
@@ -1285,7 +1287,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotations that match the given criteria. Results are
         # ordered by genomic coordinate (by reference sequence, then position).
         # Annotations with equivalent genomic coordinates are returned in an
@@ -1312,7 +1314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_annotations(search_annotations_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotations/search', options)
+          command = make_simple_command(:post, 'v1/annotations/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchAnnotationsRequest::Representation
           command.request_object = search_annotations_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchAnnotationsResponse::Representation
@@ -1321,7 +1323,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation. Caller must have READ permission
         # for the associated annotation set.
         # @param [String] annotation_id
@@ -1344,7 +1346,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_annotation(annotation_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/annotations/{annotationId}', options)
+          command = make_simple_command(:get, 'v1/annotations/{annotationId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Annotation::Representation
           command.response_class = Google::Apis::GenomicsV1::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
@@ -1352,7 +1354,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation. Caller must have
         # WRITE permission for the associated dataset.
         # @param [String] annotation_id
@@ -1383,7 +1385,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_annotation(annotation_id, annotation_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/annotations/{annotationId}', options)
+          command = make_simple_command(:put, 'v1/annotations/{annotationId}', options)
           command.request_representation = Google::Apis::GenomicsV1::Annotation::Representation
           command.request_object = annotation_object
           command.response_representation = Google::Apis::GenomicsV1::Annotation::Representation
@@ -1394,7 +1396,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation. Caller must have WRITE permission for
         # the associated annotation set.
         # @param [String] annotation_id
@@ -1417,7 +1419,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_annotation(annotation_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/annotations/{annotationId}', options)
+          command = make_simple_command(:delete, 'v1/annotations/{annotationId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
@@ -1425,7 +1427,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new annotation. Caller must have WRITE permission
         # for the associated annotation set.
         # The following fields are required:
@@ -1461,7 +1463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_annotation(annotation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotations', options)
+          command = make_simple_command(:post, 'v1/annotations', options)
           command.request_representation = Google::Apis::GenomicsV1::Annotation::Representation
           command.request_object = annotation_object
           command.response_representation = Google::Apis::GenomicsV1::Annotation::Representation
@@ -1470,7 +1472,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request.
         # @param [String] name
         #   The name of the operation's parent resource.
@@ -1514,7 +1516,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, page_token: nil, page_size: nil, filter: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -1525,7 +1527,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -1549,7 +1551,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
           command.response_class = Google::Apis::GenomicsV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1557,7 +1559,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. Clients
         # may use Operations.GetOperation or Operations.ListOperations to check whether
@@ -1583,7 +1585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::GenomicsV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
@@ -1593,7 +1595,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for reference sets which match the given criteria.
         # For the definitions of references and other genomics resources, see
         # [Fundamentals of Google
@@ -1620,7 +1622,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_reference_sets(search_reference_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/referencesets/search', options)
+          command = make_simple_command(:post, 'v1/referencesets/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchReferenceSetsRequest::Representation
           command.request_object = search_reference_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchReferenceSetsResponse::Representation
@@ -1629,7 +1631,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference set.
         # For the definitions of references and other genomics resources, see
         # [Fundamentals of Google
@@ -1657,7 +1659,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference_set(reference_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/referencesets/{referenceSetId}', options)
+          command = make_simple_command(:get, 'v1/referencesets/{referenceSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::ReferenceSet::Representation
           command.response_class = Google::Apis::GenomicsV1::ReferenceSet
           command.params['referenceSetId'] = reference_set_id unless reference_set_id.nil?
@@ -1665,7 +1667,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports a read group set to a BAM file in Google Cloud Storage.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1696,7 +1698,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_read_group_sets(read_group_set_id, export_read_group_set_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/readgroupsets/{readGroupSetId}:export', options)
+          command = make_simple_command(:post, 'v1/readgroupsets/{readGroupSetId}:export', options)
           command.request_representation = Google::Apis::GenomicsV1::ExportReadGroupSetRequest::Representation
           command.request_object = export_read_group_set_request_object
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
@@ -1706,7 +1708,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for read group sets matching the criteria.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1733,7 +1735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_read_group_sets(search_read_group_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/readgroupsets/search', options)
+          command = make_simple_command(:post, 'v1/readgroupsets/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchReadGroupSetsRequest::Representation
           command.request_object = search_read_group_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchReadGroupSetsResponse::Representation
@@ -1742,7 +1744,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a read group set by ID.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1767,7 +1769,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}', options)
+          command = make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::ReadGroupSet::Representation
           command.response_class = Google::Apis::GenomicsV1::ReadGroupSet
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
@@ -1775,7 +1777,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a read group set.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1809,7 +1811,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_read_group_set(read_group_set_id, read_group_set_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/readgroupsets/{readGroupSetId}', options)
+          command = make_simple_command(:patch, 'v1/readgroupsets/{readGroupSetId}', options)
           command.request_representation = Google::Apis::GenomicsV1::ReadGroupSet::Representation
           command.request_object = read_group_set_object
           command.response_representation = Google::Apis::GenomicsV1::ReadGroupSet::Representation
@@ -1820,7 +1822,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates read group sets by asynchronously importing the provided
         # information.
         # For the definitions of read group sets and other genomics resources, see
@@ -1854,7 +1856,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_read_group_sets(import_read_group_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/readgroupsets:import', options)
+          command = make_simple_command(:post, 'v1/readgroupsets:import', options)
           command.request_representation = Google::Apis::GenomicsV1::ImportReadGroupSetsRequest::Representation
           command.request_object = import_read_group_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
@@ -1863,7 +1865,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a read group set.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -1889,7 +1891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/readgroupsets/{readGroupSetId}', options)
+          command = make_simple_command(:delete, 'v1/readgroupsets/{readGroupSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
@@ -1897,7 +1899,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists fixed width coverage buckets for a read group set, each of which
         # correspond to a range of a reference sequence. Each bucket summarizes
         # coverage information across its corresponding genomic range.
@@ -1954,7 +1956,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_coverage_buckets(read_group_set_id, page_token: nil, page_size: nil, start: nil, target_bucket_width: nil, reference_name: nil, end_: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}/coveragebuckets', options)
+          command = make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}/coveragebuckets', options)
           command.response_representation = Google::Apis::GenomicsV1::ListCoverageBucketsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListCoverageBucketsResponse
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
@@ -1968,7 +1970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of reads for one or more read group sets.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2008,7 +2010,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_reads(search_reads_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/reads/search', options)
+          command = make_simple_command(:post, 'v1/reads/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchReadsRequest::Representation
           command.request_object = search_reads_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchReadsResponse::Representation
@@ -2017,7 +2019,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a call set.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2049,7 +2051,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_call_set(call_set_id, call_set_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/callsets/{callSetId}', options)
+          command = make_simple_command(:patch, 'v1/callsets/{callSetId}', options)
           command.request_representation = Google::Apis::GenomicsV1::CallSet::Representation
           command.request_object = call_set_object
           command.response_representation = Google::Apis::GenomicsV1::CallSet::Representation
@@ -2060,7 +2062,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a call set by ID.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2085,7 +2087,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_call_set(call_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/callsets/{callSetId}', options)
+          command = make_simple_command(:get, 'v1/callsets/{callSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::CallSet::Representation
           command.response_class = Google::Apis::GenomicsV1::CallSet
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
@@ -2093,7 +2095,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new call set.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2117,7 +2119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_call_set(call_set_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/callsets', options)
+          command = make_simple_command(:post, 'v1/callsets', options)
           command.request_representation = Google::Apis::GenomicsV1::CallSet::Representation
           command.request_object = call_set_object
           command.response_representation = Google::Apis::GenomicsV1::CallSet::Representation
@@ -2126,7 +2128,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a call set.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2151,7 +2153,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_call_set(call_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/callsets/{callSetId}', options)
+          command = make_simple_command(:delete, 'v1/callsets/{callSetId}', options)
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
@@ -2159,7 +2161,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of call sets matching the criteria.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -2186,7 +2188,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_call_sets(search_call_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/callsets/search', options)
+          command = make_simple_command(:post, 'v1/callsets/search', options)
           command.request_representation = Google::Apis::GenomicsV1::SearchCallSetsRequest::Representation
           command.request_object = search_call_sets_request_object
           command.response_representation = Google::Apis::GenomicsV1::SearchCallSetsResponse::Representation

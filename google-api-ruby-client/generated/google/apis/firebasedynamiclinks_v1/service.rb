@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://firebasedynamiclinks.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Creates a short Dynamic Link given either a valid long Dynamic Link or
         # details such as Dynamic Link domain, Android and iOS app information.
         # The created short Dynamic Link will not expire.
@@ -73,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_short_link_short_dynamic_link(create_short_dynamic_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/shortLinks', options)
+          command = make_simple_command(:post, 'v1/shortLinks', options)
           command.request_representation = Google::Apis::FirebasedynamiclinksV1::CreateShortDynamicLinkRequest::Representation
           command.request_object = create_short_dynamic_link_request_object
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::CreateShortDynamicLinkResponse::Representation
@@ -82,7 +84,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches analytics stats of a short Dynamic Link for a given
         # duration. Metrics include number of clicks, redirects, installs,
         # app first opens, and app reopens.
@@ -108,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_link_stats(dynamic_link, duration_days: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{dynamicLink}/linkStats', options)
+          command = make_simple_command(:get, 'v1/{dynamicLink}/linkStats', options)
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats::Representation
           command.response_class = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats
           command.params['dynamicLink'] = dynamic_link unless dynamic_link.nil?

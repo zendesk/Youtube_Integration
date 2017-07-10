@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,7 +51,7 @@ module Google
           super('https://cloudtrace.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Sends new traces to Stackdriver Trace or updates existing traces. If the ID
         # of a trace that you send matches that of an existing trace, any fields
         # in the existing trace and its spans are overwritten by the provided values,
@@ -76,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_traces(project_id, traces_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/projects/{projectId}/traces', options)
+          command = make_simple_command(:patch, 'v1/projects/{projectId}/traces', options)
           command.request_representation = Google::Apis::CloudtraceV1::Traces::Representation
           command.request_object = traces_object
           command.response_representation = Google::Apis::CloudtraceV1::Empty::Representation
@@ -86,7 +88,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
@@ -164,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_traces(project_id, view: nil, order_by: nil, filter: nil, end_time: nil, page_token: nil, start_time: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
           command.response_representation = Google::Apis::CloudtraceV1::ListTracesResponse::Representation
           command.response_class = Google::Apis::CloudtraceV1::ListTracesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -179,7 +181,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single trace by its ID.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
@@ -203,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_trace(project_id, trace_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/traces/{traceId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/traces/{traceId}', options)
           command.response_representation = Google::Apis::CloudtraceV1::Trace::Representation
           command.response_class = Google::Apis::CloudtraceV1::Trace
           command.params['projectId'] = project_id unless project_id.nil?

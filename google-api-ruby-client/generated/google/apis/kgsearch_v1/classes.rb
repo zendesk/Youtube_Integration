@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,32 +23,31 @@ require 'google/apis/errors'
 module Google
   module Apis
     module KgsearchV1
-      
       # Response message includes the context and a list of matching results
       # which contain the detail of associated entities.
       class SearchResponse
         include Google::Apis::Core::Hashable
-      
+
         # The local context applicable for the response. See more details at
         # http://www.w3.org/TR/json-ld/#context-definitions.
         # Corresponds to the JSON property `@context`
         # @return [Object]
         attr_accessor :_context
-      
+
         # The item list of search results.
         # Corresponds to the JSON property `itemListElement`
         # @return [Array<Object>]
         attr_accessor :item_list_element
-      
+
         # The schema type of top-level JSON-LD object, e.g. ItemList.
         # Corresponds to the JSON property `@type`
         # @return [Object]
         attr_accessor :_type
-      
+
         def initialize(**args)
-           update!(**args)
+          update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @_context = args[:_context] if args.key?(:_context)

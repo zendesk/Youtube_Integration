@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,7 +77,7 @@ RSpec.describe Google::Apis::Core::ApiCommand do
 
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals')
-          .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should allow raw JSON if skip_serialization = true' do
@@ -161,20 +163,20 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
 
     before(:example) do
-      json = <<EOF
-{
- "error": {
-  "errors": [
-   {
-    "domain": "global",
-    "reason": "rateLimitExceeded",
-    "message": "Rate limit exceeded"
-   }
-  ],
-  "code": 403,
-  "message": "Rate limit exceeded"
- }
-}
+      json = <<~EOF
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "global",
+            "reason": "rateLimitExceeded",
+            "message": "Rate limit exceeded"
+           }
+          ],
+          "code": 403,
+          "message": "Rate limit exceeded"
+         }
+        }
 EOF
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
         .to_return(status: [403, 'Rate Limit Exceeded'], headers: { 'Content-Type' => 'application/json' }, body: json)
@@ -193,25 +195,25 @@ EOF
     end
 
     before(:example) do
-      json = <<EOF
-{
- "error": {
-  "errors": [
-   {
-    "domain": "global",
-    "reason": "projectNotLinked",
-    "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
-   }
-  ],
-  "code": 403,
-  "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
- }
-}
+      json = <<~EOF
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "global",
+            "reason": "projectNotLinked",
+            "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+           }
+          ],
+          "code": 403,
+          "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+         }
+        }
 EOF
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
         .to_return(status: [403, 'The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console.'], headers: {
-          'Content-Type' => 'application/json'
-        }, body: json)
+                     'Content-Type' => 'application/json'
+                   }, body: json)
         .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
@@ -221,7 +223,8 @@ EOF
 
     it 'should raise an error with the reason and message' do
       expect { command.execute(client) }.to raise_error(
-        /projectNotLinked: The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console./)
+        /projectNotLinked: The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console./
+      )
     end
   end
 
@@ -231,20 +234,20 @@ EOF
     end
 
     before(:example) do
-      json = <<EOF
-{
- "error": {
-  "errors": [
-   {
-    "domain": "global",
-    "reason": "timeRangeEmpty",
-    "message": "The specified time range is empty."
-   }
-  ],
-  "code": 400,
-  "message": "The specified time range is empty."
- }
-}
+      json = <<~EOF
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "global",
+            "reason": "timeRangeEmpty",
+            "message": "The specified time range is empty."
+           }
+          ],
+          "code": 400,
+          "message": "The specified time range is empty."
+         }
+        }
 EOF
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
         .to_return(status: [400, 'Bad Request'], headers: { 'Content-Type' => 'application/json' }, body: json)
@@ -256,7 +259,8 @@ EOF
 
     it 'should raise an error with the reason and message' do
       expect { command.execute(client) }.to raise_error(
-        /timeRangeEmpty: The specified time range is empty/)
+        /timeRangeEmpty: The specified time range is empty/
+      )
     end
   end
 
@@ -289,33 +293,33 @@ EOF
     end
 
     before(:example) do
-      json = <<EOF
-{
-  "error": {
-    "code": 400,
-    "message": "Illegal character ':' in log name",
-    "status": "INVALID_ARGUMENT",
-    "details": [
-      {
-        "@type": "type.googleapis.com/google.logging.v2.WriteLogEntriesPartialErrors",
-        "logEntryErrors": {
-          "0": {
-            "code": 3,
-            "message": "Illegal character ':' in log name"
-          },
-          "1": {
-            "code": 7,
-            "message": "User not authorized."
+      json = <<~EOF
+        {
+          "error": {
+            "code": 400,
+            "message": "Illegal character ':' in log name",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.logging.v2.WriteLogEntriesPartialErrors",
+                "logEntryErrors": {
+                  "0": {
+                    "code": 3,
+                    "message": "Illegal character ':' in log name"
+                  },
+                  "1": {
+                    "code": 7,
+                    "message": "User not authorized."
+                  }
+                }
+              }
+            ]
           }
         }
-      }
-    ]
-  }
-}
 EOF
 
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .with(headers: {'X-Goog-Api-Format-Version' => '2'})
+        .with(headers: { 'X-Goog-Api-Format-Version' => '2' })
         .to_return(status: [400, 'Invalid Argument'], headers: { 'Content-Type' => 'application/json' }, body: json)
     end
 
@@ -325,7 +329,8 @@ EOF
 
     it 'should raise an error with the reason and message' do
       expect { command.execute(client) }.to raise_error(
-        /INVALID_ARGUMENT: Illegal character ':' in log name/)
+        /INVALID_ARGUMENT: Illegal character ':' in log name/
+      )
     end
   end
 end

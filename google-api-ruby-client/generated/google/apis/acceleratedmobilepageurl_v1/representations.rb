@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,31 +23,30 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AcceleratedmobilepageurlV1
-      
       class AmpUrl
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class AmpUrlError
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BatchGetAmpUrlsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BatchGetAmpUrlsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class AmpUrl
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -54,7 +55,7 @@ module Google
           property :amp_url, as: 'ampUrl'
         end
       end
-      
+
       class AmpUrlError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -63,7 +64,7 @@ module Google
           property :error_message, as: 'errorMessage'
         end
       end
-      
+
       class BatchGetAmpUrlsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -71,14 +72,14 @@ module Google
           collection :urls, as: 'urls'
         end
       end
-      
+
       class BatchGetAmpUrlsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :amp_urls, as: 'ampUrls', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl::Representation
-      
+
           collection :url_errors, as: 'urlErrors', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError::Representation
-      
+
         end
       end
     end

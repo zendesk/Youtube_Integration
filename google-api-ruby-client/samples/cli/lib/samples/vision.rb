@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +44,7 @@ module Samples
       p result
     end
 
-  private
+    private
 
     def image
       @image ||= Vision::Image.new(content: File.open(image_path).read)

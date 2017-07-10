@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://sourcerepo.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -71,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_repo_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::SourcerepoV1::Policy::Representation
           command.response_class = Google::Apis::SourcerepoV1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -79,7 +81,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns information about a repo.
         # @param [String] name
         #   The name of the requested repository. Values are of the form
@@ -102,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_repo(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation
           command.response_class = Google::Apis::SourcerepoV1::Repo
           command.params['name'] = name unless name.nil?
@@ -110,7 +112,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -136,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_repo_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SourcerepoV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SourcerepoV1::TestIamPermissionsResponse::Representation
@@ -146,7 +148,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a repo.
         # @param [String] name
         #   The name of the repo to delete. Values are of the form
@@ -169,7 +171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_repo(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SourcerepoV1::Empty::Representation
           command.response_class = Google::Apis::SourcerepoV1::Empty
           command.params['name'] = name unless name.nil?
@@ -177,7 +179,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all repos belonging to a project. The sizes of the repos are
         # not set by ListRepos.  To get the size of a repo, use GetRepo.
         # @param [String] name
@@ -208,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_repos(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/repos', options)
+          command = make_simple_command(:get, 'v1/{+name}/repos', options)
           command.response_representation = Google::Apis::SourcerepoV1::ListReposResponse::Representation
           command.response_class = Google::Apis::SourcerepoV1::ListReposResponse
           command.params['name'] = name unless name.nil?
@@ -218,7 +220,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -243,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_repo_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SourcerepoV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SourcerepoV1::Policy::Representation
@@ -253,7 +255,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a repo in the given project with the given name.
         # If the named repository already exists, `CreateRepo` returns
         # `ALREADY_EXISTS`.
@@ -279,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_repo(parent, repo_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/repos', options)
+          command = make_simple_command(:post, 'v1/{+parent}/repos', options)
           command.request_representation = Google::Apis::SourcerepoV1::Repo::Representation
           command.request_object = repo_object
           command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation

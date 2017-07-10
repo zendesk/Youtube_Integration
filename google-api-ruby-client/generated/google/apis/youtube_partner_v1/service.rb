@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'youtube/partner/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Insert an asset label for an owner.
         # @param [Google::Apis::YoutubePartnerV1::AssetLabel] asset_label_object
         # @param [String] on_behalf_of_content_owner
@@ -81,7 +83,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset_label(asset_label_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assetLabels', options)
+          command = make_simple_command(:post, 'assetLabels', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetLabel::Representation
           command.request_object = asset_label_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetLabel::Representation
@@ -92,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of all asset labels for an owner.
         # @param [String] label_prefix
         #   The labelPrefix parameter identifies the prefix of asset labels to retrieve.
@@ -125,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_labels(label_prefix: nil, on_behalf_of_content_owner: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetLabels', options)
+          command = make_simple_command(:get, 'assetLabels', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetLabelListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetLabelListResponse
           command.query['labelPrefix'] = label_prefix unless label_prefix.nil?
@@ -136,7 +138,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the match policy assigned to the specified asset by the content
         # owner associated with the authenticated user. This information is only
         # accessible to an owner of the asset.
@@ -169,7 +171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset_match_policy(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:get, 'assets/{assetId}/matchPolicy', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetMatchPolicy
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -179,7 +181,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the asset's match policy. If an asset has multiple owners, each owner
         # may set its own match policy for the asset. YouTube then computes the match
         # policy that is actually applied for the asset based on the territories where
@@ -214,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_asset_match_policy(asset_id, asset_match_policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:patch, 'assets/{assetId}/matchPolicy', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.request_object = asset_match_policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
@@ -226,7 +228,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the asset's match policy. If an asset has multiple owners, each owner
         # may set its own match policy for the asset. YouTube then computes the match
         # policy that is actually applied for the asset based on the territories where
@@ -261,7 +263,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_asset_match_policy(asset_id, asset_match_policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:put, 'assets/{assetId}/matchPolicy', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.request_object = asset_match_policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
@@ -273,7 +275,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a relationship between two assets.
         # @param [String] asset_relationship_id
         #   The assetRelationshipId parameter specifies a value that uniquely identifies
@@ -304,7 +306,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_asset_relationship(asset_relationship_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'assetRelationships/{assetRelationshipId}', options)
+          command = make_simple_command(:delete, 'assetRelationships/{assetRelationshipId}', options)
           command.params['assetRelationshipId'] = asset_relationship_id unless asset_relationship_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -312,7 +314,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a relationship that links two assets.
         # @param [Google::Apis::YoutubePartnerV1::AssetRelationship] asset_relationship_object
         # @param [String] on_behalf_of_content_owner
@@ -341,7 +343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset_relationship(asset_relationship_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assetRelationships', options)
+          command = make_simple_command(:post, 'assetRelationships', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetRelationship::Representation
           command.request_object = asset_relationship_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetRelationship::Representation
@@ -352,7 +354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of relationships for a given asset. The list contains
         # relationships where the specified asset is either the parent (embedding) or
         # child (embedded) asset in the relationship.
@@ -389,7 +391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_relationships(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetRelationships', options)
+          command = make_simple_command(:get, 'assetRelationships', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -400,7 +402,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for assets based on asset metadata. The method can retrieve all
         # assets or only assets owned by the content owner. This method mimics the
         # functionality of the advanced search feature on the Assets page in CMS.
@@ -478,7 +480,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_searches(created_after: nil, created_before: nil, has_conflicts: nil, include_any_providedlabel: nil, isrcs: nil, labels: nil, metadata_search_fields: nil, on_behalf_of_content_owner: nil, ownership_restriction: nil, page_token: nil, q: nil, sort: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetSearch', options)
+          command = make_simple_command(:get, 'assetSearch', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetSearchResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetSearchResponse
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -499,7 +501,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # This method either retrieves a list of asset shares the partner owns and that
         # map to a specified asset view ID or it retrieves a list of asset views
         # associated with a specified asset share ID owned by the partner.
@@ -540,7 +542,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_shares(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetShares', options)
+          command = make_simple_command(:get, 'assetShares', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetShareListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetShareListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -551,7 +553,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata for the specified asset. Note that if the request
         # identifies an asset that has been merged with another asset, meaning that
         # YouTube identified the requested asset as a duplicate, then the request
@@ -600,7 +602,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset(asset_id, fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}', options)
+          command = make_simple_command(:get, 'assets/{assetId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Asset
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -614,7 +616,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts an asset with the specified metadata. After inserting an asset, you
         # can set its ownership data and match policy.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
@@ -644,7 +646,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset(asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assets', options)
+          command = make_simple_command(:post, 'assets', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -655,7 +657,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of assets based on asset metadata. The method can retrieve
         # all assets or only assets owned by the content owner.
         # Note that in cases where duplicate assets have been merged, the API response
@@ -712,7 +714,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_assets(id, fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets', options)
+          command = make_simple_command(:get, 'assets', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetListResponse
           command.query['fetchMatchPolicy'] = fetch_match_policy unless fetch_match_policy.nil?
@@ -726,7 +728,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the metadata for the specified asset. This method supports patch
         # semantics.
         # @param [String] asset_id
@@ -759,7 +761,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_asset(asset_id, asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}', options)
+          command = make_simple_command(:patch, 'assets/{assetId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -771,7 +773,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the metadata for the specified asset.
         # @param [String] asset_id
         #   The assetId parameter specifies the YouTube asset ID of the asset being
@@ -803,7 +805,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_asset(asset_id, asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}', options)
+          command = make_simple_command(:put, 'assets/{assetId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -815,7 +817,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a specified campaign for an owner.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -854,7 +856,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a particular campaign for an owner.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -885,7 +887,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_campaign(campaign_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:get, 'campaigns/{campaignId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Campaign
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
@@ -895,7 +897,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new campaign for an owner using the specified campaign data.
         # @param [Google::Apis::YoutubePartnerV1::Campaign] campaign_object
         # @param [String] on_behalf_of_content_owner
@@ -935,7 +937,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of campaigns for an owner.
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the
@@ -968,7 +970,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_campaigns(on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'campaigns', options)
+          command = make_simple_command(:get, 'campaigns', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::CampaignList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::CampaignList
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -978,7 +980,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data for a specific campaign. This method supports patch semantics.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -1010,7 +1012,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_campaign(campaign_id, campaign_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:patch, 'campaigns/{campaignId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.request_object = campaign_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
@@ -1022,7 +1024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data for a specific campaign.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -1066,7 +1068,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the claim history for a specified claim.
         # @param [String] claim_id
         #   The claimId parameter specifies the YouTube claim ID of the claim for which
@@ -1097,7 +1099,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_claim_history(claim_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claimHistory/{claimId}', options)
+          command = make_simple_command(:get, 'claimHistory/{claimId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ClaimHistory::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ClaimHistory
           command.params['claimId'] = claim_id unless claim_id.nil?
@@ -1107,7 +1109,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of claims that match the search criteria. You can search for
         # claims that are associated with a specific asset or video or that match a
         # specified query string.
@@ -1221,7 +1223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific claim by ID.
         # @param [String] claim_id
         #   The claimId parameter specifies the claim ID of the claim being retrieved.
@@ -1251,7 +1253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_claim(claim_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claims/{claimId}', options)
+          command = make_simple_command(:get, 'claims/{claimId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Claim
           command.params['claimId'] = claim_id unless claim_id.nil?
@@ -1261,7 +1263,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a claim. The video being claimed must have been uploaded to a channel
         # associated with the same content owner as the API user sending the request.
         # You can set the claim's policy in any of the following ways:
@@ -1297,7 +1299,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_claim(claim_object = nil, is_manual_claim: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'claims', options)
+          command = make_simple_command(:post, 'claims', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1309,7 +1311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of claims administered by the content owner associated with
         # the currently authenticated user. Results are sorted in descending order of
         # creation time.
@@ -1376,7 +1378,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing claim by either changing its policy or its status. You can
         # update a claim's status from active to inactive to effectively release the
         # claim. This method supports patch semantics.
@@ -1409,7 +1411,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_claim(claim_id, claim_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'claims/{claimId}', options)
+          command = make_simple_command(:patch, 'claims/{claimId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1421,7 +1423,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing claim by either changing its policy or its status. You can
         # update a claim's status from active to inactive to effectively release the
         # claim.
@@ -1454,7 +1456,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_claim(claim_id, claim_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'claims/{claimId}', options)
+          command = make_simple_command(:put, 'claims/{claimId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1466,7 +1468,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves advertising options for the content owner associated with the
         # authenticated user.
         # @param [String] on_behalf_of_content_owner
@@ -1495,7 +1497,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_content_owner_advertising_option(on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:get, 'contentOwnerAdvertisingOptions', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -1504,7 +1506,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates advertising options for the content owner associated with the
         # authenticated API user. This method supports patch semantics.
         # @param [Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption] content_owner_advertising_option_object
@@ -1534,7 +1536,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_content_owner_advertising_option(content_owner_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:patch, 'contentOwnerAdvertisingOptions', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.request_object = content_owner_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
@@ -1545,7 +1547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates advertising options for the content owner associated with the
         # authenticated API user.
         # @param [Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption] content_owner_advertising_option_object
@@ -1575,7 +1577,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_content_owner_advertising_option(content_owner_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:put, 'contentOwnerAdvertisingOptions', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.request_object = content_owner_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
@@ -1586,7 +1588,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified content owner.
         # @param [String] content_owner_id
         #   The contentOwnerId parameter specifies a value that uniquely identifies the
@@ -1617,7 +1619,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_content_owner(content_owner_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwners/{contentOwnerId}', options)
+          command = make_simple_command(:get, 'contentOwners/{contentOwnerId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwner::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwner
           command.params['contentOwnerId'] = content_owner_id unless content_owner_id.nil?
@@ -1627,7 +1629,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of content owners that match the request criteria.
         # @param [Boolean] fetch_mine
         #   The fetchMine parameter restricts the result set to content owners associated
@@ -1661,7 +1663,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_content_owners(fetch_mine: nil, id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwners', options)
+          command = make_simple_command(:get, 'contentOwners', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwnerListResponse
           command.query['fetchMine'] = fetch_mine unless fetch_mine.nil?
@@ -1672,7 +1674,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a cuepoint into a live broadcast.
         # @param [String] channel_id
         #   The channelId parameter identifies the channel that owns the broadcast into
@@ -1706,7 +1708,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_live_cuepoint(channel_id, live_cuepoint_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'liveCuepoints', options)
+          command = make_simple_command(:post, 'liveCuepoints', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::LiveCuepoint::Representation
           command.request_object = live_cuepoint_object
           command.response_representation = Google::Apis::YoutubePartnerV1::LiveCuepoint::Representation
@@ -1718,7 +1720,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of all metadata provided for an asset, regardless of which
         # content owner provided the data.
         # @param [String] asset_id
@@ -1750,7 +1752,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metadata_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'metadataHistory', options)
+          command = make_simple_command(:get, 'metadataHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -1760,7 +1762,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an order, which moves orders to inactive state and removes any
         # associated video.
         # @param [String] order_id
@@ -1789,7 +1791,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_order(order_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'orders/{orderId}', options)
+          command = make_simple_command(:delete, 'orders/{orderId}', options)
           command.params['orderId'] = order_id unless order_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1797,7 +1799,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the details of an existing order.
         # @param [String] order_id
         #   The id of the order.
@@ -1825,7 +1827,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order(order_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'orders/{orderId}', options)
+          command = make_simple_command(:get, 'orders/{orderId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Order
           command.params['orderId'] = order_id unless order_id.nil?
@@ -1835,7 +1837,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new basic order entry in the YouTube premium asset order management
         # system. You must supply at least a country and channel in the new order.
         # @param [Google::Apis::YoutubePartnerV1::Order] order_object
@@ -1863,7 +1865,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_order(order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'orders', options)
+          command = make_simple_command(:post, 'orders', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -1874,7 +1876,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of orders, filtered by the parameters below, may return more
         # than a single page of results.
         # @param [String] channel_id
@@ -1931,7 +1933,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orders(channel_id: nil, content_type: nil, country: nil, custom_id: nil, on_behalf_of_content_owner: nil, page_token: nil, priority: nil, production_house: nil, q: nil, status: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'orders', options)
+          command = make_simple_command(:get, 'orders', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::OrderListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OrderListResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -1950,7 +1952,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the values in an existing order. This method supports patch semantics.
         # @param [String] order_id
         #   The id of the order.
@@ -1979,7 +1981,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_order(order_id, order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'orders/{orderId}', options)
+          command = make_simple_command(:patch, 'orders/{orderId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -1991,7 +1993,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the values in an existing order.
         # @param [String] order_id
         #   The id of the order.
@@ -2020,7 +2022,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_order(order_id, order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'orders/{orderId}', options)
+          command = make_simple_command(:put, 'orders/{orderId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -2032,7 +2034,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the ownership data provided for the specified asset by the content
         # owner associated with the authenticated user.
         # @param [String] asset_id
@@ -2064,7 +2066,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ownership(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:get, 'assets/{assetId}/ownership', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::RightsOwnership
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -2074,7 +2076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides new ownership information for the specified asset. Note that YouTube
         # may receive ownership information from multiple sources. For example, if an
         # asset has multiple owners, each owner might send ownership data for the asset.
@@ -2112,7 +2114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_ownership(asset_id, rights_ownership_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:patch, 'assets/{assetId}/ownership', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.request_object = rights_ownership_object
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
@@ -2124,7 +2126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides new ownership information for the specified asset. Note that YouTube
         # may receive ownership information from multiple sources. For example, if an
         # asset has multiple owners, each owner might send ownership data for the asset.
@@ -2161,7 +2163,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_ownership(asset_id, rights_ownership_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:put, 'assets/{assetId}/ownership', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.request_object = rights_ownership_object
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
@@ -2173,7 +2175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the ownership data for an asset, regardless of which
         # content owner provided the data. The list only includes the most recent
         # ownership data for each content owner. However, if the content owner has
@@ -2209,7 +2211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ownership_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'ownershipHistory', options)
+          command = make_simple_command(:get, 'ownershipHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -2219,7 +2221,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information for the specified package.
         # @param [String] package_id
         #   The packageId parameter specifies the Content Delivery package ID of the
@@ -2250,7 +2252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_package(package_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'package/{packageId}', options)
+          command = make_simple_command(:get, 'package/{packageId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Package::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Package
           command.params['packageId'] = package_id unless package_id.nil?
@@ -2260,7 +2262,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a metadata-only package.
         # @param [Google::Apis::YoutubePartnerV1::Package] package_object
         # @param [String] on_behalf_of_content_owner
@@ -2289,7 +2291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_package(package_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'package', options)
+          command = make_simple_command(:post, 'package', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Package::Representation
           command.request_object = package_object
           command.response_representation = Google::Apis::YoutubePartnerV1::PackageInsertResponse::Representation
@@ -2300,7 +2302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified saved policy.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2331,7 +2333,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_policy(policy_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'policies/{policyId}', options)
+          command = make_simple_command(:get, 'policies/{policyId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Policy
           command.params['policyId'] = policy_id unless policy_id.nil?
@@ -2341,7 +2343,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a saved policy.
         # @param [Google::Apis::YoutubePartnerV1::Policy] policy_object
         # @param [String] on_behalf_of_content_owner
@@ -2370,7 +2372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_policy(policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'policies', options)
+          command = make_simple_command(:post, 'policies', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2381,7 +2383,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the content owner's saved policies.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of saved policy IDs to
@@ -2415,7 +2417,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_policies(id: nil, on_behalf_of_content_owner: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'policies', options)
+          command = make_simple_command(:get, 'policies', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::PolicyList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::PolicyList
           command.query['id'] = id unless id.nil?
@@ -2426,7 +2428,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified saved policy. This method supports patch semantics.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2458,7 +2460,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_policy(policy_id, policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'policies/{policyId}', options)
+          command = make_simple_command(:patch, 'policies/{policyId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2470,7 +2472,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified saved policy.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2502,7 +2504,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_policy(policy_id, policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'policies/{policyId}', options)
+          command = make_simple_command(:put, 'policies/{policyId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2514,7 +2516,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified publisher.
         # @param [String] publisher_id
         #   The publisherId parameter specifies a publisher ID that uniquely identifies
@@ -2545,7 +2547,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_publisher(publisher_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'publishers/{publisherId}', options)
+          command = make_simple_command(:get, 'publishers/{publisherId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Publisher::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Publisher
           command.params['publisherId'] = publisher_id unless publisher_id.nil?
@@ -2555,7 +2557,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of publishers that match the request criteria. This method is
         # analogous to a publisher search function.
         # @param [String] cae_number
@@ -2603,7 +2605,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_publishers(cae_number: nil, id: nil, ipi_number: nil, max_results: nil, name_prefix: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'publishers', options)
+          command = make_simple_command(:get, 'publishers', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::PublisherList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::PublisherList
           command.query['caeNumber'] = cae_number unless cae_number.nil?
@@ -2618,7 +2620,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified reference conflict.
         # @param [String] reference_conflict_id
         #   The referenceConflictId parameter specifies the YouTube reference conflict ID
@@ -2649,7 +2651,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference_conflict(reference_conflict_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'referenceConflicts/{referenceConflictId}', options)
+          command = make_simple_command(:get, 'referenceConflicts/{referenceConflictId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceConflict::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceConflict
           command.params['referenceConflictId'] = reference_conflict_id unless reference_conflict_id.nil?
@@ -2659,7 +2661,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of unresolved reference conflicts.
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the
@@ -2691,7 +2693,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reference_conflicts(on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'referenceConflicts', options)
+          command = make_simple_command(:get, 'referenceConflicts', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceConflictListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceConflictListResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2701,7 +2703,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified reference.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2732,7 +2734,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference(reference_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'references/{referenceId}', options)
+          command = make_simple_command(:get, 'references/{referenceId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Reference
           command.params['referenceId'] = reference_id unless reference_id.nil?
@@ -2742,7 +2744,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a reference in one of the following ways:
         # - If your request is uploading a reference file, YouTube creates the reference
         # from the provided content. You can provide either a video/audio file or a pre-
@@ -2788,7 +2790,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_reference(reference_object = nil, claim_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'references', options)
+            command = make_simple_command(:post, 'references', options)
           else
             command = make_upload_command(:post, 'references', options)
             command.upload_source = upload_source
@@ -2805,7 +2807,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of references by ID or the list of references for the
         # specified asset.
         # @param [String] asset_id
@@ -2844,7 +2846,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_references(asset_id: nil, id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'references', options)
+          command = make_simple_command(:get, 'references', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -2856,7 +2858,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a reference. This method supports patch semantics.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2893,7 +2895,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_reference(reference_id, reference_object = nil, on_behalf_of_content_owner: nil, release_claims: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'references/{referenceId}', options)
+          command = make_simple_command(:patch, 'references/{referenceId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.request_object = reference_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
@@ -2906,7 +2908,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a reference.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2943,7 +2945,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_reference(reference_id, reference_object = nil, on_behalf_of_content_owner: nil, release_claims: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'references/{referenceId}', options)
+          command = make_simple_command(:put, 'references/{referenceId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.request_object = reference_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
@@ -2956,7 +2958,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Validate a metadata file.
         # @param [Google::Apis::YoutubePartnerV1::ValidateRequest] validate_request_object
         # @param [String] on_behalf_of_content_owner
@@ -2985,7 +2987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_validator(validate_request_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'validator', options)
+          command = make_simple_command(:post, 'validator', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ValidateRequest::Representation
           command.request_object = validate_request_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ValidateResponse::Representation
@@ -2996,7 +2998,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves advertising settings for the specified video.
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which
@@ -3027,7 +3029,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_advertising_option(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:get, 'videoAdvertisingOptions/{videoId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption
           command.params['videoId'] = video_id unless video_id.nil?
@@ -3037,7 +3039,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details about the types of allowed ads for a specified partner- or
         # user-uploaded video.
         # @param [String] video_id
@@ -3069,7 +3071,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_advertising_option_enabled_ads(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'videoAdvertisingOptions/{videoId}/getEnabledAds', options)
+          command = make_simple_command(:get, 'videoAdvertisingOptions/{videoId}/getEnabledAds', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOptionGetEnabledAdsResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::VideoAdvertisingOptionGetEnabledAdsResponse
           command.params['videoId'] = video_id unless video_id.nil?
@@ -3079,7 +3081,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the advertising settings for the specified video. This method supports
         # patch semantics.
         # @param [String] video_id
@@ -3112,7 +3114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_video_advertising_option(video_id, video_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:patch, 'videoAdvertisingOptions/{videoId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.request_object = video_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
@@ -3124,7 +3126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the advertising settings for the specified video.
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which
@@ -3156,7 +3158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_video_advertising_option(video_id, video_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:put, 'videoAdvertisingOptions/{videoId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.request_object = video_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
@@ -3168,7 +3170,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a whitelisted channel for a content owner.
         # @param [String] id
         #   The id parameter specifies the YouTube channel ID of the channel being removed
@@ -3199,7 +3201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_whitelist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'whitelists/{id}', options)
+          command = make_simple_command(:delete, 'whitelists/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3207,7 +3209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific whitelisted channel by ID.
         # @param [String] id
         #   The id parameter specifies the YouTube channel ID of the whitelisted channel
@@ -3238,7 +3240,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_whitelist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'whitelists/{id}', options)
+          command = make_simple_command(:get, 'whitelists/{id}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Whitelist
           command.params['id'] = id unless id.nil?
@@ -3248,7 +3250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Whitelist a YouTube channel for your content owner. Whitelisted channels are
         # channels that are not owned or managed by you, but you would like to whitelist
         # so that no claims from your assets are placed on videos uploaded to these
@@ -3280,7 +3282,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_whitelist(whitelist_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'whitelists', options)
+          command = make_simple_command(:post, 'whitelists', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
           command.request_object = whitelist_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
@@ -3291,7 +3293,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of whitelisted channels for a content owner.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of YouTube channel IDs that
@@ -3326,7 +3328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_whitelists(id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'whitelists', options)
+          command = make_simple_command(:get, 'whitelists', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::WhitelistListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::WhitelistListResponse
           command.query['id'] = id unless id.nil?

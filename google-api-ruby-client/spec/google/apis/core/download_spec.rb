@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,8 +40,7 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
       it 'should not include a range header' do
         command.execute(client)
         expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-          .with { |req| !req.headers.key?('Range') }
-              ).to have_been_made
+          .with { |req| !req.headers.key?('Range') }).to have_been_made
       end
 
       it 'should receive content' do
@@ -50,11 +51,11 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     context 'with error' do
       before(:example) do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-            .to_return(status: [404, 'Not Found'], body: '')
+          .to_return(status: [404, 'Not Found'], body: '')
       end
 
       it 'should raise error' do
-        expect {received}.to raise_error(Google::Apis::ClientError)
+        expect { received }.to raise_error(Google::Apis::ClientError)
       end
     end
 
@@ -73,8 +74,8 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     context 'with disconnects and no partial response' do
       before(:example) do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-            .to_return(body: ['Hello ', Timeout::Error])
-            .to_return(body: 'Hello world')
+          .to_return(body: ['Hello ', Timeout::Error])
+          .to_return(body: 'Hello world')
       end
 
       it 'should receive entire content' do

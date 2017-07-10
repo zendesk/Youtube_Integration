@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +32,7 @@ module Google
           'rateLimitExceeded' => Google::Apis::RateLimitError,
           'userRateLimitExceeded' => Google::Apis::RateLimitError,
           'projectNotLinked' => Google::Apis::ProjectNotLinkedError
-        }
+        }.freeze
 
         # JSON serializer for request objects
         # @return [Google::Apis::Core::JsonRepresentation]
@@ -106,12 +108,14 @@ module Google
             reason, message = parse_error(body)
             if reason
               message = sprintf('%s: %s', reason, message)
-              raise ERROR_REASON_MAPPING[reason].new(
-                message,
-                status_code: status,
-                header: header,
-                body: body
-              ) if ERROR_REASON_MAPPING.key?(reason)
+              if ERROR_REASON_MAPPING.key?(reason)
+                raise ERROR_REASON_MAPPING[reason].new(
+                  message,
+                  status_code: status,
+                  header: header,
+                  body: body
+                )
+              end
             end
             super(status, header, body, message)
           else
@@ -138,7 +142,7 @@ module Google
           elsif error['errors']
             return extract_v1_error_details(error)
           else
-            fail 'Can not parse error message. No "details" or "errors" detected'
+            raise 'Can not parse error message. No "details" or "errors" detected'
           end
         rescue
           return [nil, nil]
@@ -152,7 +156,7 @@ module Google
         def extract_v1_error_details(error)
           reason = error['errors'].first['reason']
           message = error['message']
-          return [reason, message]
+          [reason, message]
         end
 
         # Extracts details from a v2error message
@@ -163,7 +167,7 @@ module Google
         def extract_v2_error_details(error)
           reason = error['status']
           message = error['message']
-          return [reason, message]
+          [reason, message]
         end
 
         # Convert field names from ruby conventions to original names in JSON
@@ -174,8 +178,8 @@ module Google
         #   Updated header value
         def normalize_fields_param(fields)
           # TODO: Generate map of parameter names during code gen. Small possibility that camelization fails
-          fields.gsub(/:/, '').gsub(/\w+/) do |str|
-            str.gsub(/(?:^|_)([a-z])/){ Regexp.last_match.begin(0) == 0 ? $1 : $1.upcase }
+          fields.delete(':').gsub(/\w+/) do |str|
+            str.gsub(/(?:^|_)([a-z])/) { Regexp.last_match.begin(0) == 0 ? Regexp.last_match(1) : Regexp.last_match(1).upcase }
           end
         end
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://cloudbilling.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Sets or updates the billing account associated with a project. You specify
         # the new billing account by setting the `billing_account_name` in the
         # `ProjectBillingInfo` resource to the resource name of a billing account.
@@ -97,7 +99,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_billing_info(name, project_billing_info_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}/billingInfo', options)
+          command = make_simple_command(:put, 'v1/{+name}/billingInfo', options)
           command.request_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
           command.request_object = project_billing_info_object
           command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
@@ -107,7 +109,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the billing information for a project. The current authenticated user
         # must have [permission to view the
         # project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
@@ -133,7 +135,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_billing_info(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/billingInfo', options)
+          command = make_simple_command(:get, 'v1/{+name}/billingInfo', options)
           command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
           command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
           command.params['name'] = name unless name.nil?
@@ -141,7 +143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a billing account. The current authenticated user
         # must be an [owner of the billing
         # account](https://support.google.com/cloud/answer/4430947).
@@ -166,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.response_class = Google::Apis::CloudbillingV1::BillingAccount
           command.params['name'] = name unless name.nil?
@@ -174,7 +176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the billing accounts that the current authenticated user
         # [owns](https://support.google.com/cloud/answer/4430947).
         # @param [Fixnum] page_size
@@ -202,7 +204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_accounts(page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/billingAccounts', options)
+          command = make_simple_command(:get, 'v1/billingAccounts', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -211,7 +213,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the projects associated with a billing account. The current
         # authenticated user must be an [owner of the billing
         # account](https://support.google.com/cloud/answer/4430947).
@@ -243,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_projects(name, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/projects', options)
+          command = make_simple_command(:get, 'v1/{+name}/projects', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse
           command.params['name'] = name unless name.nil?

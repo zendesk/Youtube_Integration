@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://analyticsreporting.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Returns the Analytics data.
         # @param [Google::Apis::AnalyticsreportingV4::GetReportsRequest] get_reports_request_object
         # @param [String] quota_user
@@ -67,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_reports(get_reports_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/reports:batchGet', options)
+          command = make_simple_command(:post, 'v4/reports:batchGet', options)
           command.request_representation = Google::Apis::AnalyticsreportingV4::GetReportsRequest::Representation
           command.request_object = get_reports_request_object
           command.response_representation = Google::Apis::AnalyticsreportingV4::GetReportsResponse::Representation

@@ -1,41 +1,43 @@
+# frozen_string_literal: true
+
 module Controllers
-	module ChannelbackController
-		## 
-		# Takes the data provided by Zendesk and converts it into a comment using the Youtube API
-        # 
-		def self.registered(app)
-			app.post '/channelback' do
-				metadata = JSON.parse(params[:metadata])
-				client_opts = JSON.parse(metadata["credentials"])
-				auth_client = Signet::OAuth2::Client.new(client_opts)
-				auth_client.fetch_access_token! 							# Refreshes my access token
-				service = Google::Apis::YoutubeV3::YouTubeService.new
-				service.authorization = auth_client							# Sets authentication
-				
-				message = params[:message]
-				parent_id = params[:parent_id]
-				video_id = parent_id.partition('&lc=').first
-				parent_id = parent_id.partition('&lc=').last.partition('.').first
+  module ChannelbackController
+    ##
+    # Takes the data provided by Zendesk and converts it into a comment using the Youtube API
+    #
+    def self.registered(app)
+      app.post '/channelback' do
+        metadata = JSON.parse(params[:metadata])
+        client_opts = JSON.parse(metadata['credentials'])
+        auth_client = Signet::OAuth2::Client.new(client_opts)
+        auth_client.fetch_access_token!	# Refreshes my access token
+        service = Google::Apis::YoutubeV3::YouTubeService.new
+        service.authorization = auth_client	# Sets authentication
 
-				comment = ChannelbackController.create_comment(parent_id, message)
-				response = service.insert_comment('snippet', comment).to_json
+        message = params[:message]
+        parent_id = params[:parent_id]
+        video_id = parent_id.partition('&lc=').first
+        parent_id = parent_id.partition('&lc=').last.partition('.').first
 
-				comment_id = JSON.parse(response).fetch('id')
-				external_id = "#{video_id}&lc=#{comment_id}"
-				
-				{
-				  "external_id": external_id,
-				  "allow_channelback": true
-				}.to_json
-			end
-		end
+        comment = ChannelbackController.create_comment(parent_id, message)
+        response = service.insert_comment('snippet', comment).to_json
 
-		##
-		# Creates a Comment Resource using only the parent_id and message parameters.
-		#
-		def self.create_comment(parent_id, message)
-			snippet = Google::Apis::YoutubeV3::CommentSnippet.new(parent_id: parent_id, text_original: message)
-			return Google::Apis::YoutubeV3::Comment.new(snippet: snippet)
-		end
-	end
+        comment_id = JSON.parse(response).fetch('id')
+        external_id = "#{video_id}&lc=#{comment_id}"
+
+        {
+          "external_id": external_id,
+          "allow_channelback": true
+        }.to_json
+      end
+    end
+
+    ##
+    # Creates a Comment Resource using only the parent_id and message parameters.
+    #
+    def self.create_comment(parent_id, message)
+      snippet = Google::Apis::YoutubeV3::CommentSnippet.new(parent_id: parent_id, text_original: message)
+      Google::Apis::YoutubeV3::Comment.new(snippet: snippet)
+    end
+  end
 end

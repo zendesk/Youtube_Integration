@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'appsactivity/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Returns a list of activities visible to the current logged in user. Visible
         # activities are determined by the visiblity settings of the object that was
         # acted on, e.g. Drive files a user can see. An activity is a record of past
@@ -100,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(drive_ancestor_id: nil, drive_file_id: nil, grouping_strategy: nil, page_size: nil, page_token: nil, source: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activities', options)
+          command = make_simple_command(:get, 'activities', options)
           command.response_representation = Google::Apis::AppsactivityV1::ListActivitiesResponse::Representation
           command.response_class = Google::Apis::AppsactivityV1::ListActivitiesResponse
           command.query['drive.ancestorId'] = drive_ancestor_id unless drive_ancestor_id.nil?

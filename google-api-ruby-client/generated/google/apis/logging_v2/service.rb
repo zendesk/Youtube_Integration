@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +48,7 @@ module Google
           super('https://logging.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -77,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -85,7 +87,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
@@ -121,7 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -131,7 +133,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sink. If the sink has a unique writer_identity, then that service
         # account is also deleted.
         # @param [String] sink_name
@@ -160,7 +162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -168,7 +170,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sinks.
         # @param [String] parent
         #   Required. The parent resource whose sinks are to be listed:
@@ -203,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_sinks(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -213,7 +215,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a sink.
         # @param [String] sink_name
         #   Required. The resource name of the sink:
@@ -240,7 +242,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -248,7 +250,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a sink. If the named sink doesn't exist, then this method is identical
         # to sinks.create. If the named sink does exist, then this method replaces the
         # following fields in the existing sink with values from the new sink:
@@ -292,7 +294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -303,7 +305,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a sink that exports specified log entries to a destination. The export
         # of newly-ingested log entries begins immediately, unless the current time is
         # outside the sink's start and end times or the sink's writer_identity is not
@@ -345,7 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -356,7 +358,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the metric to delete:
@@ -379,7 +381,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+metricName}', options)
+          command = make_simple_command(:delete, 'v2/{+metricName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['metricName'] = metric_name unless metric_name.nil?
@@ -387,7 +389,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists logs-based metrics.
         # @param [String] parent
         #   Required. The name of the project containing the metrics:
@@ -419,7 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_metrics(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/metrics', options)
+          command = make_simple_command(:get, 'v2/{+parent}/metrics', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogMetricsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogMetricsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -429,7 +431,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the desired metric:
@@ -452,7 +454,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+metricName}', options)
+          command = make_simple_command(:get, 'v2/{+metricName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.response_class = Google::Apis::LoggingV2::LogMetric
           command.params['metricName'] = metric_name unless metric_name.nil?
@@ -460,7 +462,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the metric to update:
@@ -487,7 +489,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_metric(metric_name, log_metric_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+metricName}', options)
+          command = make_simple_command(:put, 'v2/{+metricName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.request_object = log_metric_object
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
@@ -497,7 +499,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a logs-based metric.
         # @param [String] parent
         #   The resource name of the project in which to create the metric:
@@ -522,7 +524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_metric(parent, log_metric_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/metrics', options)
+          command = make_simple_command(:post, 'v2/{+parent}/metrics', options)
           command.request_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.request_object = log_metric_object
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
@@ -532,7 +534,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -563,7 +565,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_billing_account_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -571,7 +573,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
@@ -607,7 +609,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -617,7 +619,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sinks.
         # @param [String] parent
         #   Required. The parent resource whose sinks are to be listed:
@@ -652,7 +654,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_sinks(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -662,7 +664,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a sink.
         # @param [String] sink_name
         #   Required. The resource name of the sink:
@@ -689,7 +691,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -697,7 +699,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a sink. If the named sink doesn't exist, then this method is identical
         # to sinks.create. If the named sink does exist, then this method replaces the
         # following fields in the existing sink with values from the new sink:
@@ -741,7 +743,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_billing_account_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -752,7 +754,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a sink that exports specified log entries to a destination. The export
         # of newly-ingested log entries begins immediately, unless the current time is
         # outside the sink's start and end times or the sink's writer_identity is not
@@ -794,7 +796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_billing_account_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -805,7 +807,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sink. If the sink has a unique writer_identity, then that service
         # account is also deleted.
         # @param [String] sink_name
@@ -834,7 +836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_billing_account_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -842,7 +844,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -873,7 +875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -881,7 +883,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
@@ -917,7 +919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -927,7 +929,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sink. If the sink has a unique writer_identity, then that service
         # account is also deleted.
         # @param [String] sink_name
@@ -956,7 +958,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -964,7 +966,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sinks.
         # @param [String] parent
         #   Required. The parent resource whose sinks are to be listed:
@@ -999,7 +1001,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_sinks(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1009,7 +1011,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a sink.
         # @param [String] sink_name
         #   Required. The resource name of the sink:
@@ -1036,7 +1038,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1044,7 +1046,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a sink. If the named sink doesn't exist, then this method is identical
         # to sinks.create. If the named sink does exist, then this method replaces the
         # following fields in the existing sink with values from the new sink:
@@ -1088,7 +1090,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_folder_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1099,7 +1101,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a sink that exports specified log entries to a destination. The export
         # of newly-ingested log entries begins immediately, unless the current time is
         # outside the sink's start and end times or the sink's writer_identity is not
@@ -1141,7 +1143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_folder_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1152,7 +1154,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the descriptors for monitored resource types used by Stackdriver Logging.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
@@ -1181,7 +1183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_monitored_resource_descriptors(page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/monitoredResourceDescriptors', options)
+          command = make_simple_command(:get, 'v2/monitoredResourceDescriptors', options)
           command.response_representation = Google::Apis::LoggingV2::ListMonitoredResourceDescriptorsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListMonitoredResourceDescriptorsResponse
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1190,7 +1192,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
@@ -1226,7 +1228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1236,7 +1238,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -1267,7 +1269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -1275,7 +1277,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sinks.
         # @param [String] parent
         #   Required. The parent resource whose sinks are to be listed:
@@ -1310,7 +1312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_sinks(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1320,7 +1322,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a sink.
         # @param [String] sink_name
         #   Required. The resource name of the sink:
@@ -1347,7 +1349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1355,7 +1357,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a sink. If the named sink doesn't exist, then this method is identical
         # to sinks.create. If the named sink does exist, then this method replaces the
         # following fields in the existing sink with values from the new sink:
@@ -1399,7 +1401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1410,7 +1412,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a sink that exports specified log entries to a destination. The export
         # of newly-ingested log entries begins immediately, unless the current time is
         # outside the sink's start and end times or the sink's writer_identity is not
@@ -1452,7 +1454,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1463,7 +1465,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sink. If the sink has a unique writer_identity, then that service
         # account is also deleted.
         # @param [String] sink_name
@@ -1492,7 +1494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1500,7 +1502,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists log entries. Use this method to retrieve log entries from Stackdriver
         # Logging. For ways to export log entries, see Exporting Logs.
         # @param [Google::Apis::LoggingV2::ListLogEntriesRequest] list_log_entries_request_object
@@ -1522,7 +1524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_entry_log_entries(list_log_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/entries:list', options)
+          command = make_simple_command(:post, 'v2/entries:list', options)
           command.request_representation = Google::Apis::LoggingV2::ListLogEntriesRequest::Representation
           command.request_object = list_log_entries_request_object
           command.response_representation = Google::Apis::LoggingV2::ListLogEntriesResponse::Representation
@@ -1531,7 +1533,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Writes log entries to Stackdriver Logging.
         # @param [Google::Apis::LoggingV2::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] fields
@@ -1552,7 +1554,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def write_entry_log_entries(write_log_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/entries:write', options)
+          command = make_simple_command(:post, 'v2/entries:write', options)
           command.request_representation = Google::Apis::LoggingV2::WriteLogEntriesRequest::Representation
           command.request_object = write_log_entries_request_object
           command.response_representation = Google::Apis::LoggingV2::WriteLogEntriesResponse::Representation

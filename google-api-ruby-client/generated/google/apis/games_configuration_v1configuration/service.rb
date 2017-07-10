@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'games/v1configuration/')
           @batch_path = 'batch'
         end
-        
+
         # Delete the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -78,14 +80,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_achievement_configuration(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'achievements/{achievementId}', options)
+          command = make_simple_command(:delete, 'achievements/{achievementId}', options)
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -111,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_achievement_configuration(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'achievements/{achievementId}', options)
+          command = make_simple_command(:get, 'achievements/{achievementId}', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
@@ -120,7 +122,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new achievement configuration in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -147,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_achievement_configuration(application_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'applications/{applicationId}/achievements', options)
+          command = make_simple_command(:post, 'applications/{applicationId}/achievements', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.request_object = achievement_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
@@ -158,7 +160,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of the achievement configurations in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -190,7 +192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_achievement_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'applications/{applicationId}/achievements', options)
+          command = make_simple_command(:get, 'applications/{applicationId}/achievements', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -201,7 +203,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the achievement configuration with the given ID. This
         # method supports patch semantics.
         # @param [String] achievement_id
@@ -229,7 +231,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_achievement_configuration(achievement_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'achievements/{achievementId}', options)
+          command = make_simple_command(:patch, 'achievements/{achievementId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.request_object = achievement_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
@@ -240,7 +242,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -267,7 +269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_achievement_configuration(achievement_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'achievements/{achievementId}', options)
+          command = make_simple_command(:put, 'achievements/{achievementId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.request_object = achievement_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
@@ -278,7 +280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads an image for a resource with the given ID and image type.
         # @param [String] resource_id
         #   The ID of the resource used by this method.
@@ -311,7 +313,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_image_configuration(resource_id, image_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'images/{resourceId}/imageType/{imageType}', options)
+            command = make_simple_command(:post, 'images/{resourceId}/imageType/{imageType}', options)
           else
             command = make_upload_command(:post, 'images/{resourceId}/imageType/{imageType}', options)
             command.upload_source = upload_source
@@ -326,7 +328,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -352,14 +354,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'leaderboards/{leaderboardId}', options)
+          command = make_simple_command(:delete, 'leaderboards/{leaderboardId}', options)
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -385,7 +387,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'leaderboards/{leaderboardId}', options)
+          command = make_simple_command(:get, 'leaderboards/{leaderboardId}', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
@@ -394,7 +396,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new leaderboard configuration in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -421,7 +423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_leaderboard_configuration(application_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'applications/{applicationId}/leaderboards', options)
+          command = make_simple_command(:post, 'applications/{applicationId}/leaderboards', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.request_object = leaderboard_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
@@ -432,7 +434,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of the leaderboard configurations in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -464,7 +466,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_leaderboard_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'applications/{applicationId}/leaderboards', options)
+          command = make_simple_command(:get, 'applications/{applicationId}/leaderboards', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -475,7 +477,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the leaderboard configuration with the given ID. This
         # method supports patch semantics.
         # @param [String] leaderboard_id
@@ -503,7 +505,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_leaderboard_configuration(leaderboard_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'leaderboards/{leaderboardId}', options)
+          command = make_simple_command(:patch, 'leaderboards/{leaderboardId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.request_object = leaderboard_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
@@ -514,7 +516,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -541,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_leaderboard_configuration(leaderboard_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'leaderboards/{leaderboardId}', options)
+          command = make_simple_command(:put, 'leaderboards/{leaderboardId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.request_object = leaderboard_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation

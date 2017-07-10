@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,11 +33,11 @@ module Samples
       drive = Drive::DriveService.new
       drive.authorization = user_credentials_for(Drive::AUTH_DRIVE)
 
-      metadata  = {
+      metadata = {
         name: options[:name] || file
       }
       result = drive.create_file(metadata, upload_source: file)
-      say "Upload complete"
+      say 'Upload complete'
     end
 
     desc 'download FILE_ID', 'Download a file from Google Drive'
@@ -71,11 +73,7 @@ module Samples
 
         result.files.each { |file| puts "#{file.id}, #{file.name}" }
         limit -= result.files.length
-        if result.next_page_token
-          page_token = result.next_page_token
-        else
-          page_token = nil
-        end
+        page_token = (result.next_page_token if result.next_page_token)
       end while !page_token.nil? && limit > 0
     end
   end

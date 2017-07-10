@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +54,7 @@ module Google
           super('https://www.googleapis.com/', 'cloudmonitoring/v2beta2/projects/')
           @batch_path = 'batch'
         end
-        
+
         # Create a new metric.
         # @param [String] project
         #   The project id. The value can be the numeric project ID or string-based
@@ -80,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_metric_descriptor(project, metric_descriptor_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/metricDescriptors', options)
+          command = make_simple_command(:post, '{project}/metricDescriptors', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptor::Representation
           command.request_object = metric_descriptor_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptor::Representation
@@ -91,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an existing metric.
         # @param [String] project
         #   The project ID to which the metric belongs.
@@ -119,7 +121,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_metric_descriptor(project, metric, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/metricDescriptors/{metric}', options)
+          command = make_simple_command(:delete, '{project}/metricDescriptors/{metric}', options)
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::DeleteMetricDescriptorResponse::Representation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::DeleteMetricDescriptorResponse
           command.params['project'] = project unless project.nil?
@@ -129,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List metric descriptors that match the query. If the query is not set, then
         # all of the metric descriptors will be returned. Large responses will be
         # paginated, use the nextPageToken returned in the response to request
@@ -174,7 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metric_descriptors(project, list_metric_descriptors_request_object = nil, count: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/metricDescriptors', options)
+          command = make_simple_command(:get, '{project}/metricDescriptors', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsRequest::Representation
           command.request_object = list_metric_descriptors_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsResponse::Representation
@@ -188,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the data points of the time series that match the metric and labels
         # values and that have data points in the interval. Large responses are
         # paginated; use the nextPageToken returned in the response to request
@@ -213,7 +215,7 @@ module Google
         #   results.
         # @param [Array<String>, String] labels
         #   A collection of labels for the matching time series, which are represented as:
-        #   
+        #
         #   - key==value: key equals the value
         #   - key=~value: key regex matches the value
         #   - key!=value: key does not equal the value
@@ -271,7 +273,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeseries(project, metric, youngest, list_timeseries_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/timeseries/{metric}', options)
+          command = make_simple_command(:get, '{project}/timeseries/{metric}', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest::Representation
           command.request_object = list_timeseries_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesResponse::Representation
@@ -291,7 +293,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Put data points to one or more time series for one or more metrics. If a time
         # series does not exist, a new time series will be created. It is not allowed to
         # write a time series point that is older than the existing youngest point of
@@ -325,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def write_timeseries(project, write_timeseries_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/timeseries:write', options)
+          command = make_simple_command(:post, '{project}/timeseries:write', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesRequest::Representation
           command.request_object = write_timeseries_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesResponse::Representation
@@ -336,7 +338,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the descriptors of the time series that match the metric and labels
         # values and that have data points in the interval. Large responses are
         # paginated; use the nextPageToken returned in the response to request
@@ -361,7 +363,7 @@ module Google
         #   not specified, count = 100.
         # @param [Array<String>, String] labels
         #   A collection of labels for the matching time series, which are represented as:
-        #   
+        #
         #   - key==value: key equals the value
         #   - key=~value: key regex matches the value
         #   - key!=value: key does not equal the value
@@ -419,7 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeseries_descriptors(project, metric, youngest, list_timeseries_descriptors_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/timeseriesDescriptors/{metric}', options)
+          command = make_simple_command(:get, '{project}/timeseriesDescriptors/{metric}', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest::Representation
           command.request_object = list_timeseries_descriptors_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsResponse::Representation

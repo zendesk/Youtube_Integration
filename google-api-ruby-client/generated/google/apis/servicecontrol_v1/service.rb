@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +49,7 @@ module Google
           super('https://servicecontrol.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Releases previously allocated quota done through AllocateQuota method.
         # This method requires the `servicemanagement.services.quota`
         # permission on the specified service. For more information, see
@@ -83,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def release_service_quota(service_name, release_quota_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:releaseQuota', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:releaseQuota', options)
           command.request_representation = Google::Apis::ServicecontrolV1::ReleaseQuotaRequest::Representation
           command.request_object = release_quota_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::ReleaseQuotaResponse::Representation
@@ -93,7 +95,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Signals the quota controller that service ends the ongoing usage
         # reconciliation.
         # This method requires the `servicemanagement.services.quota`
@@ -122,7 +124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def end_service_reconciliation(service_name, end_reconciliation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:endReconciliation', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:endReconciliation', options)
           command.request_representation = Google::Apis::ServicecontrolV1::EndReconciliationRequest::Representation
           command.request_object = end_reconciliation_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::EndReconciliationResponse::Representation
@@ -132,7 +134,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Reports operation results to Google Service Control, such as logs and
         # metrics. It should be called after an operation is completed.
         # If feasible, the client should aggregate reporting data for up to 5
@@ -167,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def report_service(service_name, report_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:report', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:report', options)
           command.request_representation = Google::Apis::ServicecontrolV1::ReportRequest::Representation
           command.request_object = report_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::ReportResponse::Representation
@@ -177,7 +179,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Attempts to allocate quota for the specified consumer. It should be called
         # before the operation is executed.
         # This method requires the `servicemanagement.services.quota`
@@ -214,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def allocate_service_quota(service_name, allocate_quota_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
           command.request_representation = Google::Apis::ServicecontrolV1::AllocateQuotaRequest::Representation
           command.request_object = allocate_quota_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::AllocateQuotaResponse::Representation
@@ -224,7 +226,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Unlike rate quota, allocation quota does not get refilled periodically.
         # So, it is possible that the quota usage as seen by the service differs from
         # what the One Platform considers the usage is. This is expected to happen
@@ -271,7 +273,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_service_reconciliation(service_name, start_reconciliation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:startReconciliation', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:startReconciliation', options)
           command.request_representation = Google::Apis::ServicecontrolV1::StartReconciliationRequest::Representation
           command.request_object = start_reconciliation_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::StartReconciliationResponse::Representation
@@ -281,7 +283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Checks an operation with Google Service Control to decide whether
         # the given operation should proceed. It should be called before the
         # operation is executed.
@@ -315,7 +317,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_service(service_name, check_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:check', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:check', options)
           command.request_representation = Google::Apis::ServicecontrolV1::CheckRequest::Representation
           command.request_object = check_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::CheckResponse::Representation

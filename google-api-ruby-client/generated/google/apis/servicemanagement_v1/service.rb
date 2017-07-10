@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +50,7 @@ module Google
           super('https://servicemanagement.googleapis.com/', '')
           @batch_path = 'batch'
         end
-        
+
         # Lists service operations that match the specified filter in the request.
         # @param [String] name
         #   Not used.
@@ -93,7 +95,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name: nil, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
+          command = make_simple_command(:get, 'v1/operations', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListOperationsResponse
           command.query['name'] = name unless name.nil?
@@ -104,7 +106,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -128,7 +130,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['name'] = name unless name.nil?
@@ -136,7 +138,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists managed services.
         # Returns all public services. For authenticated users, also returns all
         # services the calling user has "servicemanagement.services.get" permission
@@ -174,7 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_services(consumer_id: nil, page_token: nil, page_size: nil, producer_project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services', options)
+          command = make_simple_command(:get, 'v1/services', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServicesResponse
           command.query['consumerId'] = consumer_id unless consumer_id.nil?
@@ -185,7 +187,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new managed service.
         # Please note one producer project can own no more than 20 services.
         # Operation<response: ManagedService>
@@ -208,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service(managed_service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services', options)
+          command = make_simple_command(:post, 'v1/services', options)
           command.request_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
           command.request_object = managed_service_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -217,7 +219,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates and returns a report (errors, warnings and changes from
         # existing configurations) associated with
         # GenerateConfigReportRequest.new_value
@@ -247,7 +249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_service_config_report(generate_config_report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services:generateConfigReport', options)
+          command = make_simple_command(:post, 'v1/services:generateConfigReport', options)
           command.request_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportRequest::Representation
           command.request_object = generate_config_report_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse::Representation
@@ -256,7 +258,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a managed service. Authentication is required unless the service is
         # public.
         # @param [String] service_name
@@ -280,7 +282,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ManagedService
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -288,7 +290,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -317,7 +319,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_service_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsResponse::Representation
@@ -327,7 +329,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)
@@ -355,7 +357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_configuration(service_name, config_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/config', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/config', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Service
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -365,7 +367,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enables a service for a project, so it can be used
         # for the project. See
         # [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
@@ -393,7 +395,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_service(service_name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:enable', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:enable', options)
           command.request_representation = Google::Apis::ServicemanagementV1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -403,7 +405,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a managed service. This method will change the service to the
         # `Soft-Delete` state for 30 days. Within this period, service producers may
         # call UndeleteService to restore the service.
@@ -430,7 +432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/services/{serviceName}', options)
+          command = make_simple_command(:delete, 'v1/services/{serviceName}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -438,7 +440,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -463,7 +465,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_service_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -473,7 +475,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Disables a service for a project, so it can no longer be
         # be used for the project. It prevents accidental usage that may cause
         # unexpected billing charges or security leaks.
@@ -500,7 +502,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_service(service_name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:disable', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:disable', options)
           command.request_representation = Google::Apis::ServicemanagementV1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -510,7 +512,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -536,7 +538,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -546,7 +548,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revives a previously deleted managed service. The method restores the
         # service using the configuration at the time the service was deleted.
         # The target service must exist and must have been deleted within the
@@ -573,7 +575,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:undelete', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:undelete', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -581,7 +583,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -617,7 +619,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -652,7 +654,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -681,7 +683,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_consumer_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsResponse::Representation
@@ -691,7 +693,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the history of the service configuration rollouts for a managed
         # service, from the newest to the oldest.
         # @param [String] service_name
@@ -728,7 +730,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_rollouts(service_name, page_size: nil, filter: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -739,7 +741,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a service configuration rollout.
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)
@@ -764,7 +766,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_rollout(service_name, rollout_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Rollout
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -773,7 +775,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new service configuration rollout. Based on rollout, the
         # Google Service Management will roll out the service configurations to
         # different backend services. For example, the logging configuration will be
@@ -804,7 +806,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service_rollout(service_name, rollout_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
           command.request_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
           command.request_object = rollout_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -814,7 +816,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the history of the service configuration for a managed service,
         # from the newest to the oldest.
         # @param [String] service_name
@@ -842,7 +844,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_configs(service_name, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/configs', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/configs', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServiceConfigsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServiceConfigsResponse
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -852,7 +854,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)
@@ -880,7 +882,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_config(service_name, config_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/configs/{configId}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/configs/{configId}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Service
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -890,7 +892,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new service configuration (version) for a managed service.
         # This method only stores the service configuration. To roll out the service
         # configuration to backend systems please call
@@ -917,7 +919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service_config(service_name, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/configs', options)
           command.request_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
@@ -927,7 +929,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new service configuration (version) for a managed service based
         # on
         # user-supplied configuration source files (for example: OpenAPI
@@ -958,7 +960,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_config_source(service_name, submit_config_source_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
           command.request_representation = Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest::Representation
           command.request_object = submit_config_source_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation

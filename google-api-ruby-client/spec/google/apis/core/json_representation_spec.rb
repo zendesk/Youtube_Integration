@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -130,12 +132,11 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       model.child.value = 'child'
       model.children = [model.child]
       model.nil_date_value = nil
-      model.big_value = 1208925819614629174706176
+      model.big_value = 1_208_925_819_614_629_174_706_176
       model
     end
 
     include_examples 'it serializes'
-
   end
 
   context 'with hash' do
@@ -150,7 +151,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
         boolean_value_true: true,
         boolean_value_false: false,
         bytes_value: 'Hello world',
-        big_value: 1208925819614629174706176,
+        big_value: 1_208_925_819_614_629_174_706_176,
         items: [1, 2, 3],
         child: {
           value: 'child'
@@ -165,19 +166,19 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   context 'when de-serializing' do
     let(:model) { representer_class.new(model_class.new).from_json(json) }
     let(:json) do
-      json = <<EOF
-{ "stringValue": "test",
-  "nilValue": null,
-  "booleanValueTrue": true,
-  "booleanValueFalse": false,
-  "numericValue": 123,
-  "dateValue": "2015-05-01T12:00:00+00:00",
-  "bytesValue": "SGVsbG8gd29ybGQ=",
-  "bigValue": "1208925819614629174706176",
-  "items": [1,2,3],
-  "child": {"value" : "hello"},
-  "children": [{"value" : "hello"}]
-}
+      json = <<~EOF
+        { "stringValue": "test",
+          "nilValue": null,
+          "booleanValueTrue": true,
+          "booleanValueFalse": false,
+          "numericValue": 123,
+          "dateValue": "2015-05-01T12:00:00+00:00",
+          "bytesValue": "SGVsbG8gd29ybGQ=",
+          "bigValue": "1208925819614629174706176",
+          "items": [1,2,3],
+          "child": {"value" : "hello"},
+          "children": [{"value" : "hello"}]
+        }
 EOF
     end
 
@@ -215,8 +216,7 @@ EOF
     end
 
     it 'deserializes numeric strings' do
-      expect(model.big_value).to eql 1208925819614629174706176
+      expect(model.big_value).to eql 1_208_925_819_614_629_174_706_176
     end
-
   end
 end

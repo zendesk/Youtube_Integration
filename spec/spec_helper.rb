@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rack/test'
 require 'rspec'
 
@@ -7,10 +9,10 @@ Bundler.require
 require_relative '../app'
 
 module RSpecMixin
-	include Rack::Test::Methods
-	def app
-		YoutubeIntegration
-	end
+  include Rack::Test::Methods
+  def app
+    YoutubeIntegration
+  end
 end
 
 RSpec.configure { |c| c.include RSpecMixin }

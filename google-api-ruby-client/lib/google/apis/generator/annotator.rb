@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +27,6 @@ require 'addressable/uri'
 
 module Google
   module Apis
-
     # @private
     class Generator
 
@@ -44,7 +45,7 @@ module Google
         def initialize(file_path = nil)
           if file_path
             logger.info { sprintf('Loading API names from %s', file_path) }
-            @names = YAML.load(File.read(file_path)) || {}
+            @names = YAML.safe_load(File.read(file_path)) || {}
           else
             @names = {}
           end
@@ -115,10 +116,10 @@ module Google
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
           return nil unless name == verb || name.start_with?(verb + '_')
-          if !parts.empty?
+          unless parts.empty?
             resource_name = ActiveSupport::Inflector.singularize(parts.pop)
             resource_name = ActiveSupport::Inflector.underscore(resource_name)
-            if !name.include?(resource_name)
+            unless name.include?(resource_name)
               name = name.split('_').insert(1, resource_name).join('_')
             end
           end
@@ -135,19 +136,19 @@ module Google
           verb = ActiveSupport::Inflector.underscore(parts.pop)
           return verb if parts.empty?
           resource_name = ActiveSupport::Inflector.underscore(parts.pop)
-          if pluralize_method?(verb)
-            resource_name = ActiveSupport::Inflector.pluralize(resource_name)
-          else
-            resource_name = ActiveSupport::Inflector.singularize(resource_name)
-          end
-          if parts.empty?
-            resource_path = resource_name
-          else
-            resource_path = parts.map do |p|
-              p = ActiveSupport::Inflector.singularize(p)
-              ActiveSupport::Inflector.underscore(p)
-            end.join('_') + '_' + resource_name
-          end
+          resource_name = if pluralize_method?(verb)
+                            ActiveSupport::Inflector.pluralize(resource_name)
+                          else
+                            ActiveSupport::Inflector.singularize(resource_name)
+                          end
+          resource_path = if parts.empty?
+                            resource_name
+                          else
+                            parts.map do |p|
+                              p = ActiveSupport::Inflector.singularize(p)
+                              ActiveSupport::Inflector.underscore(p)
+                            end.join('_') + '_' + resource_name
+                          end
           method_name = verb.split('_').insert(1, resource_path.split('_')).join('_')
           method_name
         end
@@ -162,8 +163,8 @@ module Google
         include Google::Apis::Core::Logging
 
         # Don't expose these in the API directly.
-        PARAMETER_BLACKLIST = %w(alt access_token bearer_token oauth_token pp prettyPrint
-                                 $.xgafv callback upload_protocol uploadType)
+        PARAMETER_BLACKLIST = %w[alt access_token bearer_token oauth_token pp prettyPrint
+                                 $.xgafv callback upload_protocol uploadType].freeze
 
         # Prepare the API for the templates.
         # @param [Google::Apis::DiscoveryV1::RestDescription] description
@@ -199,9 +200,9 @@ module Google
             @rest_description.parameters.reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
             annotate_parameters(@rest_description.parameters)
             annotate_resource(@rest_description.name, @rest_description)
-            @rest_description.schemas.each do |k, v|
+            @rest_description.schemas&.each do |k, v|
               annotate_type(k, v, @rest_description)
-            end unless @rest_description.schemas.nil?
+            end
           end
           resolve_type_references
           resolve_variants
@@ -218,9 +219,9 @@ module Google
             end
             type.parent = parent
             @deferred_types << type if type._ref
-            type.properties.each do |k, v|
+            type.properties&.each do |k, v|
               annotate_type(k, v, type)
-            end unless type.properties.nil?
+            end
             if type.additional_properties
               type.type = 'hash'
               annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.additional_properties,
@@ -233,13 +234,13 @@ module Google
         def annotate_resource(name, resource, parent_resource = nil)
           @strip_prefixes << name
           resource.parent = parent_resource unless parent_resource.nil?
-          resource.api_methods.each do |_k, v|
+          resource.api_methods&.each do |_k, v|
             annotate_method(v, resource)
-          end unless resource.api_methods.nil?
+          end
 
-          resource.resources.each do |k, v|
+          resource.resources&.each do |k, v|
             annotate_resource(k, v, resource)
-          end unless resource.resources.nil?
+          end
         end
 
         def annotate_method(method, parent_resource = nil)
@@ -252,21 +253,21 @@ module Google
         end
 
         def annotate_parameters(parameters)
-          parameters.each do |key, value|
+          parameters&.each do |key, value|
             @names.with_path(key) do
               value.name = key
               value.generated_name = @names.infer_parameter_name
               @deferred_types << value if value._ref
             end
-          end unless parameters.nil?
+          end
         end
 
         def resolve_type_references
           @deferred_types.each do |type|
             if type._ref
               ref = @rest_description.schemas[type._ref]
-              ivars = ref.instance_variables - [:@name, :@generated_name]
-              (ivars).each do |var|
+              ivars = ref.instance_variables - %i[@name @generated_name]
+              ivars.each do |var|
                 type.instance_variable_set(var, ref.instance_variable_get(var))
               end
             end
@@ -290,9 +291,9 @@ module Google
           if @all_methods.include?(m.generated_name)
             logger.error do
               sprintf('Duplicate method %s generated, conflicting paths %s and %s',
-                m.generated_name, @names.key, @all_methods[m.generated_name])
+                      m.generated_name, @names.key, @all_methods[m.generated_name])
             end
-            fail 'Duplicate name generated'
+            raise 'Duplicate name generated'
           end
           @all_methods[m.generated_name] = @names.key
         end

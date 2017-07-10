@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,257 +23,256 @@ require 'google/apis/errors'
 module Google
   module Apis
     module StorageV1
-      
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Billing
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class CorsConfiguration
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Encryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Lifecycle
           class Representation < Google::Apis::Core::JsonRepresentation; end
-          
+
           class Rule
             class Representation < Google::Apis::Core::JsonRepresentation; end
-            
+
             class Action
               class Representation < Google::Apis::Core::JsonRepresentation; end
-            
+
               include Google::Apis::Core::JsonObjectSupport
             end
-            
+
             class Condition
               class Representation < Google::Apis::Core::JsonRepresentation; end
-            
+
               include Google::Apis::Core::JsonObjectSupport
             end
-          
+
             include Google::Apis::Core::JsonObjectSupport
           end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Logging
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Owner
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Versioning
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Website
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BucketAccessControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class ProjectTeam
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BucketAccessControls
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Buckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ComposeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class SourceObject
           class Representation < Google::Apis::Core::JsonRepresentation; end
-          
+
           class ObjectPreconditions
             class Representation < Google::Apis::Core::JsonRepresentation; end
-          
+
             include Google::Apis::Core::JsonObjectSupport
           end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Notifications
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class CustomerEncryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Owner
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ObjectAccessControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class ProjectTeam
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ObjectAccessControls
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Objects
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Binding
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class RewriteResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Bucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
-      
+
           property :billing, as: 'billing', class: Google::Apis::StorageV1::Bucket::Billing, decorator: Google::Apis::StorageV1::Bucket::Billing::Representation
-      
+
           collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
-      
+
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
-      
+
           property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
-      
+
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Representation
-      
+
           property :location, as: 'location'
           property :logging, as: 'logging', class: Google::Apis::StorageV1::Bucket::Logging, decorator: Google::Apis::StorageV1::Bucket::Logging::Representation
-      
-          property :metageneration, :numeric_string => true, as: 'metageneration'
+
+          property :metageneration, numeric_string: true, as: 'metageneration'
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::Bucket::Owner::Representation
-      
-          property :project_number, :numeric_string => true, as: 'projectNumber'
+
+          property :project_number, numeric_string: true, as: 'projectNumber'
           property :self_link, as: 'selfLink'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
-      
+
           property :updated, as: 'updated', type: DateTime
-      
+
           property :versioning, as: 'versioning', class: Google::Apis::StorageV1::Bucket::Versioning, decorator: Google::Apis::StorageV1::Bucket::Versioning::Representation
-      
+
           property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::Bucket::Website::Representation
-      
+
         end
-        
+
         class Billing
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :requester_pays, as: 'requesterPays'
           end
         end
-        
+
         class CorsConfiguration
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -281,30 +282,30 @@ module Google
             collection :response_header, as: 'responseHeader'
           end
         end
-        
+
         class Encryption
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :default_kms_key_name, as: 'defaultKmsKeyName'
           end
         end
-        
+
         class Lifecycle
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :rule, as: 'rule', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Representation
-        
+
           end
-          
+
           class Rule
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :action, as: 'action', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action::Representation
-          
+
               property :condition, as: 'condition', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Condition, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Condition::Representation
-          
+
             end
-            
+
             class Action
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
@@ -312,13 +313,13 @@ module Google
                 property :type, as: 'type'
               end
             end
-            
+
             class Condition
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :age, as: 'age'
                 property :created_before, as: 'createdBefore', type: Date
-            
+
                 property :is_live, as: 'isLive'
                 collection :matches_storage_class, as: 'matchesStorageClass'
                 property :num_newer_versions, as: 'numNewerVersions'
@@ -326,7 +327,7 @@ module Google
             end
           end
         end
-        
+
         class Logging
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -334,7 +335,7 @@ module Google
             property :log_object_prefix, as: 'logObjectPrefix'
           end
         end
-        
+
         class Owner
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -342,14 +343,14 @@ module Google
             property :entity_id, as: 'entityId'
           end
         end
-        
+
         class Versioning
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :enabled, as: 'enabled'
           end
         end
-        
+
         class Website
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -358,7 +359,7 @@ module Google
           end
         end
       end
-      
+
       class BucketAccessControl
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -371,11 +372,11 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::BucketAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::BucketAccessControl::ProjectTeam::Representation
-      
+
           property :role, as: 'role'
           property :self_link, as: 'selfLink'
         end
-        
+
         class ProjectTeam
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -384,31 +385,31 @@ module Google
           end
         end
       end
-      
+
       class BucketAccessControls
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class Buckets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::Bucket, decorator: Google::Apis::StorageV1::Bucket::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Channel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, :numeric_string => true, as: 'expiration'
+          property :expiration, numeric_string: true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -419,35 +420,35 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class ComposeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
-      
+
           property :kind, as: 'kind'
           collection :source_objects, as: 'sourceObjects', class: Google::Apis::StorageV1::ComposeRequest::SourceObject, decorator: Google::Apis::StorageV1::ComposeRequest::SourceObject::Representation
-      
+
         end
-        
+
         class SourceObject
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :generation, :numeric_string => true, as: 'generation'
+            property :generation, numeric_string: true, as: 'generation'
             property :name, as: 'name'
             property :object_preconditions, as: 'objectPreconditions', class: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions, decorator: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions::Representation
-        
+
           end
-          
+
           class ObjectPreconditions
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :if_generation_match, :numeric_string => true, as: 'ifGenerationMatch'
+              property :if_generation_match, numeric_string: true, as: 'ifGenerationMatch'
             end
           end
         end
       end
-      
+
       class Notification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,21 +463,21 @@ module Google
           property :topic, as: 'topic'
         end
       end
-      
+
       class Notifications
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::Notification, decorator: Google::Apis::StorageV1::Notification::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
-      
+
           property :bucket, as: 'bucket'
           property :cache_control, as: 'cacheControl'
           property :component_count, as: 'componentCount'
@@ -486,32 +487,32 @@ module Google
           property :content_type, as: 'contentType'
           property :crc32c, as: 'crc32c'
           property :customer_encryption, as: 'customerEncryption', class: Google::Apis::StorageV1::Object::CustomerEncryption, decorator: Google::Apis::StorageV1::Object::CustomerEncryption::Representation
-      
+
           property :etag, as: 'etag'
-          property :generation, :numeric_string => true, as: 'generation'
+          property :generation, numeric_string: true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :kms_key_name, as: 'kmsKeyName'
           property :md5_hash, as: 'md5Hash'
           property :media_link, as: 'mediaLink'
           hash :metadata, as: 'metadata'
-          property :metageneration, :numeric_string => true, as: 'metageneration'
+          property :metageneration, numeric_string: true, as: 'metageneration'
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
-      
+
           property :self_link, as: 'selfLink'
-          property :size, :numeric_string => true, as: 'size'
+          property :size, numeric_string: true, as: 'size'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
-      
+
           property :time_deleted, as: 'timeDeleted', type: DateTime
-      
+
           property :time_storage_class_updated, as: 'timeStorageClassUpdated', type: DateTime
-      
+
           property :updated, as: 'updated', type: DateTime
-      
+
         end
-        
+
         class CustomerEncryption
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -519,7 +520,7 @@ module Google
             property :key_sha256, as: 'keySha256'
           end
         end
-        
+
         class Owner
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -528,7 +529,7 @@ module Google
           end
         end
       end
-      
+
       class ObjectAccessControl
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -538,16 +539,16 @@ module Google
           property :entity, as: 'entity'
           property :entity_id, as: 'entityId'
           property :etag, as: 'etag'
-          property :generation, :numeric_string => true, as: 'generation'
+          property :generation, numeric_string: true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :object, as: 'object'
           property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam::Representation
-      
+
           property :role, as: 'role'
           property :self_link, as: 'selfLink'
         end
-        
+
         class ProjectTeam
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -556,37 +557,37 @@ module Google
           end
         end
       end
-      
+
       class ObjectAccessControls
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class Objects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :prefixes, as: 'prefixes'
         end
       end
-      
+
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bindings, as: 'bindings', class: Google::Apis::StorageV1::Policy::Binding, decorator: Google::Apis::StorageV1::Policy::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
+
+          property :etag, base64: true, as: 'etag'
           property :kind, as: 'kind'
           property :resource_id, as: 'resourceId'
         end
-        
+
         class Binding
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -595,20 +596,20 @@ module Google
           end
         end
       end
-      
+
       class RewriteResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :done, as: 'done'
           property :kind, as: 'kind'
-          property :object_size, :numeric_string => true, as: 'objectSize'
+          property :object_size, numeric_string: true, as: 'objectSize'
           property :resource, as: 'resource', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
-      
+
           property :rewrite_token, as: 'rewriteToken'
-          property :total_bytes_rewritten, :numeric_string => true, as: 'totalBytesRewritten'
+          property :total_bytes_rewritten, numeric_string: true, as: 'totalBytesRewritten'
         end
       end
-      
+
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -616,7 +617,7 @@ module Google
           property :kind, as: 'kind'
         end
       end
-      
+
       class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

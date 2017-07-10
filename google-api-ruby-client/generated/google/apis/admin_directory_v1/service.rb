@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +55,7 @@ module Google
           super('https://www.googleapis.com/', 'admin/directory/v1/')
           @batch_path = 'batch'
         end
-        
+
         # Delete an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -82,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_asp(user_key, code_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/{userKey}/asps/{codeId}', options)
+          command = make_simple_command(:delete, 'users/{userKey}/asps/{codeId}', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['codeId'] = code_id unless code_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -90,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -119,7 +121,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asp(user_key, code_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/asps/{codeId}', options)
+          command = make_simple_command(:get, 'users/{userKey}/asps/{codeId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Asp::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Asp
           command.params['userKey'] = user_key unless user_key.nil?
@@ -129,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the ASPs issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -156,7 +158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asps(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/asps', options)
+          command = make_simple_command(:get, 'users/{userKey}/asps', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Asps::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Asps
           command.params['userKey'] = user_key unless user_key.nil?
@@ -165,7 +167,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] fields
@@ -190,7 +192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '/admin/directory_v1/channels/stop', options)
+          command = make_simple_command(:post, '/admin/directory_v1/channels/stop', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
@@ -198,7 +200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Take action on Chrome OS Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -227,7 +229,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def action_chromeosdevice(customer_id, resource_id, chrome_os_device_action_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customerId}/devices/chromeos/{resourceId}/action', options)
+          command = make_simple_command(:post, 'customer/{customerId}/devices/chromeos/{resourceId}/action', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDeviceAction::Representation
           command.request_object = chrome_os_device_action_object
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -237,7 +239,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Chrome OS Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -267,7 +269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_chrome_os_device(customer_id, device_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
+          command = make_simple_command(:get, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevice
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -278,7 +280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Chrome OS Devices of a customer (paginated)
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -333,7 +335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Chrome OS Device. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -364,7 +366,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_chrome_os_device(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
+          command = make_simple_command(:patch, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.request_object = chrome_os_device_object
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
@@ -377,7 +379,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Chrome OS Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -408,7 +410,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_chrome_os_device(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
+          command = make_simple_command(:put, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.request_object = chrome_os_device_object
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
@@ -421,7 +423,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a customer.
         # @param [String] customer_key
         #   Id of the customer to be retrieved
@@ -456,7 +458,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a customer. This method supports patch semantics.
         # @param [String] customer_key
         #   Id of the customer to be updated
@@ -483,7 +485,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_customer(customer_key, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customers/{customerKey}', options)
+          command = make_simple_command(:patch, 'customers/{customerKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Customer::Representation
           command.request_object = customer_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Customer::Representation
@@ -494,7 +496,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a customer.
         # @param [String] customer_key
         #   Id of the customer to be updated
@@ -521,7 +523,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_customer(customer_key, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customers/{customerKey}', options)
+          command = make_simple_command(:put, 'customers/{customerKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Customer::Representation
           command.request_object = customer_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Customer::Representation
@@ -532,7 +534,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Domain Alias of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -568,7 +570,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a domain alias of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -596,7 +598,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_domain_alias(customer, domain_alias_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/domainaliases/{domainAliasName}', options)
+          command = make_simple_command(:get, 'customer/{customer}/domainaliases/{domainAliasName}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::DomainAlias::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::DomainAlias
           command.params['customer'] = customer unless customer.nil?
@@ -606,7 +608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a Domain alias of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -644,7 +646,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the domain aliases of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -672,7 +674,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_domain_aliases(customer, parent_domain_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/domainaliases', options)
+          command = make_simple_command(:get, 'customer/{customer}/domainaliases', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::DomainAliases::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::DomainAliases
           command.params['customer'] = customer unless customer.nil?
@@ -682,7 +684,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a domain of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -718,7 +720,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a domain of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -746,7 +748,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_domain(customer, domain_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/domains/{domainName}', options)
+          command = make_simple_command(:get, 'customer/{customer}/domains/{domainName}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Domains::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Domains
           command.params['customer'] = customer unless customer.nil?
@@ -756,7 +758,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a domain of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -794,7 +796,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the domains of the customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -820,7 +822,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_domains(customer, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/domains', options)
+          command = make_simple_command(:get, 'customer/{customer}/domains', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Domains2::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Domains2
           command.params['customer'] = customer unless customer.nil?
@@ -829,7 +831,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete Group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -855,14 +857,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group(group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'groups/{groupKey}', options)
+          command = make_simple_command(:delete, 'groups/{groupKey}', options)
           command.params['groupKey'] = group_key unless group_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -888,7 +890,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group(group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'groups/{groupKey}', options)
+          command = make_simple_command(:get, 'groups/{groupKey}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Group::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Group
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -897,7 +899,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create Group
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
@@ -922,7 +924,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_group(group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'groups', options)
+          command = make_simple_command(:post, 'groups', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Group::Representation
@@ -932,7 +934,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all groups in a domain (paginated)
         # @param [String] customer
         #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
@@ -969,7 +971,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_groups(customer: nil, domain: nil, max_results: nil, page_token: nil, user_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'groups', options)
+          command = make_simple_command(:get, 'groups', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Groups::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Groups
           command.query['customer'] = customer unless customer.nil?
@@ -982,7 +984,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Group. This method supports patch semantics.
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -1010,7 +1012,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_group(group_key, group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'groups/{groupKey}', options)
+          command = make_simple_command(:patch, 'groups/{groupKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Group::Representation
@@ -1021,7 +1023,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Group
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -1049,7 +1051,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_group(group_key, group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'groups/{groupKey}', options)
+          command = make_simple_command(:put, 'groups/{groupKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Group::Representation
@@ -1060,7 +1062,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove a alias for the group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1088,7 +1090,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group_alias(group_key, group_alias, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'groups/{groupKey}/aliases/{alias}', options)
+          command = make_simple_command(:delete, 'groups/{groupKey}/aliases/{alias}', options)
           command.params['groupKey'] = group_key unless group_key.nil?
           command.params['alias'] = group_alias unless group_alias.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1096,7 +1098,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a alias for the group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1123,7 +1125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_group_alias(group_key, alias_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'groups/{groupKey}/aliases', options)
+          command = make_simple_command(:post, 'groups/{groupKey}/aliases', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Alias::Representation
           command.request_object = alias_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Alias::Representation
@@ -1134,7 +1136,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all aliases for a group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1160,7 +1162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_group_aliases(group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'groups/{groupKey}/aliases', options)
+          command = make_simple_command(:get, 'groups/{groupKey}/aliases', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Aliases::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Aliases
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -1169,7 +1171,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove membership.
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1205,7 +1207,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Group Member
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1233,7 +1235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_member(group_key, member_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'groups/{groupKey}/members/{memberKey}', options)
+          command = make_simple_command(:get, 'groups/{groupKey}/members/{memberKey}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Member::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Member
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -1243,7 +1245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add user to the specified group.
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1281,7 +1283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all members in a group (paginated)
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1313,7 +1315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_members(group_key, max_results: nil, page_token: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'groups/{groupKey}/members', options)
+          command = make_simple_command(:get, 'groups/{groupKey}/members', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Members::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Members
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -1325,7 +1327,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update membership of a user in the specified group. This method supports patch
         # semantics.
         # @param [String] group_key
@@ -1357,7 +1359,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_member(group_key, member_key, member_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'groups/{groupKey}/members/{memberKey}', options)
+          command = make_simple_command(:patch, 'groups/{groupKey}/members/{memberKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Member::Representation
           command.request_object = member_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Member::Representation
@@ -1369,7 +1371,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update membership of a user in the specified group.
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -1412,7 +1414,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Take action on Mobile Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1441,7 +1443,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def action_mobile_device(customer_id, resource_id, mobile_device_action_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customerId}/devices/mobile/{resourceId}/action', options)
+          command = make_simple_command(:post, 'customer/{customerId}/devices/mobile/{resourceId}/action', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MobileDeviceAction::Representation
           command.request_object = mobile_device_action_object
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1451,7 +1453,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete Mobile Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1479,7 +1481,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_mobile_device(customer_id, resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customerId}/devices/mobile/{resourceId}', options)
+          command = make_simple_command(:delete, 'customer/{customerId}/devices/mobile/{resourceId}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['resourceId'] = resource_id unless resource_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1487,7 +1489,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Mobile Device
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1517,7 +1519,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_mobile_device(customer_id, resource_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/devices/mobile/{resourceId}', options)
+          command = make_simple_command(:get, 'customer/{customerId}/devices/mobile/{resourceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::MobileDevice::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::MobileDevice
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1528,7 +1530,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Mobile Devices of a customer (paginated)
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1568,7 +1570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_mobile_devices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/devices/mobile', options)
+          command = make_simple_command(:get, 'customer/{customerId}/devices/mobile', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::MobileDevices::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::MobileDevices
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1583,7 +1585,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a notification
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. The customerId is also
@@ -1612,7 +1614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_notification(customer, notification_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customer}/notifications/{notificationId}', options)
+          command = make_simple_command(:delete, 'customer/{customer}/notifications/{notificationId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['notificationId'] = notification_id unless notification_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1620,7 +1622,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a notification.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. The customerId is also
@@ -1649,7 +1651,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_notification(customer, notification_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/notifications/{notificationId}', options)
+          command = make_simple_command(:get, 'customer/{customer}/notifications/{notificationId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Notification::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Notification
           command.params['customer'] = customer unless customer.nil?
@@ -1659,7 +1661,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of notifications.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account.
@@ -1692,7 +1694,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_notifications(customer, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/notifications', options)
+          command = make_simple_command(:get, 'customer/{customer}/notifications', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Notifications::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Notifications
           command.params['customer'] = customer unless customer.nil?
@@ -1704,7 +1706,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a notification. This method supports patch semantics.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account.
@@ -1733,7 +1735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_notification(customer, notification_id, notification_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customer}/notifications/{notificationId}', options)
+          command = make_simple_command(:patch, 'customer/{customer}/notifications/{notificationId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Notification::Representation
           command.request_object = notification_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Notification::Representation
@@ -1745,7 +1747,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a notification.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account.
@@ -1774,7 +1776,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_notification(customer, notification_id, notification_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customer}/notifications/{notificationId}', options)
+          command = make_simple_command(:put, 'customer/{customer}/notifications/{notificationId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Notification::Representation
           command.request_object = notification_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Notification::Representation
@@ -1786,7 +1788,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove Organization Unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1814,7 +1816,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
+          command = make_simple_command(:delete, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1822,7 +1824,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Organization Unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1850,7 +1852,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
+          command = make_simple_command(:get, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1860,7 +1862,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add Organization Unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1887,7 +1889,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_org_unit(customer_id, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customerId}/orgunits', options)
+          command = make_simple_command(:post, 'customer/{customerId}/orgunits', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
@@ -1898,7 +1900,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Organization Units
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1928,7 +1930,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_org_units(customer_id, org_unit_path: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/orgunits', options)
+          command = make_simple_command(:get, 'customer/{customerId}/orgunits', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnits::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnits
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1939,7 +1941,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Organization Unit. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -1968,7 +1970,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
+          command = make_simple_command(:patch, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
@@ -1980,7 +1982,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Organization Unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2009,7 +2011,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
+          command = make_simple_command(:put, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
@@ -2021,7 +2023,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all privileges for a customer.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2047,7 +2049,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_privileges(customer, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/roles/ALL/privileges', options)
+          command = make_simple_command(:get, 'customer/{customer}/roles/ALL/privileges', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Privileges::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Privileges
           command.params['customer'] = customer unless customer.nil?
@@ -2056,7 +2058,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2085,7 +2087,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command = make_simple_command(:delete, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2093,7 +2095,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2122,7 +2124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command = make_simple_command(:get, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
           command.params['customer'] = customer unless customer.nil?
@@ -2132,7 +2134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2160,7 +2162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def calendar_resource(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customer}/resources/calendars', options)
+          command = make_simple_command(:post, 'customer/{customer}/resources/calendars', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
@@ -2171,7 +2173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of calendar resources for an account.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2202,7 +2204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_calendar_resources(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
+          command = make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResources::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResources
           command.params['customer'] = customer unless customer.nil?
@@ -2213,7 +2215,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a calendar resource. This method supports patch semantics.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2243,7 +2245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command = make_simple_command(:patch, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
@@ -2255,7 +2257,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2285,7 +2287,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command = make_simple_command(:put, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
@@ -2297,7 +2299,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a role assignment.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2325,7 +2327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_role_assignment(customer, role_assignment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customer}/roleassignments/{roleAssignmentId}', options)
+          command = make_simple_command(:delete, 'customer/{customer}/roleassignments/{roleAssignmentId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['roleAssignmentId'] = role_assignment_id unless role_assignment_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2333,7 +2335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a role assignment.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2361,7 +2363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_role_assignment(customer, role_assignment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/roleassignments/{roleAssignmentId}', options)
+          command = make_simple_command(:get, 'customer/{customer}/roleassignments/{roleAssignmentId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::RoleAssignment::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::RoleAssignment
           command.params['customer'] = customer unless customer.nil?
@@ -2371,7 +2373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a role assignment.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2398,7 +2400,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_role_assignment(customer, role_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customer}/roleassignments', options)
+          command = make_simple_command(:post, 'customer/{customer}/roleassignments', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::RoleAssignment::Representation
           command.request_object = role_assignment_object
           command.response_representation = Google::Apis::AdminDirectoryV1::RoleAssignment::Representation
@@ -2409,7 +2411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all roleAssignments.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2445,7 +2447,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_role_assignments(customer, max_results: nil, page_token: nil, role_id: nil, user_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/roleassignments', options)
+          command = make_simple_command(:get, 'customer/{customer}/roleassignments', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::RoleAssignments::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::RoleAssignments
           command.params['customer'] = customer unless customer.nil?
@@ -2458,7 +2460,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a role.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2486,7 +2488,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_role(customer, role_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customer}/roles/{roleId}', options)
+          command = make_simple_command(:delete, 'customer/{customer}/roles/{roleId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['roleId'] = role_id unless role_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2494,7 +2496,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a role.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2522,7 +2524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_role(customer, role_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/roles/{roleId}', options)
+          command = make_simple_command(:get, 'customer/{customer}/roles/{roleId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Role::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Role
           command.params['customer'] = customer unless customer.nil?
@@ -2532,7 +2534,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a role.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2559,7 +2561,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_role(customer, role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customer}/roles', options)
+          command = make_simple_command(:post, 'customer/{customer}/roles', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Role::Representation
           command.request_object = role_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Role::Representation
@@ -2570,7 +2572,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all the roles in a domain.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2600,7 +2602,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_roles(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customer}/roles', options)
+          command = make_simple_command(:get, 'customer/{customer}/roles', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Roles::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Roles
           command.params['customer'] = customer unless customer.nil?
@@ -2611,7 +2613,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a role. This method supports patch semantics.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2640,7 +2642,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_role(customer, role_id, role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customer}/roles/{roleId}', options)
+          command = make_simple_command(:patch, 'customer/{customer}/roles/{roleId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Role::Representation
           command.request_object = role_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Role::Representation
@@ -2652,7 +2654,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a role.
         # @param [String] customer
         #   Immutable ID of the G Suite account.
@@ -2681,7 +2683,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_role(customer, role_id, role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customer}/roles/{roleId}', options)
+          command = make_simple_command(:put, 'customer/{customer}/roles/{roleId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Role::Representation
           command.request_object = role_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Role::Representation
@@ -2693,7 +2695,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete schema
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2721,7 +2723,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_schema(customer_id, schema_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'customer/{customerId}/schemas/{schemaKey}', options)
+          command = make_simple_command(:delete, 'customer/{customerId}/schemas/{schemaKey}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['schemaKey'] = schema_key unless schema_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2729,7 +2731,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve schema
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2757,7 +2759,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_schema(customer_id, schema_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customer/{customerId}/schemas/{schemaKey}', options)
+          command = make_simple_command(:get, 'customer/{customerId}/schemas/{schemaKey}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Schema
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -2767,7 +2769,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create schema.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2794,7 +2796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_schema(customer_id, schema_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'customer/{customerId}/schemas', options)
+          command = make_simple_command(:post, 'customer/{customerId}/schemas', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
           command.request_object = schema_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
@@ -2805,7 +2807,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all schemas for a customer
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2840,7 +2842,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update schema. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2869,7 +2871,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_schema(customer_id, schema_key, schema_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'customer/{customerId}/schemas/{schemaKey}', options)
+          command = make_simple_command(:patch, 'customer/{customerId}/schemas/{schemaKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
           command.request_object = schema_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
@@ -2881,7 +2883,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update schema
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
@@ -2910,7 +2912,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_schema(customer_id, schema_key, schema_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'customer/{customerId}/schemas/{schemaKey}', options)
+          command = make_simple_command(:put, 'customer/{customerId}/schemas/{schemaKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
           command.request_object = schema_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Schema::Representation
@@ -2922,7 +2924,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete all access tokens issued by a user for an application.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -2951,7 +2953,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_token(user_key, client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/{userKey}/tokens/{clientId}', options)
+          command = make_simple_command(:delete, 'users/{userKey}/tokens/{clientId}', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['clientId'] = client_id unless client_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2959,7 +2961,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about an access token issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -2988,7 +2990,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_token(user_key, client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/tokens/{clientId}', options)
+          command = make_simple_command(:get, 'users/{userKey}/tokens/{clientId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Token::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Token
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2998,7 +3000,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the set of tokens specified user has issued to 3rd party applications.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -3025,7 +3027,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tokens(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/tokens', options)
+          command = make_simple_command(:get, 'users/{userKey}/tokens', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Tokens::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Tokens
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3034,7 +3036,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3060,14 +3062,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/{userKey}', options)
+          command = make_simple_command(:delete, 'users/{userKey}', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # retrieve user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3100,7 +3102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user(user_key, custom_field_mask: nil, projection: nil, view_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}', options)
+          command = make_simple_command(:get, 'users/{userKey}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::User
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3112,7 +3114,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # create user.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
@@ -3137,7 +3139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user(user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users', options)
+          command = make_simple_command(:post, 'users', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::AdminDirectoryV1::User::Representation
@@ -3147,7 +3149,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve either deleted users or all users in a domain (paginated)
         # @param [String] custom_field_mask
         #   Comma-separated list of schema names. All fields from these schemas are
@@ -3199,7 +3201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_users(custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users', options)
+          command = make_simple_command(:get, 'users', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Users::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Users
           command.query['customFieldMask'] = custom_field_mask unless custom_field_mask.nil?
@@ -3219,7 +3221,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # change admin status of a user
         # @param [String] user_key
         #   Email or immutable Id of the user as admin
@@ -3246,7 +3248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def make_user_admin(user_key, user_make_admin_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/makeAdmin', options)
+          command = make_simple_command(:post, 'users/{userKey}/makeAdmin', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserMakeAdmin::Representation
           command.request_object = user_make_admin_object
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3255,7 +3257,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # update user. This method supports patch semantics.
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
@@ -3283,7 +3285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user(user_key, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'users/{userKey}', options)
+          command = make_simple_command(:patch, 'users/{userKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::AdminDirectoryV1::User::Representation
@@ -3294,7 +3296,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undelete a deleted user
         # @param [String] user_key
         #   The immutable id of the user
@@ -3321,7 +3323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_user(user_key, user_undelete_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/undelete', options)
+          command = make_simple_command(:post, 'users/{userKey}/undelete', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserUndelete::Representation
           command.request_object = user_undelete_object
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3330,7 +3332,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # update user
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
@@ -3358,7 +3360,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user(user_key, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'users/{userKey}', options)
+          command = make_simple_command(:put, 'users/{userKey}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::AdminDirectoryV1::User::Representation
@@ -3369,7 +3371,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes in users list
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] custom_field_mask
@@ -3422,7 +3424,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_user(channel_object = nil, custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/watch', options)
+          command = make_simple_command(:post, 'users/watch', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
@@ -3444,7 +3446,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove a alias for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3472,7 +3474,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_alias(user_key, user_alias, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/{userKey}/aliases/{alias}', options)
+          command = make_simple_command(:delete, 'users/{userKey}/aliases/{alias}', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['alias'] = user_alias unless user_alias.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3480,7 +3482,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a alias for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3507,7 +3509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user_alias(user_key, alias_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/aliases', options)
+          command = make_simple_command(:post, 'users/{userKey}/aliases', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Alias::Representation
           command.request_object = alias_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Alias::Representation
@@ -3518,7 +3520,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all aliases for a user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3546,7 +3548,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_aliases(user_key, event: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/aliases', options)
+          command = make_simple_command(:get, 'users/{userKey}/aliases', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Aliases::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Aliases
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3556,7 +3558,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes in user aliases list
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3585,7 +3587,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_user_alias(user_key, channel_object = nil, event: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/aliases/watch', options)
+          command = make_simple_command(:post, 'users/{userKey}/aliases/watch', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
@@ -3597,7 +3599,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove photos for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3623,14 +3625,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_photo(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'users/{userKey}/photos/thumbnail', options)
+          command = make_simple_command(:delete, 'users/{userKey}/photos/thumbnail', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve photo of a user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3656,7 +3658,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_photo(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/photos/thumbnail', options)
+          command = make_simple_command(:get, 'users/{userKey}/photos/thumbnail', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::UserPhoto::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::UserPhoto
           command.params['userKey'] = user_key unless user_key.nil?
@@ -3665,7 +3667,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a photo for the user. This method supports patch semantics.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3692,7 +3694,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_photo(user_key, user_photo_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'users/{userKey}/photos/thumbnail', options)
+          command = make_simple_command(:patch, 'users/{userKey}/photos/thumbnail', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserPhoto::Representation
           command.request_object = user_photo_object
           command.response_representation = Google::Apis::AdminDirectoryV1::UserPhoto::Representation
@@ -3703,7 +3705,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a photo for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3730,7 +3732,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_photo(user_key, user_photo_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'users/{userKey}/photos/thumbnail', options)
+          command = make_simple_command(:put, 'users/{userKey}/photos/thumbnail', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserPhoto::Representation
           command.request_object = user_photo_object
           command.response_representation = Google::Apis::AdminDirectoryV1::UserPhoto::Representation
@@ -3741,7 +3743,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate new backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3767,14 +3769,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_verification_code(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/verificationCodes/generate', options)
+          command = make_simple_command(:post, 'users/{userKey}/verificationCodes/generate', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Invalidate the current backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3800,14 +3802,14 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def invalidate_verification_code(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'users/{userKey}/verificationCodes/invalidate', options)
+          command = make_simple_command(:post, 'users/{userKey}/verificationCodes/invalidate', options)
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the current set of valid backup verification codes for the specified
         # user.
         # @param [String] user_key
@@ -3835,7 +3837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_verification_codes(user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'users/{userKey}/verificationCodes', options)
+          command = make_simple_command(:get, 'users/{userKey}/verificationCodes', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::VerificationCodes::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::VerificationCodes
           command.params['userKey'] = user_key unless user_key.nil?
