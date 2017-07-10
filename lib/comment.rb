@@ -5,7 +5,7 @@ class Comment
     @video_id = commentThread['snippet']['videoId']
     @can_reply = commentThread['snippet']['canReply']
     @message = commentThread['snippet']['topLevelComment']['snippet']['textOriginal']
-    @author_id = commentThread['snippet']['topLevelComment']['snippet']['authorChannelId']
+    @author_id = commentThread['snippet']['topLevelComment']['snippet']['authorChannelId']['value']
     @author_display_name = commentThread['snippet']['topLevelComment']['snippet']['authorDisplayName']
     @author_display_image = commentThread['snippet']['topLevelComment']['snippet']['authorProfileImageUrl']
     @publish_date = commentThread['snippet']['topLevelComment']['snippet']['publishedAt']
@@ -32,5 +32,5 @@ class Comment
         }
       }]
     }
-   end
+  end
 end

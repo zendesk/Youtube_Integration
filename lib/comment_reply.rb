@@ -4,7 +4,7 @@ class CommentReply
   def initialize(comment)
     @video_id = comment['snippet']['videoId']
     @message = comment['snippet']['textOriginal']
-    @author_id = comment['snippet']['authorChannelId']
+    @author_id = comment['snippet']['authorChannelId']['value']
     @author_display_name = comment['snippet']['authorDisplayName']
     @author_display_image = comment['snippet']['authorProfileImageUrl']
     @publish_date = comment['snippet']['publishedAt']
@@ -27,5 +27,5 @@ class CommentReply
       },
       "allow_channelback": true
     }
-   end
+  end
 end

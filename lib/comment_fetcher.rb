@@ -20,13 +20,13 @@ class CommentFetcher
       loop do
         content, video_page_token = grab_all_videos_and_their_comments(content, video_page_token, start_time)
         ## BEGIN GRABBING ALL COMMENTS AND REPLIES ##
-        content.each do |_videoId, comments|
-          comments[1].each do |commentThread|
-            raw_comment = Comment.new(commentThread)
-            topLevelComment = raw_comment.create_top_level_comment
-            external_resources.push(topLevelComment) if topLevelComment[:created_at] > @last_pull_time
-            next unless commentThread['replies']
-            commentThread['replies']['comments'].reverse_each do |comment|
+        content.each do |_video_id, comments|
+          comments[1].each do |comment_thread|
+            raw_comment = Comment.new(comment_thread)
+            top_level_comment = raw_comment.create_top_level_comment
+            external_resources.push(top_level_comment) if top_level_comment[:created_at] > @last_pull_time
+            next unless comment_thread['replies']
+            comment_thread['replies']['comments'].reverse_each do |comment|
               raw_reply = CommentReply.new(comment)
               reply = raw_reply.create_comment_reply
               external_resources.push(reply) if reply[:created_at] > @last_pull_time
@@ -35,7 +35,7 @@ class CommentFetcher
         end
         break if video_page_token.nil?
       end
-    rescue InternalTimeoutError => e
+    rescue InternalTimeoutError
       puts 'Timeout'
     ensure
       return {
@@ -70,35 +70,32 @@ class CommentFetcher
                  end
     end
     JSON.parse(response).fetch('items').each do |video|
-      videoId = video.fetch('id').fetch('videoId')
-      videoTitle = video.fetch('snippet').fetch('title')
-      puts "===================#{videoTitle}================="
-      comments = get_all_comments(videoId, start_time)
+      video_id = video.fetch('id').fetch('videoId')
+      video_title = video.fetch('snippet').fetch('title')
+      puts "===================#{video_title}================="
+      comments = get_all_comments(video_id, start_time)
       next unless comments
-      details = [videoTitle, comments]
-      content[videoId] = details
+      details = [video_title, comments]
+      content[video_id] = details
     end
     [content, JSON.parse(response)['nextPageToken']]
   end
 
   # Grabs all the comments on a video. If the video contains over 200 comments, then it will only grab the most recent 200 comments
-  def get_all_comments(videoId, start_time)
-    response = nil; nextPageToken = nil; comments = []; year_ago = Time.now.to_datetime - 365; count = 0
+  def get_all_comments(video_id, start_time)
+    response = nil; next_page_token = nil; comments = []; year_ago = Time.now.to_datetime - 365; count = 0
     loop do
       execute_with_timeout(start_time) do
         begin
-          response = if nextPageToken.nil?
-                       client.list_comment_threads('snippet,replies', video_id: videoId).to_json
+          response = if next_page_token.nil?
+                       client.list_comment_threads('snippet,replies', video_id: video_id).to_json
                      else
-                       client.list_comment_threads('snippet,replies', video_id: videoId, page_token: nextPageToken).to_json
-                    end
+                       client.list_comment_threads('snippet,replies', video_id: video_id, page_token: next_page_token).to_json
+                     end
           comments += JSON.parse(response).fetch('items')
           count += 1
-          if JSON.parse(response).include?('nextPageToken')
-            nextPageToken = JSON.parse(response).fetch('nextPageToken')
-          else
-            return comments
-          end
+          return comments unless JSON.parse(response).include?('nextPageToken')
+          next_page_token = JSON.parse(response).fetch('nextPageToken')
         rescue Google::Apis::ClientError => e
           puts 'Error encountered when calling client.list_comment_threads. Rescuing so we can continue to get comments'
           puts e.inspect
