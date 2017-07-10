@@ -2,3 +2,4 @@ client_secrets.json
 /app_source/tmp
 /node_modules
 .env
+scripts.rb

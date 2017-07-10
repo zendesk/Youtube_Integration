@@ -54,10 +54,8 @@ module Controllers
           redirect auth_uri
         else
           auth_client.code = request['code']
-          puts auth_client.to_json
 
           auth_client.fetch_access_token!
-          puts auth_client.to_json
           # auth_client.client_secret = nil
           session[:credentials] = auth_client.to_json
           redirect '/oauth_done'
