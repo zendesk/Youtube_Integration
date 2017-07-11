@@ -5,6 +5,7 @@
 end
 
 class YoutubeIntegration < Sinatra::Base
+  puts ENV['SESSION_SECRET'].inspect
   enable :sessions
   use Rack::Session::Cookie, :secret => ENV['SESSION_SECRET']
   # set :session_secret, ENV['SESSION_SECRET']
