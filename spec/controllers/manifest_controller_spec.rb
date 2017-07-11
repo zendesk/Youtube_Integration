@@ -5,7 +5,7 @@ require_relative '../../controllers/manifest_controller'
 
 describe Controllers::ManifestController do
   describe 'GET /manifest.json' do
-    before { get '/manifest' }
+    before { get '/manifest'}
 
     it 'list should have 0 errors when manifest schema conforms' do
       manifest = last_response.body
