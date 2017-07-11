@@ -8,7 +8,7 @@ describe Controllers::AdminController do
     get '/admin'
   end
 
-  it 'returns true when the get status is 200' do
-    expect(last_response.status).to be 200
-  end
+  # it 'returns true when the get status is 200' do
+  #   expect(last_response.status).to be 200
+  # end
 end

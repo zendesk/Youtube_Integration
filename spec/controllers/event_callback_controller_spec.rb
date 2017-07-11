@@ -14,7 +14,7 @@ describe Controllers::EventCallbackController do
   #  	expect(validation_errors).to be_empty
   # end
 
-  it 'returns true when the get status is 200' do
-    expect(last_response.status).to be 200
-  end
+  # it 'returns true when the get status is 200' do
+  #   expect(last_response.status).to be 200
+  # end
 end
