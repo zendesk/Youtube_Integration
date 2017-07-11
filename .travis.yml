@@ -3,4 +3,4 @@ language: ruby
 script: bundle exec rspec
 sudo: false
 git:
-  depth: 0
+  depth: 1
