@@ -6,7 +6,8 @@ end
 
 class YoutubeIntegration < Sinatra::Base
   enable :sessions
-  set :session_secret, ENV['SESSION_SECRET']
+  use Rack::Session::Cookie, :secret => ENV['SESSION_SECRET']
+  # set :session_secret, ENV['SESSION_SECRET']
 
   helpers Sinatra::Helpers::InternalTimeoutHelper
 
