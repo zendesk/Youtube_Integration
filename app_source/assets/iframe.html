@@ -15,22 +15,24 @@
     client.invoke('resize', { width: '100%', height: '150px' });
 
     const comment = client.get('ticket.comments'); 
-    userComment = comment.then(function(x) {
-      console.log(x)
-      const initialComment = x['ticket.comments'][0]; // Top level comment
-      
-      console.log('channelDisplayInfo')
-      const channelDisplayInfo = initialComment['channelDisplayInfo'];
-      console.log(channelDisplayInfo);
-
-      console.log('videoId')
-      const videoId = channelDisplayInfo[0];
-      console.log(videoId);
-      document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
-      // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
+    const channelDisplayInfo = client.get('ticket.comments.0.channelDisplayInfo');
+    channelDisplayInfo.then(function(x) {
+      console.log(x);
     });
+
+    // userComment = comment.then(function(x) {
+    //   console.log(x)
+
+    //   const channelDisplayInfo = x['ticket.comments'][0].channelDisplayInfo; // Top level comment
+
+    //   console.log('videoId')
+    //   const videoId = channelDisplayInfo[0];
+    //   console.log(videoId);
+    //   document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
+    //   // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
+    // });
     
-    console.log(userComment)
+    // console.log(userComment)
   </script>
 </body>
 </html>
