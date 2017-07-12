@@ -11,6 +11,7 @@ class CommentFetcher
     @last_pull_time = last_pull_time
   end
 
+  # Updates last_pull_time if video_page_token is nil meaning that we are starting the cycle of pulling back at the top.
   def fetch
     curr_time = @video_page_token ? @last_pull_time : Time.now.to_datetime.rfc3339
     start_time = Time.now.to_i
