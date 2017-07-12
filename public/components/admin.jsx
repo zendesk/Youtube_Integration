@@ -38,7 +38,7 @@ var NameForm = React.createClass({
 						<a id="button" className="button" onClick={this.onFormSubmit}>Next</a>
 						<div id="err" style={{display:'none'}}> 
 							<br />
-							<p style={{color:'red'}}>Please ensure that you have entered a valid channel id and name.</p>
+							<p style={{color:'red'}}>Please ensure that you have entered a valid channel name.</p>
 						</div>
 						<div id="too_long" style={{display:'none'}}>
 							<p style={{color:'red'}}>Account name must be less than 255 characters.</p>
