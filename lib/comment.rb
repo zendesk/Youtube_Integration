@@ -28,7 +28,7 @@ class Comment
       "display_info": [{
         "type": 'youtube.com/integrations/youtube/display/comment/v1',
         "data": {
-          videoId: @video_id
+          'videoId': @video_id
         }
       }]
     }

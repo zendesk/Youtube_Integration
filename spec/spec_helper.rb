@@ -4,8 +4,8 @@ require 'rack/test'
 require 'rspec'
 
 ENV['RACK_ENV'] = 'test'
-
-Bundler.require
+Bundler.require :default, ENV['RACK_ENV'].to_sym
+Dotenv.load
 require_relative '../app'
 
 module RSpecMixin

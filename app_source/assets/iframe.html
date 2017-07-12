@@ -14,10 +14,15 @@
     var client = ZAFClient.init();
     client.invoke('resize', { width: '100%', height: '150px' });
 
-    const comment = client.get('ticket.comments'); 
+    // const comment = client.get('ticket.comments'); 
+    // comment.then(function(x) {
+    //   console.log(x);
+    // });
+    client.get('currentUser').then(function(x) { console.log(x) });
     const channelDisplayInfo = client.get('ticket.comments.0.channelDisplayInfo');
     channelDisplayInfo.then(function(x) {
-      console.log(x);
+      console.log(x)
+      //console.log(x['ticket.comments.0.channelDisplayInfo']);
     });
 
     // userComment = comment.then(function(x) {

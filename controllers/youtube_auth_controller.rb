@@ -17,6 +17,7 @@ module Controllers
       # includes the metadata, state, and name to store in Zendesk.
       app.get '/auth_display' do
         if !session.key?(:credentials)
+          puts session[:credentials]
           redirect '/auth_error'
         else
           @metadata = {
