@@ -28,15 +28,14 @@
       }).catch(function(x) {
         console.log('Not a YI ticket');
       });
-    }
 
-    function getVideoId() {
       client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
         const video_id = (x['ticket.comments.0.channelDisplayInfo']);
         document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
         // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
       }); // Top level comment
     }
+
   </script>
 </body>
 </html>
