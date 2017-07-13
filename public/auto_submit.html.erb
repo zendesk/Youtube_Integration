@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Youtube Integration</title>
+	<link rel="stylesheet" href="https://assets.zendesk.com/apps/sdk-assets/css/1/zendesk_garden.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.0/react-bootstrap.min.js"></script>
+</head>
+<body>
+	<form name="myForm" id="myForm" action="<%= @return_url %>" method="POST">
+		<input type="hidden" name="name" value="<%= @name %>">
+		<input type="hidden" name="metadata" value=<%= @metadata %>>
+		<input type="hidden" name="state" value=<%= @state %>>
+	</form>
+	<script type="text/javascript">
+	    window.onload = function(){
+  			document.forms['myForm'].submit()
+		}
+	</script>
+</body>
+</html>

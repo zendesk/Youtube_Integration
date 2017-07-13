@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- http://garden.zendesk.com -->
+  <link rel="stylesheet" href="https://assets.zendesk.com/apps/sdk-assets/css/0/zendesk_garden.css" type="text/css">
+</head>
+<body>
+  <iframe id="video" src="https://www.youtube.com/embed/video_id"></iframe>
+  <!-- https://github.com/zendesk/zendesk_app_framework_sdk -->
+  <script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+  <script>
+    // Initialise the Zendesk JavaScript API client
+    // https://developer.zendesk.com/apps/docs/apps-v2
+    var client = ZAFClient.init();
+    client.invoke('resize', { width: '100%', height: '150px' });
+    client.invoke('hide');
+
+    displayIfYoutubeTicket();
+
+    function displayIfYoutubeTicket() {
+      const youtube_integration_id = 'f436762f-a6cb-492d-bf8f-2aa3819e271ex';
+      const via = client.get('ticket.via.source.from.service_info.registered_integration_service_external_id');;
+      via.then(function(x) {
+        if (x['ticket.via.source.from.service_info.registered_integration_service_external_id'] == youtube_integration_id) {
+          console.log('Is a YI ticket');
+          client.invoke('show');
+        }
+      }).catch(function(x) {
+        console.log('Not a YI ticket');
+      });
+
+      client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
+        const video_id = (x['ticket.comments.0.channelDisplayInfo']);
+        document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
+        // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
+      }); // Top level comment
+    }
+
+  </script>
+</body>
+</html>
