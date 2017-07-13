@@ -4,13 +4,10 @@ require 'spec_helper'
 require_relative '../../controllers/channelback_controller'
 
 describe Controllers::ManifestController do
-
   describe 'POST /channelback' do
   	describe 'invalid credentials' do
 	    before do
-	    	@message = 'Has anyone really been far even as decided to use even go want to do look more like?'
-			  @external_id = '123123123&lc=abcabc'
-			  @metadata = { 
+			  @metadata = {
 			  	'credentials': {
 			  		"authorization_uri": "https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&redirect_uri=https://0bba4895.ngrok.io/youtube_auth&response_type=code&scope=https://www.googleapis.com/auth/youtube.force-ssl",
 			  	"token_credential_uri": "https://accounts.google.com/o/oauth2/token",
@@ -18,7 +15,7 @@ describe Controllers::ManifestController do
 			  	"client_secret": "zzz",
 			  	"scope": ["https://www.googleapis.com/auth/youtube.force-ssl"],
 			  	"state": nil,
-			  	"code": nil, 
+          "code": 'abc',
 			  	"redirect_uri": "https://0bba4895.ngrok.io/youtube_auth",
 			  	"username": nil,
 			  	"password": nil,
@@ -34,13 +31,17 @@ describe Controllers::ManifestController do
 			  	}.to_json
 			  }.to_json
 	    end
+
 	    it 'should fail' do
+        e = nil
+
 	    	begin
-					post '/channelback', metadata: @metadata, parent_id: @external_id, message: @message
+					post '/channelback', metadata: @metadata, parent_id: 'parent_id', message: 'message'
 				rescue StandardError => e
-					error_msg = "ERROR: #{e.message}"
-				end
-				expect(error_msg).to eq("ERROR: Missing authorization code.")
+          expect(e.message).to match(/\AAuthorization\sfailed.*$/)
+        ensure
+          expect(e).to_not be_nil, 'Expected to make a channelback request that resulted in the client raising an error. No error was raised'
+        end
 	    end
 	  end
 	end
