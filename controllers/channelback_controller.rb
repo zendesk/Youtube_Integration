@@ -7,9 +7,16 @@ module Controllers
     #
     def self.registered(app)
       app.post '/channelback' do
-        metadata = JSON.parse(params[:metadata])
-        comment_creator = CommentCreator.new(JSON.parse(metadata['credentials']), params)
-        comment_creator.generate_comment
+        begin
+          metadata = JSON.parse(params[:metadata])
+          comment_creator = CommentCreator.new(JSON.parse(metadata['credentials']), params)
+          comment_creator.generate_comment
+        rescue => e
+          # https://developer.zendesk.com/apps/docs/channels-framework/pull_endpoint#recognized-error-responses
+          # it also indicates that Zendesk to retry the request.
+
+          [500, {}, 'An error occurred attempting to POST a reply to Youtube.']
+        end
       end
     end
   end
