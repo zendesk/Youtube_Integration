@@ -3,7 +3,7 @@
 require 'spec_helper'
 require_relative '../../controllers/channelback_controller'
 
-describe Controllers::ManifestController do
+describe Controllers::ChannelbackController do
   describe 'POST /channelback' do
     #describe 'valid credentials' do
     #  before do
@@ -60,8 +60,8 @@ describe Controllers::ManifestController do
         it 'returns a 500 status code' do
           VCR.use_cassette("channelback_valid_auth") do
             post '/channelback', metadata: metadata_with_valid_credentials, parent_id: 'parent_id', message: 'message'
-            # TODO: This should be a real test
-            last_response.status.inspect
+            
+            expect(last_response.status).to eq(500)
           end
         end
       end
