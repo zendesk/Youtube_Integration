@@ -1,4 +1,4 @@
-# Youtube_Integration
+# Youtube Integration <img src="https://www.dropbox.com/s/uz4urq2i9kzdw86/small-logo.png?raw=1" width="35px">
 
 This repository contains the source code for the Zendesk AnyChannel: Youtube Integration as well as the Zendesk App Market Application. The service acts as a courier of data between Zendesk and the Youtube Data API V3. 
 
@@ -43,6 +43,7 @@ The clickthrough endpoint receives a GET request with the external ID of the rev
 
 ## Setup
 #### Setting up your developer environment
+_It is recommended to use `bundler` to install dependencies. If you don't have `bundler`, you can download it by running `gem install bundler`._
 1. Clone the repo: `git clone https://github.com/zendesk/Youtube_Integration.git`
 
 2. Run `bundle install` to install the required gems from the Gemfile
@@ -58,6 +59,9 @@ The clickthrough endpoint receives a GET request with the external ID of the rev
 7. Update `manifest.json`
 
 * Documentation for various endpoints can be found in the corresponding controllers
+
+## Testing
+To run the test files, run `bundle exec rspec` in the app source.
 
 #### Using the app in Zendesk Console
 _Note: For this section we will be working with the `app_source` directory_
