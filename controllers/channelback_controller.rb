@@ -7,18 +7,10 @@ module Controllers
     #
     def self.registered(app)
       app.post '/channelback' do
-        begin
-          metadata = JSON.parse(params[:metadata])
-          comment_creator = CommentCreator.new(JSON.parse(metadata['credentials']), params)
+        metadata = JSON.parse(params[:metadata])
+        comment_creator = CommentCreator.new(JSON.parse(metadata['credentials']), params)
 
-          [200, { 'ContentType' => 'application/json' }, comment_creator.generate_comment]
-        rescue Signet::AuthorizationError => e
-          # https://developer.zendesk.com/apps/docs/channels-framework/pull_endpoint#recognized-error-responses
-          # it also indicates that Zendesk to retry the request.
-          [401, {}, 'AuthError']
-        rescue => e
-          [500, {}, 'An error occurred attempting to POST a reply to Youtube.']
-        end
+        [200, { 'ContentType' => 'application/json' }, comment_creator.generate_comment]
       end
     end
   end

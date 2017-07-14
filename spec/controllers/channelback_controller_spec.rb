@@ -8,8 +8,8 @@ describe Controllers::ChannelbackController do
     describe 'valid credentials' do
      before do
        @metadata = metadata_with_valid_credentials
-       VCR.use_cassette("channelback_200", :match_requests_on => [:uri, :body]) do
-            post '/channelback', metadata: @metadata, parent_id: 'kDyX_H9UG9c&lc=z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k', message: 'message'
+       VCR.use_cassette("channelback_200", :match_requests_on => [:uri, :body, :method]) do
+            post '/channelback', metadata: @metadata, parent_id: '', message: 'message'
         end
      end
 
@@ -56,7 +56,7 @@ describe Controllers::ChannelbackController do
         it 'returns a 500 status code' do
           VCR.use_cassette("channelback_valid_auth") do
             post '/channelback', metadata: metadata_with_valid_credentials, parent_id: 'parent_id', message: 'message'
-            
+
             expect(last_response.status).to eq(500)
           end
         end

@@ -23,9 +23,13 @@ module RSpecMixin
 end
 
 WebMock.disable_net_connect!
-RSpec.configure do |c| 
+RSpec.configure do |c|
   c.include RSpecMixin
-  c.before(:all) { puts app.inspect } 
+  c.before(:all) do
+    app.error VCR::Errors::UnhandledHTTPRequestError  do
+      raise env['sinatra.error']
+    end
+  end
 end
 
 def metadata_with_invalid_auth_credentials
