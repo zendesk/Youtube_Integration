@@ -7,6 +7,8 @@ ruby '2.4.0'
 group :test do
   gem 'rack-test'
   gem 'rspec'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :test, :development do

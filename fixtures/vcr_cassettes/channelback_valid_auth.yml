@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 18:24:01 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GluHBAysggP1iM3aT7RMNt80aeTtvzExl3CR8bvg7ruHijNVAQfgBPN8_kOwKexVuL51qvWNbqsTWIub0mfNdcGqMrjlkdLWejDuOYmAtCrUzSWlL4TjvNeKA6uI",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version:
+  recorded_at: Fri, 14 Jul 2017 18:24:00 GMT
+- request:
+    method: post
+    uri: https://www.googleapis.com/youtube/v3/comments?part=snippet
+    body:
+      encoding: UTF-8
+      string: '{"snippet":{"parentId":"","textOriginal":"message"}}'
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 14 Jul 2017 18:24:00 GMT
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer ya29.GluHBAysggP1iM3aT7RMNt80aeTtvzExl3CR8bvg7ruHijNVAQfgBPN8_kOwKexVuL51qvWNbqsTWIub0mfNdcGqMrjlkdLWejDuOYmAtCrUzSWlL4TjvNeKA6uI
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      Date:
+      - Fri, 14 Jul 2017 18:24:01 GMT
+      Expires:
+      - Fri, 14 Jul 2017 18:24:01 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "youtube.comment",
+            "reason": "parentIdMissing",
+            "message": "The comment that is being inserted must be linked to a parent comment. However, the \u003ccode\u003ecomment\u003c/code\u003e resource in the body of the API request did not specify a value for the \u003ccode\u003e\u003ca href=\"/youtube/v3/docs/comments#snippet.parentId\"\u003esnippet.parentId\u003c/a\u003e\u003c/code\u003e property.",
+            "locationType": "other",
+            "location": "body.snippet"
+           }
+          ],
+          "code": 400,
+          "message": "The comment that is being inserted must be linked to a parent comment. However, the \u003ccode\u003ecomment\u003c/code\u003e resource in the body of the API request did not specify a value for the \u003ccode\u003e\u003ca href=\"/youtube/v3/docs/comments#snippet.parentId\"\u003esnippet.parentId\u003c/a\u003e\u003c/code\u003e property."
+         }
+        }
+    http_version:
+  recorded_at: Fri, 14 Jul 2017 18:24:00 GMT
+recorded_with: VCR 3.0.3
