@@ -5,26 +5,22 @@ require_relative '../../controllers/channelback_controller'
 
 describe Controllers::ChannelbackController do
   describe 'POST /channelback' do
-    #describe 'valid credentials' do
-    #  before do
-    #    WebMock.stub_request(:post, "https://accounts.google.com/o/oauth2/token")
-    #      .to_return(
-    #        body: MultiJson.dump(
-    #          'access_token' => 'hunter1', 'token_type' => 'Bearer', 'expires_in' => 3600
-    #        ),
-    #        status: 200,
-    #        headers: { 'ContentType' => 'application/json' }
-    #      )
-    #  end
+    describe 'valid credentials' do
+     before do
+       @metadata = metadata_with_valid_credentials
+       VCR.use_cassette("channelback_200", :match_requests_on => [:uri, :body]) do
+            post '/channelback', metadata: @metadata, parent_id: 'kDyX_H9UG9c&lc=z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k', message: 'message'
+        end
+     end
 
-    #  it 'returns a 200 status' do
-    #    post '/channelback', metadata: @metadata, parent_id: 'parent_id', message: 'message'
+      it 'returns a 200 status' do
+      	expect(last_response.status).to eql(200)
+	  	end
 
-    #    expect(last_response.status).to eql(200)
-    #  end
-
-    #  it 'sets the response header: ContentType: application/json' do
-    #  end
+     it 'sets the response header: ContentType: application/json' do
+     #        expect(last_response.status).to eql(200)
+     end
+   end
 
     #  it 'returns a json body in a valid Zendesk format' do
     #  end

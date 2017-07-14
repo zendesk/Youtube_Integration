@@ -17,7 +17,6 @@ module Controllers
           # it also indicates that Zendesk to retry the request.
           [401, {}, 'AuthError']
         rescue => e
-
           [500, {}, 'An error occurred attempting to POST a reply to Youtube.']
         end
       end
