@@ -29,7 +29,7 @@ class CommentCreator
   def create_comment_snippet
       snippet = Google::Apis::YoutubeV3::CommentSnippet.new(parent_id: @parent_id, text_original: @message)
       Google::Apis::YoutubeV3::Comment.new(snippet: snippet)
-    end
+  end
 
   def client
     @client ||= begin

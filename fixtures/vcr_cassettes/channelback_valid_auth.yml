@@ -31,7 +31,7 @@ http_interactions:
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Fri, 14 Jul 2017 18:24:01 GMT
+      - Fri, 14 Jul 2017 22:32:00 GMT
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
       Server:
@@ -48,12 +48,66 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-          "access_token" : "ya29.GluHBAysggP1iM3aT7RMNt80aeTtvzExl3CR8bvg7ruHijNVAQfgBPN8_kOwKexVuL51qvWNbqsTWIub0mfNdcGqMrjlkdLWejDuOYmAtCrUzSWlL4TjvNeKA6uI",
+          "access_token" : "ya29.GlyHBNcrg3-H8KkTWIKwfrNvDsqj_plox26jJZqrqpYxhTMJawZStRV5ieQQJnA4UE3XdFe8xXIcML_SN0xaedlccJZlO_vl6jyf0aTBwGHBBrVT9UWxuMYv72zMiw",
           "expires_in" : 3600,
           "token_type" : "Bearer"
         }
-    http_version:
-  recorded_at: Fri, 14 Jul 2017 18:24:00 GMT
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:35:06 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:32:00 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GlyHBNcrg3-H8KkTWIKwfrNvDsqj_plox26jJZqrqpYxhTMJawZStRV5ieQQJnA4UE3XdFe8xXIcML_SN0xaedlccJZlO_vl6jyf0aTBwGHBBrVT9UWxuMYv72zMiw",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:35:06 GMT
 - request:
     method: post
     uri: https://www.googleapis.com/youtube/v3/comments?part=snippet
@@ -63,18 +117,18 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12
+        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12.5
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 14 Jul 2017 18:24:00 GMT
+      - Fri, 14 Jul 2017 22:35:06 GMT
       Content-Type:
       - application/json
       Authorization:
-      - Bearer ya29.GluHBAysggP1iM3aT7RMNt80aeTtvzExl3CR8bvg7ruHijNVAQfgBPN8_kOwKexVuL51qvWNbqsTWIub0mfNdcGqMrjlkdLWejDuOYmAtCrUzSWlL4TjvNeKA6uI
+      - Bearer ya29.GlyHBNcrg3-H8KkTWIKwfrNvDsqj_plox26jJZqrqpYxhTMJawZStRV5ieQQJnA4UE3XdFe8xXIcML_SN0xaedlccJZlO_vl6jyf0aTBwGHBBrVT9UWxuMYv72zMiw
   response:
     status:
       code: 400
@@ -88,9 +142,9 @@ http_interactions:
       Content-Encoding:
       - gzip
       Date:
-      - Fri, 14 Jul 2017 18:24:01 GMT
+      - Fri, 14 Jul 2017 22:32:00 GMT
       Expires:
-      - Fri, 14 Jul 2017 18:24:01 GMT
+      - Fri, 14 Jul 2017 22:32:00 GMT
       Cache-Control:
       - private, max-age=0
       X-Content-Type-Options:
@@ -123,6 +177,6 @@ http_interactions:
           "message": "The comment that is being inserted must be linked to a parent comment. However, the \u003ccode\u003ecomment\u003c/code\u003e resource in the body of the API request did not specify a value for the \u003ccode\u003e\u003ca href=\"/youtube/v3/docs/comments#snippet.parentId\"\u003esnippet.parentId\u003c/a\u003e\u003c/code\u003e property."
          }
         }
-    http_version:
-  recorded_at: Fri, 14 Jul 2017 18:24:00 GMT
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:35:06 GMT
 recorded_with: VCR 3.0.3

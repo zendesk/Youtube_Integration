@@ -11,11 +11,11 @@ class YoutubeIntegration < Sinatra::Base
 
   error Signet::AuthorizationError do
     # https://developer.zendesk.com/apps/docs/channels-framework/pull_endpoint#recognized-error-responses
-    # it also indicates that Zendesk to retry the request.
+    # it also indicates to Zendesk to retry the request.
     [401, {}, 'AuthError']
   end
 
-  error StandardError do
+  error 500 do
     [500, {}, 'An error occurred']
   end
 

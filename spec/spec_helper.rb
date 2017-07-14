@@ -58,7 +58,7 @@ def metadata_with_invalid_auth_credentials
   }.to_json
 end
 
-def metadata_with_valid_credentials
+def metadata_with_valid_auth_credentials
   {
     'credentials': {
       "authorization_uri": "https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&redirect_uri=https://0bba4895.ngrok.io/youtube_auth&response_type=code&scope=https://www.googleapis.com/auth/youtube.force-ssl",
@@ -81,5 +81,11 @@ def metadata_with_valid_credentials
         "access_token": "ya29.GluHBLab3V8-zxaPAN3xGR9XToVWSdk49KHTRWBMlV6Lm9C5co6ZM16TDZ5OSATxF6UAGEmFsSaKS2K9_c95uzS3ighokPNG0kEYycSxMCDxSCmTJMbowZGJj4Bw",
         "id_token": nil,
       }.to_json
+  }.to_json
+end
+
+def state
+  {
+    'last_pull_time': Time.now
   }.to_json
 end
