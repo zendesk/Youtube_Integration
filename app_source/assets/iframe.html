@@ -13,31 +13,29 @@
     // https://developer.zendesk.com/apps/docs/apps-v2
     var client = ZAFClient.init();
     client.invoke('resize', { width: '100%', height: '150px' });
+    client.invoke('hide');
 
-    // const comment = client.get('ticket.comments'); 
-    // comment.then(function(x) {
-    //   console.log(x);
-    // });
-    client.get('currentUser').then(function(x) { console.log(x) });
-    const channelDisplayInfo = client.get('ticket.comments.0.channelDisplayInfo');
-    channelDisplayInfo.then(function(x) {
-      console.log(x)
-      //console.log(x['ticket.comments.0.channelDisplayInfo']);
-    });
+    displayIfYoutubeTicket();
 
-    // userComment = comment.then(function(x) {
-    //   console.log(x)
+    function displayIfYoutubeTicket() {
+      const youtube_integration_id = 'f436762f-a6cb-492d-bf8f-2aa3819e271ex';
+      const via = client.get('ticket.via.source.from.service_info.registered_integration_service_external_id');;
+      via.then(function(x) {
+        if (x['ticket.via.source.from.service_info.registered_integration_service_external_id'] == youtube_integration_id) {
+          console.log('Is a YI ticket');
+          client.invoke('show');
+        }
+      }).catch(function(x) {
+        console.log('Not a YI ticket');
+      });
 
-    //   const channelDisplayInfo = x['ticket.comments'][0].channelDisplayInfo; // Top level comment
+      client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
+        const video_id = (x['ticket.comments.0.channelDisplayInfo']);
+        document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
+        // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
+      }); // Top level comment
+    }
 
-    //   console.log('videoId')
-    //   const videoId = channelDisplayInfo[0];
-    //   console.log(videoId);
-    //   document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
-    //   // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
-    // });
-    
-    // console.log(userComment)
   </script>
 </body>
 </html>
