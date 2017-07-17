@@ -4,12 +4,14 @@
   Dir.glob(File.join(__dir__, "#{path}/**/*")).each { |file| require file }
 end
 
-Airbrake.configure do |c|
-  c.project_id = ENV['AIRBRAKE_ID']
-  c.project_key = ENV['AIRBRAKE_KEY']
+if ENV['AIRBRAKE_ID']
+  Airbrake.configure do |c|
+    c.project_id = ENV['AIRBRAKE_ID']
+    c.project_key = ENV['AIRBRAKE_KEY']
 
-  # Display debug output.
-  c.logger.level = Logger::DEBUG
+    # Display debug output.
+    c.logger.level = Logger::DEBUG
+  end
 end
 
 class YoutubeIntegration < Sinatra::Base
