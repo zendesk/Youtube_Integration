@@ -4,7 +4,16 @@
   Dir.glob(File.join(__dir__, "#{path}/**/*")).each { |file| require file }
 end
 
+# Airbrake.configure do |c|
+#     c.project_id = 113743 # GET ZENDESK ID AS ENV
+#     c.project_key = 'fd04e13d806a90f96614ad8e529b2822' # GET ZENDESK KEY AS ENV
+
+#     # Display debug output.
+#     c.logger.level = Logger::DEBUG
+#   end
+
 class YoutubeIntegration < Sinatra::Base
+  use Airbrake::Rack::Middleware
   enable :sessions
   set :session_secret, ENV['SESSION_SECRET']
   set :protection, except: %i[frame_options json_csrf] # turns off sameorigin in X-frame

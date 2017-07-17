@@ -16,6 +16,9 @@ GEM
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    airbrake (6.2.0)
+      airbrake-ruby (~> 2.3)
+    airbrake-ruby (2.3.1)
     any_channel_json_schemas (0.6.0)
     ast (2.3.0)
     crack (0.4.3)
@@ -115,6 +118,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (~> 6.2)
   any_channel_json_schemas
   dotenv
   google-api-client!

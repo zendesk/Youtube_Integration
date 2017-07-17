@@ -21,3 +21,4 @@ gem 'google-api-client', git: 'https://github.com/HsuTimothy/google-api-ruby-cli
 gem 'json'
 gem 'json-schema'
 gem 'sinatra'
+gem 'airbrake', '~> 6.2'

@@ -24,16 +24,17 @@
         if (x['ticket.via.source.from.service_info.registered_integration_service_external_id'] == youtube_integration_id) {
           console.log('Is a YI ticket');
           client.invoke('show');
+
+          // Grabbing video id from metadata
+          client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
+          const video_id = (x['ticket.comments.0.channelDisplayInfo']['youtube/v1/video_id']['videoId']);
+          console.log(video_id);
+          document.getElementById("video").src = "https://www.youtube.com/embed/" + video_id;
+        });
         }
       }).catch(function(x) {
         console.log('Not a YI ticket');
       });
-
-      client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
-        const video_id = (x['ticket.comments.0.channelDisplayInfo']);
-        document.getElementById("video").src = "https://www.youtube.com/embed/9s90uagMKZ8"
-        // document.getElementById("video").src = "https://www.youtube.com/embed/" + videoId;
-      }); // Top level comment
     }
 
   </script>

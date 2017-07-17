@@ -26,7 +26,7 @@ class Comment
       },
       "allow_channelback": @can_reply,
       "display_info": [{
-        "type": 'youtube.com/integrations/youtube/display/comment/v1',
+        "type": 'youtube/v1/video_id',
         "data": {
           'videoId': @video_id
         }
