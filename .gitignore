@@ -3,3 +3,6 @@ client_secrets.json
 /node_modules
 .env
 scripts.rb
+/app_source/yarn.lock
+.git.keep
+.DS_Store
