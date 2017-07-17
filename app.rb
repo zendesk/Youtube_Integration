@@ -4,13 +4,13 @@
   Dir.glob(File.join(__dir__, "#{path}/**/*")).each { |file| require file }
 end
 
-# Airbrake.configure do |c|
-#     c.project_id = 113743 # GET ZENDESK ID AS ENV
-#     c.project_key = 'fd04e13d806a90f96614ad8e529b2822' # GET ZENDESK KEY AS ENV
+Airbrake.configure do |c|
+  c.project_id = ENV['AIRBRAKE_ID']
+  c.project_key = ENV['AIRBRAKE_KEY']
 
-#     # Display debug output.
-#     c.logger.level = Logger::DEBUG
-#   end
+  # Display debug output.
+  c.logger.level = Logger::DEBUG
+end
 
 class YoutubeIntegration < Sinatra::Base
   use Airbrake::Rack::Middleware

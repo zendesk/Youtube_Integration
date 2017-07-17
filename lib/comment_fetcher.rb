@@ -60,7 +60,7 @@ class CommentFetcher
   # }
   #
   def grab_all_videos_and_their_comments(content, video_page_token, start_time)
-    puts "=====#{video_page_token}====="
+    puts "=================== Video Page Token: #{video_page_token} ==================="
     response = nil
     execute_with_timeout(start_time) do
       response = if video_page_token.nil?
@@ -72,7 +72,7 @@ class CommentFetcher
     JSON.parse(response).fetch('items').each do |video|
       video_id = video.fetch('id').fetch('videoId')
       video_title = video.fetch('snippet').fetch('title')
-      puts "===================#{video_title}================="
+      puts "=================== Grabbing: #{video_title} ==================="
       comments = get_all_comments(video_id, start_time)
       next unless comments
       details = [video_title, comments]

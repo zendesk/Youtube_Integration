@@ -34,7 +34,7 @@ var NameForm = React.createClass({
 				<h1 className="title">Youtube Integration</h1>
 				<form>
 						<input type="text" placeholder="Account Name:" id="channel_name"/>
-						<p> <b>Note</b>: If you have previously authenticated this account before, you will need to remove authorization before proceeding by clicking <a href="https://security.google.com/settings/security/permissions" target="_blank">here</a></p>
+						<p> <b>Note</b>: If you have previously authenticated this account before, you will need to remove authorization before proceeding by clicking <a href="https://security.google.com/settings/security/permissions" target="_blank">here</a> and removing Youtube Integration.</p>
 						<a id="button" className="button" onClick={this.onFormSubmit}>Next</a>
 						<div id="err" style={{display:'none'}}> 
 							<br />
