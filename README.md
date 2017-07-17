@@ -67,6 +67,8 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 6. Update `manifest.json` and `app_source/requirements.json` with your own local or ngrok url endpoints. _Note:_ Also feel free to update `app_source/manifest.json` but is not required.
 
+_Note:_ If you only want to run the service locally, then you can remove all references to Airbrake in `.env` and `app.rb`.
+
 * Documentation for various endpoints can be found in the corresponding controllers 
 
 #### Hosting on Heroku
@@ -81,6 +83,11 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 5. Update your `manifest.json`, `app_source/requirements.json`, `.env` to now point to your heroku url endpoints
 
 6. Add your Heroku urls to your [Google Developer Console](https://console.developers.google.com/apis/credentials).
+
+#### Setting up Airbrakes on Heroku
+1. Add the Airbrake Error Monitoring Add On for free on Heroku.
+
+2. Find your Airbrake Id & Key (easiest way is to just click on the Add-On and in the `Overview` section of Heroku. This will redirect you to the Add-On site and choose `Sinatra` for project type. Insert your Id & Key inside your `.env` file.
 
 #### Using the app in Zendesk Console
 _Note: For this section we will be working with the `app_source` directory_
