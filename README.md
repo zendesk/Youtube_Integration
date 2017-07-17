@@ -87,7 +87,9 @@ _Note:_ If you only want to run the service locally, then you can remove all ref
 #### Setting up Airbrakes on Heroku
 1. Add the Airbrake Error Monitoring Add On for free on Heroku.
 
-2. Find your Airbrake Id & Key (easiest way is to just click on the Add-On and in the `Overview` section of Heroku. This will redirect you to the Add-On site and choose `Sinatra` for project type. Insert your Id & Key inside your `.env` file.
+2. Find your Airbrake Id & Key (easiest way is to just click on the Add-On and in the `Overview` section of Heroku. This will redirect you to the Add-On site and choose `Sinatra` for project type.)
+
+3. Set your ENV variables on Heroku with the Airbrake Id & Keys. Ex:`AIRBRAKE_Id=111111`
 
 #### Using the app in Zendesk Console
 _Note: For this section we will be working with the `app_source` directory_
