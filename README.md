@@ -67,7 +67,7 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 6. Update `manifest.json` and `app_source/requirements.json` with your own local or ngrok url endpoints. _Note:_ Also feel free to update `app_source/manifest.json` but is not required.
 
-_Note:_ If you only want to run the service locally, then you can remove all references to Airbrake in `.env` and `app.rb`.
+_Note:_ If you only want to run the service locally, you can remove all references to Airbrake in `.env` and `app.rb` if you'd like.
 
 * Documentation for various endpoints can be found in the corresponding controllers 
 
