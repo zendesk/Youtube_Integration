@@ -96,4 +96,4 @@ _Note: For this section we will be working with the `app_source` directory_
 To run the test files, run `bundle exec rspec` in the app source.
 
 ## Contributing
-Branch off of master and open a PR. If all the test cases pass and you receive a +1 from an admin you will have the opion to merge your changes.
+Branch off of master and open a PR. If all the test cases pass and you receive a +1 from an admin you will have the option to merge your changes.
