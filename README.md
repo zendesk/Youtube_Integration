@@ -50,7 +50,7 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 3. Start your local server: `bundle exec rackup`
 
-4. Visit your Google Developer Console and add a project. Download the `client_secret.json`
+4. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, create your credentials and download the `client_secret.json`
 
 5. Set your environment variables inside `.env`. See `example.env` for an example.
 
