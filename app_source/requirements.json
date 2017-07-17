@@ -1,7 +1,7 @@
 {
   "channel_integrations": {
     "youtube_integration": {
-      "manifest_url": "https://0bba4895.ngrok.io/manifest"
+      "manifest_url": "https://youtube-channels-integration.herokuapp.com/manifest"
     }
   }
 }
