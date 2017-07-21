@@ -91,7 +91,7 @@ _Note:_ If you only want to run the service locally, you can remove all referenc
 
 3. Set your ENV variables on Heroku with the Airbrake Id & Keys. Ex:`AIRBRAKE_Id=111111`
 
-#### Using the app in Zendesk Console
+#### Using the app in Zendesk Support
 _Note: For this section we will be working with the `app_source` directory_
 1. Check that your `manifest.json`, `app_source/requirements.json`, `.env` files point to the right endpoints (heroku/local/ngrok)
 

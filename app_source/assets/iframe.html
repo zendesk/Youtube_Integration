@@ -12,23 +12,21 @@
     // Initialise the Zendesk JavaScript API client
     // https://developer.zendesk.com/apps/docs/apps-v2
     var client = ZAFClient.init();
-    client.invoke('resize', { width: '100%', height: '150px' });
-    client.invoke('hide');
-
-    displayIfYoutubeTicket();
+    client.on('app.registered', displayIfYoutubeTicket);
 
     function displayIfYoutubeTicket() {
+      client.invoke('hide');
       const youtube_integration_id = 'f436762f-a6cb-492d-bf8f-2aa3819e271ex';
       const via = client.get('ticket.via.source.from.service_info.registered_integration_service_external_id');;
       via.then(function(x) {
         if (x['ticket.via.source.from.service_info.registered_integration_service_external_id'] == youtube_integration_id) {
           console.log('Is a YI ticket');
+          client.invoke('resize', { width: '100%', height: '150px' });
           client.invoke('show');
 
           // Grabbing video id from metadata
-          client.get('ticket.comments.0.channelDisplayInfo').then(function(x) {
-          const video_id = (x['ticket.comments.0.channelDisplayInfo']['youtube/v1/video_id']['videoId']);
-          console.log(video_id);
+          client.get('ticket.comments').then(function(comments) {
+          const video_id = comments['ticket.comments'][comments['ticket.comments'].length - 1]['channelDisplayInfo']['youtube/v1/video_id']['videoId'];
           document.getElementById("video").src = "https://www.youtube.com/embed/" + video_id;
         });
         }
@@ -36,7 +34,6 @@
         console.log('Not a YI ticket');
       });
     }
-
   </script>
 </body>
 </html>
