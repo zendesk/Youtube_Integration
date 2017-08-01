@@ -10,49 +10,7 @@ __Clickthrough Support__: Clicking on the clickthrough link will take you to the
 __Ticket Sidebar UI__: Sidebar appears on Youtube Integration Tickets and displays the video that is associated with that ticket.
 <img src="https://www.dropbox.com/s/qzwbsqixkdbuvjh/sidebar.png?raw=1">
 
-## Interface
-
-#### Admin
-The admin interface is where the Zendesk user is able to provide the name of the Youtube Channel and Google Account authentication.
-
-![alt text](https://www.dropbox.com/s/drllars5va7kou8/admin.png?raw=1 'admin')
-
-When the user is being authenticated via Google oAuth, the users credentials are stored as encrypted cookies inside the browser. Upon the initial authentication, the user is issued a refresh token that is exchanged for an access token. The access token gives the integration the ability to read/write to the authenticated Youtube Channel. 
-
-_Note: If a user has been previously authenticated via the admin interface, then the user will have to revoke that access privilege by using this [this](https://security.google.com/settings/security/permissions) link. This is because Google only issues a refresh token upon the first request for authentication._ 
-
----
-
-#### Pull
-The pull endpoint is the main point of contact for the AnyChannel poll. YI (Youtube Integration) will respond with an array of videos and comments formatted as an AnyChannel external resource. These resources will be filtered to only include the new reviews with a `last_pull_time` greater than the value stored in the provided state.
-
-_Pull logic_: Zendesk pings the service every 2 minutes and expects a response within a minute timeframe per pull request. Youtube Integration utilizes a batch fetch method that will grab 5 videos and up to 200 comments per video per batch. As long as their is still time left before Zendesk expects a respone, YI will continue to try to make more batch fetches.
-
-#####  Params
-`:metadata` - `String`  Required. JSON string that must include credentials for an authenticated account.
-
-`:state` - `String` Required. Must contain the timestamp of the most recent pull time.
-
----
-
-#### Channelback
-The channelback endpoint receives the external id associated with a comment on Youtube along with the message intended to reply to said comment.
-
-##### Params
-`:metadata` - `String`  Required. Provided during the /pull call.
-
-`:state` - `String` Required. Must contain the timestamp of the most recent pull time.
-
----
-
-#### Clickthrough
-The clickthrough endpoint receives a GET request with the external ID of the review they'd like to load.
-
-##### Params
-`:external_id` - `String` Required. Provided during the /pull call.
-
-
-## Setup
+## Installation
 #### Setting up your developer environment
 _It is recommended to use `bundler` to install dependencies. If you don't have `bundler`, you can download it by running `gem install bundler`._
 1. Clone the repo: `git clone https://github.com/zendesk/Youtube_Integration.git`
@@ -103,6 +61,47 @@ _Note: For this section we will be working with the `app_source` directory_
 
 ## Testing
 To run the test files, run `bundle exec rspec` in the app source.
+
+## Interface
+
+#### Admin
+The admin interface is where the Zendesk user is able to provide the name of the Youtube Channel and Google Account authentication.
+
+![alt text](https://www.dropbox.com/s/drllars5va7kou8/admin.png?raw=1 'admin')
+
+When the user is being authenticated via Google oAuth, the users credentials are stored as encrypted cookies inside the browser. Upon the initial authentication, the user is issued a refresh token that is exchanged for an access token. The access token gives the integration the ability to read/write to the authenticated Youtube Channel. 
+
+_Note: If a user has been previously authenticated via the admin interface, then the user will have to revoke that access privilege by using this [this](https://security.google.com/settings/security/permissions) link. This is because Google only issues a refresh token upon the first request for authentication._ 
+
+---
+
+#### Pull
+The pull endpoint is the main point of contact for the AnyChannel poll. YI (Youtube Integration) will respond with an array of videos and comments formatted as an AnyChannel external resource. These resources will be filtered to only include the new reviews with a `last_pull_time` greater than the value stored in the provided state.
+
+_Pull logic_: Zendesk pings the service every 2 minutes and expects a response within a minute timeframe per pull request. Youtube Integration utilizes a batch fetch method that will grab 5 videos and up to 200 comments per video per batch. As long as their is still time left before Zendesk expects a respone, YI will continue to try to make more batch fetches.
+
+#####  Params
+`:metadata` - `String`  Required. JSON string that must include credentials for an authenticated account.
+
+`:state` - `String` Required. Must contain the timestamp of the most recent pull time.
+
+---
+
+#### Channelback
+The channelback endpoint receives the external id associated with a comment on Youtube along with the message intended to reply to said comment.
+
+##### Params
+`:metadata` - `String`  Required. Provided during the /pull call.
+
+`:state` - `String` Required. Must contain the timestamp of the most recent pull time.
+
+---
+
+#### Clickthrough
+The clickthrough endpoint receives a GET request with the external ID of the review they'd like to load.
+
+##### Params
+`:external_id` - `String` Required. Provided during the /pull call.
 
 ## Contributing
 Branch off of master and open a PR. If all the test cases pass and you receive a +1 from an admin you will have the option to merge your changes.
