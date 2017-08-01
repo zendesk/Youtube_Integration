@@ -1,0 +1,9 @@
+client_secrets.json
+app_source/tmp
+node_modules
+.env
+scripts.rb
+app_source/yarn.lock
+.git.keep
+.DS_Store
+app_source/.DS_Store

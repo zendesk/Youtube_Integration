@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+
+heading() {
+  echo "$1... \c";
+}
+
+bold() {
+  echo "\033[1m$1\033[0m"
+}
+
+pass() {
+  bold "DONE"
+}
+
+fail() {
+  bold "FAIL"
+  echo
+}
+
+fail_and_exit() {
+  fail
+  exit -1
+}
+
+try() {
+  heading "$1"
+  if eval "$2"
+  then
+    pass
+  else
+    fail_and_exit
+  fi
+}
+
+check_npm_installed() {
+  if ! which npm > /dev/null; then
+    echo "npm is required"
+    return 1
+  fi
+}
+
+try "Bundling" "bundle check > /dev/null || bundle install"
+try "Installing Node Modules" "check_npm_installed && npm install"
+echo
+bold "Success! Run \`bundle exec rackup\` to start a local web server."

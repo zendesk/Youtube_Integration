@@ -1,0 +1,601 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:30:59 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GlyHBEMctpJmBx77QTNX3Hvex54-986nQhx8w5fBY4pTWT6EB4PYkKyIBSBEPFCGtFn0uRqOcACBJ0ZdfbMEsTpo7xwAdp9uzMwLMksDhKUJV0IIUgTAOdKSLTTG3Q",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:05 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:30:59 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GlyHBEMctpJmBx77QTNX3Hvex54-986nQhx8w5fBY4pTWT6EB4PYkKyIBSBEPFCGtFn0uRqOcACBJ0ZdfbMEsTpo7xwAdp9uzMwLMksDhKUJV0IIUgTAOdKSLTTG3Q",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:05 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/search?forMine=true&maxResults=5&part=snippet&type=video
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12.5
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 14 Jul 2017 22:34:05 GMT
+      Authorization:
+      - Bearer ya29.GlyHBEMctpJmBx77QTNX3Hvex54-986nQhx8w5fBY4pTWT6EB4PYkKyIBSBEPFCGtFn0uRqOcACBJ0ZdfbMEsTpo7xwAdp9uzMwLMksDhKUJV0IIUgTAOdKSLTTG3Q
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Cache-Control:
+      - private, max-age=120, must-revalidate, no-transform
+      Etag:
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/ysIOeznPAOMojWHLYjR46YG9i7s"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#searchListResponse",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/ysIOeznPAOMojWHLYjR46YG9i7s\"",
+         "nextPageToken": "Cib3-Xpd5P____9rRHlYX0g5VUc5YwD_Af_-a0R5WF9IOVVHOWMAARABIZEj8sYn07azOQAAAAAbooUGSAFQAFoLCWT9ClEuhws9EAJgwJqExQQ=",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 5
+         },
+         "items": [
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/Lk3eY_O4wEVpDRhywpempMprJ0M\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "kDyX_H9UG9c"
+           },
+           "snippet": {
+            "publishedAt": "2017-07-14T21:15:17.000Z",
+            "channelId": "UCDZHtiTgsR--nD2sp96o6Kg",
+            "title": "Test",
+            "description": "Test",
+            "thumbnails": {
+             "default": {
+              "url": "https://i.ytimg.com/vi/kDyX_H9UG9c/default.jpg",
+              "width": 120,
+              "height": 90
+             },
+             "medium": {
+              "url": "https://i.ytimg.com/vi/kDyX_H9UG9c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+             },
+             "high": {
+              "url": "https://i.ytimg.com/vi/kDyX_H9UG9c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+             }
+            },
+            "liveBroadcastContent": "none"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:05 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GlyHBHkiqUgFb5rASaVw833bQWkmd5I8k6bidmUVjfJl4OlEIrhNY8zy9p3UZ2jv6v2zWl0C_ZPMGnYTAbWaNOuBe-65udyxGmYEVGtTK9487kpn5iwmt6Y4NjX9vw",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:06 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=kDyX_H9UG9c
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12.5
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 14 Jul 2017 22:34:06 GMT
+      Authorization:
+      - Bearer ya29.GlyHBHkiqUgFb5rASaVw833bQWkmd5I8k6bidmUVjfJl4OlEIrhNY8zy9p3UZ2jv6v2zWl0C_ZPMGnYTAbWaNOuBe-65udyxGmYEVGtTK9487kpn5iwmt6Y4NjX9vw
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/seWPVYGEVJntWWjR8jMS06kkP6w"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#commentThreadListResponse",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/seWPVYGEVJntWWjR8jMS06kkP6w\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 20
+         },
+         "items": [
+          {
+           "kind": "youtube#commentThread",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/CpU8OKHsz8PAKssej9O4os9Vb80\"",
+           "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+           "snippet": {
+            "videoId": "kDyX_H9UG9c",
+            "topLevelComment": {
+             "kind": "youtube#comment",
+             "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/q4AE23Tha-Yq9sPVJ0WogeDpS54\"",
+             "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+             "snippet": {
+              "authorDisplayName": "youtube integration",
+              "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+              "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+              "authorChannelId": {
+               "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+              },
+              "videoId": "kDyX_H9UG9c",
+              "textDisplay": "TEST",
+              "textOriginal": "TEST",
+              "canRate": true,
+              "viewerRating": "none",
+              "likeCount": 0,
+              "publishedAt": "2017-07-14T21:15:55.000Z",
+              "updatedAt": "2017-07-14T21:15:55.000Z"
+             }
+            },
+            "canReply": true,
+            "totalReplyCount": 7,
+            "isPublic": true
+           },
+           "replies": {
+            "comments": [
+             {
+              "kind": "youtube#comment",
+              "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/xQLHTKwEVX79s7wDZslUkYtPMPY\"",
+              "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k.1500071457734992",
+              "snippet": {
+               "authorDisplayName": "youtube integration",
+               "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+               "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+               "authorChannelId": {
+                "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+               },
+               "videoId": "kDyX_H9UG9c",
+               "textDisplay": "message",
+               "textOriginal": "message",
+               "parentId": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+               "canRate": true,
+               "viewerRating": "none",
+               "likeCount": 0,
+               "publishedAt": "2017-07-14T22:30:57.000Z",
+               "updatedAt": "2017-07-14T22:30:57.000Z"
+              }
+             },
+             {
+              "kind": "youtube#comment",
+              "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/ymFkRuuwmSVG1XoPzeR4qxudhK4\"",
+              "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k.1500071266188016",
+              "snippet": {
+               "authorDisplayName": "youtube integration",
+               "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+               "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+               "authorChannelId": {
+                "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+               },
+               "videoId": "kDyX_H9UG9c",
+               "textDisplay": "message",
+               "textOriginal": "message",
+               "parentId": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+               "canRate": true,
+               "viewerRating": "none",
+               "likeCount": 0,
+               "publishedAt": "2017-07-14T22:27:46.000Z",
+               "updatedAt": "2017-07-14T22:27:46.000Z"
+              }
+             },
+             {
+              "kind": "youtube#comment",
+              "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/t4HGDikkVUHFlQJe-azqxPUbxOI\"",
+              "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k.1500069433858990",
+              "snippet": {
+               "authorDisplayName": "youtube integration",
+               "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+               "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+               "authorChannelId": {
+                "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+               },
+               "videoId": "kDyX_H9UG9c",
+               "textDisplay": "message",
+               "textOriginal": "message",
+               "parentId": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+               "canRate": true,
+               "viewerRating": "none",
+               "likeCount": 0,
+               "publishedAt": "2017-07-14T21:57:13.000Z",
+               "updatedAt": "2017-07-14T21:57:13.000Z"
+              }
+             },
+             {
+              "kind": "youtube#comment",
+              "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/DISfAUR_CkRBT9MmNCwH31ycBIQ\"",
+              "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k.1500068686674298",
+              "snippet": {
+               "authorDisplayName": "youtube integration",
+               "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+               "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+               "authorChannelId": {
+                "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+               },
+               "videoId": "kDyX_H9UG9c",
+               "textDisplay": "message",
+               "textOriginal": "message",
+               "parentId": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+               "canRate": true,
+               "viewerRating": "none",
+               "likeCount": 0,
+               "publishedAt": "2017-07-14T21:44:46.000Z",
+               "updatedAt": "2017-07-14T21:44:46.000Z"
+              }
+             },
+             {
+              "kind": "youtube#comment",
+              "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/oSyMp6pyuTk7JUaKIUpk_ByvX4M\"",
+              "id": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k.1500068465307751",
+              "snippet": {
+               "authorDisplayName": "youtube integration",
+               "authorProfileImageUrl": "https://yt3.ggpht.com/-_tmg0FHz2jo/AAAAAAAAAAI/AAAAAAAAAAA/FV3q0gYT_O0/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+               "authorChannelUrl": "http://www.youtube.com/channel/UCDZHtiTgsR--nD2sp96o6Kg",
+               "authorChannelId": {
+                "value": "UCDZHtiTgsR--nD2sp96o6Kg"
+               },
+               "videoId": "kDyX_H9UG9c",
+               "textDisplay": "message",
+               "textOriginal": "message",
+               "parentId": "z13rsx1pbzjhvjfxq04cjzehttrnif3qavw0k",
+               "canRate": true,
+               "viewerRating": "none",
+               "likeCount": 0,
+               "publishedAt": "2017-07-14T21:41:05.000Z",
+               "updatedAt": "2017-07-14T21:41:05.000Z"
+              }
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:06 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=refresh_token&refresh_token=1%2FiGuw-WtIrjC8dXXbjq8buFGx1uWhJ2RR7yGALifdda4&client_id=779541226128-btgh4e3kfgp6mjn41o3iiegd12pnq3ah.apps.googleusercontent.com&client_secret=wCqdW05ugx9dq5g1oumsP72o
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:31:00 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.GlyHBHkiqUgFb5rASaVw833bQWkmd5I8k6bidmUVjfJl4OlEIrhNY8zy9p3UZ2jv6v2zWl0C_ZPMGnYTAbWaNOuBe-65udyxGmYEVGtTK9487kpn5iwmt6Y4NjX9vw",
+          "expires_in" : 3600,
+          "token_type" : "Bearer"
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:06 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/search?forMine=true&maxResults=5&pageToken=Cib3-Xpd5P____9rRHlYX0g5VUc5YwD_Af_-a0R5WF9IOVVHOWMAARABIZEj8sYn07azOQAAAAAbooUGSAFQAFoLCWT9ClEuhws9EAJgwJqExQQ=&part=snippet&type=video
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.13.0 Mac OS X/10.12.5
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 14 Jul 2017 22:34:06 GMT
+      Authorization:
+      - Bearer ya29.GlyHBHkiqUgFb5rASaVw833bQWkmd5I8k6bidmUVjfJl4OlEIrhNY8zy9p3UZ2jv6v2zWl0C_ZPMGnYTAbWaNOuBe-65udyxGmYEVGtTK9487kpn5iwmt6Y4NjX9vw
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 14 Jul 2017 22:31:01 GMT
+      Date:
+      - Fri, 14 Jul 2017 22:31:01 GMT
+      Cache-Control:
+      - private, max-age=120, must-revalidate, no-transform
+      Etag:
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/wcBZ6U-gPnPFUuMcMjHHdUZA564"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#searchListResponse",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/wcBZ6U-gPnPFUuMcMjHHdUZA564\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 5
+         },
+         "items": []
+        }
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 22:34:06 GMT
+recorded_with: VCR 3.0.3
