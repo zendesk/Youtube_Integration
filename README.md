@@ -13,7 +13,7 @@ __Ticket Sidebar UI__: Sidebar appears on Youtube Integration Tickets and displa
 ## Installation
 #### Setting up your developer environment
 _It is recommended to use `bundler` to install dependencies. If you don't have `bundler`, you can download it by running `gem install bundler`._
-1. Clone the repo: `git clone https://github.com/zendesk/Youtube_Integration.git`
+1. Clone the repo: `git clone https://github.com/zendesk/Youtube_Integration.git`. `cd Youtube_Integration` and create an empty folder named `views` in the root.
 
 2. Run `bundle install` to install the required gems from the Gemfile
 
