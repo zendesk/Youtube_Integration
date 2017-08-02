@@ -17,19 +17,23 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 2. Run `bundle install` to install the required gems from the Gemfile
 
-3. Start your local server: `bundle exec rackup`
+3. Start your local server: `bundle exec rackup` and take note of the port number.
 
-4. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, click on the `Credentials` tab in the sidebar and switch to the `OAuth consent screen.` Add a product name and save it. Next, create your `OAuth Client Id` credentials and fill in the blanks. The authorized redirect url will be your `localhost:<port>/youtube_auth` and the authorized javascript origins will be `localhost:<port>`. After creating your credentials, click on the newly created credential and at the top hit `Download JSON` into the root directory of `Youtube_Integration`.. _Note: I recommend using ngrok to redirect a specific URL to point to your localhost_
+4. Download [ngrok](https://ngrok.com/download) and follow the instructions to install. After installation, navigate to where you saved `ngrok` and run `ngrok http <port number as reported by the previous step>`. Pay attention to the forwarding line that utilizes a `https` link. `Ex: Forwarding https://98a84992.ngrok.io -> localhost:9292 `
 
-5. Set your environment variables inside `.env`. See `example.env` for an example.
+5. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, click on the `Credentials` tab in the sidebar and switch to the `OAuth consent screen.` Add a product name and save it. Next, create your `OAuth Client Id` credentials and fill in the blanks. The authorized redirect url will be your https `ngrok` url (`https://98a84992.ngrok.io`) and the authorized javascript origins will be the same url but with a `/youtube_auth` at the end (`https://98a84992.ngrok.io/youtube_auth`) . After creating your credentials, click on the newly created credential and at the top hit `Download JSON` into the root directory of `Youtube_Integration`.
 
-6. Update `manifest.json` and `app_source/requirements.json` with your own local or ngrok url endpoints. _Note:_ Also feel free to update `app_source/manifest.json` but is not required.
+6. Rename the `.env.example` file to `.env` and set the value of `CLIENT_SECRET = ''`. Next, put the contents of the the `client_secret` file you downloaded from your Developer Console in between the quotes. See `.env.example` for an example.
+
+7. Update `AUTH_REDIRECT_URL` to the your redirect url you specified in your Google Developer Console (`https://98a84992.ngrok.io/youtube_auth`)
+
+7. Update `manifest.json` and `app_source/requirements.json` with your own local or ngrok url endpoints. `EX: "event_callback_url": "https://98a84992.ngrok.io/event_callback"` _Note:_ Also feel free to update `app_source/manifest.json` but is not required.
 
 _Note:_ If you only want to run the service locally, you can remove all references to Airbrake in `.env` and `app.rb` if you'd like.
 
 * Documentation for various endpoints can be found in the corresponding controllers 
 
-#### Hosting on Heroku
+#### Hosting on Heroku (OPTIONAL)
 1. Create a new project on Heroku
 
 2. Set up your ENV. variables similar to your `.env` file. _Note:_ Be careful to not include quotes as Heroku will automatically stringify the values you give it.
@@ -42,7 +46,7 @@ _Note:_ If you only want to run the service locally, you can remove all referenc
 
 6. Add your Heroku urls to your [Google Developer Console](https://console.developers.google.com/apis/credentials).
 
-#### Setting up Airbrakes on Heroku
+#### Setting up Airbrakes on Heroku (OPTIONAL)
 1. Add the Airbrake Error Monitoring Add On for free on Heroku.
 
 2. Find your Airbrake Id & Key (easiest way is to just click on the Add-On and in the `Overview` section of Heroku. This will redirect you to the Add-On site and choose `Sinatra` for project type.)
@@ -50,14 +54,16 @@ _Note:_ If you only want to run the service locally, you can remove all referenc
 3. Set your ENV variables on Heroku with the Airbrake Id & Keys. Ex:`AIRBRAKE_Id=111111`
 
 #### Using the app in Zendesk Support
-_Note: For this section we will be working with the `app_source` directory_
-1. Check that your `manifest.json`, `app_source/requirements.json`, `.env` files point to the right endpoints (heroku/local/ngrok)
+_Note: Check that your `manifest.json`, `app_source/requirements.json`, `.env` files point to the right endpoints (heroku/ngrok)
+1. `cd app_source`
 
-2. Run `zat package` followed by `zat validate`.
+2. Run `gem update zendesk_apps_tools`
 
-3. Navigate to your Zendesk Console and click on settings. On the left sidebar, select manage and upload a private app. Select the `.zip` file from the `tmp` folder inside your `app_source` directory.
+3. Run `zat package` followed by `zat validate`. This will create a `.zip` file in `app_source/tmp`
 
-4. You can now add an account by selecting `Channels Integration` on the left sidebar and selecting the Youtube Integration.
+4. Navigate to your Zendesk site and click on settings. On the left sidebar, select manage and upload a private app. Select the `.zip` file from the `tmp` folder inside your `app_source` directory. 
+
+5. After uplaoding & installing, you can now add an account by selecting `Channels Integration` on the left sidebar and selecting the Youtube Integration.
 
 ## Testing
 To run the test files, run `bundle exec rspec` in the app source.
