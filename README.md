@@ -23,7 +23,7 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 5. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, click on the `Credentials` tab in the sidebar and switch to the `OAuth consent screen.` Add a product name and save it. Next, create your `OAuth Client Id` credentials and fill in the blanks. The authorized redirect url will be your https `ngrok` url (`https://98a84992.ngrok.io`) and the authorized javascript origins will be the same url but with a `/youtube_auth` at the end (`https://98a84992.ngrok.io/youtube_auth`) . After creating your credentials, click on the newly created credential and at the top hit `Download JSON` into the root directory of `Youtube_Integration`.
 
-6. Rename the `.env.example` file to `.env` and set the value of `CLIENT_SECRET = ''`. Next, put the contents of the the `client_secret` file you downloaded from your Developer Console in between the quotes. See `.env.example` for an example.
+6. Create a file named `.env` and copy+paste the content from `.env.example` into `.env`. Set the value of `CLIENT_SECRET = ''`. Next, put the contents of the the `client_secret` file you downloaded from your Developer Console in between the quotes. See `.env.example` for an example.
 
 7. Update `AUTH_REDIRECT_URL` to the your redirect url you specified in your Google Developer Console (`https://98a84992.ngrok.io/youtube_auth`)
 
