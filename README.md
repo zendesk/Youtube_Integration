@@ -19,7 +19,7 @@ _It is recommended to use `bundler` to install dependencies. If you don't have `
 
 3. Start your local server: `bundle exec rackup`
 
-4. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, create your credentials and download the `client_secret.json`. The redirect url will be your `localhost:port/youtube_auth` and javascript origins will be `localhost:port`_Note: I recommend using ngrok to redirect a specific URL to point to your localhost_
+4. Visit your [Google Developer Console](https://console.developers.google.com/apis/credentials) and add a project. Afterwards, click on the `Credentials` tab in the sidebar and switch to the `OAuth consent screen.` Add a product name and save it. Next, create your `OAuth Client Id` credentials and fill in the blanks. The authorized redirect url will be your `localhost:<port>/youtube_auth` and the authorized javascript origins will be `localhost:<port>`. After creating your credentials, click on the newly created credential and at the top hit `Download JSON` into the root directory of `Youtube_Integration`.. _Note: I recommend using ngrok to redirect a specific URL to point to your localhost_
 
 5. Set your environment variables inside `.env`. See `example.env` for an example.
 
