@@ -6,7 +6,7 @@ on:
 jobs:
   main:
     name: ruby
-    runs-on: [ self-hosted, zendesk-stable]
+    runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
       ZENDESK_HOST: 127.0.0.1
