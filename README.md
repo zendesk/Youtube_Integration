@@ -1,3 +1,4 @@
+![repo-checks](https://github.com/zendesk/Youtube_Integration/workflows/repo-checks/badge.svg)
 # Youtube Integration <img src="https://www.dropbox.com/s/uz4urq2i9kzdw86/small-logo.png?raw=1" width="35px">
 
 This repository contains the source code for the Zendesk AnyChannel: Youtube Integration as well as the Zendesk App Market Application. The service acts as a courier of data between Zendesk and the Youtube Data API V3. 

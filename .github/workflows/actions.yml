@@ -1,0 +1,27 @@
+name: repo-checks
+on:
+  push:
+    branches: [master]
+  pull_request:
+jobs:
+  main:
+    name: ruby
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      ZENDESK_HOST: 127.0.0.1
+    steps:
+    - uses: zendesk/checkout@v2
+    - uses: zendesk/setup-ruby@v1
+    - name: gem_cache
+      id: cache
+      uses: zendesk/cache@v2
+      with:
+        path: vendor/bundle
+        key: cache-${{ runner.os }}-ruby-${{ hashFiles('Gemfile.lock') }}
+    - name: install
+      run: |
+        bundle install --jobs=3 --retry=3 --quiet
+    - name: test 
+      run: |
+        bundle exec rspec
